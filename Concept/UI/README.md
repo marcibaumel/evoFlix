@@ -18,6 +18,10 @@ Az **"Update" gomb** azt fogja jelezni, hogy az adatbázisba került új elem é
 
 A **"Profil" gomb** megnyomásával vissza kerülünk a menü-be.
 
+## mainOpen Leírás
+
+Ha rányomunk az egyik filmre akkor betölti a hozzá tartozó "adatlapot". Ilyenkor kiíródik az alkotás címe, megjelenési idejének az éve, rendezője neve, 3 legfontosabb színész neve, a hossza percbe, az "életkori" ajánlás, az IMDB pontszáma, play gombbal tudjuk elindítani a média lejátszót, "Watch-list" gomb amivel betudjuk rakni a My List listába és a "Watched" gomb amivel megtudjuk jelölni, hogy láttuk a filmet.
+
 ## Player Leírás:
 
 A célunk legfőképpen egy olyan média lejátszót létrehozni ami egy adatbázisból betölti az adott médiaanyagot és kilépéskor annak az aktuális állapotát eltudja menteni ezek mellett küllemileg próbáltuk a ma divatos lejátszókat koppintani.
