@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evoFlix.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,6 @@ namespace evoFlix.WPF.ViewModels
 {
     public class TestUnitOfWorkViewModelcs
     {
-        public void creatANewUser()
-        {
-
-        }
+        
     }
 }

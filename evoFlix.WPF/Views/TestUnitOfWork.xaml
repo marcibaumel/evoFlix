@@ -9,7 +9,7 @@
       Title="TestUnitOfWork">
 
     <Grid>
-        <Button Content="Creat a New User" HorizontalAlignment="Left" Margin="200,148,0,0" VerticalAlignment="Top" Width="369" Height="98" />
+        <Button Content="Creat a New User" HorizontalAlignment="Left" Margin="200,148,0,0" VerticalAlignment="Top" Width="369" Height="98" Click="Test_Button_Click" />
 
     </Grid>
 </Page>

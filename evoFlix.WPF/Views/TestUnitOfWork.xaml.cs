@@ -1,4 +1,6 @@
-﻿using System;
+﻿using evoFlix.DataAccess;
+using evoFlix.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +27,10 @@ namespace evoFlix.WPF.Views
             InitializeComponent();
         }
 
-        
+
+        private void Test_Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
