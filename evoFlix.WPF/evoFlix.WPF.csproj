@@ -120,6 +120,10 @@
       <Project>{75294A68-60B8-41B2-BD3A-0B3B7037B70A}</Project>
       <Name>evoFlix.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\evoFlix.Models\evoFlix.Models.csproj">
+      <Project>{F6BCF56C-E1C3-4B14-9A01-62A63FCCDB43}</Project>
+      <Name>evoFlix.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\evoFlix.Services\evoFlix.Services.csproj">
       <Project>{F4AF447F-1121-49CB-B318-3BF3E5797AE5}</Project>
       <Name>evoFlix.Services</Name>

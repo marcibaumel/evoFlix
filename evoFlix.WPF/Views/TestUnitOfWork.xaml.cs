@@ -1,4 +1,5 @@
 ﻿using evoFlix.DataAccess;
+using evoFlix.Models.Users;
 using evoFlix.Services;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,10 @@ namespace evoFlix.WPF.Views
     /// </summary>
     public partial class TestUnitOfWork : Page
     {
+        UserService userService = new UserService();
+        //UnitOfWork unitOfWork=new UnitOfWork();
+        User Béla = new User();
+
         public TestUnitOfWork()
         {
             InitializeComponent();
@@ -30,6 +35,11 @@ namespace evoFlix.WPF.Views
 
         private void Test_Button_Click(object sender, RoutedEventArgs e)
         {
+
+
+            userService.CreateUser(Béla);
+            
+            Console.WriteLine("asd");
             
         }
     }

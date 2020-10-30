@@ -24,7 +24,7 @@ namespace evoFlix.Services
         public void CreateUser(User user)
         {
             unitOfWork.User.Add(user);
-
+            unitOfWork.SaveChanges();
         }
     }
 }
