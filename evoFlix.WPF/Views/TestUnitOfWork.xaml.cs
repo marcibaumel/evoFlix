@@ -26,6 +26,7 @@ namespace evoFlix.WPF.Views
         UserService userService = new UserService();
         //UnitOfWork unitOfWork=new UnitOfWork();
         User Béla = new User();
+        
 
         public TestUnitOfWork()
         {
@@ -35,10 +36,10 @@ namespace evoFlix.WPF.Views
 
         private void Test_Button_Click(object sender, RoutedEventArgs e)
         {
-
-
-            userService.CreateUser(Béla);
+            Béla = (new User { Username = "Bécike" });
             
+            userService.CreateUser(Béla);
+            userService.CreateUser(new User {Username="asd" });
             Console.WriteLine("asd");
             
         }
