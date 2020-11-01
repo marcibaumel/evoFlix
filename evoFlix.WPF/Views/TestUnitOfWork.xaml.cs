@@ -39,6 +39,7 @@ namespace evoFlix.WPF.Views
             //Béla = (new User { Username = "Bécike" });
             //userService.CreateUser(Béla);
             
+
             string name = MyTextBox.Text;
             userService.CreateUser(new User {Username=name });
             Console.WriteLine("asd");
