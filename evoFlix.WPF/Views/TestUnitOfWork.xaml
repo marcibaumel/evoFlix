@@ -5,11 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:evoFlix.WPF.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="300" d:DesignWidth="300"
       Title="TestUnitOfWork">
 
     <Grid>
-        <Button Content="Creat a New User" HorizontalAlignment="Left" Margin="200,148,0,0" VerticalAlignment="Top" Width="369" Height="98" Click="Test_Button_Click" />
+
+
+        <Button Content="Creat a New User" HorizontalAlignment="Left" Margin="62,249,0,0" VerticalAlignment="Top" Width="169" Height="41" Click="Test_Button_Click" />
+        <TextBox HorizontalAlignment="Left" Name="MyTextBox" Height="40" Margin="23,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
 
     </Grid>
 </Page>

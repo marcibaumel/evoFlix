@@ -36,12 +36,15 @@ namespace evoFlix.WPF.Views
 
         private void Test_Button_Click(object sender, RoutedEventArgs e)
         {
-            Béla = (new User { Username = "Bécike" });
+            //Béla = (new User { Username = "Bécike" });
+            //userService.CreateUser(Béla);
             
-            userService.CreateUser(Béla);
-            userService.CreateUser(new User {Username="asd" });
+            string name = MyTextBox.Text;
+            userService.CreateUser(new User {Username=name });
             Console.WriteLine("asd");
             
         }
+
+        
     }
 }

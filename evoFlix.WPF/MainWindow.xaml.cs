@@ -22,7 +22,10 @@ namespace evoFlix.WPF
     {
         public MainWindow()
         {
+            
             InitializeComponent();
         }
+
+        
     }
 }
