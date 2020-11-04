@@ -68,8 +68,14 @@
     <Compile Include="Controls\Class1.cs" />
     <Compile Include="Styles\Class1.cs" />
     <Compile Include="ViewModels\TestUnitOfWorkViewModelcs.cs" />
+    <Compile Include="Views\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TestUnitOfWork.xaml.cs">
       <DependentUpon>TestUnitOfWork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Whos.xaml.cs">
+      <DependentUpon>Whos.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -83,7 +89,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TestUnitOfWork.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Whos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,6 +142,9 @@
       <Project>{F4AF447F-1121-49CB-B318-3BF3E5797AE5}</Project>
       <Name>evoFlix.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="whos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
