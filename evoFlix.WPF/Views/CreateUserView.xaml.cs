@@ -87,6 +87,8 @@ namespace evoFlix.WPF.Views
             }
         }
 
+        /*DONE button
+         * ezzel mentjük el az adatbázisba az elemeket*/
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             string userName = txbUsername.Text;
@@ -96,6 +98,8 @@ namespace evoFlix.WPF.Views
 
         }
 
+
+        /*Itt jó lenne ha egy dátumot adna vissza*/
         private void cmbMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string[] day30 = { "April", "June", "September", "November" };
