@@ -1,4 +1,6 @@
-﻿using System;
+﻿using evoFlix.Models.Users;
+using evoFlix.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,8 @@ namespace evoFlix.WPF.Views
     //- CREATE USER OBJECT FROM INPUT
     //- STRORE USER OBJECT IN DATABASE
     //- ERRORLIST
+
+    
     public partial class CreateUser : UserControl
     {
         string[] month = { "January", "February", "March", "April", "May",
@@ -29,10 +33,13 @@ namespace evoFlix.WPF.Views
         string[] pictures = { "kep1.jpg", "kep2.jpg", "kep3.jpg", "kep4.jpg" };
         bool pictureSelected = false;
         List<int> year, day;
+        UserService userService = new UserService();
+        
 
         public CreateUser()
         {
             InitializeComponent();
+            
             cmbMonth.ItemsSource = month;
             day = new List<int>();
             cmbDay.ItemsSource = new string[] { "Select month first!" };
@@ -40,6 +47,8 @@ namespace evoFlix.WPF.Views
             for (int i = 0; i < 100; i++)
                 year.Add(DateTime.Now.Year - i);
             cmbYear.ItemsSource = year;
+            
+            /*
             for (int i = 0; i < pictures.Length; i++)
             {
                 grdPictures.ColumnDefinitions.Add(new ColumnDefinition());
@@ -59,6 +68,7 @@ namespace evoFlix.WPF.Views
                 grdPictures.Children.Add(border);
                 
             }
+            */
         }
 
         public void button_click(object sender, EventArgs e)
@@ -75,6 +85,15 @@ namespace evoFlix.WPF.Views
                 border.BorderThickness = new Thickness(2);
                 pictureSelected = true;
             }
+        }
+
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        {
+            string userName = txbUsername.Text;
+
+            userService.CreateUser(new User { Username =  userName });
+            Console.WriteLine("asd");
+
         }
 
         private void cmbMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -236,7 +236,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
                     Grid.Row="1"
-                    FontSize="15">
+                    FontSize="15" Click="Button_Click_Save">
                 <Bold>Done</Bold>
             </Button>
         </Grid>
