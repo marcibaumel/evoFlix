@@ -24,5 +24,6 @@ namespace evoFlix.WPF.Views
         {
             InitializeComponent();
         }
+
     }
 }

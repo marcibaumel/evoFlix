@@ -17,7 +17,7 @@
                     <Image x:Name="whos_igame_1" Height="50" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="20" Margin="0,50,0,0" VerticalAlignment="Top" Width="50">
-                    <TextBox x:Name="whos_1" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="50" />
+                    <TextBlock x:Name="whos_1" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="50" Background="White" />
                 </Grid>
             </Grid>
 
@@ -26,7 +26,7 @@
                     <Image x:Name="whos_image_2" Height="50" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="20" Margin="0,50,0,0" VerticalAlignment="Top" Width="50">
-                    <TextBox x:Name="whos_2" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="50"/>
+                    <TextBlock x:Name="whos_2" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="50" Background="White"/>
                 </Grid>
             </Grid>
 
@@ -35,7 +35,7 @@
                     <Image x:Name="whos_image_3" Height="50" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="20" Margin="0,50,0,0" VerticalAlignment="Top" Width="50">
-                    <TextBox x:Name="whos_3" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="50"/>
+                    <TextBlock x:Name="whos_3" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="50" Background="White"/>
                 </Grid>
             </Grid>
 
@@ -44,7 +44,7 @@
                     <Image x:Name="whos_image_4" Height="50" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="20" Margin="0,50,0,0" VerticalAlignment="Top" Width="50">
-                    <TextBox x:Name="whos_4" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="50"/>
+                    <TextBlock x:Name="whos_4" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="50" Background="White"/>
                 </Grid>
             </Grid>
 

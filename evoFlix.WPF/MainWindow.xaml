@@ -8,7 +8,7 @@
         Title="MainWindow" Height="500" Width="500">
     <Grid>
 
-        <Frame x:Name="mainFrame" Content="Frame" HorizontalAlignment="Left"  VerticalAlignment="Top"  NavigationUIVisibility="Hidden" Source="/Views/TestUnitOfWork.xaml" Margin="0,0,-6,0"/>
+        <Frame x:Name="mainFrame" Content="Frame" HorizontalAlignment="Left"  VerticalAlignment="Top"  NavigationUIVisibility="Hidden" Source="/Views/Whos.xaml" Margin="0,0,-6,0"/>
 
     </Grid>
 
