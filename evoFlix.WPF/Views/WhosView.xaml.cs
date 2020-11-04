@@ -1,4 +1,6 @@
-﻿using System;
+﻿using evoFlix.Models.Users;
+using evoFlix.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +22,18 @@ namespace evoFlix.WPF.Views
     /// </summary>
     public partial class Whos : UserControl
     {
+        UserService userService = new UserService();
+
         public Whos()
         {
             InitializeComponent();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            User Gyula = new User();
+            userService.CreateUser(Gyula);
+            Console.WriteLine("asd");
+        }
     }
 }
