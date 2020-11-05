@@ -18,6 +18,8 @@ namespace evoFlix.Models.Users
         public int Age { get; set; }
 
         //public DateTime BirthDate { get; set; }
-       
+
+        //public Brush Picture { get; set; }
+
     }
 }

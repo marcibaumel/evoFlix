@@ -18,20 +18,20 @@ using System.Windows.Shapes;
 namespace evoFlix.WPF.Views
 {
     //TO-DO:
-    //- SOLVE SIZE ISSUES
     //- SELECT LOCAL IMAGE BUTTON
     //- INPUT VALIDATION
-    //- CREATE USER OBJECT FROM INPUT
     //- STRORE USER OBJECT IN DATABASE
     //- ERRORLIST
 
     
     public partial class CreateUser : UserControl
     {
+        public enum Month
+        { January=1, February, March, April, May, June, July, August, September, October, November, December}
         string[] month = { "January", "February", "March", "April", "May",
                            "June", "July", "August", "September", "October", "November", "December"};
         string[] pictures = { "kep1.jpg", "kep2.jpg", "kep3.jpg", "kep4.jpg" };
-        bool pictureSelected = false;
+        Brush selectedPicture;
         List<int> year, day;
         UserService userService = new UserService();
         
@@ -48,7 +48,6 @@ namespace evoFlix.WPF.Views
                 year.Add(DateTime.Now.Year - i);
             cmbYear.ItemsSource = year;
             
-            /*
             for (int i = 0; i < pictures.Length; i++)
             {
                 grdPictures.ColumnDefinitions.Add(new ColumnDefinition());
@@ -63,37 +62,37 @@ namespace evoFlix.WPF.Views
                 border.Child = button;
                 border.BorderBrush = Brushes.Red;
                 border.BorderThickness = new Thickness(0);
+                border.CornerRadius = new CornerRadius(1);
                 Grid.SetColumn(border, i);
                 Grid.SetRow(border, 1);
                 grdPictures.Children.Add(border);
-                
             }
-            */
         }
 
         public void button_click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             Border border = (Border)button.Parent;
-            if (border.BorderThickness.ToString() == "2,2,2,2")
-            {
-                border.BorderThickness = new Thickness(0);
-                pictureSelected = false;
-            } 
-            else if (!pictureSelected)
-            {
-                border.BorderThickness = new Thickness(2);
-                pictureSelected = true;
-            }
+            selectedPicture = button.Background;     
+            foreach (Border imageBorder in grdPictures.Children)
+                imageBorder.BorderThickness = new Thickness(0);
+            border.BorderThickness = new Thickness(2);
         }
 
         /*DONE button
          * ezzel mentjük el az adatbázisba az elemeket*/
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            string userName = txbUsername.Text;
+            int year = Convert.ToInt32(cmbYear.SelectedItem);
+            int month = MonthValue(cmbMonth.SelectedItem.ToString());
+            int day = Convert.ToInt32(cmbDay.SelectedItem);
 
-            userService.CreateUser(new User { Username =  userName });
+            string userName = txbUsername.Text;
+            string password = txbPassword.Password;
+            DateTime birthDate = new DateTime(year, month, day);
+            int age = GetAge(birthDate);
+            Brush picture = selectedPicture;        //Usage: xyz.Background = picture;
+            //userService.CreateUser(new User { Username =  userName, Age = age, Password = password});
             Console.WriteLine("asd");
 
         }
@@ -110,11 +109,32 @@ namespace evoFlix.WPF.Views
             if (day30.Contains(cmbMonth.SelectedItem.ToString()))
                 day.Remove(31);
             else if (cmbMonth.SelectedItem.ToString() == "February")
-                if (year % 4 == 0 && year % 100 != 0)
-                { day.Remove(31); day.Remove(30); day.Remove(29); day.Remove(28); }
-                else if (year % 400 == 0)
-                { day.Remove(31); day.Remove(30); day.Remove(29); }
+            {
+                if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+                    { day.Remove(31); day.Remove(30); }
+                else
+                    { day.Remove(31); day.Remove(30); day.Remove(29); }
+            }   
+            cmbDay.ItemsSource = null;
             cmbDay.ItemsSource = day;
+        }
+
+        private int MonthValue(string month)
+        {
+            for (int i = 1; i <= 12; i++)
+                if (month == Enum.GetName(typeof(Month), i).ToString())
+                    return i;
+            return -1;
+        }
+
+        private int GetAge(DateTime birthDate)
+        {
+            if (DateTime.Now.Month < birthDate.Month || 
+                            (DateTime.Now.Month == birthDate.Month && DateTime.Now.DayOfYear < birthDate.DayOfYear))
+                return DateTime.Now.Year - birthDate.Year - 1;
+            else
+                return DateTime.Now.Year - birthDate.Year;
+
         }
     }
 }

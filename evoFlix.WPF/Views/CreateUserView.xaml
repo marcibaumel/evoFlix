@@ -59,7 +59,8 @@
                 <TextBox x:Name="txbUsername"
                          Grid.Row="1"
                          FontSize="15"
-                         Margin="5" FontWeight="Bold"/>
+                         Margin="5" 
+                         FontWeight="Bold"/>
             </Grid>
             <!--Password-->
             <Grid Grid.Row="1">
@@ -82,7 +83,8 @@
                              Background="White"
                              PasswordChar="*"
                              FontWeight="Bold"
-                             VerticalAlignment="Center"/>
+                             VerticalAlignment="Center"
+                             Foreground="#799540"/>
             </Grid>
             <!--Confirm Password-->
             <Grid Grid.Row="1"
@@ -105,10 +107,11 @@
                              Margin="5"
                              PasswordChar="*"
                              FontWeight="Bold"
-                             VerticalAlignment="Center"/>
+                             VerticalAlignment="Center"
+                             Foreground="#799540"/>
             </Grid>
             <!--Error-->
-            <Border Background="#FFD4E878"
+            <Border Background="#FFE4EA4A"
                     Grid.Row="4"
                     Grid.ColumnSpan="2"
                     CornerRadius="20"
@@ -149,7 +152,8 @@
                           Margin="5"
                           FontSize="15"
                           FontWeight="Bold" 
-                          VerticalAlignment="Center"/>
+                          VerticalAlignment="Center"
+                          Foreground="#799540"/>
                 <!--Month-->
                 <ComboBox x:Name="cmbMonth"
                           Grid.Row="1"
@@ -160,7 +164,9 @@
                           Text="Month" 
                           FontWeight="Bold" 
                           FontSize="15"
-                          VerticalAlignment="Center" SelectionChanged="cmbMonth_SelectionChanged"/>
+                          VerticalAlignment="Center" 
+                          SelectionChanged="cmbMonth_SelectionChanged"
+                          Foreground="#799540"/>
                 <!--Day-->
                 <ComboBox x:Name="cmbDay"
                           IsEditable="True"
@@ -171,7 +177,8 @@
                           Margin="5"
                           FontSize="15"
                           FontWeight="Bold"
-                          VerticalAlignment="Center"/>
+                          VerticalAlignment="Center"
+                          Foreground="#799540"/>
             </Grid>
             <!--Profile Picture-->
             <Grid Grid.Row="3"
@@ -205,13 +212,15 @@
                             Grid.Row="1"
                             FontWeight="Bold"
                             FontSize="15"
-                            HorizontalAlignment="Center">
+                            HorizontalAlignment="Center"
+                            Foreground="#799540"
+                            Background="White">
                         Select local image
                     </Button>
                 </Grid>
-                
-                    
-                
+
+
+
                 <Grid x:Name="grdPictures"
                       Grid.Row="1"
                       Grid.ColumnSpan="2">
@@ -236,7 +245,10 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
                     Grid.Row="1"
-                    FontSize="15" Click="Button_Click_Save">
+                    FontSize="15" 
+                    Foreground="#799540"
+                    Click="Button_Click_Save"
+                    Background="White">
                 <Bold>Done</Bold>
             </Button>
         </Grid>
