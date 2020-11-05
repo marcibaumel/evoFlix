@@ -84,15 +84,17 @@ namespace evoFlix.WPF.Views
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             int year = Convert.ToInt32(cmbYear.SelectedItem);
-            int month = MonthValue(cmbMonth.SelectedItem.ToString());
+            int month = MonthValue(cmbMonth.SelectedItem.ToString()); //ennél van valami hiba nekem
             int day = Convert.ToInt32(cmbDay.SelectedItem);
+            DateTime birthDate = new DateTime(year, month, day);
+            int age = GetAge(birthDate);
+            //Age = age (ezt a Create-nél kell csak kivettem)
 
             string userName = txbUsername.Text;
             string password = txbPassword.Password;
-            DateTime birthDate = new DateTime(year, month, day);
-            int age = GetAge(birthDate);
+           
             Brush picture = selectedPicture;        //Usage: xyz.Background = picture;
-            //userService.CreateUser(new User { Username =  userName, Age = age, Password = password});
+            userService.CreateUser(new User { Username =  userName, Password = password});
             Console.WriteLine("asd");
 
         }
