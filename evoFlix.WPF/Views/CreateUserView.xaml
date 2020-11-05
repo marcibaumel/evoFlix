@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:evoFlix.WPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Black"
+             Background="#799540"
              Width="500"
              Height="500">
     <Grid>
