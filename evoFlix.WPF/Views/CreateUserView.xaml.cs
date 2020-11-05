@@ -88,13 +88,13 @@ namespace evoFlix.WPF.Views
             int day = Convert.ToInt32(cmbDay.SelectedItem);
             DateTime birthDate = new DateTime(year, month, day);
             int age = GetAge(birthDate);
-            //Age = age (ezt a Create-nél kell csak kivettem)
+            // (ezt a Create-nél kell csak kivettem)
 
             string userName = txbUsername.Text;
             string password = txbPassword.Password;
            
             Brush picture = selectedPicture;        //Usage: xyz.Background = picture;
-            userService.CreateUser(new User { Username =  userName, Password = password});
+            userService.CreateUser(new User { Username =  userName, Password = password, Age = age });
             Console.WriteLine("asd");
 
         }
