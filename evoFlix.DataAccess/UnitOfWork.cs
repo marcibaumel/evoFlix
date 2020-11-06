@@ -12,9 +12,9 @@ namespace evoFlix.DataAccess
 {
     public class UnitOfWork: DbContext
     {
-        public DbSet <User> User { get; set; }
+        public DbSet <UserDB> Users { get; set; }
 
-        public DbSet <Film> Film { get; set; }
+        public DbSet <Film> Films { get; set; }
 
         public UnitOfWork() : base("EvoFlixDBConnectionString") { }
             

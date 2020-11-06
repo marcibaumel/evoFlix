@@ -25,7 +25,7 @@ namespace evoFlix.WPF.Views
     {
         UserService userService = new UserService();
         //UnitOfWork unitOfWork=new UnitOfWork();
-        User Béla = new User();
+        UserDB Béla = new UserDB();
         
 
         public TestUnitOfWork()
@@ -41,7 +41,7 @@ namespace evoFlix.WPF.Views
             
 
             string name = MyTextBox.Text;
-            userService.CreateUser(new User {Username=name });
+            userService.CreateUser(new UserDB {Username=name });
             Console.WriteLine("asd");
             
         }

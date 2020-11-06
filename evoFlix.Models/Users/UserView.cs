@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace evoFlix.Models.Users
 {
-    public class User : BaseModel
+    public class UserView
     {
-        //[Key]
         public int Id { get; set; }
         public string Username { get; set; }
 
@@ -18,13 +15,6 @@ namespace evoFlix.Models.Users
 
         public int Age { get; set; }
 
-        //public string TestNumber { get; set; }
-
-        //public DateTime BirthDate { get; set; }
-
-
-
-        //public Brush Picture { get; set; }
-
+        public DateTime BirthDate { get; set; }
     }
 }

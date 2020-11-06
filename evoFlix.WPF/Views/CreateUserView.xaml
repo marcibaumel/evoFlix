@@ -153,7 +153,7 @@
                           FontSize="15"
                           FontWeight="Bold" 
                           VerticalAlignment="Center"
-                          Foreground="#799540"/>
+                          Foreground="#799540" MaxDropDownHeight="100"/>
                 <!--Month-->
                 <ComboBox x:Name="cmbMonth"
                           Grid.Row="1"
@@ -166,7 +166,7 @@
                           FontSize="15"
                           VerticalAlignment="Center" 
                           SelectionChanged="cmbMonth_SelectionChanged"
-                          Foreground="#799540"/>
+                          Foreground="#799540" MaxDropDownHeight="100"/>
                 <!--Day-->
                 <ComboBox x:Name="cmbDay"
                           IsEditable="True"
@@ -178,7 +178,7 @@
                           FontSize="15"
                           FontWeight="Bold"
                           VerticalAlignment="Center"
-                          Foreground="#799540"/>
+                          Foreground="#799540" MaxDropDownHeight="100"/>
             </Grid>
             <!--Profile Picture-->
             <Grid Grid.Row="3"

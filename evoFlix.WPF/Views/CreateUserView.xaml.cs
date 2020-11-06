@@ -87,15 +87,17 @@ namespace evoFlix.WPF.Views
             int month = MonthValue(cmbMonth.SelectedItem.ToString()); 
             int day = Convert.ToInt32(cmbDay.SelectedItem);
             DateTime birthDate = new DateTime(year, month, day);
-            int age = GetAge(birthDate);
+            //int age = GetAge(birthDate);
             
 
             string userName = txbUsername.Text;
             string password = txbPassword.Password;
            
             Brush picture = selectedPicture;        //Usage: xyz.Background = picture;
-            userService.CreateUser(new User { Username =  userName, Password = password, Age = age });
+            userService.CreateUser(new UserDB { Username =  userName, Password = password, BirthDate = birthDate });
             Console.WriteLine("asd");
+            var userList = userService.GetUsers();
+            MessageBox.Show(userList[0].Username);
 
         }
 
@@ -129,14 +131,6 @@ namespace evoFlix.WPF.Views
             return -1;
         }
 
-        private int GetAge(DateTime birthDate)
-        {
-            if (DateTime.Now.Month < birthDate.Month || 
-                            (DateTime.Now.Month == birthDate.Month && DateTime.Now.DayOfYear < birthDate.DayOfYear))
-                return DateTime.Now.Year - birthDate.Year - 1;
-            else
-                return DateTime.Now.Year - birthDate.Year;
-
-        }
+        
     }
 }
