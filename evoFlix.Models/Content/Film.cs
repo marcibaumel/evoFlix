@@ -9,7 +9,7 @@ namespace evoFlix.Models.Content
 {
     public class Film:BaseModel
     {
-        //[KEY]
+        
         public int FilmId { set; get; }
 
         public string Title { set; get; }
