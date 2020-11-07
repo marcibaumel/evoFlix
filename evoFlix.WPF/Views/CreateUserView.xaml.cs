@@ -1,5 +1,6 @@
 ﻿using evoFlix.Models.Users;
 using evoFlix.Services;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,23 +19,22 @@ using System.Windows.Shapes;
 namespace evoFlix.WPF.Views
 {
     //TO-DO:
-    //- SELECT LOCAL IMAGE BUTTON
     //- INPUT VALIDATION
-    //- STRORE USER OBJECT IN DATABASE
+    //- STRORE USER OBJECT'S PROFILE PICTURE (byte[])
     //- ERRORLIST
 
     
     public partial class CreateUser : UserControl
     {
-        public enum Month
-        { January=1, February, March, April, May, June, July, August, September, October, November, December}
+        #region Properties
         string[] month = { "January", "February", "March", "April", "May",
                            "June", "July", "August", "September", "October", "November", "December"};
-        string[] pictures = { "kep1.jpg", "kep2.jpg", "kep3.jpg", "kep4.jpg" };
+        string[] basePictures = { "kep1.jpg", "kep2.jpg", "kep3.jpg", "kep4.jpg" };
+        List<string> pictures;
         Brush selectedPicture;
         List<int> year, day;
         UserService userService = new UserService();
-        
+        #endregion
 
         public CreateUser()
         {
@@ -48,14 +48,19 @@ namespace evoFlix.WPF.Views
                 year.Add(DateTime.Now.Year - i);
             cmbYear.ItemsSource = year;
             
-            for (int i = 0; i < pictures.Length; i++)
+             pictures = basePictures.ToList<string>();
+
+            for (int i = 0; i < pictures.Count; i++)
             {
-                grdPictures.ColumnDefinitions.Add(new ColumnDefinition());
+                grdPictures.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(50) });
                 Button button = new Button();
+                button.Height = 40;
+                button.Width = 50;
                 ImageBrush brush = new ImageBrush();
                 brush.ImageSource = new BitmapImage(new Uri(@"Images/" + pictures[i], UriKind.Relative));
+                brush.Stretch = Stretch.UniformToFill;
                 button.Background = brush;
-                button.AddHandler(Button.ClickEvent, new RoutedEventHandler(button_click));
+                button.AddHandler(Button.ClickEvent, new RoutedEventHandler(picture_click));
 
                 Border border = new Border();
                 border.Margin = new Thickness(5, 0, 5, 0);
@@ -69,7 +74,7 @@ namespace evoFlix.WPF.Views
             }
         }
 
-        public void button_click(object sender, EventArgs e)
+        public void picture_click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             Border border = (Border)button.Parent;
@@ -79,30 +84,21 @@ namespace evoFlix.WPF.Views
             border.BorderThickness = new Thickness(2);
         }
 
-        /*DONE button
-         * ezzel mentjük el az adatbázisba az elemeket*/
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             int year = Convert.ToInt32(cmbYear.SelectedItem);
-            int month = MonthValue(cmbMonth.SelectedItem.ToString()); 
+            int month = userService.MonthValue(cmbMonth.SelectedItem.ToString()); 
             int day = Convert.ToInt32(cmbDay.SelectedItem);
             DateTime birthDate = new DateTime(year, month, day);
-            //int age = GetAge(birthDate);
-            
-
             string userName = txbUsername.Text;
             string password = txbPassword.Password;
-           
             Brush picture = selectedPicture;        //Usage: xyz.Background = picture;
             userService.CreateUser(new UserDB { Username =  userName, Password = password, BirthDate = birthDate });
             Console.WriteLine("asd");
-            var userList = userService.GetUsers();
-            MessageBox.Show(userList[0].Username);
-
+            //var userList = userService.GetUsers();
+            //MessageBox.Show(userList[0].Username);
         }
 
-
-        /*Itt jó lenne ha egy dátumot adna vissza*/
         private void cmbMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string[] day30 = { "April", "June", "September", "November" };
@@ -123,14 +119,43 @@ namespace evoFlix.WPF.Views
             cmbDay.ItemsSource = day;
         }
 
-        private int MonthValue(string month)
+        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 1; i <= 12; i++)
-                if (month == Enum.GetName(typeof(Month), i).ToString())
-                    return i;
-            return -1;
-        }
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image Files (*.png, *.jpg, *.jpeg)|*.png;*.jpg;*.jpeg",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+            };
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Button button = new Button();
+                button.Height = 40;
+                button.Width = 50;
+                ImageBrush brush = new ImageBrush();
+                brush.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute));
+                brush.Stretch = Stretch.Fill;
+                button.Background = brush;
+                button.AddHandler(Button.ClickEvent, new RoutedEventHandler(picture_click));
 
-        
+                Border border = new Border
+                {
+                    Margin = new Thickness(5, 0, 5, 0),
+                    Child = button,
+                    BorderBrush = Brushes.Red,
+                    BorderThickness = new Thickness(0),
+                    CornerRadius = new CornerRadius(1)
+                };
+                grdPictures.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(50)});
+                pictures.Add(openFileDialog.FileName);
+                Grid.SetColumn(border, pictures.Count - 1);
+                Grid.SetRow(border, 1);
+                grdPictures.Children.Add(border);
+
+                selectedPicture = button.Background;
+                foreach (Border imageBorder in grdPictures.Children)
+                    imageBorder.BorderThickness = new Thickness(0);
+                border.BorderThickness = new Thickness(2);
+            }
+        }
     }
 }

@@ -12,14 +12,15 @@ namespace evoFlix.Services
     
     public class UserService
     {
+        #region Properties
         private UnitOfWork unitOfWork;
+        public enum Month
+        { January = 1, February, March, April, May, June, July, August, September, October, November, December }
+        #endregion
 
         public UserService()
         {
             unitOfWork = new UnitOfWork();
-           
-
-
         }
         public void CreateUser(UserDB user)
         {
@@ -45,6 +46,14 @@ namespace evoFlix.Services
                 userViews.Add(new UserView { Username = user.Username, Password = user.Password, BirthDate = user.BirthDate, Id = user.Id, Age = GetAge(user.BirthDate)});
             }
             return userViews;
+        }
+
+        public int MonthValue(string month)
+        {
+            for (int i = 1; i <= 12; i++)
+                if (month == Enum.GetName(typeof(Month), i).ToString())
+                    return i;
+            return -1;
         }
     }
 }

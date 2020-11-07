@@ -13,16 +13,7 @@ namespace evoFlix.Models.Users
         //[Key]
         public int Id { get; set; }
         public string Username { get; set; }
-
         public string Password { get; set; }
-
-        //public string TestNumber { get; set; }
-
         public DateTime BirthDate { get; set; }
-
-
-
-        //public Brush Picture { get; set; }
-
     }
 }
