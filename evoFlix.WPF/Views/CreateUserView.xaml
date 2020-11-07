@@ -62,7 +62,7 @@
                          FontSize="15"
                          Margin="5" 
                          FontWeight="Bold"
-                         Foreground="#799540"/>
+                         Foreground="#799540" LostFocus="TxbUsername_LostFocus"/>
             </Grid>
 <!--Password-->
             <Grid Grid.Row="1">
@@ -86,7 +86,7 @@
                              PasswordChar="*"
                              FontWeight="Bold"
                              VerticalAlignment="Center"
-                             Foreground="#799540"/>
+                             Foreground="#799540" LostFocus="TxbPassword_LostFocus"/>
             </Grid>
 <!--Confirm Password-->
             <Grid Grid.Row="1"
@@ -110,25 +110,9 @@
                              PasswordChar="*"
                              FontWeight="Bold"
                              VerticalAlignment="Center"
-                             Foreground="#799540"/>
+                             Foreground="#799540" LostFocus="TxbConfirm_LostFocus"/>
             </Grid>
-<!--Error-->
-            <Border Background="#FFE4EA4A"
-                    Grid.Row="4"
-                    Grid.ColumnSpan="2"
-                    CornerRadius="20"
-                    Margin="5,15,5,0">
-                <Label FontSize="15"
-                       Foreground="Black"
-                       Grid.Row="2"
-                       Grid.ColumnSpan="2"
-                       VerticalContentAlignment="Center"
-                       HorizontalAlignment="Center"
-                       FontStyle="Italic"
-                       Content="Error List" 
-                       AllowDrop="True"/>
-            </Border>
-<!--Birth Date-->
+            <!--Birth Date-->
             <Grid Grid.Row="2"
                   Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
@@ -156,7 +140,7 @@
                           FontWeight="Bold" 
                           VerticalAlignment="Center"
                           Foreground="#799540" 
-                          MaxDropDownHeight="100"/>
+                          MaxDropDownHeight="100" SelectionChanged="cmbYear_SelectionChanged"/>
 <!--Month-->
                 <ComboBox x:Name="cmbMonth"
                           Grid.Row="1"
@@ -168,7 +152,7 @@
                           FontWeight="Bold" 
                           FontSize="15"
                           VerticalAlignment="Center" 
-                          SelectionChanged="cmbMonth_SelectionChanged"
+                          SelectionChanged="CmbMonth_SelectionChanged"
                           Foreground="#799540" 
                           MaxDropDownHeight="100"/>
 <!--Day-->
@@ -183,9 +167,9 @@
                           FontWeight="Bold"
                           VerticalAlignment="Center"
                           Foreground="#799540" 
-                          MaxDropDownHeight="100"/>
+                          MaxDropDownHeight="100" SelectionChanged="cmbDay_SelectionChanged"/>
             </Grid>
-            <!--Profile Picture-->
+<!--Profile Picture-->
             <Grid Grid.Row="3"
                   Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
@@ -221,7 +205,7 @@
                             HorizontalAlignment="Center"
                             Foreground="#799540"
                             Background="White" 
-                            Click="btnOpenFile_Click">
+                            Click="BtnOpenFile_Click">
                         Select local image
                     </Button>
                 </Grid>
@@ -230,6 +214,24 @@
                       Grid.ColumnSpan="2">
                 </Grid>
             </Grid>
+<!--Error-->
+            <Border x:Name="lblError"
+                    Background="#FFE4EA4A"
+                    Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    CornerRadius="20"
+                    Margin="5,15,5,0"
+                    Visibility="Hidden">
+                <Label FontSize="11"
+                       Foreground="Black"
+                       Grid.Row="2"
+                       Grid.ColumnSpan="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontStyle="Italic"
+                       AllowDrop="True"
+                       HorizontalContentAlignment="Center"/>
+            </Border>
         </Grid>
 <!--Done-->
         <Grid Grid.Row="2"
@@ -244,7 +246,8 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1"
+            <Button x:Name="btnDone"
+                    Grid.Column="1"
                     Grid.Row="1"
                     FontSize="15" 
                     Foreground="#799540"

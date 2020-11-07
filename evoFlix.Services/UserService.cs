@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace evoFlix.Services
 {
@@ -54,6 +55,23 @@ namespace evoFlix.Services
                 if (month == Enum.GetName(typeof(Month), i).ToString())
                     return i;
             return -1;
+        }
+
+        public bool IsUniqueUsername(string username)
+        {
+            foreach (UserDB user in unitOfWork.Users)
+                if (user.Username == username)
+                    return false;
+            return true;
+        }
+
+        public bool IsStrongPassword(string password)
+        {
+            if (!Regex.IsMatch(password, @"[A-Z]")) // Contains an uppercase letter
+                return false;
+            if (!Regex.IsMatch(password, @"\d")) // Contains a digit
+                return false;
+            return true;
         }
     }
 }

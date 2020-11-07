@@ -19,9 +19,15 @@ using System.Windows.Shapes;
 namespace evoFlix.WPF.Views
 {
     //TO-DO:
-    //- INPUT VALIDATION
     //- STRORE USER OBJECT'S PROFILE PICTURE (byte[])
-    //- ERRORLIST
+    //- CREATE GENERAL ERROR FUNCTIONS (TO CLEAR UP CODE DUPPLICATES)
+    //- REVIEW CODE WHEN EVERITHING IS DONE
+
+    //ISSUES:
+    //- CENTER TEXT IN LABEL
+    //- SELECTED PICTURE BORDER SIZE
+    //- PASSWORDBOX TEXT CHANGED EVENT EQUIVALENT
+    //- DEFAULT PROFILE PICTURE
 
     
     public partial class CreateUser : UserControl
@@ -34,6 +40,8 @@ namespace evoFlix.WPF.Views
         Brush selectedPicture;
         List<int> year, day;
         UserService userService = new UserService();
+        Dictionary<string, bool> missing = new Dictionary<string, bool>() 
+                { {"username", true}, {"confirm", true}, {"password", true}, {"picture", true} };
         #endregion
 
         public CreateUser()
@@ -60,7 +68,7 @@ namespace evoFlix.WPF.Views
                 brush.ImageSource = new BitmapImage(new Uri(@"Images/" + pictures[i], UriKind.Relative));
                 brush.Stretch = Stretch.UniformToFill;
                 button.Background = brush;
-                button.AddHandler(Button.ClickEvent, new RoutedEventHandler(picture_click));
+                button.AddHandler(Button.ClickEvent, new RoutedEventHandler(Picture_click));
 
                 Border border = new Border();
                 border.Margin = new Thickness(5, 0, 5, 0);
@@ -74,8 +82,9 @@ namespace evoFlix.WPF.Views
             }
         }
 
-        public void picture_click(object sender, EventArgs e)
+        public void Picture_click(object sender, EventArgs e)
         {
+            missing["picture"] = false;
             Button button = sender as Button;
             Border border = (Border)button.Parent;
             selectedPicture = button.Background;     
@@ -86,21 +95,48 @@ namespace evoFlix.WPF.Views
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            int year = Convert.ToInt32(cmbYear.SelectedItem);
-            int month = userService.MonthValue(cmbMonth.SelectedItem.ToString()); 
-            int day = Convert.ToInt32(cmbDay.SelectedItem);
-            DateTime birthDate = new DateTime(year, month, day);
-            string userName = txbUsername.Text;
-            string password = txbPassword.Password;
-            Brush picture = selectedPicture;        //Usage: xyz.Background = picture;
-            userService.CreateUser(new UserDB { Username =  userName, Password = password, BirthDate = birthDate });
-            Console.WriteLine("asd");
+            btnDone.IsEnabled = true;
+            bool condition = true;
+            foreach (KeyValuePair<string, bool> item in missing)
+                condition &= !item.Value;
+            if (condition)
+            {
+                try
+                {
+                    int year = Convert.ToInt32(cmbYear.SelectedItem);
+                    int month = userService.MonthValue(cmbMonth.SelectedItem.ToString());
+                    int day = Convert.ToInt32(cmbDay.SelectedItem);
+                    DateTime birthDate = new DateTime(year, month, day);
+                    string username = txbUsername.Text;
+                    string password = txbPassword.Password;
+                    Brush picture = selectedPicture;        //Usage: xyz.Background = picture;
+                    userService.CreateUser(new UserDB { Username = username, Password = password, BirthDate = birthDate });
+                    Console.WriteLine("asd");
+                }
+                catch (Exception)
+                {
+                    Label label = lblError.Child as Label;
+                    label.Content = "Some field have missing values.";
+                    lblError.Visibility = Visibility.Visible;
+                    btnDone.IsEnabled = false;
+                }
+            }
+            else
+            {
+                Label label = lblError.Child as Label;
+                label.Content = "Some field have missing values.";
+                lblError.Visibility = Visibility.Visible;
+                btnDone.IsEnabled = false;
+            }
             //var userList = userService.GetUsers();
             //MessageBox.Show(userList[0].Username);
         }
 
-        private void cmbMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CmbMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            lblError.Visibility = Visibility.Hidden;
+            btnDone.IsEnabled = true;
+
             string[] day30 = { "April", "June", "September", "November" };
             int year = Convert.ToInt32(cmbYear.SelectedItem);
             day.Clear();
@@ -119,7 +155,80 @@ namespace evoFlix.WPF.Views
             cmbDay.ItemsSource = day;
         }
 
-        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        private void TxbUsername_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!userService.IsUniqueUsername(txbUsername.Text))
+            {
+                Label label = lblError.Child as Label;
+                label.Content = "This username has already been taken.\nChoose another one!";
+                lblError.Visibility = Visibility.Visible;
+                btnDone.IsEnabled = false;
+            }   
+            else
+            {
+                lblError.Visibility = Visibility.Hidden;
+                btnDone.IsEnabled = true;
+            }
+            if (txbUsername.Text == "")
+                missing["username"] = true;
+            else
+                missing["username"] = false;
+        }
+
+        private void TxbPassword_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!userService.IsStrongPassword(txbPassword.Password))
+            {
+                Label label = lblError.Child as Label;
+                label.Content = "The given password is too weak! It must contain the following:\n\t- at least 1 uppercase character\n\t- at leat 1 number!";
+                lblError.Visibility = Visibility.Visible;
+                btnDone.IsEnabled = false;
+            }
+            else
+            {
+                lblError.Visibility = Visibility.Hidden;
+                btnDone.IsEnabled = true;
+            }
+            if (txbUsername.Text == "")
+                missing["password"] = true;
+            else
+                missing["password"] = false;
+        }
+
+        private void TxbConfirm_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txbPassword.Password != txbConfirm.Password)
+            {
+                Label label = lblError.Child as Label;
+                label.Content = "The passwords do not match. \nTry again!";
+                lblError.Visibility = Visibility.Visible;
+                btnDone.IsEnabled = false;
+                txbConfirm.Password = "";
+            }
+            else
+            {
+                lblError.Visibility = Visibility.Hidden;
+                btnDone.IsEnabled = true;
+            }
+            if (txbUsername.Text == "")
+                missing["confirm"] = true;
+            else
+                missing["confirm"] = false;
+        }
+
+        private void cmbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lblError.Visibility = Visibility.Hidden;
+            btnDone.IsEnabled = true;
+        }
+
+        private void cmbDay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lblError.Visibility = Visibility.Hidden;
+            btnDone.IsEnabled = true;
+        }
+
+        private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -135,7 +244,7 @@ namespace evoFlix.WPF.Views
                 brush.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute));
                 brush.Stretch = Stretch.Fill;
                 button.Background = brush;
-                button.AddHandler(Button.ClickEvent, new RoutedEventHandler(picture_click));
+                button.AddHandler(Button.ClickEvent, new RoutedEventHandler(Picture_click));
 
                 Border border = new Border
                 {
