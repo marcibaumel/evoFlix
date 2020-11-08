@@ -4,17 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:evoFlix.WPF.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Height="466.129" Width="793.548">
 
-    <Grid>
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="3,12,457,181">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.245"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
         <Grid HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="150">
             <Image x:Name="___evoFlix_WPF_component_whos_png" Source="/evoFlix.WPF;component/whos.png" HorizontalAlignment="Left" Height="40" Width="150"  VerticalAlignment="Top" />
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="30" Margin="25,60,0,0" VerticalAlignment="Top" Width="200">
             <TextBlock x:Name="Username" HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" TextWrapping="Wrap" Text="Username:" VerticalAlignment="Top" Width="90" FontSize="18" FontFamily="Calibri" Background="White" />
-            <TextBox x:Name="myUsername" HorizontalAlignment="Left" Margin="110,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="90" Background="White"/>
+            <TextBox x:Name="myUsername" HorizontalAlignment="Left" Margin="110,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="90" Background="White" />
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="30" Margin="25,110,0,0" VerticalAlignment="Top" Width="200">
@@ -27,5 +37,5 @@
             <Button x:Name="login" Content="Login" HorizontalAlignment="Left" Height="35" Margin="120,0,0,0" VerticalAlignment="Top" Width="90" FontFamily="Calibri" FontSize="20"/>
         </Grid>
     </Grid>
-    
+
 </UserControl>

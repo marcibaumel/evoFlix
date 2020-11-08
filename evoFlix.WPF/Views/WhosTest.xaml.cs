@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace evoFlix.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for WhosTest.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class WhosTest : Page
     {
-        public LoginView()
+        public WhosTest()
         {
             InitializeComponent();
         }
@@ -30,6 +30,10 @@ namespace evoFlix.WPF.Views
             Console.WriteLine("asd");
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            test();
+
+        }
     }
 }

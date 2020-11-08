@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:evoFlix.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="530" Width="500">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <Frame x:Name="mainFrame" Content="Frame" HorizontalAlignment="Left"  VerticalAlignment="Top"  NavigationUIVisibility="Hidden" Source="/Views/CreateUserView.xaml" Margin="0,0,-6,0"/>
+        <Frame x:Name="mainFrame" Content="Frame" HorizontalAlignment="Left"  VerticalAlignment="Top"  NavigationUIVisibility="Hidden" Source="/Views/WhosTest.xaml" Margin="0,0,-6,0"/>
 
     </Grid>
 

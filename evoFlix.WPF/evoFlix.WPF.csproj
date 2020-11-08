@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Controls\Class1.cs" />
     <Compile Include="ViewModels\TestUnitOfWorkViewModelcs.cs" />
+    <Compile Include="ViewModels\WhosViewModel.cs" />
     <Compile Include="Views\CreateUserView.xaml.cs">
       <DependentUpon>CreateUserView.xaml</DependentUpon>
     </Compile>
@@ -68,6 +69,9 @@
     </Compile>
     <Compile Include="Views\TestUnitOfWork.xaml.cs">
       <DependentUpon>TestUnitOfWork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WhosTest.xaml.cs">
+      <DependentUpon>WhosTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WhosView.xaml.cs">
       <DependentUpon>WhosView.xaml</DependentUpon>
@@ -97,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TestUnitOfWork.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WhosTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
