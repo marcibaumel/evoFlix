@@ -35,5 +35,10 @@ namespace evoFlix.WPF.Views
             test();
 
         }
+
+        private void Create_a_New_User_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
