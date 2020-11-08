@@ -7,6 +7,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Drawing;
+using System.IO;
 
 namespace evoFlix.Services
 {
@@ -70,6 +72,8 @@ namespace evoFlix.Services
             if (!Regex.IsMatch(password, @"[A-Z]")) // Contains an uppercase letter
                 return false;
             if (!Regex.IsMatch(password, @"\d")) // Contains a digit
+                return false;
+            if (!Regex.IsMatch(password, @".{6}")) // Contains at least 6 characters
                 return false;
             return true;
         }
