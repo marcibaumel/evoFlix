@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:evoFlix.WPF"
+        xmlns:local="clr-namespace:evoFlix.WPF" xmlns:local1="clr-namespace:evoFlix.WPF.Views"
         mc:Ignorable="d"
-        xmlns:myControls="clr-namespace:evoFlix.WPF.Views"
+        
         Title="LoginWindow" Height="720" Width="1280" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="450" Margin="0,10,0,0" VerticalAlignment="Top" Width="1270">
@@ -28,8 +28,8 @@
 
         </Grid>
         <Grid>
-            <myControls:CreateUser Margin="0,0,107,170"
-                                   Visibility="Hidden"> </myControls:CreateUser>
+           <!-- <local1:CreateUser Margin="0,0,107,170" > </local1:CreateUser>-->
+            <local1:LoginView Margin="508,235,511,190"></local1:LoginView>
         </Grid>
         
         <Button Content="TestRegister" HorizontalAlignment="Left" Margin="444,567,0,0" VerticalAlignment="Top" Width="349" Height="86" Click="Button_Click_1" />
