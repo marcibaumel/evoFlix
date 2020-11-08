@@ -1,4 +1,5 @@
 ﻿using evoFlix.Services;
+using evoFlix.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace evoFlix.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Frame FrameRegister;
+        
 
         UserService userService = new UserService();
 
@@ -57,8 +58,8 @@ namespace evoFlix.WPF
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             test_button();
-            FrameRegister.Visibility = Visibility.Visible;
-
+            //FrameRegister.Visibility = Visibility.Visible;
+            
         }
     }
 }
