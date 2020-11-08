@@ -1,0 +1,35 @@
+﻿<Window x:Class="evoFlix.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:evoFlix.WPF"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="720" Width="1280" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="450" Margin="0,10,0,0" VerticalAlignment="Top" Width="1270">
+            <Grid HorizontalAlignment="Left" Height="450" Margin="10,10,0,-10" VerticalAlignment="Top" Width="316">
+                <Label Content="Label" HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="306" Height="54"/>
+                <Button Content="Button" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="282" Height="313"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="450" Margin="326,10,0,-10" VerticalAlignment="Top" Width="316">
+                <Label Content="Label" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top" Height="57" Width="296"/>
+                <Button Content="Button" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="282" Height="313"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="450" Margin="642,10,0,-10" VerticalAlignment="Top" Width="316">
+                <Label Content="Label" HorizontalAlignment="Left" Margin="10,382,0,0" VerticalAlignment="Top" Height="58" Width="296"/>
+                <Button Content="Button" HorizontalAlignment="Left" Margin="24,41,0,0" VerticalAlignment="Top" Width="282" Height="313"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="450" Margin="958,10,0,-10" VerticalAlignment="Top" Width="316">
+                <Label Content="Label" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Height="53" Width="296"/>
+                <Button Content="Button" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="282" Height="313" RenderTransformOrigin="0.51,0.505"/>
+            </Grid>
+
+        </Grid>
+        
+        <Button Content="TestRegister" HorizontalAlignment="Left" Margin="444,567,0,0" VerticalAlignment="Top" Width="349" Height="86" Click="Button_Click_1" />
+    </Grid>
+
+
+
+</Window>
