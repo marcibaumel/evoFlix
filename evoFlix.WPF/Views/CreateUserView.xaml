@@ -140,7 +140,7 @@
                           FontWeight="Bold" 
                           VerticalAlignment="Center"
                           Foreground="#799540" 
-                          MaxDropDownHeight="100" SelectionChanged="cmbYear_SelectionChanged"/>
+                          MaxDropDownHeight="100" SelectionChanged="CmbYear_SelectionChanged"/>
 <!--Month-->
                 <ComboBox x:Name="cmbMonth"
                           Grid.Row="1"
@@ -167,7 +167,7 @@
                           FontWeight="Bold"
                           VerticalAlignment="Center"
                           Foreground="#799540" 
-                          MaxDropDownHeight="100" SelectionChanged="cmbDay_SelectionChanged"/>
+                          MaxDropDownHeight="100" SelectionChanged="CmbDay_SelectionChanged"/>
             </Grid>
 <!--Profile Picture-->
             <Grid Grid.Row="3"

@@ -7,6 +7,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Drawing;
+using System.IO;
 
 namespace evoFlix.Services
 {
@@ -71,7 +73,15 @@ namespace evoFlix.Services
                 return false;
             if (!Regex.IsMatch(password, @"\d")) // Contains a digit
                 return false;
+            if (!Regex.IsMatch(password, @".{6}")) // Contains at least 6 characters
+                return false;
             return true;
+        }
+
+        public void countUser()
+        {
+            var count = unitOfWork.Users.Count();
+            Console.WriteLine(count);
         }
     }
 }

@@ -26,14 +26,7 @@
                 <Button Content="Button" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="282" Height="313" RenderTransformOrigin="0.51,0.505"/>
             </Grid>
 
-        </Grid>
-        <Grid>
-           <!-- <local1:CreateUser Margin="0,0,107,170" > </local1:CreateUser>-->
-            <local1:LoginView Margin="508,235,511,190"></local1:LoginView>
-        </Grid>
-        
-        
-        <Button Content="TestRegister" HorizontalAlignment="Left" Margin="444,567,0,0" VerticalAlignment="Top" Width="349" Height="86" Click="Button_Click_1" />
+
     </Grid>
 
 

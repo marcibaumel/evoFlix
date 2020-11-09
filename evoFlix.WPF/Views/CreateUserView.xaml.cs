@@ -3,6 +3,7 @@ using evoFlix.Services;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +20,13 @@ using System.Windows.Shapes;
 namespace evoFlix.WPF.Views
 {
     //TO-DO:
-    //- STRORE USER OBJECT'S PROFILE PICTURE (byte[])
     //- CREATE GENERAL ERROR FUNCTIONS (TO CLEAR UP CODE DUPPLICATES)
-    //- REVIEW CODE WHEN EVERITHING IS DONE
+    //- REVIEW CODE
 
     //ISSUES:
     //- CENTER TEXT IN LABEL
     //- SELECTED PICTURE BORDER SIZE
     //- PASSWORDBOX TEXT CHANGED EVENT EQUIVALENT
-    //- DEFAULT PROFILE PICTURE
 
     
     public partial class CreateUser : UserControl
@@ -37,7 +36,7 @@ namespace evoFlix.WPF.Views
                            "June", "July", "August", "September", "October", "November", "December"};
         string[] basePictures = { "kep1.jpg", "kep2.jpg", "kep3.jpg", "kep4.jpg" };
         List<string> pictures;
-        Brush selectedPicture;
+        string selectedImagePath;
         List<int> year, day;
         UserService userService = new UserService();
         Dictionary<string, bool> missing = new Dictionary<string, bool>() 
@@ -46,8 +45,9 @@ namespace evoFlix.WPF.Views
 
         public CreateUser()
         {
+
             InitializeComponent();
-            
+            userService.countUser();
             cmbMonth.ItemsSource = month;
             day = new List<int>();
             cmbDay.ItemsSource = new string[] { "Select month first!" };
@@ -87,7 +87,8 @@ namespace evoFlix.WPF.Views
             missing["picture"] = false;
             Button button = sender as Button;
             Border border = (Border)button.Parent;
-            selectedPicture = button.Background;     
+            ImageBrush imgbrush = (ImageBrush)button.Background;
+            selectedImagePath = imgbrush.ImageSource.ToString();
             foreach (Border imageBorder in grdPictures.Children)
                 imageBorder.BorderThickness = new Thickness(0);
             border.BorderThickness = new Thickness(2);
@@ -109,8 +110,8 @@ namespace evoFlix.WPF.Views
                     DateTime birthDate = new DateTime(year, month, day);
                     string username = txbUsername.Text;
                     string password = txbPassword.Password;
-                    Brush picture = selectedPicture;        //Usage: xyz.Background = picture;
-                    userService.CreateUser(new UserDB { Username = username, Password = password, BirthDate = birthDate });
+                    string profilePicturePath = System.IO.Path.GetFullPath(selectedImagePath);
+                    userService.CreateUser(new UserDB { Username = username, Password = password, BirthDate = birthDate, ProfilePicturePath = profilePicturePath});
                     Console.WriteLine("asd");
                 }
                 catch (Exception)
@@ -128,8 +129,6 @@ namespace evoFlix.WPF.Views
                 lblError.Visibility = Visibility.Visible;
                 btnDone.IsEnabled = false;
             }
-            //var userList = userService.GetUsers();
-            //MessageBox.Show(userList[0].Username);
         }
 
         private void CmbMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -180,7 +179,7 @@ namespace evoFlix.WPF.Views
             if (!userService.IsStrongPassword(txbPassword.Password))
             {
                 Label label = lblError.Child as Label;
-                label.Content = "The given password is too weak! It must contain the following:\n\t- at least 1 uppercase character\n\t- at leat 1 number!";
+                label.Content = "The given password is too weak! It must contain the following:\n\t- at least 6 characters\n\t- at least an uppercase character and a number!";
                 lblError.Visibility = Visibility.Visible;
                 btnDone.IsEnabled = false;
             }
@@ -216,13 +215,13 @@ namespace evoFlix.WPF.Views
                 missing["confirm"] = false;
         }
 
-        private void cmbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CmbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lblError.Visibility = Visibility.Hidden;
             btnDone.IsEnabled = true;
         }
 
-        private void cmbDay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CmbDay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lblError.Visibility = Visibility.Hidden;
             btnDone.IsEnabled = true;
@@ -260,10 +259,12 @@ namespace evoFlix.WPF.Views
                 Grid.SetRow(border, 1);
                 grdPictures.Children.Add(border);
 
-                selectedPicture = button.Background;
+                selectedImagePath = openFileDialog.FileName;
                 foreach (Border imageBorder in grdPictures.Children)
                     imageBorder.BorderThickness = new Thickness(0);
                 border.BorderThickness = new Thickness(2);
+
+                missing["picture"] = false;
             }
         }
     }
