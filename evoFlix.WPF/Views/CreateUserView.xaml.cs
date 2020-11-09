@@ -45,6 +45,7 @@ namespace evoFlix.WPF.Views
 
         public CreateUser()
         {
+
             InitializeComponent();
             userService.countUser();
             cmbMonth.ItemsSource = month;
