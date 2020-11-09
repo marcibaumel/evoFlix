@@ -73,5 +73,11 @@ namespace evoFlix.Services
                 return false;
             return true;
         }
+
+        public void countUser()
+        {
+            var count = unitOfWork.Users.Count();
+            Console.WriteLine(count);
+        }
     }
 }

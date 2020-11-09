@@ -47,7 +47,7 @@ namespace evoFlix.WPF.Views
         public CreateUser()
         {
             InitializeComponent();
-            
+            userService.countUser();
             cmbMonth.ItemsSource = month;
             day = new List<int>();
             cmbDay.ItemsSource = new string[] { "Select month first!" };
