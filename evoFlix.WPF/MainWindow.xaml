@@ -28,7 +28,10 @@
 
 
         </Grid>
-
+        <Grid Margin="276,30,280,32">
+            <!--<local1:LoginView ></local1:LoginView>-->
+            <local1:CreateUser ></local1:CreateUser>
+        </Grid>
 
     </Grid>
 </Window>
