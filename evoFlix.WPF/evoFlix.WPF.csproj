@@ -158,7 +158,6 @@
       <Version>6.4.4</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Images\kep1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
