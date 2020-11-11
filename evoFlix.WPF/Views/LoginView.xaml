@@ -22,7 +22,7 @@
         <!-- Logo -->
         <Grid Height="140" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
             <Grid VerticalAlignment="Top">
-                <Image x:Name="logo_png" Source="/evoFlix.WPF;component/whos.png" />
+                <Image x:Name="logo_png" Source="whos.png" />
             </Grid>
             <Grid VerticalAlignment="Bottom">
                 <Label 
@@ -52,7 +52,7 @@
                         Width="150" FontSize="22" 
                         FontWeight="Bold"
                         Foreground="#799540"
-                        Background="White" />
+                        Background="White"/>
             </Grid>
 
             <!-- Password-->
@@ -64,7 +64,7 @@
                          FontSize="22">
                     <Bold>Password:</Bold>
                 </Label>
-                <TextBox x:Name="myPassword"
+                <PasswordBox x:Name="myPassword"
                             HorizontalAlignment="Right" 
                             Width="150" FontSize="22" 
                             FontWeight="Bold"
@@ -73,9 +73,10 @@
             </Grid>
         </Grid>
 
-        <!-- Buttons-->
+<!-- ErrorLog-->
         <Grid Height="150" VerticalAlignment="Bottom" Margin="0 0 0 20">
-            <Border Height="80" 
+            <Border Name="error_text"
+                    Height="80" 
                     Width="400" 
                     VerticalAlignment="Top"
                     Background="#FFE4EA4A"
@@ -89,6 +90,7 @@
                        AllowDrop="True"
                        HorizontalContentAlignment="Center"/>
             </Border>
+<!-- Buttons-->           
              <Grid Height="50" 
                    VerticalAlignment="Bottom"
                    Width="400">

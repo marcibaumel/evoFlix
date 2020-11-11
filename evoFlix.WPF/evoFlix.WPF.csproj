@@ -171,6 +171,8 @@
     <Content Include="Images\kep4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Views\whos.png" />
+    <Resource Include="Images\whos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
