@@ -38,6 +38,7 @@ namespace evoFlix.WPF.Views
         private void Button_Click_Login(object sender, RoutedEventArgs e)
         {
             CheckUser();
+
         }
         private void CheckUser()
         {
@@ -52,6 +53,9 @@ namespace evoFlix.WPF.Views
                 else
                 {
                     error_text.Visibility = Visibility.Hidden;
+                    Label label = scfLogin_text.Child as Label;
+                    label.Content = "You have logged in succesfully!";
+                    scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
                 }
             }else

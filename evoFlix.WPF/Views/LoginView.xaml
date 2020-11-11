@@ -66,7 +66,8 @@
                 </Label>
                 <PasswordBox x:Name="myPassword"
                             HorizontalAlignment="Right" 
-                            Width="150" FontSize="22" 
+                            Width="150" 
+                            FontSize="22" 
                             FontWeight="Bold"
                             Foreground="#799540"
                             Background="White"/>
@@ -82,7 +83,23 @@
                     Background="#FFE4EA4A"
                     CornerRadius="20"
                     Visibility="Hidden">
-                <Label FontSize="11"
+                <Label FontSize="16"
+                       Foreground="Black"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontStyle="Italic"
+                       AllowDrop="True"
+                       HorizontalContentAlignment="Center"/>
+            </Border>
+<!-- Succesfull login log-->
+            <Border Name="scfLogin_text"
+                    Height="80" 
+                    Width="300" 
+                    VerticalAlignment="Top"
+                    Background="#FF23FF00"
+                    CornerRadius="20"
+                    Visibility="Hidden">
+                <Label FontSize="16"
                        Foreground="Black"
                        VerticalContentAlignment="Center"
                        HorizontalAlignment="Center"
