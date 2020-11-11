@@ -66,7 +66,16 @@ namespace evoFlix.Services
                     return false;
             return true;
         }
-
+        public bool IsExistingPassword(string username, string password)
+        {
+            foreach (UserDB user in unitOfWork.Users)
+            {
+                if (user.Username == username)
+                    if (user.Password == password)
+                        return false;
+            }
+            return true;
+        }
         public bool IsStrongPassword(string password)
         {
             if (!Regex.IsMatch(password, @"[A-Z]")) // Contains an uppercase letter

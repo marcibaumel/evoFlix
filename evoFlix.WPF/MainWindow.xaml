@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:evoFlix.WPF" xmlns:local1="clr-namespace:evoFlix.WPF.Views"
         mc:Ignorable="d"
+         
+
         
         Title="LoginWindow" Height="720" Width="1280" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -25,6 +27,7 @@
                 <Label Content="Label" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Height="53" Width="296"/>
                 <Button Content="Button" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="282" Height="313" RenderTransformOrigin="0.51,0.505"/>
             </Grid>
+
 
 
         </Grid>

@@ -4,12 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:evoFlix.WPF.Views"
-             mc:Ignorable="d" Height="264.387" Width="253.936" >
 
-    <Grid Margin="0,0,1,3" Background="#FF76C138" >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+             mc:Ignorable="d" 
+             Background="#799540"
+             Width="500"
+             Height="500">
+
+    <Grid>
+
+           
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -18,23 +21,120 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Grid HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="150">
-            <Image x:Name="___evoFlix_WPF_component_whos_png" Source="/evoFlix.WPF;component/whos.png" HorizontalAlignment="Left" Height="40" Width="150"  VerticalAlignment="Top" />
+
+        <!-- Logo -->
+        <Grid Height="140" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
+            <Grid VerticalAlignment="Top">
+                <Image x:Name="logo_png" Source="whos.png" />
+            </Grid>
+            <Grid VerticalAlignment="Bottom">
+                <Label 
+                     Foreground="White"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     FontSize="35">
+                    <Bold>Sign in to EvoFlix</Bold>
+                </Label>
+            </Grid>
+
         </Grid>
 
-        <Grid HorizontalAlignment="Left" Height="30" Margin="25,60,0,0" VerticalAlignment="Top" Width="200">
-            <TextBlock x:Name="Username" HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" TextWrapping="Wrap" Text="Username:" VerticalAlignment="Top" Width="90" FontSize="18" FontFamily="Calibri" Background="White" />
-            <TextBox x:Name="myUsername" HorizontalAlignment="Left" Margin="110,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="90" Background="White" />
+        <!--Username-->
+        <Grid Height="110" Width="300">
+            <Grid VerticalAlignment="Top">
+                <Label 
+                        Foreground="White"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="22">
+                    <Bold>Username:</Bold>
+                </Label>
+                <TextBox 
+                        x:Name="myUsername"
+                        HorizontalAlignment="Right" 
+                        Width="150" FontSize="22" 
+                        FontWeight="Bold"
+                        Foreground="#799540"
+                        Background="White"/>
+            </Grid>
+
+            <!-- Password-->
+            <Grid VerticalAlignment="Bottom">
+                <Label 
+                         Foreground="White"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         FontSize="22">
+                    <Bold>Password:</Bold>
+                </Label>
+                <PasswordBox x:Name="myPassword"
+                            HorizontalAlignment="Right" 
+                            Width="150" 
+                            FontSize="22" 
+                            FontWeight="Bold"
+                            Foreground="#799540"
+                            Background="White"/>
+            </Grid>
         </Grid>
 
-        <Grid HorizontalAlignment="Left" Height="30" Margin="25,110,0,0" VerticalAlignment="Top" Width="200">
-            <TextBlock x:Name="Password" HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="90" FontSize="18" FontFamily="Calibri" Background="White" />
-            <TextBox x:Name="myPassword" HorizontalAlignment="Left" Margin="110,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="90" Background="White"/>
-        </Grid>
-
-        <Grid HorizontalAlignment="Left" Height="35" Margin="20,200,0,0" VerticalAlignment="Top" Width="210">
-            <Button x:Name="back" Content="Back" HorizontalAlignment="Left" Height="35" Margin="0,0,0,0" VerticalAlignment="Top" Width="90" FontFamily="Calibri" FontSize="20"/>
-            <Button x:Name="login" Content="Login" HorizontalAlignment="Left" Height="35" Margin="120,0,0,0" VerticalAlignment="Top" Width="90" FontFamily="Calibri" FontSize="20"/>
+<!-- ErrorLog-->
+        <Grid Height="150" VerticalAlignment="Bottom" Margin="0 0 0 20">
+            <Border Name="error_text"
+                    Height="80" 
+                    Width="400" 
+                    VerticalAlignment="Top"
+                    Background="#FFE4EA4A"
+                    CornerRadius="20"
+                    Visibility="Hidden">
+                <Label FontSize="16"
+                       Foreground="Black"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontStyle="Italic"
+                       AllowDrop="True"
+                       HorizontalContentAlignment="Center"/>
+            </Border>
+<!-- Succesfull login log-->
+            <Border Name="scfLogin_text"
+                    Height="80" 
+                    Width="300" 
+                    VerticalAlignment="Top"
+                    Background="#FF23FF00"
+                    CornerRadius="20"
+                    Visibility="Hidden">
+                <Label FontSize="16"
+                       Foreground="Black"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontStyle="Italic"
+                       AllowDrop="True"
+                       HorizontalContentAlignment="Center"/>
+            </Border>
+<!-- Buttons-->           
+             <Grid Height="50" 
+                   VerticalAlignment="Bottom"
+                   Width="400">
+                <Button x:Name="Back_Button"
+                            Click="Button_Click_Back"
+                            HorizontalAlignment="Left" 
+                            Height="50"
+                            VerticalAlignment="Top" 
+                            Width="150" 
+                            FontSize="26"
+                            Foreground="#799540">
+                    <Bold>Back</Bold>
+                </Button>
+                <Button x:Name="Login_Button" 
+                            Click="Button_Click_Login"
+                            HorizontalAlignment="Right" 
+                            Height="50"
+                            VerticalAlignment="Top" 
+                            Width="150" 
+                            FontSize="26"
+                            Foreground="#799540">
+                    <Bold>Login</Bold>
+                </Button>
+             </Grid>
         </Grid>
     </Grid>
 
