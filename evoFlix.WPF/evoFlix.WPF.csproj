@@ -70,9 +70,6 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TestUnitOfWork.xaml.cs">
-      <DependentUpon>TestUnitOfWork.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\OLDWhosView.xaml.cs">
       <DependentUpon>OLDWhosView.xaml</DependentUpon>
     </Compile>
@@ -101,10 +98,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TestUnitOfWork.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
