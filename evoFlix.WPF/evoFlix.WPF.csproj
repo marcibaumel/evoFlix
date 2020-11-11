@@ -59,6 +59,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\Class1.cs" />
+    <Compile Include="DashboardWindow.xaml.cs">
+      <DependentUpon>DashboardWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\TestUnitOfWorkViewModelcs.cs" />
     <Compile Include="ViewModels\WhosViewModel.cs" />
     <Compile Include="Views\CreateUserView.xaml.cs">
@@ -70,12 +73,13 @@
     <Compile Include="Views\TestUnitOfWork.xaml.cs">
       <DependentUpon>TestUnitOfWork.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WhosTest.xaml.cs">
-      <DependentUpon>WhosTest.xaml</DependentUpon>
+    <Compile Include="Views\OLDWhosView.xaml.cs">
+      <DependentUpon>OLDWhosView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WhosView.xaml.cs">
-      <DependentUpon>WhosView.xaml</DependentUpon>
-    </Compile>
+    <Page Include="DashboardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,11 +108,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WhosTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WhosView.xaml">
+    <Page Include="Views\OLDWhosView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

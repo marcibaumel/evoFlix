@@ -10,30 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace evoFlix.WPF.Views
+namespace evoFlix.WPF
 {
     /// <summary>
-    /// Interaction logic for WhosTest.xaml
+    /// Interaction logic for DashboardWindow.xaml
     /// </summary>
-    public partial class WhosTest : Page
+    public partial class DashboardWindow : Window
     {
-        public WhosTest()
+        public DashboardWindow()
         {
             InitializeComponent();
-        }
-
-        public void test()
-        {
-            Console.WriteLine("asd");
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            test();
-
         }
     }
 }
