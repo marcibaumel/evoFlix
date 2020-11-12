@@ -30,11 +30,19 @@
 
 
 
+
         </Grid>
+
+
+
         <Grid Margin="276,30,280,32">
-            <local1:LoginView ></local1:LoginView>
-            <!--<local1:CreateUser ></local1:CreateUser>-->
+            <!--<local1:LoginView ></local1:LoginView>-->
+            <!--<local1:CreateUserView ></local1:CreateUserView>-->
         </Grid>
+
+
+        <StackPanel Name="stkTest" Orientation="Vertical"/>
+        <Button Content="Register Test" HorizontalAlignment="Left" Margin="36,507,0,0" VerticalAlignment="Top" Width="220" Height="96" Click="Button_Click"/>
 
     </Grid>
 </Window>

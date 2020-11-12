@@ -61,5 +61,11 @@ namespace evoFlix.WPF
             //FrameRegister.Visibility = Visibility.Visible;
             
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CreateUser cwObj = new CreateUser();
+            stkTest.Children.Add(cwObj);
+        }
     }
 }
