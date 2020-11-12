@@ -41,8 +41,8 @@
         </Grid>
 
 
-        <StackPanel Name="stkTest" Orientation="Vertical"/>
-        <Button Content="Register Test" HorizontalAlignment="Left" Margin="36,507,0,0" VerticalAlignment="Top" Width="220" Height="96" Click="Button_Click"/>
+        <StackPanel Name="createUserPanel" Orientation="Vertical"/>
+        <Button Content="Register Test" HorizontalAlignment="Left" Margin="36,507,0,0" VerticalAlignment="Top" Width="220" Height="96" Click="CreateUser_Click"/>
 
     </Grid>
 </Window>

@@ -62,10 +62,10 @@ namespace evoFlix.WPF
             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
             CreateUser cwObj = new CreateUser();
-            stkTest.Children.Add(cwObj);
+            createUserPanel.Children.Add(cwObj);
         }
     }
 }
