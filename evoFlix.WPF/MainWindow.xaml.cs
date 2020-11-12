@@ -62,6 +62,13 @@ namespace evoFlix.WPF
             
         }
 
+        private void LoginUser_Click(object sender, RoutedEventArgs e)
+        {
+            LoginView lwObj = new LoginView();
+            loginUserPanel.Children.Add(lwObj);
+
+        }
+
         private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
             CreateUser cwObj = new CreateUser();
