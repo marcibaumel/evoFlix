@@ -48,6 +48,7 @@ namespace evoFlix.WPF.Views
 
             InitializeComponent();
             userService.CountUser();
+            UserCounter();
             cmbMonth.ItemsSource = month;
             day = new List<int>();
             cmbDay.ItemsSource = new string[] { "Select month first!" };
@@ -104,6 +105,7 @@ namespace evoFlix.WPF.Views
             {
                 try
                 {
+                    
                     int year = Convert.ToInt32(cmbYear.SelectedItem);
                     int month = userService.MonthValue(cmbMonth.SelectedItem.ToString());
                     int day = Convert.ToInt32(cmbDay.SelectedItem);
@@ -153,6 +155,22 @@ namespace evoFlix.WPF.Views
             }   
             cmbDay.ItemsSource = null;
             cmbDay.ItemsSource = day;
+        }
+
+        private void UserCounter()
+        {
+            if(userService.CountUser()<=4)
+            {
+                Console.WriteLine("Good");
+            }
+            else
+            {
+                Label label = lblError.Child as Label;
+                label.Content = "You reached the user limit. Delete some user!";
+                lblError.Visibility = Visibility.Visible;
+                btnDone.IsEnabled = false;
+                Console.WriteLine(":(");
+            }
         }
 
         private void TxbUsername_LostFocus(object sender, RoutedEventArgs e)
