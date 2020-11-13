@@ -87,10 +87,18 @@ namespace evoFlix.Services
             return true;
         }
 
-        public void countUser()
+        public void CountUser()
         {
             var count = unitOfWork.Users.Count();
             Console.WriteLine(count);
+        }
+
+        public void DeleteUser(int givenId)
+        {
+            var deletUser = new UserDB { Id = givenId };
+            unitOfWork.Users.Attach(deletUser);
+            unitOfWork.Users.Remove(deletUser);
+            unitOfWork.SaveChanges();
         }
     }
 }

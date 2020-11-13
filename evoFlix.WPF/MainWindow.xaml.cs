@@ -33,6 +33,12 @@ namespace evoFlix.WPF
             InitializeComponent();
         }
 
+        public void DeleteAUser_Button(object sender, RoutedEventArgs e)
+        {
+            userService.DeleteUser(12);
+            test_button();
+        }
+
         public void test_button()
         {
             Console.WriteLine("asd");
