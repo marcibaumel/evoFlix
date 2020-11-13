@@ -101,10 +101,14 @@ namespace evoFlix.Services
 
         public void DeleteUser(int givenId)
         {
-            var deletUser = new UserDB { Id = givenId };
-            unitOfWork.Users.Attach(deletUser);
-            unitOfWork.Users.Remove(deletUser);
+            var deleteUser = unitOfWork.Users.SingleOrDefault(x => x.Id == givenId);
+            if (deleteUser == null)
+            {
+                return;
+            }
+            unitOfWork.Users.Remove(deleteUser);
             unitOfWork.SaveChanges();
+
         }
     }
 }
