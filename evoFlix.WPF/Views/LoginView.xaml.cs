@@ -40,6 +40,10 @@ namespace evoFlix.WPF.Views
             CheckUser();
 
         }
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
+        }
         private void CheckUser()
         {
             if (!userService.IsUniqueUsername(myUsername.Text))

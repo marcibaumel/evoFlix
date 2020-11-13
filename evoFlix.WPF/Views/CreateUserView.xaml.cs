@@ -113,6 +113,7 @@ namespace evoFlix.WPF.Views
                     string profilePicturePath = System.IO.Path.GetFullPath(selectedImagePath);
                     userService.CreateUser(new UserDB { Username = username, Password = password, BirthDate = birthDate, ProfilePicturePath = profilePicturePath});
                     Console.WriteLine("asd");
+                    Visibility = Visibility.Hidden;
                 }
                 catch (Exception)
                 {
@@ -219,6 +220,11 @@ namespace evoFlix.WPF.Views
         {
             lblError.Visibility = Visibility.Hidden;
             btnDone.IsEnabled = true;
+        }
+
+        public void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
         }
 
         private void CmbDay_SelectionChanged(object sender, SelectionChangedEventArgs e)

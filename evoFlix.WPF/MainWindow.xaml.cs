@@ -1,5 +1,6 @@
 ﻿using evoFlix.Services;
 using evoFlix.WPF.Views;
+using evoFlix.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +62,7 @@ namespace evoFlix.WPF
             //FrameRegister.Visibility = Visibility.Visible;
             
         }
+        /*
 
         private void LoginUser_Click(object sender, RoutedEventArgs e)
         {
@@ -73,6 +75,24 @@ namespace evoFlix.WPF
         {
             CreateUser cwObj = new CreateUser();
             createUserPanel.Children.Add(cwObj);
+        }
+        */
+
+        public void clear_data_context()
+        {
+            DataContext = null;
+        }
+
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            clear_data_context();
+            DataContext = new CreateUser();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            clear_data_context();
+            DataContext = new LoginView();
         }
     }
 }

@@ -12,7 +12,7 @@
 
     <Grid>
 
-           
+
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -77,7 +77,7 @@
             </Grid>
         </Grid>
 
-<!-- ErrorLog-->
+        <!-- ErrorLog-->
         <Grid Height="150" VerticalAlignment="Bottom" Margin="0 0 0 20">
             <Border Name="error_text"
                     Height="80" 
@@ -94,7 +94,7 @@
                        AllowDrop="True"
                        HorizontalContentAlignment="Center"/>
             </Border>
-<!-- Succesfull login log-->
+            <!-- Succesfull login log-->
             <Border Name="scfLogin_text"
                     Height="80" 
                     Width="300" 
@@ -110,12 +110,12 @@
                        AllowDrop="True"
                        HorizontalContentAlignment="Center"/>
             </Border>
-<!-- Buttons-->           
-             <Grid Height="50" 
+            <!-- Buttons-->
+            <Grid Height="50" 
                    VerticalAlignment="Bottom"
                    Width="400">
                 <Button x:Name="Back_Button"
-                            Click="Button_Click_Back"
+                            Click="Back_Click"
                             HorizontalAlignment="Left" 
                             Height="50"
                             VerticalAlignment="Top" 
@@ -134,7 +134,7 @@
                             Foreground="#799540">
                     <Bold>Login</Bold>
                 </Button>
-             </Grid>
+            </Grid>
         </Grid>
     </Grid>
 

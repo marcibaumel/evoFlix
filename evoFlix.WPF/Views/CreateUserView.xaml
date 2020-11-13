@@ -21,7 +21,7 @@
             <RowDefinition Height="5*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-<!--Title-->
+        <!--Title-->
         <Label Foreground="White"
                FontSize="30"
                VerticalAlignment="Center"
@@ -29,7 +29,7 @@
                Margin="15, 0">
             <Bold>Create user profile</Bold>
         </Label>
-<!--Data Grid-->
+        <!--Data Grid-->
         <Grid Grid.Row="1"
               Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -43,7 +43,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-<!--Username-->
+            <!--Username-->
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -64,7 +64,7 @@
                          FontWeight="Bold"
                          Foreground="#799540" LostFocus="TxbUsername_LostFocus"/>
             </Grid>
-<!--Password-->
+            <!--Password-->
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -88,7 +88,7 @@
                              VerticalAlignment="Center"
                              Foreground="#799540" LostFocus="TxbPassword_LostFocus"/>
             </Grid>
-<!--Confirm Password-->
+            <!--Confirm Password-->
             <Grid Grid.Row="1"
                   Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -129,7 +129,7 @@
                        VerticalAlignment="Center">
                     <Bold>Birth Date:</Bold>
                 </Label>
-<!--Year-->
+                <!--Year-->
                 <ComboBox x:Name="cmbYear"
                           IsEditable="True"
                           IsReadOnly="True"
@@ -141,7 +141,7 @@
                           VerticalAlignment="Center"
                           Foreground="#799540" 
                           MaxDropDownHeight="100" SelectionChanged="CmbYear_SelectionChanged"/>
-<!--Month-->
+                <!--Month-->
                 <ComboBox x:Name="cmbMonth"
                           Grid.Row="1"
                           Grid.Column="1"
@@ -155,7 +155,7 @@
                           SelectionChanged="CmbMonth_SelectionChanged"
                           Foreground="#799540" 
                           MaxDropDownHeight="100"/>
-<!--Day-->
+                <!--Day-->
                 <ComboBox x:Name="cmbDay"
                           IsEditable="True"
                           IsReadOnly="True"
@@ -169,7 +169,7 @@
                           Foreground="#799540" 
                           MaxDropDownHeight="100" SelectionChanged="CmbDay_SelectionChanged"/>
             </Grid>
-<!--Profile Picture-->
+            <!--Profile Picture-->
             <Grid Grid.Row="3"
                   Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
@@ -214,7 +214,7 @@
                       Grid.ColumnSpan="2">
                 </Grid>
             </Grid>
-<!--Error-->
+            <!--Error-->
             <Border x:Name="lblError"
                     Background="#FFE4EA4A"
                     Grid.Row="4"
@@ -233,7 +233,7 @@
                        HorizontalContentAlignment="Center"/>
             </Border>
         </Grid>
-<!--Done-->
+        <!--Done-->
         <Grid Grid.Row="2"
               Grid.Column="1">
             <Grid.RowDefinitions>
@@ -256,5 +256,6 @@
                 <Bold>Done</Bold>
             </Button>
         </Grid>
+        <Button x:Name="ExitButton" Content="X" Grid.Column="2" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="41" Height="28" Click="ExitButton_Click"/>
     </Grid>
 </UserControl>
