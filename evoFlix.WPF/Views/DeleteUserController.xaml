@@ -24,7 +24,7 @@
         <!-- Logo -->
         <Grid Height="140" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
             <Grid VerticalAlignment="Top">
-                <Image x:Name="logo_png" Source="whos.png" />
+                <Image x:Name="logo_png" Source="../Images/whos.png" />
             </Grid>
             <Grid VerticalAlignment="Bottom">
                 <Label 

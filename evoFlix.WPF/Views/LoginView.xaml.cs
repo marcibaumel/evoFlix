@@ -25,20 +25,43 @@ namespace evoFlix.WPF.Views
     public partial class LoginView : UserControl
     {
         UserService userService = new UserService();
+        DateTime? blocked;
+        private int count;
+
+        private int Count
+        {
+            get { return count; }
+            set 
+            { 
+                count = value;
+                if(count >= 3) 
+                {
+                    blocked = DateTime.Now.AddSeconds(10);
+                }
+                if(count == 0)
+                {
+                    blocked = null;
+                }
+            }
+        }
+
         public LoginView()
         {
             InitializeComponent();
         }
 
-        public void test()
-        {
-            Console.WriteLine("asd");
-        }
-
         private void Button_Click_Login(object sender, RoutedEventArgs e)
         {
-            CheckUser();
-
+                if (blocked == null || blocked?.Ticks < DateTime.Now.Ticks)
+                {
+                    CheckUser();
+                }
+                else
+                {
+                    Label label = error_text.Child as Label;
+                    label.Content = (blocked?.Second - DateTime.Now.Second ) + " is remaining from the block.";
+                    error_text.Visibility = Visibility.Visible;
+                }
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +76,8 @@ namespace evoFlix.WPF.Views
                     Label label = error_text.Child as Label;
                     label.Content = "The Password is incorrect! Please try again!";
                     error_text.Visibility = Visibility.Visible;
+                    Console.WriteLine("Wrong Pass");
+                    Count++;
                 }
                 else
                 {
@@ -61,12 +86,15 @@ namespace evoFlix.WPF.Views
                     label.Content = "You have logged in succesfully!";
                     scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
+                    Count = 0;
                 }
             }else
             {
                 Label label = error_text.Child as Label;
                 label.Content = "The Username is incorrect! Please try again!";
                 error_text.Visibility = Visibility.Visible;
+                Console.WriteLine("Wrong User");
+                Count++;
             }
         }
         private void Button_Click_Back(object sender, RoutedEventArgs e)
