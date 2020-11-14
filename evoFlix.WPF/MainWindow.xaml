@@ -42,7 +42,7 @@
         </Grid>
 
         <Button x:Name="Create" Content="Create Profile" HorizontalAlignment="Left" Margin="977,486,0,0" VerticalAlignment="Top" Width="228" Height="108" Click="Create_Click"/>
-        <Button Content="Delete User&#xD;&#xA;" HorizontalAlignment="Left" Margin="52,501,0,0" VerticalAlignment="Top" Width="186" Height="110" Click="DeleteAUser_Button"/>
+        <Button Content="Delete User&#xD;&#xA;" HorizontalAlignment="Left" Margin="52,501,0,0" VerticalAlignment="Top" Width="186" Height="110" Click="Delet_Click"/>
         <!--
         <StackPanel Name="createUserPanel" Orientation="Vertical"/>
         <Button Content="Register Test" HorizontalAlignment="Left" Margin="36,507,0,0" VerticalAlignment="Top" Width="220" Height="96" Click="CreateUser_Click"/>

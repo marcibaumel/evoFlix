@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="evoFlix.WPF.Views.DeleteUserController"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:evoFlix.WPF.Views"
+             mc:Ignorable="d" 
+             Background="#799540"
+             Width="500"
+             Height="500"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+
+
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.245"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+
+        <!-- Logo -->
+        <Grid Height="140" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
+            <Grid VerticalAlignment="Top">
+                <Image x:Name="logo_png" Source="whos.png" />
+            </Grid>
+            <Grid VerticalAlignment="Bottom">
+                <Label 
+                     Foreground="White"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     FontSize="48" Content="Delete a User" Margin="-3,10,10,-10"/>
+            </Grid>
+
+        </Grid>
+
+        <!--Username-->
+        <Grid Height="110" Width="300">
+            <Grid VerticalAlignment="Top" Margin="-79,39,-95,-13" Height="84">
+                <Label 
+                        Foreground="White"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="36" Margin="-16,0,0,0" Height="84" Width="210">
+                    <Bold>Username:</Bold>
+                </Label>
+                <TextBox 
+                        x:Name="myUsername"
+                        HorizontalAlignment="Right" 
+                        Width="280" FontSize="48" 
+                        FontWeight="Bold"
+                        Foreground="#799540"
+                        Background="White" VerticalAlignment="Center" Margin="0,0,0,18"/>
+            </Grid>
+
+            <!-- Password-->
+            <Grid VerticalAlignment="Bottom"/>
+        </Grid>
+
+        <!-- ErrorLog-->
+        <Grid Height="150" VerticalAlignment="Bottom" Margin="0 0 0 20">
+            <Border Name="error_text"
+                    Height="80" 
+                    Width="400" 
+                    VerticalAlignment="Top"
+                    Background="#FFE4EA4A"
+                    CornerRadius="20"
+                    Visibility="Hidden">
+                <Label FontSize="16"
+                       Foreground="Black"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontStyle="Italic"
+                       AllowDrop="True"
+                       HorizontalContentAlignment="Center"/>
+            </Border>
+            <!-- Succesfull login log-->
+            <Border Name="scfLogin_text"
+                    Height="80" 
+                    Width="300" 
+                    VerticalAlignment="Top"
+                    Background="#FF23FF00"
+                    CornerRadius="20"
+                    Visibility="Hidden">
+                <Label FontSize="16"
+                       Foreground="Black"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontStyle="Italic"
+                       AllowDrop="True"
+                       HorizontalContentAlignment="Center"/>
+            </Border>
+            <!-- Buttons-->
+            <Grid Height="50" 
+                   VerticalAlignment="Bottom"
+                   Width="400">
+                <Button x:Name="Back_Button"
+                            Click="Back_Click"
+                            HorizontalAlignment="Left" 
+                            Height="50"
+                            VerticalAlignment="Top" 
+                            Width="150" 
+                            FontSize="26"
+                            Foreground="#799540">
+                    <Bold>Back</Bold>
+                </Button>
+                <Button x:Name="Delete_Button" 
+                            Click="Button_Click_Delete"
+                            HorizontalAlignment="Right" 
+                            Height="50"
+                            VerticalAlignment="Top" 
+                            Width="150" 
+                            FontSize="26"
+                            Foreground="#799540">
+                    <Bold>Delete</Bold>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

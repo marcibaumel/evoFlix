@@ -31,18 +31,14 @@ namespace evoFlix.WPF
         {
             
             InitializeComponent();
+            DeleteAUser_Test();
+            test_button();
         }
 
-        public void DeleteAUser_Button(object sender, RoutedEventArgs e)
+        public void DeleteAUser_Test()
         {
-            /*
-            for (int i=2; i < 10; i++)
-            {
-                userService.DeleteUser(i);
-                test_button();
-            }
-            */
-            userService.DeleteUser(1);
+            string test = "Béla";
+            userService.DeleteUser(test);
             test_button();
 
         }
@@ -107,6 +103,12 @@ namespace evoFlix.WPF
         {
             clear_data_context();
             DataContext = new LoginView();
+        }
+
+        private void Delet_Click(object sender, RoutedEventArgs e)
+        {
+            clear_data_context();
+            DataContext = new DeleteUserController();
         }
     }
 }

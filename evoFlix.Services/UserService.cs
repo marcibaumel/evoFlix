@@ -99,9 +99,9 @@ namespace evoFlix.Services
                 return 0;
         }
 
-        public void DeleteUser(int givenId)
+        public void DeleteUser(string givenUser)
         {
-            var deleteUser = unitOfWork.Users.SingleOrDefault(x => x.Id == givenId);
+            var deleteUser = unitOfWork.Users.FirstOrDefault(x => x.Username == givenUser);
             if (deleteUser == null)
             {
                 return;
