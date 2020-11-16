@@ -57,6 +57,7 @@ namespace evoFlix.WPF.Views
             {
                 Label label = error_text.Child as Label;
                 label.Content = myUsername.Text+ " deleted successfully!";
+                userService.DeleteUser(myUsername.Text);
                 error_text.Visibility = Visibility.Visible;
             }
         }

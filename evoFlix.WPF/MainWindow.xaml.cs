@@ -31,10 +31,11 @@ namespace evoFlix.WPF
         {
             
             InitializeComponent();
-            DeleteAUser_Test();
+            //DeleteAUser_Test();
             test_button();
         }
 
+        /*
         public void DeleteAUser_Test()
         {
             string test = "Béla";
@@ -42,6 +43,9 @@ namespace evoFlix.WPF
             test_button();
 
         }
+        */
+
+
 
         public void test_button()
         {
