@@ -14,6 +14,7 @@
             <Grid HorizontalAlignment="Left" Height="450" Margin="10,10,0,-10" VerticalAlignment="Top" Width="316">
                 <Label Content="user1" HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="306" Height="54"/>
                 <Button Content="user_1_btn" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="282" Height="313" Click="Button_Click"/>
+                <Image x:Name="user1_Img" HorizontalAlignment="Left" Height="100" Margin="93,70,0,0" VerticalAlignment="Top" Width="100"/>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="450" Margin="326,10,0,-10" VerticalAlignment="Top" Width="316">
                 <Label Content="user2" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top" Height="57" Width="296"/>

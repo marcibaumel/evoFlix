@@ -67,6 +67,9 @@ namespace evoFlix.WPF.Views
         {
             Visibility = Visibility.Hidden;
         }
+
+
+
         private void CheckUser()
         {
             if (!userService.IsUniqueUsername(myUsername.Text))
@@ -87,6 +90,7 @@ namespace evoFlix.WPF.Views
                     scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
                     Count = 0;
+                    
                 }
             }else
             {

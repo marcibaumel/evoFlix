@@ -54,39 +54,21 @@ namespace evoFlix.WPF
 
         }
 
-        public void delet_a_user_button()
-        {
-
-        }
-
-        public void login_user()
-        {
-
-        }
-
+      
         
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             test_button();
-            //FrameRegister.Visibility = Visibility.Visible;
-            
+           
         }
-        /*
+        
 
-        private void LoginUser_Click(object sender, RoutedEventArgs e)
+        
+
+        public void ImgLoad()
         {
-            LoginView lwObj = new LoginView();
-            loginUserPanel.Children.Add(lwObj);
 
         }
-
-        private void CreateUser_Click(object sender, RoutedEventArgs e)
-        {
-            CreateUser cwObj = new CreateUser();
-            createUserPanel.Children.Add(cwObj);
-        }
-        */
 
         public void clear_data_context()
         {
@@ -97,12 +79,14 @@ namespace evoFlix.WPF
         {
             clear_data_context();
             DataContext = new CreateUser();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             clear_data_context();
             DataContext = new LoginView();
+            
         }
 
         private void Delet_Click(object sender, RoutedEventArgs e)
