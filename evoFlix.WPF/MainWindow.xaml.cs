@@ -1,7 +1,4 @@
-﻿using evoFlix.Services;
-using evoFlix.WPF.Views;
-using evoFlix.WPF.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,80 +20,21 @@ namespace evoFlix.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-
-        UserService userService = new UserService();
-
         public MainWindow()
         {
-            
             InitializeComponent();
-            //DeleteAUser_Test();
-            test_button();
-        }
+            /*
+            NavigationWindow navigationWdw = new NavigationWindow();
+            navigationWdw.Height = this.Height;
+            navigationWdw.Width = this.Width;
+            navigationWdw.Show();
+            navigationWdw.Navigate(new LoginPage());
+            */
 
-        /*
-        public void DeleteAUser_Test()
-        {
-            string test = "Béla";
-            userService.DeleteUser(test);
-            test_button();
+            Page log = new LoginPage();
+            this.Content = log;
 
-        }
-        */
-
-
-
-        public void test_button()
-        {
-            Console.WriteLine("asd");
-        }
-
-        public void creat_a_new_user()
-        {
-            test_button();
-
-        }
-
-      
-        
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            test_button();
            
-        }
-        
-
-        
-
-        public void ImgLoad()
-        {
-
-        }
-
-        public void clear_data_context()
-        {
-            DataContext = null;
-        }
-
-        private void Create_Click(object sender, RoutedEventArgs e)
-        {
-            clear_data_context();
-            DataContext = new CreateUser();
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            clear_data_context();
-            DataContext = new LoginView();
-            
-        }
-
-        private void Delet_Click(object sender, RoutedEventArgs e)
-        {
-            clear_data_context();
-            DataContext = new DeleteUserController();
         }
     }
 }

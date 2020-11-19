@@ -48,6 +48,7 @@ namespace evoFlix.WPF.Views
         public LoginView()
         {
             InitializeComponent();
+            
         }
 
         private void Button_Click_Login(object sender, RoutedEventArgs e)
@@ -81,6 +82,8 @@ namespace evoFlix.WPF.Views
                     error_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Wrong Pass");
                     Count++;
+                    //return false;
+                    
                 }
                 else
                 {
@@ -90,6 +93,7 @@ namespace evoFlix.WPF.Views
                     scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
                     Count = 0;
+                    //return true;
                     
                 }
             }else
@@ -99,8 +103,12 @@ namespace evoFlix.WPF.Views
                 error_text.Visibility = Visibility.Visible;
                 Console.WriteLine("Wrong User");
                 Count++;
+                //return false;
             }
+            
         }
+
+       
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Backed");

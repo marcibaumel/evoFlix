@@ -3,53 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:evoFlix.WPF" xmlns:local1="clr-namespace:evoFlix.WPF.Views"
+        xmlns:local="clr-namespace:evoFlix.WPF"
         mc:Ignorable="d"
-         
-
-        
-        Title="LoginWindow" Height="720" Width="1280" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="720" Width="1280">
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="450" Margin="0,10,0,0" VerticalAlignment="Top" Width="1270">
-            <Grid HorizontalAlignment="Left" Height="450" Margin="10,10,0,-10" VerticalAlignment="Top" Width="316">
-                <Label Content="user1" HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="306" Height="54"/>
-                <Button Content="user_1_btn" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="282" Height="313" Click="Button_Click"/>
-                <Image x:Name="user1_Img" HorizontalAlignment="Left" Height="100" Margin="93,70,0,0" VerticalAlignment="Top" Width="100"/>
-            </Grid>
-            <Grid HorizontalAlignment="Left" Height="450" Margin="326,10,0,-10" VerticalAlignment="Top" Width="316">
-                <Label Content="user2" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top" Height="57" Width="296"/>
-                <Button Content="user_2_btn" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="282" Height="313"/>
-            </Grid>
-            <Grid HorizontalAlignment="Left" Height="450" Margin="642,10,0,-10" VerticalAlignment="Top" Width="316">
-                <Label Content="user3" HorizontalAlignment="Left" Margin="10,382,0,0" VerticalAlignment="Top" Height="58" Width="296"/>
-                <Button Content="user_3_btn" HorizontalAlignment="Left" Margin="24,41,0,0" VerticalAlignment="Top" Width="282" Height="313"/>
-            </Grid>
-            <Grid HorizontalAlignment="Left" Height="450" Margin="958,10,0,-10" VerticalAlignment="Top" Width="316">
-                <Label Content="user4" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Height="53" Width="296"/>
-                <Button Content="user_4_btn" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="282" Height="313" RenderTransformOrigin="0.51,0.505"/>
-            </Grid>
-
-
-
-
-        </Grid>
-
-
-
-        <Grid Margin="276,30,280,32">
-            <!--<local1:LoginView ></local1:LoginView>-->
-            <!--<local1:CreateUserView ></local1:CreateUserView>-->
-            <ContentControl Content="{Binding}"/>
-        </Grid>
-
-        <Button x:Name="Create" Content="Create Profile" HorizontalAlignment="Left" Margin="977,486,0,0" VerticalAlignment="Top" Width="228" Height="108" Click="Create_Click"/>
-        <Button Content="Delete User&#xD;&#xA;" HorizontalAlignment="Left" Margin="52,501,0,0" VerticalAlignment="Top" Width="186" Height="110" Click="Delet_Click"/>
-        <!--
-        <StackPanel Name="createUserPanel" Orientation="Vertical"/>
-        <Button Content="Register Test" HorizontalAlignment="Left" Margin="36,507,0,0" VerticalAlignment="Top" Width="220" Height="96" Click="CreateUser_Click"/>
-
-        <StackPanel Name="loginUserPanel" Orientation="Vertical"/>
-        -->
-
+        
     </Grid>
 </Window>
