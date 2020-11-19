@@ -46,6 +46,7 @@ namespace evoFlix.WPF.Views
         public CreateUser()
         {
 
+
             InitializeComponent();
             userService.CountUser();
             UserCounter();
