@@ -23,6 +23,8 @@ namespace evoFlix.WPF.Controls
         public NavigationBar()
         {
             InitializeComponent();
+            //Datacontext jövő héten 
+
         }
     }
 }

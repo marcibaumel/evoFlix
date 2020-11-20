@@ -27,7 +27,7 @@
             <TextBlock Grid.Row="0" Background="{StaticResource BrushPrimaryKey1}"/>
             <Image x:Name="logo_png" Source="../Images/whos.png" Grid.Column="0"/>
             <!--Nem tudom miért nem engedni a type-ot-->
-            <RadioButton Grid.Column="1" Content="Home" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"/>
+            <RadioButton Grid.Column="1" Content="Home" Command="{Binding homeViewCommand}" />
             <RadioButton Grid.Column="2" Content="Movies" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Movies}"/>
             <RadioButton Grid.Column="3" Content="TV-Series" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.TV_Shows}"/>
             <RadioButton Grid.Column="4" Content="My List" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.My_List}"/>

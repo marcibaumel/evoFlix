@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\UpdateCurrentViewModelCommands.cs" />
     <Compile Include="Controls\Class1.cs" />
     <Compile Include="Controls\NavigationBar.xaml.cs">
