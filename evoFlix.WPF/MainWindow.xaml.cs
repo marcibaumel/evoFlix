@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evoFlix.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,8 +32,10 @@ namespace evoFlix.WPF
             navigationWdw.Navigate(new LoginPage());
             */
 
-            Page log = new DashboardPage();
-            this.Content = log;
+            Page DashBoard = new DashboardPage();
+            this.Content = DashBoard;
+            DashBoard.DataContext = new DashboardViewModel();
+
 
            
         }

@@ -9,6 +9,6 @@
         Title="DashboardWindow" Height="720" Width="1280">
     
     <Grid>
-        <controls:NavigationBar />
+        <controls:NavigationBar DataContext="{Binding Navigator}"/>
     </Grid>
 </Page>
