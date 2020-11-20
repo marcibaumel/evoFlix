@@ -2,13 +2,23 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:evoFlix.WPF"
+             xmlns:viewmodels="clr-namespace:evoFlix.WPF.ViewModels"
+             xmlns:views="clr-namespace:evoFlix.WPF.DashboardViews"
              StartupUri="MainWindow.xaml">
     
     <Application.Resources>
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <!--Kiválasztott viewmodel -->
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                <!--Keresett view-->
+                <views:HomeView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

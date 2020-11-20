@@ -1,4 +1,5 @@
 ﻿using evoFlix.WPF.Commands;
+using evoFlix.WPF.Models;
 using evoFlix.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,9 @@ using System.Windows.Input;
 
 namespace evoFlix.WPF.State.Navigators
 {
-    public class Navigator : INavigator, INotifyPropertyChanged
+    public class Navigator : ObservableObject, INavigator
     {
+       
         private ViewModelBase _currentViewModel;
         public ViewModelBase CurrentViewModel 
         {
@@ -28,11 +30,8 @@ namespace evoFlix.WPF.State.Navigators
 
         public ICommand UpdateCurrentViewModelCommand => new UpdateCurrentViewModelCommands(this);
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
     }
 }
