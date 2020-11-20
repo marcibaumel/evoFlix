@@ -106,7 +106,7 @@
                 FontSize="26"
                 Background="#799540"
                 Foreground="White">
-                <Bold>Sign Out</Bold>
+                <Bold>Delete User</Bold>
            </Button>
         </Grid>
             <!--
