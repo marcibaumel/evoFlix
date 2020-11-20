@@ -1,4 +1,7 @@
-﻿using System;
+﻿using evoFlix.WPF.Commands;
+using evoFlix.WPF.State.Navigators;
+using evoFlix.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,8 +26,26 @@ namespace evoFlix.WPF.Controls
         public NavigationBar()
         {
             InitializeComponent();
+            homeViewCommand = new Command(ExecuteHomeView, CanExecuteHomeView);
             //Datacontext jövő héten 
 
         }
+        public INavigator Navigator { get; set; } = new Navigator();
+
+        public Command homeViewCommand;
+        
+        
+
+
+        public bool CanExecuteHomeView(object para)
+        {
+            return true;
+        }
+
+        public void ExecuteHomeView(object para)
+        {
+            Navigator.CurrentViewModel = new HomeViewModel();
+        }
+
     }
 }
