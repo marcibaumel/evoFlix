@@ -9,6 +9,12 @@
         Title="DashboardWindow" Height="720" Width="1280">
     
     <Grid>
-        <controls:NavigationBar DataContext="{Binding Navigator}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <controls:NavigationBar Grid.Row="0" DataContext="{Binding Navigator}"/>
+        <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}"/>
     </Grid>
 </Page>
