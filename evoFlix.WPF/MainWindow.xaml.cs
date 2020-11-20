@@ -31,7 +31,7 @@ namespace evoFlix.WPF
             navigationWdw.Navigate(new LoginPage());
             */
 
-            Page log = new LoginPage();
+            Page log = new DashboardPage();
             this.Content = log;
 
            

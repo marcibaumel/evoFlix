@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="evoFlix.WPF.Controls.NavigationBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:evoFlix.WPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <!-- <RowDefinition Height="auto"/>-->
+        </Grid.RowDefinitions>
+        <!--<TextBlock Grid.Row="0" Text="Evoflix"/>-->
+        <Grid Grid.Row="0" Background="{StaticResource BrushPrimaryKey2}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" MinWidth="400"/>
+                <ColumnDefinition Width="auto" MinWidth="51"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Background="{StaticResource BrushPrimaryKey1}"/>
+            <Image x:Name="logo_png" Source="../Images/whos.png" Grid.Column="0"/>
+            <RadioButton Grid.Column="1" Content="Home"/>
+            <RadioButton Grid.Column="2" Content="Movies"/>
+            <RadioButton Grid.Column="3" Content="TV-Series"/>
+            <RadioButton Grid.Column="4" Content="My List"/>
+            <RadioButton Grid.Column="5" Content="Account"/>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
