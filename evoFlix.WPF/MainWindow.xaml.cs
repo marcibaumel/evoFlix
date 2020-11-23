@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evoFlix.WPF.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,8 @@ namespace evoFlix.WPF
             */
 
             Page log = new LoginPage();
-            this.Content = log;
+            Page player = new VideoPlayer();
+            this.Content = player;
 
            
         }
