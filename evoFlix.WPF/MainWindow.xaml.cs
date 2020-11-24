@@ -21,6 +21,7 @@ namespace evoFlix.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Page log = new LoginPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -32,8 +33,7 @@ namespace evoFlix.WPF
             navigationWdw.Navigate(new LoginPage());
             */
 
-            Page log = new LoginPage();
-            Page player = new VideoPlayer();
+            Page player = new VideoPlayer(log, this, 1230);
             this.Content = player;
 
            

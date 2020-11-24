@@ -14,7 +14,7 @@
         <Grid>
             <MediaElement x:Name="mdaVideo"
                       Source="D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv"
-                      LoadedBehavior="Manual"/>
+                      LoadedBehavior="Manual" Loaded="mdaVideo_Loaded"/>
         </Grid>
 
         <!--Controls-->
@@ -44,9 +44,9 @@
                     </Grid.RowDefinitions>
                     <Button x:Name="btnBack"
                         Grid.Column="1"
-                        Grid.Row="1" >
+                        Grid.Row="1" Click="btnBack_Click" >
                         <Button.Background>
-                            <ImageBrush ImageSource="Back.png"/>
+                            <ImageBrush ImageSource="\Images\Icons\Back.png"/>
                         </Button.Background>
 
                     </Button>
@@ -54,9 +54,6 @@
             </Grid>
             <!--Lower Toolbar-->
             <Grid Grid.Row="2">
-                <Grid.Background>
-                    <ImageBrush/>
-                </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -69,7 +66,7 @@
                     Margin="5, 6"
                         Click="btnPlay_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="Play.png"/>
+                        <ImageBrush ImageSource="\..\..\Images\Icons\Play.png"/>
                     </Button.Background>
 
                 </Button>
@@ -78,18 +75,32 @@
                     Grid.Column="1"
                             Click="btnPause_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="Pause.jpg"/>
+                        <ImageBrush ImageSource="\Images\Icons\Pause.jpg"/>
                     </Button.Background>
                 </Button>
                 <Button Margin="5, 6"
-                    Grid.Column="2"/>
+                    Grid.Column="2" Click="Button_Click_1">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Rewind.png"/>
+                    </Button.Background>
+                </Button>
                 <Button Margin="5, 6"
-                    Grid.Column="3"/>
-                <Button Margin="5, 6"
-                    Grid.Column="4"/>
+                    Grid.Column="3" Click="Button_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Forward.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnSound"
+                        Margin="5, 6"
+                        Grid.Column="4"
+                        Click="btnSound_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="\Images\Icons\Sound.png"/>
+                    </Button.Background>
+                </Button>
                 <Slider x:Name="slrProgress"
                     Grid.Column="5"
-                    VerticalAlignment="Center"/>
+                    VerticalAlignment="Center" ToolTip="{Binding ElementName=slrProgress, Path=Value}"/>
             </Grid>
         </Grid>
     </Grid>

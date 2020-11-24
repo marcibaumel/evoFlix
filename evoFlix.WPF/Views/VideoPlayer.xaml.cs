@@ -12,23 +12,50 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace evoFlix.WPF.Views
 {
     /// TO-DO:
-    ///     - Button images
-    ///     - Update the video with slider and vica versa
-    ///     - Add tootip to the slider
-    ///     - Add logic to the other buttons
-    ///     - Go back to another page with the back button
-    ///     - Save the current time
-    ///     - Load the saved time
+    ///     - Proper button image design missing
+    ///     - Button imgage error fix
+    ///     - Update the video with slider
+    ///     - Update slider tootip values (hh:mm:ss)
     /// 
     public partial class VideoPlayer : Page
     {
-        public VideoPlayer()
+        private Page backPage;
+        private Window main;
+        private int savedTime;
+        int startTime;
+        public VideoPlayer(Page page, Window window)
         {
             InitializeComponent();
+
+            backPage = page;
+            main = window;
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+
+            slrProgress.Minimum = 0;
+        }
+
+        public VideoPlayer(Page page, Window window, int time)
+            : this(page, window)
+        {
+            startTime = time;
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (mdaVideo.NaturalDuration.HasTimeSpan)
+            {
+                slrProgress.Value = mdaVideo.Position.TotalSeconds;
+                slrProgress.Maximum = mdaVideo.NaturalDuration.TimeSpan.TotalSeconds;
+            }
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -39,6 +66,34 @@ namespace evoFlix.WPF.Views
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
             mdaVideo.Pause();
+        }
+
+        private void mdaVideo_Loaded(object sender, RoutedEventArgs e)
+        {
+            mdaVideo.Play();
+            mdaVideo.Position = TimeSpan.FromSeconds(startTime);
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            savedTime = (int) mdaVideo.Position.TotalSeconds;
+            MessageBox.Show(savedTime.ToString());
+            main.Content = backPage;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            mdaVideo.Position += TimeSpan.FromSeconds(10);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            mdaVideo.Position -= TimeSpan.FromSeconds(10);
+        }
+
+        private void btnSound_Click(object sender, RoutedEventArgs e)
+        {
+            mdaVideo.Volume -= 0.1;
         }
     }
 }

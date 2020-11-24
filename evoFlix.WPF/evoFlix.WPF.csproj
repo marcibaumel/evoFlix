@@ -167,13 +167,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Icons\Back.png">
+    <Content Include="Images\Icons\Rewind.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Icons\Pause.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\Icons\Play.png">
+    <Content Include="Images\Icons\Forward.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\kep1.jpg">
@@ -188,9 +185,20 @@
     <Content Include="Images\kep4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Views\Pause.jpg" />
-    <Resource Include="Views\Play.png" />
-    <Resource Include="Views\Back.png" />
+    <Content Include="Images\Icons\Sound.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Pause.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Play.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Views\Forward.png" />
+    <Resource Include="Views\Rewind.png" />
     <Resource Include="Images\whoos.png" />
     <Resource Include="Images\whos.png" />
   </ItemGroup>
