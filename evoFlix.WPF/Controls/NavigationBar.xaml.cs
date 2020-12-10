@@ -26,10 +26,11 @@ namespace evoFlix.WPF.Controls
         public NavigationBar()
         {
             InitializeComponent();
-            homeViewCommand = new Command(ExecuteHomeView, CanExecuteHomeView);
+            //homeViewCommand = new Command(ExecuteHomeView, CanExecuteHomeView);
             //Datacontext jövő héten 
 
         }
+        /*
         public INavigator Navigator { get; set; } = new Navigator();
 
         public Command homeViewCommand;
@@ -47,5 +48,7 @@ namespace evoFlix.WPF.Controls
             Navigator.CurrentViewModel = new HomeViewModel();
         }
 
+    
+        */
     }
 }
