@@ -13,7 +13,11 @@
             <!-- <RowDefinition Height="auto"/>-->
         </Grid.RowDefinitions>
         <!--<TextBlock Grid.Row="0" Text="Evoflix"/>-->
-        <Grid Grid.Row="0" Background="{StaticResource BrushPrimaryKey2}">
+        <Grid Grid.Row="0" RenderOptions.EdgeMode="Aliased" Background="{StaticResource BrushPrimaryKey2}">
+            <Grid.Resources>
+                <Style TargetType="RadioButton" BasedOn="{StaticResource NavButton}"/>
+            </Grid.Resources>
+                
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" MinWidth="400"/>
                 <ColumnDefinition Width="auto" MinWidth="51"/>
@@ -24,7 +28,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Background="{StaticResource BrushPrimaryKey1}"/>
+            <TextBlock Grid.Row="0"  Background="{StaticResource BrushPrimaryKey2}"/>
             <Image x:Name="logo_png" Source="../Images/whos.png" Grid.Column="0"/>
             <!--Nem tudom miért nem engedni a type-ot, a datacontext nem jó még-->
             <!--<RadioButton Grid.Column="1" Content="Home" Command="{Binding homeViewCommand}" DataContext="{Binding RelativeSource={RelativeSource AncestorType=local:NavigationBar, Mode=FindAncestor} }"/>-->
