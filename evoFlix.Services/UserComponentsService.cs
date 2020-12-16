@@ -32,7 +32,8 @@ namespace evoFlix.Services
                 ListOfUsers.Add(new UserDB { Id = user.Id, Username = user.Username, ProfilePicturePath = user.ProfilePicturePath });
             }
 
-          
+            ListOfUsers.Sort((s1, s2) => s1.Id.CompareTo(s2.Id));
+
             return ListOfUsers;
 
         }
@@ -44,6 +45,11 @@ namespace evoFlix.Services
                 Console.WriteLine(a.Username);
             }
         }
+
+        
+        
+            
+        
 
         public void getUserName(int Number)
         {
