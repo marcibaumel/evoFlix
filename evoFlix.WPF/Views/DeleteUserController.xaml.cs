@@ -22,16 +22,19 @@ namespace evoFlix.WPF.Views
     public partial class DeleteUserController : UserControl
     {
         UserService userService = new UserService();
+        UserComponentsService ucs = new UserComponentsService();
 
         public DeleteUserController()
         {
             InitializeComponent();
+            test();
         }
 
 
         public void test()
         {
             Console.WriteLine("asd");
+            
         }
 
         private void Button_Click_Delete(object sender, RoutedEventArgs e)

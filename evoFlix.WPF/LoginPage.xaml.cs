@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using evoFlix.Models.Users;
 
 namespace evoFlix.WPF
 {
@@ -24,45 +25,36 @@ namespace evoFlix.WPF
         
 
         UserService userService = new UserService();
+        UserComponentsService ucs = new UserComponentsService();
 
         public LoginPage()
         {
             
             InitializeComponent();
-            //DeleteAUser_Test();
-            test_button();
-        }
-
-        /*
-        public void DeleteAUser_Test()
-        {
-            string test = "Béla";
-            userService.DeleteUser(test);
             test_button();
 
+            ucs.writeOutListOfUser();
+
+            
+
+            /*
+            var list = new List<UserDB>(ucs.listOfUsers().ToString());
+            string.ForEach(Console.WriteLine);
+            */
+
+            
         }
-        */
 
-
-
+       
+      
         public void test_button()
         {
             Console.WriteLine("asd");
+            
+            
         }
 
-        public void creat_a_new_user()
-        {
-            test_button();
-
-        }
-
-      
-        
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            test_button();
-           
-        }
+       
         
 
         public void ChangeWindow()
@@ -70,10 +62,7 @@ namespace evoFlix.WPF
            
         }
 
-        public void ImgLoad()
-        {
-
-        }
+        
 
         public void clear_data_context()
         {
@@ -84,7 +73,7 @@ namespace evoFlix.WPF
         {
             clear_data_context();
             DataContext = new CreateUser();
-            
+           
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)

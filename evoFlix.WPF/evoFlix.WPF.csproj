@@ -66,6 +66,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\TestUnitOfWorkViewModelcs.cs" />
     <Compile Include="ViewModels\WhosViewModel.cs" />
     <Compile Include="Views\CreateUserView.xaml.cs">

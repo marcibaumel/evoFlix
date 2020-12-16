@@ -15,16 +15,35 @@ namespace evoFlix.Services
     /*Ebből a servic-ből lesz betöltve a user-adata*/
 
     public class UserComponentsService
-    {
-        
+    {        
         private UnitOfWork unitOfWork;
-       
 
         public UserComponentsService()
         {
             unitOfWork = new UnitOfWork();
         }
 
+        public List<UserDB> listOfUsers()
+        {
+            List<UserDB> ListOfUsers = new List<UserDB>();
+            
+            foreach (var user in unitOfWork.Users)
+            {
+                ListOfUsers.Add(new UserDB { Id = user.Id, Username = user.Username, ProfilePicturePath = user.ProfilePicturePath });
+            }
+
+          
+            return ListOfUsers;
+
+        }
+
+        public void writeOutListOfUser()
+        {
+            foreach(UserDB a in listOfUsers())
+            {
+                Console.WriteLine(a.Username);
+            }
+        }
 
         public void getUserName(int Number)
         {
@@ -36,5 +55,7 @@ namespace evoFlix.Services
 
         }
 
+
+       
     }
 }

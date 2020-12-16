@@ -24,7 +24,7 @@ namespace evoFlix.DataAccess
              * 
              */
 
-            context.UserDB.AddRange(defaultStandards);
+            //context.UserDB.AddRange(defaultStandards);
 
             base.Seed(context);
         }
