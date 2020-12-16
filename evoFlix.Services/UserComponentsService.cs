@@ -29,7 +29,7 @@ namespace evoFlix.Services
             
             foreach (var user in unitOfWork.Users)
             {
-                ListOfUsers.Add(new UserDB { Id = user.Id, Username = user.Username, ProfilePicturePath = user.ProfilePicturePath });
+                ListOfUsers.Add(new UserDB { Id = user.Id, /*Username = user.Username, ProfilePicturePath = user.ProfilePicturePath*/ });
             }
 
             ListOfUsers.Sort((s1, s2) => s1.Id.CompareTo(s2.Id));
@@ -51,9 +51,15 @@ namespace evoFlix.Services
             
         
 
-        public void getUserName(int Number)
+        public string getUserName(int Number)
         {
-
+            var userName = unitOfWork.Users.FirstOrDefault(x => x.Id == Number).Username;
+            if (userName == null)
+            {
+                return "Failed";
+            }
+           
+            return userName.ToString();
         }
 
         public void getUserProfilPitcure(int Number)

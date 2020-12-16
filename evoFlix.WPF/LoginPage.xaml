@@ -21,6 +21,7 @@
                     BorderBrush="#799540"
                     BorderThickness="2"/>
                 <Label 
+                    x:Name="User1_Label"
                     Content="user1" 
                     VerticalAlignment="Bottom" 
                     Height="60"

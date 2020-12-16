@@ -32,8 +32,9 @@ namespace evoFlix.WPF
             
             InitializeComponent();
             test_button();
+            labelControl();
 
-            ucs.writeOutListOfUser();
+            //ucs.writeOutListOfUser();
 
             
 
@@ -55,6 +56,13 @@ namespace evoFlix.WPF
         }
 
        
+        public void labelControl()
+        {
+            
+            User1_Label.Content = "";
+            User1_Label.Content = ucs.getUserName(10).ToString();
+            
+        }
         
 
         public void ChangeWindow()
