@@ -111,7 +111,8 @@ namespace evoFlix.WPF
 
         }
         
-        
+        //Profil Kép Betöltés
+
         public void profilPitcureControl()
         {
             
