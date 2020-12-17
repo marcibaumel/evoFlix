@@ -204,8 +204,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\x.png" />
     <Resource Include="Images\f13.jpg" />
     <Resource Include="Images\2067.JPG" />
+    <Resource Include="Images\imdb.png" />
+    <Resource Include="Images\FilmPlay.png" />
+    <Resource Include="Images\FilmPlus.png" />
+    <Resource Include="Images\FilmPipa.png" />
     <Content Include="Images\kep1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

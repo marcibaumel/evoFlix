@@ -19,7 +19,13 @@
             <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="../Images/2067.jpg"/>
         </Border>
 
-        <Button Margin="1" Height="50" Width="50" Background="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Top" BorderBrush="{x:Null}">
+        <Button
+            x:Name="Exit_Button"
+            Click="Exit_Click"
+            Margin="1" 
+            Height="50" Width="50" 
+            Background="{x:Null}"  BorderBrush="{x:Null}"
+            HorizontalAlignment="Right" VerticalAlignment="Top">
             <Image Source="../Images/x.png"/>
         </Button>
 
@@ -143,33 +149,45 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="30 0 30 0" Background="#799540">
-                        <Image   Source="../Images/imdb.png"/>
+                        <Image  Margin="0 2 0 0" Source="../Images/imdb.png"/>
                     </Grid>
-                    <Border Grid.Row="1" Margin="30 0 30 5" Background="#799540" x:Name="imbdlbl">
+                    <Border Grid.Row="1" 
+                            Margin="30 0 30 5" 
+                            Background="#799540" 
+                            x:Name="imbdlbl">
                         <Label FontSize="20"
-                               FontWeight="Bold">
-
-                            aaaaa
-                        </Label>
-
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
                     </Border>
                 </Grid>
 
                 <Grid Grid.Column="2">
-                    <Button Width="81" Background="{x:Null}" BorderBrush="{x:Null}">
-                        <Image Source="../Images/x.png"/>
+                    <Button 
+                        x:Name="Play_Button"
+                            Click="Play_Click"
+                        Width="81" 
+                        Background="{x:Null}" BorderBrush="{x:Null}">
+                        <Image Source="../Images/FilmPlay.png"/>
                     </Button>
                 </Grid>
 
                 <Grid Grid.Column="3">
-                    <Button Width="81">
-
+                    <Button 
+                        x:Name="Add_Button"
+                        Click="Add_Click"
+                        Width="81" 
+                        Background="{x:Null}" BorderBrush="{x:Null}">
+                        <Image Source="../Images/FilmPlus.png"/>
                     </Button>
                 </Grid>
 
                 <Grid Grid.Column="4">
-                    <Button Width="81">
-
+                    <Button 
+                        x:Name="Check_Button"
+                        Click="Check_Click"
+                        Width="81" 
+                        Background="{x:Null}" BorderBrush="{x:Null}">
+                        <Image Source="../Images/FilmPipa.png"/>
                     </Button>
                 </Grid>
             </Grid>
