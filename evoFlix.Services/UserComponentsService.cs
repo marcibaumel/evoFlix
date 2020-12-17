@@ -23,32 +23,21 @@ namespace evoFlix.Services
             unitOfWork = new UnitOfWork();
         }
 
-        public List<UserDB> listOfUsers()
+        public List<int> listOfUsers()
         {
-            List<UserDB> ListOfUsers = new List<UserDB>();
+            List<int> ListOfUsers = new List<int>();
             
             foreach (var user in unitOfWork.Users)
             {
-                ListOfUsers.Add(new UserDB { Id = user.Id, /*Username = user.Username, ProfilePicturePath = user.ProfilePicturePath*/ });
+                ListOfUsers.Add(user.Id);
             }
 
-            ListOfUsers.Sort((s1, s2) => s1.Id.CompareTo(s2.Id));
+            //ListOfUsers.Sort((s1, s2) => s1.Id.CompareTo(s2.Id));
 
             return ListOfUsers;
 
         }
 
-        public void writeOutListOfUser()
-        {
-            foreach(UserDB a in listOfUsers())
-            {
-                Console.WriteLine(a.Username);
-            }
-        }
-
-        
-        
-            
         
 
         public string getUserName(int Number)
@@ -62,9 +51,15 @@ namespace evoFlix.Services
             return userName.ToString();
         }
 
-        public void getUserProfilPitcure(int Number)
+        public string getUserProfilPitcure(int Number)
         {
+            var userProfilPitcure = unitOfWork.Users.FirstOrDefault(x => x.Id == Number).ProfilePicturePath;
+            if (userProfilPitcure == null)
+            {
+                return "Failed";
+            }
 
+            return userProfilPitcure.ToString();
         }
 
 

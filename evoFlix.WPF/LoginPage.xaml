@@ -14,6 +14,7 @@
         <Grid  Height="360" Margin="0,130,0,0" VerticalAlignment="Top" Width="1280">
             <Grid HorizontalAlignment="Left" Height="360" Margin="50,0,0,0" VerticalAlignment="Top" Width="280">
                 <Button 
+                     x:Name="User1_Button"
                     Content="user_1_btn"  
                     VerticalAlignment="Top"
                     Height="300" 
@@ -39,6 +40,7 @@
                     BorderBrush="#799540"
                     BorderThickness="2"/>
                 <Label 
+                    x:Name="User2_Label"
                     Content="user2" 
                     VerticalAlignment="Bottom" 
                     Height="60"
@@ -56,6 +58,7 @@
                     BorderBrush="#799540"
                     BorderThickness="2"/>
             <Label 
+                    x:Name="User3_Label"
                     Content="user3" 
                     VerticalAlignment="Bottom" 
                     Height="60"
@@ -73,6 +76,7 @@
                         BorderBrush="#799540"
                         BorderThickness="2"/>
                 <Label 
+                        x:Name="User4_Label"
                         Content="user4" 
                         VerticalAlignment="Bottom" 
                         Height="60" 
