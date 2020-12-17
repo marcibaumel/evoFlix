@@ -24,10 +24,5 @@ namespace evoFlix.WPF.DashboardViews
         {
             InitializeComponent();
         }
-
-        private void Film_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
