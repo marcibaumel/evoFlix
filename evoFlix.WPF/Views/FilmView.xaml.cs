@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace evoFlix.WPF.DashboardViews
+namespace evoFlix.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for HomeView.xaml
+    /// Interaction logic for FilmView.xaml
     /// </summary>
-    public partial class HomeView : UserControl
+    public partial class FilmView : UserControl
     {
-        public HomeView()
+        public FilmView()
         {
             InitializeComponent();
-        }
-
-        private void Film_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
