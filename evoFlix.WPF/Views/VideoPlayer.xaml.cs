@@ -19,7 +19,6 @@ namespace evoFlix.WPF.Views
     /// TO-DO:
     ///     - Proper button image design missing
     ///     - Button imgage error fix
-    ///     - Update the video with slider
     ///     - Update slider tootip values (hh:mm:ss)
     /// 
     public partial class VideoPlayer : Page
@@ -28,6 +27,9 @@ namespace evoFlix.WPF.Views
         private Window main;
         private int savedTime;
         int startTime;
+        bool IsDragged = false;
+        public string StatusText { get; set; }
+
         public VideoPlayer(Page page, Window window)
         {
             InitializeComponent();
@@ -51,7 +53,7 @@ namespace evoFlix.WPF.Views
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (mdaVideo.NaturalDuration.HasTimeSpan)
+            if (mdaVideo.NaturalDuration.HasTimeSpan && !IsDragged)
             {
                 slrProgress.Value = mdaVideo.Position.TotalSeconds;
                 slrProgress.Maximum = mdaVideo.NaturalDuration.TimeSpan.TotalSeconds;
@@ -94,6 +96,26 @@ namespace evoFlix.WPF.Views
         private void btnSound_Click(object sender, RoutedEventArgs e)
         {
             mdaVideo.Volume -= 0.1;
+        }
+
+        private void slrProgress_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            mdaVideo.Position = TimeSpan.FromSeconds(slrProgress.Value);
+            IsDragged = false;
+        }
+
+        private void slrProgress_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
+        {
+            IsDragged = true;
+        }
+
+        private void slrProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (!IsDragged)
+            {
+                mdaVideo.Position = TimeSpan.FromSeconds(slrProgress.Value);
+                StatusText = TimeSpan.FromSeconds(slrProgress.Value).ToString(@"hh\:mm\:ss");
+            }
         }
     }
 }

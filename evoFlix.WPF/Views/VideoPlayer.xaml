@@ -99,8 +99,13 @@
                     </Button.Background>
                 </Button>
                 <Slider x:Name="slrProgress"
-                    Grid.Column="5"
-                    VerticalAlignment="Center" ToolTip="{Binding ElementName=slrProgress, Path=Value}"/>
+                        Grid.Column="5"
+                        VerticalAlignment="Center" 
+                        ToolTip="{Binding ElementName=slrProgress, Path=Value}"
+                        Thumb.DragCompleted="slrProgress_DragCompleted"
+                        Thumb.DragStarted="slrProgress_DragStarted"
+                        IsMoveToPointEnabled="True" 
+                        ValueChanged="slrProgress_ValueChanged"/>
             </Grid>
         </Grid>
     </Grid>
