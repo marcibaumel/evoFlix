@@ -197,6 +197,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\f13.jpg" />
+    <Resource Include="Images\2067.JPG" />
     <Content Include="Images\kep1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
