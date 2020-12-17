@@ -42,7 +42,7 @@ namespace evoFlix.Services
 
         public string getUserName(int Number)
         {
-            var userName = unitOfWork.Users.FirstOrDefault(x => x.Id == Number).Username;
+            string userName = unitOfWork.Users.FirstOrDefault(x => x.Id == Number).Username;
             if (userName == null)
             {
                 return "Failed";

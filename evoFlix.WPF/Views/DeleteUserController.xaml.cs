@@ -45,6 +45,7 @@ namespace evoFlix.WPF.Views
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility.Hidden;
+            
         }
 
        
