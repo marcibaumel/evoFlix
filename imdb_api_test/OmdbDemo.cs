@@ -15,8 +15,8 @@ namespace imdb_api_test
             string apiKey = "f51c1d39";
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
-            string name = "maniac";
-            string type = "series";
+            string name = "wolfwalkers";
+            string type = "movie";
 
             var sb = new StringBuilder(baseUri);
             sb.Append($"&s={name}");
