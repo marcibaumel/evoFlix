@@ -27,12 +27,13 @@ namespace imdb_api_test
            
 
             var sb = new StringBuilder(baseUri);
-            sb.Append($"&s={name}");
+            sb.Append($"&t={name}");
             sb.Append($"&y={year}");
             sb.Append($"&type={type}");
             sb.Append($"&plot={plot}");
 
             Console.WriteLine(sb);
+            var sb2 = "http://www.omdbapi.com/?apikey=f51c1d39&t=wolfwalkers&y=2020&plot=full";
 
             var request = WebRequest.Create(sb.ToString());
             request.Timeout = 1000;
