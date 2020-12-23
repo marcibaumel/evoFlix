@@ -11,18 +11,19 @@
 
     <Grid>
         <!--Video-->
-        <Grid>
+        <Grid x:Name="grdVideo"
+              MouseMove="grdVideo_MouseMove">
             <MediaElement x:Name="mdaVideo"
                       Source="D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv"
                       LoadedBehavior="Manual" Loaded="mdaVideo_Loaded"/>
         </Grid>
 
         <!--Controls-->
-        <Grid>
+        <Grid x:Name="grdButtons">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <!--Upper Toolbar-->
             <Grid>
@@ -48,64 +49,95 @@
                         <Button.Background>
                             <ImageBrush ImageSource="\Images\Icons\Back.png"/>
                         </Button.Background>
-
                     </Button>
                 </Grid>
             </Grid>
             <!--Lower Toolbar-->
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="8*"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="btnPlay"
-                    Margin="5, 6"
-                        Click="btnPlay_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="\..\..\Images\Icons\Play.png"/>
-                    </Button.Background>
-
-                </Button>
-                <Button x:Name="btnPause"
-                    Margin="5, 6"
-                    Grid.Column="1"
-                            Click="btnPause_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="\Images\Icons\Pause.jpg"/>
-                    </Button.Background>
-                </Button>
-                <Button Margin="5, 6"
-                    Grid.Column="2" Click="Button_Click_1">
-                    <Button.Background>
-                        <ImageBrush ImageSource="Rewind.png"/>
-                    </Button.Background>
-                </Button>
-                <Button Margin="5, 6"
-                    Grid.Column="3" Click="Button_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="Forward.png"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="btnSound"
-                        Margin="5, 6"
-                        Grid.Column="4"
-                        Click="btnSound_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="\Images\Icons\Sound.png"/>
-                    </Button.Background>
-                </Button>
+            <Grid Grid.Row="2"
+                  Background="White"
+                  Opacity="0.5"
+                  Margin="20 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Slider x:Name="slrProgress"
                         Grid.Column="5"
-                        VerticalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Margin="30 0"
                         ToolTip="{Binding ElementName=slrProgress, Path=Value}"
                         Thumb.DragCompleted="slrProgress_DragCompleted"
                         Thumb.DragStarted="slrProgress_DragStarted"
                         IsMoveToPointEnabled="True" 
-                        ValueChanged="slrProgress_ValueChanged"/>
+                        ValueChanged="slrProgress_ValueChanged">
+                </Slider>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1"
+                          Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnPlay"
+                    Margin="5, 6"
+                        Click="btnPlay_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="\..\..\Images\Icons\Play.png"/>
+                            </Button.Background>
+
+                        </Button>
+                        <Button x:Name="btnPause"
+                        Margin="5, 6"
+                        Grid.Column="1"
+                        Click="btnPause_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="\Images\Icons\Pause.jpg"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Margin="5, 6"
+                        Grid.Column="2"
+                        Click="Button_Click_1">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Rewind.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Margin="5, 6"
+                        Grid.Column="3" 
+                        Click="Button_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Forward.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button x:Name="btnSound"
+                        Grid.Column="4"
+                        Click="btnSound_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="\Images\Icons\Sound.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Slider x:Name="slrSoundBar"
+                                Grid.Column="5"
+                                Minimum="0"
+                                Maximum="100"
+                                VerticalAlignment="Center"
+                                ValueChanged="slrSoundBar_ValueChanged"/>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

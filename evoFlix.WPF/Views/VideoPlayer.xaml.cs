@@ -18,7 +18,7 @@ namespace evoFlix.WPF.Views
 {
     /// TO-DO:
     ///     - Proper button image design missing
-    ///     - Button imgage error fix
+    ///     - Fix button imgage error
     ///     - Update slider tootip values (hh:mm:ss)
     /// 
     public partial class VideoPlayer : Page
@@ -28,6 +28,8 @@ namespace evoFlix.WPF.Views
         private int savedTime;
         int startTime;
         bool IsDragged = false;
+        int totalVisibilityTime = 3;
+        int actualVisibilityTime;
         public string StatusText { get; set; }
 
         public VideoPlayer(Page page, Window window)
@@ -43,6 +45,7 @@ namespace evoFlix.WPF.Views
             timer.Start();
 
             slrProgress.Minimum = 0;
+            slrSoundBar.Value = mdaVideo.Volume * 100;
         }
 
         public VideoPlayer(Page page, Window window, int time)
@@ -58,6 +61,14 @@ namespace evoFlix.WPF.Views
                 slrProgress.Value = mdaVideo.Position.TotalSeconds;
                 slrProgress.Maximum = mdaVideo.NaturalDuration.TimeSpan.TotalSeconds;
             }
+            if (grdButtons.IsVisible)
+                if (actualVisibilityTime != 0)
+                    actualVisibilityTime--;
+                else
+                {
+                    grdButtons.Visibility = Visibility.Hidden;
+                    Cursor = Cursors.None;
+                }
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -116,6 +127,18 @@ namespace evoFlix.WPF.Views
                 mdaVideo.Position = TimeSpan.FromSeconds(slrProgress.Value);
                 StatusText = TimeSpan.FromSeconds(slrProgress.Value).ToString(@"hh\:mm\:ss");
             }
+        }
+
+        private void grdVideo_MouseMove(object sender, MouseEventArgs e)
+        {
+            grdButtons.Visibility = Visibility.Visible;
+            Cursor = Cursors.Arrow;
+            actualVisibilityTime = totalVisibilityTime;
+        }
+
+        private void slrSoundBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            mdaVideo.Volume = slrSoundBar.Value / 100;
         }
     }
 }
