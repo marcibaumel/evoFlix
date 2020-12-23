@@ -30,7 +30,6 @@ namespace evoFlix.WPF.Views
             test();
         }
 
-
         public void test()
         {
             Console.WriteLine("asd");
@@ -40,14 +39,12 @@ namespace evoFlix.WPF.Views
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
             CheckUserName();
-
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility.Hidden;
             
         }
-
        
         private void CheckUserName()
         {
