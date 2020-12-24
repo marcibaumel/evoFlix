@@ -17,12 +17,10 @@ using System.Windows.Threading;
 namespace evoFlix.WPF.Views
 {
     /// TO-DO:
-    ///     - Update slider tootip values (hh:mm:ss)
-    ///     - Change design
-    ///     - Add actual position/duration
     ///     - Add styles to the buttons
-    ///     - Solve timer issues
+    ///     - Clean up code
     ///     -------------------------------------------
+    ///     - Load the given video
     ///     - Proper button image design missing
     ///     - Fix button imgage error
     public partial class VideoPlayer : Page
@@ -33,9 +31,9 @@ namespace evoFlix.WPF.Views
         int startTime;
         bool IsDragged = false;
         int totalVisibilityTime = 2;
-        int actualVisibilityTime;
         bool maximized = false;
-        public string StatusText { get; set; }
+        bool videoIsPaused = false;
+        DispatcherTimer visibilityTimer;
 
         public VideoPlayer(Page page, Window window)
         {
@@ -49,7 +47,11 @@ namespace evoFlix.WPF.Views
             timer.Tick += timer_Tick;
             timer.Start();
 
-            slrProgress.Minimum = 0;
+            visibilityTimer = new DispatcherTimer();
+            visibilityTimer.Interval = TimeSpan.FromSeconds(totalVisibilityTime);
+            visibilityTimer.Tick += visibilityTimer_Tick;
+
+
             slrSoundBar.Value = mdaVideo.Volume * 100;
             main.KeyDown += new KeyEventHandler(Page_KeyDown);
         }
@@ -60,31 +62,36 @@ namespace evoFlix.WPF.Views
             startTime = time;
         }
 
+        private void visibilityTimer_Tick(object sender, EventArgs e)
+        {
+            grdButtons.Visibility = Visibility.Hidden;
+            Cursor = Cursors.None;
+            visibilityTimer.Stop();
+        }
+
         private void timer_Tick(object sender, EventArgs e)
         {
             if (mdaVideo.NaturalDuration.HasTimeSpan && !IsDragged)
             {
                 slrProgress.Value = mdaVideo.Position.TotalSeconds;
                 slrProgress.Maximum = mdaVideo.NaturalDuration.TimeSpan.TotalSeconds;
+                string actual = mdaVideo.Position.ToString(@"hh\:mm\:ss");
+                string total = mdaVideo.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
+                lblProgress.Content = $"{actual} / {total}";
             }
-            if (grdButtons.IsVisible)
-                if (actualVisibilityTime != 0)
-                    actualVisibilityTime--;
-                else
-                {
-                    grdButtons.Visibility = Visibility.Hidden;
-                    Cursor = Cursors.None;
-                }
+            
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             mdaVideo.Play();
+            videoIsPaused = false;
         }
 
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
             mdaVideo.Pause();
+            videoIsPaused = true;
         }
 
         private void mdaVideo_Loaded(object sender, RoutedEventArgs e)
@@ -134,17 +141,15 @@ namespace evoFlix.WPF.Views
         private void slrProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsDragged)
-            {
                 mdaVideo.Position = TimeSpan.FromSeconds(slrProgress.Value);
-                StatusText = TimeSpan.FromSeconds(slrProgress.Value).ToString(@"hh\:mm\:ss");
-            }
         }
 
         private void grdVideo_MouseMove(object sender, MouseEventArgs e)
         {
+            visibilityTimer.Stop();
             grdButtons.Visibility = Visibility.Visible;
             Cursor = Cursors.Arrow;
-            actualVisibilityTime = totalVisibilityTime;
+            visibilityTimer.Start();
         }
 
         private void slrSoundBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -162,12 +167,25 @@ namespace evoFlix.WPF.Views
                     main.WindowStyle = WindowStyle.None;
                     main.WindowState = WindowState.Maximized;
                     maximized = false;
+                    mdaVideo.Play();
                 }
                 else
                 {
                     main.WindowStyle = WindowStyle.SingleBorderWindow;
                     main.WindowState = WindowState.Normal;
                     maximized = true;
+                    mdaVideo.Play();
+                }
+            else if (e.ClickCount == 1)
+                if (videoIsPaused)
+                {
+                    mdaVideo.Play();
+                    videoIsPaused = false;
+                }
+                else
+                {
+                    mdaVideo.Pause();
+                    videoIsPaused = true;
                 }
         }
 
@@ -186,6 +204,19 @@ namespace evoFlix.WPF.Views
             {
                 main.WindowState = WindowState.Normal;
                 main.WindowStyle = WindowStyle.SingleBorderWindow;
+            }
+            else if (e.Key == Key.Space)
+            {
+                if (videoIsPaused)
+                {
+                    mdaVideo.Play();
+                    videoIsPaused = false;
+                }
+                else
+                {
+                    mdaVideo.Pause();
+                    videoIsPaused = true;
+                }
             }
         }
     }
