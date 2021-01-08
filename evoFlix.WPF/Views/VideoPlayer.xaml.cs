@@ -30,14 +30,19 @@ namespace evoFlix.WPF.Views
         private int savedTime;
         int startTime;
         bool IsDragged = false;
-        int totalVisibilityTime = 2;
+        int totalVisibilityTime = 3;
         bool maximized = false;
         bool videoIsPaused = false;
         DispatcherTimer visibilityTimer;
+        public string Source { get; set; }
 
         public VideoPlayer(Page page, Window window)
         {
+            
             InitializeComponent();
+
+            maingrid.DataContext = this;
+            Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
 
             backPage = page;
             main = window;
@@ -64,9 +69,10 @@ namespace evoFlix.WPF.Views
 
         private void visibilityTimer_Tick(object sender, EventArgs e)
         {
+            visibilityTimer.Stop();
             grdButtons.Visibility = Visibility.Hidden;
             Cursor = Cursors.None;
-            visibilityTimer.Stop();
+            
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -144,13 +150,13 @@ namespace evoFlix.WPF.Views
                 mdaVideo.Position = TimeSpan.FromSeconds(slrProgress.Value);
         }
 
-        private void grdVideo_MouseMove(object sender, MouseEventArgs e)
-        {
-            visibilityTimer.Stop();
-            grdButtons.Visibility = Visibility.Visible;
-            Cursor = Cursors.Arrow;
-            visibilityTimer.Start();
-        }
+        //private void grdVideo_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    visibilityTimer.Stop();
+        //    grdButtons.Visibility = Visibility.Visible;
+        //    Cursor = Cursors.Arrow;
+        //    visibilityTimer.Start();
+        //}
 
         private void slrSoundBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -218,6 +224,25 @@ namespace evoFlix.WPF.Views
                     videoIsPaused = true;
                 }
             }
+        }
+
+        private void Page_MouseMove(object sender, MouseEventArgs e)
+        {
+            visibilityTimer.Stop();
+            grdButtons.Visibility = Visibility.Visible;
+            Cursor = Cursors.Arrow;
+            visibilityTimer.Start();
+            e.Handled = true;
+        }
+
+        private void grdButtons_MouseEnter(object sender, MouseEventArgs e)
+        {
+            visibilityTimer.Stop();
+        }
+
+        private void grdButtons_MouseLeave(object sender, MouseEventArgs e)
+        {
+            visibilityTimer.Start();
         }
     }
 }

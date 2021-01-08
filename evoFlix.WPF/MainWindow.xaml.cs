@@ -38,5 +38,10 @@ namespace evoFlix.WPF
 
            
         }
+
+        private void main_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

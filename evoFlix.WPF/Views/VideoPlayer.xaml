@@ -10,17 +10,17 @@
       Background="Black"
       KeyDown="Page_KeyDown">
 
-    <Grid>
+    <Grid x:Name="maingrid" >
 <!--Video-->
         <Grid x:Name="grdVideo"
-              MouseMove="grdVideo_MouseMove"
-              MouseDown="grdVideo_MouseDown">
+              MouseDown="grdVideo_MouseDown"
+              MouseMove="Page_MouseMove">
             <MediaElement x:Name="mdaVideo"
-                          Source="D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv"
-                          LoadedBehavior="Manual" Loaded="mdaVideo_Loaded"/>
+                          Source="{Binding Source}"
+                          LoadedBehavior="Manual" Loaded="mdaVideo_Loaded" />
         </Grid>
 <!--Controls-->
-        <Grid x:Name="grdButtons">
+        <Grid x:Name="grdButtons" MouseEnter="grdButtons_MouseEnter" MouseLeave="grdButtons_MouseLeave" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="10*"/>
