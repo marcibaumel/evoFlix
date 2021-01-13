@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace imdb_api_test
 {
@@ -32,7 +33,7 @@ namespace imdb_api_test
             sb.Append($"&type={type}");
             sb.Append($"&plot={plot}");
 
-            Console.WriteLine(sb);
+            //Console.WriteLine(sb);
             var sb2 = "http://www.omdbapi.com/?apikey=f51c1d39&t=wolfwalkers&y=2020&plot=full";
 
             var request = WebRequest.Create(sb.ToString());
@@ -64,13 +65,22 @@ namespace imdb_api_test
                 Console.WriteLine(e);
             }
             
-            Console.WriteLine(result);
+            //Console.WriteLine(result);
+            
+            TestClass testConvert = JsonConvert.DeserializeObject<TestClass>(result);
+            Console.WriteLine(testConvert.Title);
             Console.WriteLine("Press any key...");
             Console.ReadKey();
         }
     }
-    
 
-    
+    public class TestClass
+    {
+        public String Title { get; set; }
+       
+
+    }
+
+
 
 }
