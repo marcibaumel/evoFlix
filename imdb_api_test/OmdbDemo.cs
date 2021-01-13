@@ -68,6 +68,7 @@ namespace imdb_api_test
             //Console.WriteLine(result);
             
             TestClass testConvert = JsonConvert.DeserializeObject<TestClass>(result);
+
             Console.WriteLine(testConvert.Title);
             Console.WriteLine("Press any key...");
             Console.ReadKey();
