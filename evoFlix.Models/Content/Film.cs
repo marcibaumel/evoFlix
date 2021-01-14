@@ -14,6 +14,8 @@ namespace evoFlix.Models.Content
 
         public string Title { set; get; }
 
+        
+
         public string DirectorName  { get; set; }
 
         /*
