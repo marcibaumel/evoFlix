@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evoFlix.WPF.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace evoFlix.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Page log = new LoginPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -31,10 +33,15 @@ namespace evoFlix.WPF
             navigationWdw.Navigate(new LoginPage());
             */
 
-            Page log = new LoginPage();
-            this.Content = log;
+            Page player = new VideoPlayer(log, this, 1230);
+            this.Content = player;
 
            
+        }
+
+        private void main_MouseLeave(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
