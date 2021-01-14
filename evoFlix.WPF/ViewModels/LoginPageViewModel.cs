@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace evoFlix.WPF.Controls
+namespace evoFlix.WPF.ViewModels
 {
-    class Class1
+    class LoginPageViewModel
     {
     }
 }

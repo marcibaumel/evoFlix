@@ -15,64 +15,44 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using evoFlix.Models.Users;
+using evoFlix.WPF.Controls;
 
 namespace evoFlix.WPF
 {
-   
+
     public partial class LoginPage : Page
     {
-        
+
 
         UserService userService = new UserService();
+        UserComponentsService ucs = new UserComponentsService();
+        DeleteUserControl dlt = new DeleteUserControl();
+        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 
         public LoginPage()
         {
-            
             InitializeComponent();
-            //DeleteAUser_Test();
             test_button();
+            dlt.profileControl(User1_Label, User2_Label, User3_Label, User4_Label, User1_Button, User2_Button, User3_Button, User4_Button);
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0,0,5);
+            dispatcherTimer.Start();
         }
-
-        /*
-        public void DeleteAUser_Test()
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            string test = "Béla";
-            userService.DeleteUser(test);
-            test_button();
-
+            dlt.profileControl(User1_Label, User2_Label, User3_Label, User4_Label, User1_Button, User2_Button, User3_Button, User4_Button);
+            Console.WriteLine("tick");
         }
-        */
-
-
-
         public void test_button()
         {
             Console.WriteLine("asd");
         }
 
-        public void creat_a_new_user()
-        {
-            test_button();
-
-        }
-
-      
-        
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            test_button();
-           
-        }
-        
-
+       
         public void ChangeWindow()
         {
            
-        }
-
-        public void ImgLoad()
-        {
-
         }
 
         public void clear_data_context()
@@ -84,14 +64,12 @@ namespace evoFlix.WPF
         {
             clear_data_context();
             DataContext = new CreateUser();
-            
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             clear_data_context();
-            DataContext = new LoginView();
-              
+            DataContext = new LoginView();  
         }
 
         private void Delet_Click(object sender, RoutedEventArgs e)

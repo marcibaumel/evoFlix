@@ -15,26 +15,54 @@ namespace evoFlix.Services
     /*Ebből a servic-ből lesz betöltve a user-adata*/
 
     public class UserComponentsService
-    {
-        
+    {        
         private UnitOfWork unitOfWork;
-       
 
         public UserComponentsService()
         {
             unitOfWork = new UnitOfWork();
         }
 
-
-        public void getUserName(int Number)
+        public List<int> listOfUsers()
         {
+            List<int> ListOfUsers = new List<int>();
+            
+            foreach (var user in unitOfWork.Users)
+            {
+                ListOfUsers.Add(user.Id);
+            }
+
+            //ListOfUsers.Sort((s1, s2) => s1.Id.CompareTo(s2.Id));
+
+            return ListOfUsers;
 
         }
 
-        public void getUserProfilPitcure(int Number)
-        {
+        
 
+        public string getUserName(int Number)
+        {
+            string userName = unitOfWork.Users.FirstOrDefault(x => x.Id == Number).Username;
+            if (userName == null)
+            {
+                return "Failed";
+            }
+           
+            return userName.ToString();
         }
 
+        public string getUserProfilPitcure(int Number)
+        {
+            var userProfilPitcure = unitOfWork.Users.FirstOrDefault(x => x.Id == Number).ProfilePicturePath;
+            if (userProfilPitcure == null)
+            {
+                return "Failed";
+            }
+
+            return userProfilPitcure.ToString();
+        }
+
+
+       
     }
 }
