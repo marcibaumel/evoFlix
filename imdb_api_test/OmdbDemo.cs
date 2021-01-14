@@ -24,18 +24,17 @@ namespace imdb_api_test
             string year = "2020";
             string name = "wolfwalkers";
             string type = "movie";
-            string plot = "full";
+           
            
 
             var sb = new StringBuilder(baseUri);
+
             sb.Append($"&t={name}");
             sb.Append($"&y={year}");
             sb.Append($"&type={type}");
-            sb.Append($"&plot={plot}");
+            
 
-            //Console.WriteLine(sb);
-            var sb2 = "http://www.omdbapi.com/?apikey=f51c1d39&t=wolfwalkers&y=2020&plot=full";
-
+            
             var request = WebRequest.Create(sb.ToString());
             request.Timeout = 1000;
             request.Method = "GET";
@@ -67,20 +66,15 @@ namespace imdb_api_test
             
             //Console.WriteLine(result);
             
-            TestClass testConvert = JsonConvert.DeserializeObject<TestClass>(result);
+            FilmClass testConvert = JsonConvert.DeserializeObject<FilmClass>(result);
 
-            Console.WriteLine(testConvert.Title);
+            Console.WriteLine(testConvert.ToString());
             Console.WriteLine("Press any key...");
             Console.ReadKey();
         }
     }
 
-    public class TestClass
-    {
-        public String Title { get; set; }
-       
-
-    }
+  
 
 
 
