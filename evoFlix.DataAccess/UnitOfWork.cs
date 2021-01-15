@@ -31,6 +31,8 @@ namespace evoFlix.DataAccess
 
         public DbSet <WatchList> WatchLists { get; set; }
 
+        public DbSet <Watching> Watching { get; set; }
+
         public UnitOfWork() : base("EvoFlixDBConnectionString") { }
 
        
