@@ -37,6 +37,7 @@ namespace evoFlix.WPF
             this.Content = player;
 
            
+
         }
 
         private void main_MouseLeave(object sender, MouseEventArgs e)
