@@ -42,7 +42,7 @@ namespace evoFlix.WPF.Views
             InitializeComponent();
 
             maingrid.DataContext = this;
-            Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
+            Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4";
 
             backPage = page;
             main = window;
