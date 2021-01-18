@@ -10,11 +10,13 @@
              Background="#FFC3C3C3"
              >
     <ScrollViewer>
-        <StackPanel Height="1056" Width="1280">
+        <StackPanel Height="1300" Width="1280">
             <Grid>
                 <Grid.RowDefinitions>
                         <RowDefinition Height="70" />
-                        <RowDefinition Height="250" />
+                        <RowDefinition Height="300" />
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="300" />
                         <RowDefinition Height="70" />
                         <RowDefinition Height="300" />
 
@@ -22,7 +24,7 @@
 
 
 
-                    </Grid.RowDefinitions>
+                </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background="#799540">
                 <Label 
                     Margin="40 0"
@@ -322,7 +324,17 @@
                 </Grid>
             </Grid>
                     <!-- Continue -->
-                    <Grid Grid.Row="4" Height="220" Margin="30 0 30 0">
+
+            <Grid Grid.Row="4" Background="#799540">
+                    <Label 
+                    Margin="40 0"
+                    FontSize="40"
+                    Foreground="White">
+                        <Bold >Teszt</Bold>
+                    </Label>
+                </Grid>
+                
+            <Grid Grid.Row="5" Height="220" Margin="30 0 30 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -460,7 +472,9 @@
                             </Border>
                         </Grid>
                     </Grid>
-                </Grid>
+            
+            
+            </Grid>
 
         </StackPanel>
     </ScrollViewer>
