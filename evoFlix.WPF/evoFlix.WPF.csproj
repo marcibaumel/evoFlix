@@ -58,11 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\UpdateCurrentViewModelCommands.cs" />
     <Compile Include="Controls\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="Controls\DeleteUserControl.cs" />
+
     <Compile Include="DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
@@ -77,10 +81,14 @@
     <Compile Include="State\Navigators\Navigator.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
+
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\MyListViewModel.cs" />
+
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
+
     <Compile Include="ViewModels\TestUnitOfWorkViewModelcs.cs" />
     <Compile Include="ViewModels\TVSeriesViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -97,10 +105,16 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+
     <Page Include="Controls\NavigationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
+    <Compile Include="Views\VideoPlayer.xaml.cs">
+      <DependentUpon>VideoPlayer.xaml</DependentUpon>
+    </Compile>
+
     <Page Include="DashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +163,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\VideoPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -194,8 +212,12 @@
     <PackageReference Include="EntityFramework">
       <Version>6.4.4</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
+
     <Resource Include="Images\x.png" />
     <Resource Include="Images\f13.jpg" />
     <Resource Include="Images\2067.JPG" />
@@ -203,6 +225,20 @@
     <Resource Include="Images\FilmPlay.png" />
     <Resource Include="Images\FilmPlus.png" />
     <Resource Include="Images\FilmPipa.png" />
+
+    <Content Include="Images\Icons\Mute.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Rewind.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Forward.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Unmute.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+
     <Content Include="Images\kep1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -215,6 +251,18 @@
     <Content Include="Images\kep4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Icons\Pause.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Play.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\Back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Views\Forward.png" />
+    <Resource Include="Views\Rewind.png" />
+    <Resource Include="Images\whoos.png" />
     <Resource Include="Images\whos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

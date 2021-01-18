@@ -19,16 +19,6 @@ using System.Windows.Shapes;
 
 namespace evoFlix.WPF.Views
 {
-    //TO-DO:
-    //- CREATE GENERAL ERROR FUNCTIONS (TO CLEAR UP CODE DUPPLICATES)
-    //- REVIEW CODE
-
-    //ISSUES:
-    //- CENTER TEXT IN LABEL
-    //- SELECTED PICTURE BORDER SIZE
-    //- PASSWORDBOX TEXT CHANGED EVENT EQUIVALENT
-
-    
     public partial class CreateUser : UserControl
     {
         #region Properties
@@ -40,26 +30,23 @@ namespace evoFlix.WPF.Views
         List<int> year, day;
         UserService userService = new UserService();
         Dictionary<string, bool> missing = new Dictionary<string, bool>() 
-                { {"username", true}, {"confirm", true}, {"password", true}, {"picture", true} };
+                { {"username", true}, {"confirm", true}, {"password", true}, {"picture", true}, {"year", true}, {"month", true}, {"day", true } };
         #endregion
 
         public CreateUser()
         {
-
-
             InitializeComponent();
             userService.CountUser();
             UserCounter();
             cmbMonth.ItemsSource = month;
             day = new List<int>();
-            cmbDay.ItemsSource = new string[] { "Select month first!" };
+            cmbDay.ItemsSource = new string[] { "Select month\nfirst!" };
             year = new List<int>();
             for (int i = 0; i < 100; i++)
                 year.Add(DateTime.Now.Year - i);
             cmbYear.ItemsSource = year;
             
-             pictures = basePictures.ToList<string>();
-
+            pictures = basePictures.ToList<string>();
             for (int i = 0; i < pictures.Count; i++)
             {
                 grdPictures.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(50) });
@@ -98,47 +85,33 @@ namespace evoFlix.WPF.Views
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            btnDone.IsEnabled = true;
-            bool condition = true;
+            bool canBeSaved = true;
             foreach (KeyValuePair<string, bool> item in missing)
-                condition &= !item.Value;
-            if (condition)
+                canBeSaved &= !item.Value;
+            if (canBeSaved)
             {
-                try
-                {
-                    
-                    int year = Convert.ToInt32(cmbYear.SelectedItem);
-                    int month = userService.MonthValue(cmbMonth.SelectedItem.ToString());
-                    int day = Convert.ToInt32(cmbDay.SelectedItem);
-                    DateTime birthDate = new DateTime(year, month, day);
-                    string username = txbUsername.Text;
-                    string password = txbPassword.Password;
-                    string profilePicturePath = System.IO.Path.GetFullPath(selectedImagePath);
-                    userService.CreateUser(new UserDB { Username = username, Password = password, BirthDate = birthDate, ProfilePicturePath = profilePicturePath});
-                    Console.WriteLine("asd");
-                    Visibility = Visibility.Hidden;
-                }
-                catch (Exception)
-                {
-                    Label label = lblError.Child as Label;
-                    label.Content = "Some field have missing values.";
-                    lblError.Visibility = Visibility.Visible;
-                    btnDone.IsEnabled = false;
-                }
+                int year = Convert.ToInt32(cmbYear.SelectedItem);
+                int month = userService.MonthValue(cmbMonth.SelectedItem.ToString());
+                int day = Convert.ToInt32(cmbDay.SelectedItem);
+                DateTime birthDate = new DateTime((int)year, (int)month, (int)day);
+                string username = txbUsername.Text;
+                string password = txbPassword.Password;
+                string profilePicturePath = System.IO.Path.GetFullPath(selectedImagePath);
+                userService.CreateUser(new UserDB { Username = username, Password = password, BirthDate = birthDate, ProfilePicturePath = profilePicturePath});
+                Console.WriteLine("asd");
+                Visibility = Visibility.Hidden;
             }
             else
             {
-                Label label = lblError.Child as Label;
-                label.Content = "Some field have missing values.";
-                lblError.Visibility = Visibility.Visible;
-                btnDone.IsEnabled = false;
+                if (lblError.Visibility != Visibility.Visible)
+                    ShowError("Some field have missing or invalid values.");
             }
         }
 
         private void CmbMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            missing["month"] = false;
             lblError.Visibility = Visibility.Hidden;
-            btnDone.IsEnabled = true;
 
             string[] day30 = { "April", "June", "September", "November" };
             int year = Convert.ToInt32(cmbYear.SelectedItem);
@@ -176,69 +149,51 @@ namespace evoFlix.WPF.Views
 
         private void TxbUsername_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!userService.IsUniqueUsername(txbUsername.Text))
+            if (!userService.IsUniqueUsername(txbUsername.Text) || txbUsername.Text == "")
             {
-                Label label = lblError.Child as Label;
-                label.Content = "This username has already been taken.\nChoose another one!";
-                lblError.Visibility = Visibility.Visible;
-                btnDone.IsEnabled = false;
+                ShowError("This username has already been taken.\nChoose another one!");
+                missing["username"] = true;
             }   
             else
             {
                 lblError.Visibility = Visibility.Hidden;
-                btnDone.IsEnabled = true;
-            }
-            if (txbUsername.Text == "")
-                missing["username"] = true;
-            else
                 missing["username"] = false;
+            }  
         }
 
         private void TxbPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!userService.IsStrongPassword(txbPassword.Password))
+            if (!userService.IsStrongPassword(txbPassword.Password) || txbUsername.Text == "")
             {
-                Label label = lblError.Child as Label;
-                label.Content = "The given password is too weak! It must contain the following:\n\t- at least 6 characters\n\t- at least an uppercase character and a number!";
-                lblError.Visibility = Visibility.Visible;
-                btnDone.IsEnabled = false;
+                ShowError("The given password is too weak! It must contain the following:\n\t- at least 6 characters\n\t- at least an uppercase character and a number!");
+                missing["password"] = true;
             }
             else
             {
                 lblError.Visibility = Visibility.Hidden;
-                btnDone.IsEnabled = true;
-            }
-            if (txbUsername.Text == "")
-                missing["password"] = true;
-            else
                 missing["password"] = false;
+            }
         }
 
         private void TxbConfirm_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txbPassword.Password != txbConfirm.Password)
+            if (txbPassword.Password != txbConfirm.Password || txbUsername.Text == "")
             {
-                Label label = lblError.Child as Label;
-                label.Content = "The passwords do not match. \nTry again!";
-                lblError.Visibility = Visibility.Visible;
-                btnDone.IsEnabled = false;
+                ShowError("The passwords do not match. \nTry again!");
                 txbConfirm.Password = "";
+                missing["confirm"] = true;
             }
             else
             {
-                lblError.Visibility = Visibility.Hidden;
-                btnDone.IsEnabled = true;
-            }
-            if (txbUsername.Text == "")
-                missing["confirm"] = true;
-            else
+                lblError.Visibility = Visibility.Hidden; 
                 missing["confirm"] = false;
+            }
         }
 
         private void CmbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            missing["year"] = false;
             lblError.Visibility = Visibility.Hidden;
-            btnDone.IsEnabled = true;
         }
 
         public void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -248,8 +203,8 @@ namespace evoFlix.WPF.Views
 
         private void CmbDay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            missing["day"] = false;
             lblError.Visibility = Visibility.Hidden;
-            btnDone.IsEnabled = true;
         }
 
         private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
@@ -291,6 +246,13 @@ namespace evoFlix.WPF.Views
 
                 missing["picture"] = false;
             }
+        }
+    
+        private void ShowError(string message)
+        {
+            Label label = lblError.Child as Label;
+            label.Content = message;
+            lblError.Visibility = Visibility.Visible;
         }
     }
 }

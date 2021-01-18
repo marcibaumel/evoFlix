@@ -36,7 +36,7 @@ namespace evoFlix.WPF.Views
                 count = value;
                 if(count >= 3) 
                 {
-                    blocked = DateTime.Now.AddSeconds(10);
+                    blocked = DateTime.Now.AddSeconds(15);
                 }
                 if(count == 0)
                 {

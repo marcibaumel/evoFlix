@@ -256,6 +256,18 @@
                 <Bold>Done</Bold>
             </Button>
         </Grid>
-        <Button x:Name="ExitButton" Content="X" Grid.Column="2" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="41" Height="28" Click="ExitButton_Click"/>
+        <Button x:Name="ExitButton"
+                Background="White"
+                Foreground="#799540"
+                FontSize="15"
+                FontWeight="Bold"
+                Content="X" 
+                Grid.Column="2" 
+                HorizontalAlignment="Left" 
+                Margin="20,10,0,0" 
+                VerticalAlignment="Top"
+                Width="41" 
+                Height="28" 
+                Click="ExitButton_Click"/>
     </Grid>
 </UserControl>

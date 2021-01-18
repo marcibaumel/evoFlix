@@ -9,28 +9,23 @@ namespace evoFlix.Models.Content
 {
     public class Film:BaseModel
     {
-        
-        public int FilmId { set; get; }
 
-        public string Title { set; get; }
+        public String Title { get; set; }
+        public String Year { get; set; }
 
-        public string DirectorName  { get; set; }
+        public String Plot { get; set; }
 
-        /*
-        //TOP 3
-        public string ActorNames { get; set; }
-        */
+        public String Director { get; set; }
 
-        public int AgeLimit { set; get; }
+        public String imdbRating { get; set; }
+        public String Runtime { get; set; }
 
-        public string Category { set; get; }
+        public String Rated { get; set; }
 
-        public int Length { get; set; }
+        public String Actors { get; set; }
 
-        public int ReleaseYear { get; set; }
+        public String Poster { get; set; }
 
-        //public int test { get; set; }
 
-        
     }
 }

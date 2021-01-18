@@ -1,0 +1,161 @@
+﻿<Page x:Class="evoFlix.WPF.Views.VideoPlayer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" 
+      d:DesignWidth="800"
+      Title="VideoPlayer"
+      Background="Black"
+      KeyDown="Page_KeyDown">
+
+    <Grid x:Name="maingrid" >
+<!--Video-->
+        <Grid x:Name="grdVideo"
+              MouseDown="grdVideo_MouseDown"
+              MouseMove="Page_MouseMove">
+            <MediaElement x:Name="mdaVideo"
+                          Source="{Binding Source}"
+                          LoadedBehavior="Manual" Loaded="mdaVideo_Loaded" />
+        </Grid>
+<!--Controls-->
+        <Grid x:Name="grdButtons" MouseEnter="grdButtons_MouseEnter" MouseLeave="grdButtons_MouseLeave" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+<!--Upper Toolbar-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+<!--Back Button-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btnBack"
+                        Grid.Column="1"
+                        Grid.Row="1" Click="btnBack_Click" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="\Images\Icons\Back.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Grid>
+<!--Lower Toolbar-->
+            <Grid Grid.Row="2"
+                  Background="White"
+                  Margin="20 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+<!--Slider-->
+                <Slider x:Name="slrProgress"
+                        Grid.Column="5"
+                        VerticalAlignment="Center"
+                        Margin="30 0"
+                        Minimum="0"
+                        Thumb.DragCompleted="slrProgress_DragCompleted"
+                        Thumb.DragStarted="slrProgress_DragStarted"
+                        IsMoveToPointEnabled="True" 
+                        ValueChanged="slrProgress_ValueChanged">
+                </Slider>
+<!--Buttons-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1"
+                          Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnPlay"
+                                Margin="7"
+                                Click="btnPlay_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="\Images\Icons\Play.png"/>
+                            </Button.Background>
+
+                        </Button>
+                        <Button x:Name="btnPause"
+                                Margin="7"
+                                Grid.Column="1"
+                                Click="btnPause_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="\Images\Icons\Pause.jpg"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="2"
+                                Margin="7"
+                                Click="Button_Click_1">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Rewind.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="3" 
+                                Margin="7"
+                                Click="Button_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Forward.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button x:Name="btnSound"
+                                Margin="7"
+                                Grid.Column="4"
+                                Click="btnSound_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="\Images\Icons\Unmute.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Slider x:Name="slrSoundBar"
+                                Grid.Column="5"
+                                Minimum="0"
+                                Maximum="100"
+                                VerticalAlignment="Center"
+                                ValueChanged="slrSoundBar_ValueChanged"/>
+                    </Grid>
+
+                </Grid>
+<!--Progression label-->
+                <Grid Grid.Row="2"
+                      Background="Black">
+                    <Label x:Name="lblProgress"
+                           Grid.Row="2"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Foreground="White"
+                           FontSize="11">
+                        00:00:00/01:13:12
+                    </Label>
+                </Grid>
+                
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
