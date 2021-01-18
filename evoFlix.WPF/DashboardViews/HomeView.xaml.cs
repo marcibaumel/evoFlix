@@ -27,7 +27,7 @@ namespace evoFlix.WPF.DashboardViews
 
         private void Film_Click(object sender, RoutedEventArgs e)
         {
-            //test_button();
+            
 
         }
     }

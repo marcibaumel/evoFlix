@@ -34,7 +34,7 @@
             <!--<RadioButton Grid.Column="1" Content="Home" Command="{Binding homeViewCommand}" DataContext="{Binding RelativeSource={RelativeSource AncestorType=local:NavigationBar, Mode=FindAncestor} }"/>-->
             <RadioButton Grid.Column="1" Content="Home" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"/>
             <RadioButton Grid.Column="2" Content="Movies" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Movies}"/>
-            <RadioButton Grid.Column="3" Content="TV-Series" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.TV_Shows}"/>
+            
             <RadioButton Grid.Column="4" Content="My List" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.My_List}"/>
             <RadioButton Grid.Column="5" Content="Account" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Account}"/>
 

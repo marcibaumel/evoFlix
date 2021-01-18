@@ -13,13 +13,14 @@
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
                 <ResourceDictionary Source="/Styles/NavigationBar.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <!--Kiválasztott viewmodel -->
+        <!--
+            
             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
-                <!--Keresett view-->
+                
                 <views:HomeView/>
             </DataTemplate>
             
+        -->
             
         </ResourceDictionary>
     </Application.Resources>

@@ -60,7 +60,6 @@
     </ApplicationDefinition>
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\UpdateCurrentViewModelCommands.cs" />
-    <Compile Include="Controls\Class1.cs" />
     <Compile Include="Controls\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
     </Compile>
@@ -69,9 +68,6 @@
     </Compile>
     <Compile Include="DashboardViews\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DashboardViews\MoviesView.xaml.cs">
-      <DependentUpon>MoviesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -95,7 +91,7 @@
     <Compile Include="Views\DeleteUserController.xaml.cs">
       <DependentUpon>DeleteUserController.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FilmView.xaml.cs">
+    <Compile Include="DashboardViews\FilmView.xaml.cs">
       <DependentUpon>FilmView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
@@ -110,10 +106,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DashboardViews\HomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DashboardViews\MoviesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,7 +141,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FilmView.xaml">
+    <Page Include="DashboardViews\FilmView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
