@@ -1,6 +1,7 @@
 
 
 using evoFlix.WPF.ViewModels;
+using evoFlix.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,21 +37,23 @@ namespace evoFlix.WPF
             navigationWdw.Navigate(new LoginPage());
             */
 
-            this.Content = log;
+            
+            //this.Content = log;
 
             
-            /*
+            
 
             Page DashBoard = new DashboardPage();
             this.Content = DashBoard;
             DashBoard.DataContext = new DashboardViewModel();
 
-
             
+            
+            /*
             Page player = new VideoPlayer(log, this, 1230);
             this.Content = player;
-            
             */
+            
 
 
            

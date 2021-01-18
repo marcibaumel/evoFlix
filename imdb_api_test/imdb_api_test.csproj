@@ -60,7 +60,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Content\wolfwalkers_2020.mp4" />
+    <Content Include="Content\wolfwalkers_2020.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
