@@ -37,6 +37,7 @@ namespace evoFlix.WPF
             */
 
             this.Content = log;
+
             
             /*
 
