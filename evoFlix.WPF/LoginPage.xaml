@@ -92,10 +92,11 @@
 
 
         <Grid>
-            <!--<local1:LoginView ></local1:LoginView>-->
-            <!--<local1:CreateUserView ></local1:CreateUserView>-->
             <ContentControl Content="{Binding}"/>
         </Grid>
+        
+
+           
         <Grid Height="108" Width="1150" VerticalAlignment="Bottom" Margin="0,0,0,100">
             <Button 
                 x:Name="Create"
