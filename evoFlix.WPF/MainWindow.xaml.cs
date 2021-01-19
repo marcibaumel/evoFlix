@@ -1,6 +1,7 @@
 
 
 using evoFlix.WPF.ViewModels;
+using evoFlix.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,10 @@ namespace evoFlix.WPF
             */
 
 
+
             this.Content = log;
             
+
 
             /*
             Page DashBoard = new DashboardPage();
@@ -48,13 +51,17 @@ namespace evoFlix.WPF
 
 
 
+
+
             /*
             Page player = new VideoPlayer(log, this, 1230);
             this.Content = player;
             */
+            
 
 
            
+
         }
 
         private void main_MouseLeave(object sender, MouseEventArgs e)

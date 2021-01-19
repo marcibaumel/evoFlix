@@ -16,7 +16,7 @@
             VerticalAlignment="Top"
             BorderBrush="Black"
             BorderThickness="3">
-            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="../Images/2067.jpg"/>
+            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="https://m.media-amazon.com/images/M/MV5BNTA4MWQ4NGUtOGQ0MS00M2QyLWE5MDItZWM2YzA0ZDgxZTA2XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg"/>
         </Border>
 
         <Button

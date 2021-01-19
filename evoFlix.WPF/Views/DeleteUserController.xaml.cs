@@ -23,6 +23,7 @@ namespace evoFlix.WPF.Views
     {
         UserService userService = new UserService();
         UserComponentsService ucs = new UserComponentsService();
+        
 
         public DeleteUserController()
         {
@@ -33,6 +34,7 @@ namespace evoFlix.WPF.Views
         public void test()
         {
             Console.WriteLine("asd");
+            
             
         }
 
