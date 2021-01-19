@@ -10,21 +10,21 @@ namespace imdb_api_test
     {
         
 
-        public String Title { get; set; }
-        public String Year { get; set; }
+        public String Title { get; set; } 
+        public String Year { get; set; } 
 
-        public String Plot { get; set; }
+        public String Plot { get; set; } 
 
-        public String Director { get; set; }
+        public String Director { get; set; } 
 
-        public String imdbRating { get; set; }
+        public String imdbRating { get; set; } 
         public String Runtime { get; set; }
 
-        public String Rated { get; set; }
+        public String Rated { get; set; } 
 
-        public String Actors { get; set; }
+        public String Actors { get; set; } 
 
-        public String Poster { get; set; }
+        public String Poster { get; set; } 
 
         public override string ToString()
         {
