@@ -1,69 +1,63 @@
-﻿<UserControl x:Class="evoFlix.WPF.DashboardViews.HomeView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:evoFlix.WPF.DashboardViews"
-             mc:Ignorable="d" 
-             d:DesignHeight="720" 
-             d:DesignWidth="1280"
-             Background="#FFC3C3C3"
-             >
+﻿<UserControl x:Class="evoFlix.WPF.DashboardViews.MyList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:evoFlix.WPF.DashboardViews"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Background="#FFC3C3C3"
+      >
+
     <ScrollViewer>
         <StackPanel Height="1300" Width="1280">
             <Grid>
                 <Grid.RowDefinitions>
-                        <RowDefinition Height="0" />
-                        <RowDefinition Height="300" />
-                        <RowDefinition Height="0" />
-                        <RowDefinition Height="300" />
-                        <RowDefinition Height="0" />
-                        <RowDefinition Height="300" />
+                    <RowDefinition Height="0" />
+                    <RowDefinition Height="300" />
+                    <RowDefinition Height="0" />
+                    <RowDefinition Height="300" />
+                    <RowDefinition Height="0" />
+                    <RowDefinition Height="300" />
 
 
 
 
 
                 </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#799540">
-                <Label 
+                <Grid Grid.Row="0" Background="#799540">
+                    <Label 
                     Margin="40 0"
                     FontSize="40"
                     Foreground="White">
-                    <Bold>My list</Bold>
-                </Label>
-            </Grid>
-            
-            <!-- My List sor-->
-            <Grid Grid.Row="1" Height="220" Margin="30 0 30 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                
-                 <!--
-                Név Konverzió
-                fk0-Az első cellában lévő film képe
-                fn0_Az első cellában lévő film neve
-                -->
+                        <Bold>My list</Bold>
+                    </Label>
+                </Grid>
 
-                <Grid Grid.Column="0">
-                    <Image x:Name="fk0" Margin="10 0 10 30" Source="https://m.media-amazon.com/images/M/MV5BNTA4MWQ4NGUtOGQ0MS00M2QyLWE5MDItZWM2YzA0ZDgxZTA2XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg" />
-                    <Button 
+                <!-- My List sor-->
+                <Grid Grid.Row="1" Height="220" Margin="30 0 30 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid>
+                        <Image x:Name="film1" Margin="10 0 10 30" Source="https://m.media-amazon.com/images/M/MV5BNTA4MWQ4NGUtOGQ0MS00M2QyLWE5MDItZWM2YzA0ZDgxZTA2XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg" />
+                        <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border 
+                        <Border Name="film1_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                        <Label x:Name="fn0"
+                            <Label x:Name="NameLabel1"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -72,282 +66,268 @@
                                FontWeight="Bold"
                                Foreground="Black"
                                Content="Wolfwalkers"/>
-                    </Border>
-                </Grid>
-                
-                <Grid Grid.Column="1">
-                    <Image x:Name="fk1" Margin="10 0 10 30" />
-                    <Button 
+                        </Border>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Image x:Name="film2" Margin="10 0 10 30" />
+                        <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border 
+                        <Border Name="film2_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn1"
-                        VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
-                </Grid>
-                
-                
-                <Grid Grid.Column="2">
-                    <Image x:Name="fk2" Margin="10 0 10 30"  />
-                    <Button 
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Image x:Name="film3" Margin="10 0 10 30"  />
+                        <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border 
+                        <Border Name="film3_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                    <Label x:Name="fn2"
-                            VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
-                </Grid>
-               
-                
-                <Grid Grid.Column="3">
-                    <Image x:Name="fk3" Margin="10 0 10 30"  />
-                    <Button
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <Image x:Name="film4" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border 
+                        <Border Name="film4_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn3"
-                            VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
-                </Grid>
-                
-                
-                
-                <Grid Grid.Column="4">
-                    <Image x:Name="fk4" Margin="10 0 10 30"  />
-                    <Button
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <Image x:Name="film5" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border 
+                        <Border Name="film5_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn4"
-                            VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
-                </Grid>
-                
-                
-                <Grid Grid.Column="5">
-                    <Image x:Name="fk5" Margin="10 0 10 30"  />
-                    <Button
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="5">
+                        <Image x:Name="film6" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border 
+                        <Border Name="film6_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn5"
-                            VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
+                        </Border>
+                    </Grid>
                 </Grid>
-            </Grid>
-            
-            
-            <Grid Grid.Row="2" Background="#799540">
-                <Label 
+
+
+                <Grid Grid.Row="2" Background="#799540">
+                    <Label 
                     Margin="40 0"
                     FontSize="40"
                     Foreground="White">
-                    <Bold >Continue</Bold>
-                </Label>
-            </Grid>
-            
-            <!-- Teszt -->
-            <Grid Grid.Row="3" Height="220" Margin="30 0 30 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Grid>
-                    <Image x:Name="filmc11" Margin="10 0 10 30"  />
-                    <Button
-                        Click="Film_Click"
-                        Margin="35 0 35 0"
-                        BorderThickness="2"
-                        BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border Name="filmc11_text"
-                            VerticalAlignment="Bottom" 
-                            HorizontalAlignment="Center" 
-                            Width="130"
-                            Height="30">
-                        <Label VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               HorizontalContentAlignment="Center"
-                               AllowDrop="True"
-                               FontSize="14" 
-                               FontWeight="Bold"
-                               Foreground="Black"/>
-                    </Border>
+                        <Bold >Continue</Bold>
+                    </Label>
                 </Grid>
 
-                <Grid Grid.Column="1">
-                    <Image x:Name="filmc22" Margin="10 0 10 30"  />
-                    <Button
+                <!-- Teszt -->
+                <Grid Grid.Row="3" Height="220" Margin="30 0 30 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid>
+                        <Image x:Name="filmc11" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border Name="filmc22_text"
+                        <Border Name="filmc11_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                        <Label VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Image x:Name="filmc33" Margin="10 0 10 30"  />
-                    <Button
+                        </Border>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Image x:Name="filmc22" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border Name="filmc33_text"
+                        <Border Name="filmc22_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                        <Label VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="3">
-                    <Image x:Name="filmc44" Margin="10 0 10 30"  />
-                    <Button
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Image x:Name="filmc33" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border Name="filmc44_text"
+                        <Border Name="filmc33_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                        <Label VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="4">
-                    <Image x:Name="filmc55" Margin="10 0 10 30"  />
-                    <Button
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <Image x:Name="filmc44" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border Name="filmc55_text"
+                        <Border Name="filmc44_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                        <Label VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="5">
-                    <Image x:Name="filmc66" Margin="10 0 10 30"  />
-                    <Button
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <Image x:Name="filmc55" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                    <Border Name="filmc66_text"
+                        <Border Name="filmc55_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                        <Label VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                    </Border>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="5">
+                        <Image x:Name="filmc66" Margin="10 0 10 30"  />
+                        <Button
+                        Click="Film_Click"
+                        Margin="35 0 35 0"
+                        BorderThickness="2"
+                        BorderBrush="#799540" Background="{x:Null}"/>
+                        <Border Name="filmc66_text"
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Center" 
+                            Width="130"
+                            Height="30">
+                            <Label VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               AllowDrop="True"
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="Black"/>
+                        </Border>
+                    </Grid>
                 </Grid>
-            </Grid>
-            
                 <!-- Continue -->
-            <Grid Grid.Row="4" Background="#799540">
+
+                <Grid Grid.Row="4" Background="#799540">
                     <Label 
                     Margin="40 0"
                     FontSize="40"
@@ -355,149 +335,149 @@
                         <Bold >Teszt</Bold>
                     </Label>
                 </Grid>
-                
-            <Grid Grid.Row="5" Height="220" Margin="30 0 30 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
 
-                        <Grid>
-                            <Image x:Name="filmc1" Margin="10 0 10 30"  />
-                            <Button
-                        Click="Film_Click"
-                        Margin="35 0 35 0"
-                        BorderThickness="2"
-                        BorderBrush="#799540" Background="{x:Null}"/>
-                            <Border Name="filmc1_text"
-                            VerticalAlignment="Bottom" 
-                            HorizontalAlignment="Center" 
-                            Width="130"
-                            Height="30">
-                                <Label VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               HorizontalContentAlignment="Center"
-                               AllowDrop="True"
-                               FontSize="14" 
-                               FontWeight="Bold"
-                               Foreground="Black"/>
-                            </Border>
-                        </Grid>
+                <Grid Grid.Row="5" Height="220" Margin="30 0 30 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="1">
-                            <Image x:Name="filmc2" Margin="10 0 10 30"  />
-                            <Button
+                    <Grid>
+                        <Image x:Name="filmc1" Margin="10 0 10 30"  />
+                        <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                            <Border Name="filmc2_text"
+                        <Border Name="filmc1_text"
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                                <Label VerticalAlignment="Center"
+                            <Label VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
                                AllowDrop="True"
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                            </Border>
-                        </Grid>
-                        <Grid Grid.Column="2">
-                            <Image x:Name="filmc3" Margin="10 0 10 30"  />
-                            <Button
-                        Click="Film_Click"
-                        Margin="35 0 35 0"
-                        BorderThickness="2"
-                        BorderBrush="#799540" Background="{x:Null}"/>
-                            <Border Name="filmc3_text"
-                            VerticalAlignment="Bottom" 
-                            HorizontalAlignment="Center" 
-                            Width="130"
-                            Height="30">
-                                <Label VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               HorizontalContentAlignment="Center"
-                               AllowDrop="True"
-                               FontSize="14" 
-                               FontWeight="Bold"
-                               Foreground="Black"/>
-                            </Border>
-                        </Grid>
-                        <Grid Grid.Column="3">
-                            <Image x:Name="filmc4" Margin="10 0 10 30"  />
-                            <Button
-                        Click="Film_Click"
-                        Margin="35 0 35 0"
-                        BorderThickness="2"
-                        BorderBrush="#799540" Background="{x:Null}"/>
-                            <Border Name="filmc4_text"
-                            VerticalAlignment="Bottom" 
-                            HorizontalAlignment="Center" 
-                            Width="130"
-                            Height="30">
-                                <Label VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               HorizontalContentAlignment="Center"
-                               AllowDrop="True"
-                               FontSize="14" 
-                               FontWeight="Bold"
-                               Foreground="Black"/>
-                            </Border>
-                        </Grid>
-                        <Grid Grid.Column="4">
-                            <Image x:Name="filmc5" Margin="10 0 10 30"  />
-                            <Button
-                        Click="Film_Click"
-                        Margin="35 0 35 0"
-                        BorderThickness="2"
-                        BorderBrush="#799540" Background="{x:Null}"/>
-                            <Border Name="filmc5_text"
-                            VerticalAlignment="Bottom" 
-                            HorizontalAlignment="Center" 
-                            Width="130"
-                            Height="30">
-                                <Label VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               HorizontalContentAlignment="Center"
-                               AllowDrop="True"
-                               FontSize="14" 
-                               FontWeight="Bold"
-                               Foreground="Black"/>
-                            </Border>
-                        </Grid>
-                        <Grid Grid.Column="5">
-                            <Image x:Name="filmc6" Margin="10 0 10 30"  />
-                            <Button
-                        Click="Film_Click"
-                        Margin="35 0 35 0"
-                        BorderThickness="2"
-                        BorderBrush="#799540" Background="{x:Null}"/>
-                            <Border Name="filmc6_text"
-                            VerticalAlignment="Bottom" 
-                            HorizontalAlignment="Center" 
-                            Width="130"
-                            Height="30">
-                                <Label VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               HorizontalContentAlignment="Center"
-                               AllowDrop="True"
-                               FontSize="14" 
-                               FontWeight="Bold"
-                               Foreground="Black"/>
-                            </Border>
-                        </Grid>
+                        </Border>
                     </Grid>
-            
-            
+
+                    <Grid Grid.Column="1">
+                        <Image x:Name="filmc2" Margin="10 0 10 30"  />
+                        <Button
+                        Click="Film_Click"
+                        Margin="35 0 35 0"
+                        BorderThickness="2"
+                        BorderBrush="#799540" Background="{x:Null}"/>
+                        <Border Name="filmc2_text"
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Center" 
+                            Width="130"
+                            Height="30">
+                            <Label VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               AllowDrop="True"
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="Black"/>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Image x:Name="filmc3" Margin="10 0 10 30"  />
+                        <Button
+                        Click="Film_Click"
+                        Margin="35 0 35 0"
+                        BorderThickness="2"
+                        BorderBrush="#799540" Background="{x:Null}"/>
+                        <Border Name="filmc3_text"
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Center" 
+                            Width="130"
+                            Height="30">
+                            <Label VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               AllowDrop="True"
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="Black"/>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <Image x:Name="filmc4" Margin="10 0 10 30"  />
+                        <Button
+                        Click="Film_Click"
+                        Margin="35 0 35 0"
+                        BorderThickness="2"
+                        BorderBrush="#799540" Background="{x:Null}"/>
+                        <Border Name="filmc4_text"
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Center" 
+                            Width="130"
+                            Height="30">
+                            <Label VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               AllowDrop="True"
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="Black"/>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <Image x:Name="filmc5" Margin="10 0 10 30"  />
+                        <Button
+                        Click="Film_Click"
+                        Margin="35 0 35 0"
+                        BorderThickness="2"
+                        BorderBrush="#799540" Background="{x:Null}"/>
+                        <Border Name="filmc5_text"
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Center" 
+                            Width="130"
+                            Height="30">
+                            <Label VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               AllowDrop="True"
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="Black"/>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="5">
+                        <Image x:Name="filmc6" Margin="10 0 10 30"  />
+                        <Button
+                        Click="Film_Click"
+                        Margin="35 0 35 0"
+                        BorderThickness="2"
+                        BorderBrush="#799540" Background="{x:Null}"/>
+                        <Border Name="filmc6_text"
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Center" 
+                            Width="130"
+                            Height="30">
+                            <Label VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               AllowDrop="True"
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="Black"/>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+
             </Grid>
-            
+
 
         </StackPanel>
     </ScrollViewer>

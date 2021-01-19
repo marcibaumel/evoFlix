@@ -58,20 +58,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\UpdateCurrentViewModelCommands.cs" />
     <Compile Include="Controls\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="Controls\DeleteUserControl.cs" />
-
     <Compile Include="DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DashboardViews\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardViews\MyList.xaml.cs">
+      <DependentUpon>MyList.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -81,14 +81,11 @@
     <Compile Include="State\Navigators\Navigator.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
-
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\MyListViewModel.cs" />
-
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
-
     <Compile Include="ViewModels\TestUnitOfWorkViewModelcs.cs" />
     <Compile Include="ViewModels\TVSeriesViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -105,21 +102,22 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-
     <Page Include="Controls\NavigationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Compile Include="Views\VideoPlayer.xaml.cs">
       <DependentUpon>VideoPlayer.xaml</DependentUpon>
     </Compile>
-
     <Page Include="DashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DashboardViews\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashboardViews\MyList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,7 +215,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-
     <Resource Include="Images\x.png" />
     <Resource Include="Images\f13.jpg" />
     <Resource Include="Images\2067.JPG" />
@@ -225,7 +222,6 @@
     <Resource Include="Images\FilmPlay.png" />
     <Resource Include="Images\FilmPlus.png" />
     <Resource Include="Images\FilmPipa.png" />
-
     <Content Include="Images\Icons\Mute.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -238,7 +234,6 @@
     <Content Include="Images\Icons\Unmute.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-
     <Content Include="Images\kep1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

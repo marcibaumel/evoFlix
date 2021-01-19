@@ -13,14 +13,17 @@
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
                 <ResourceDictionary Source="/Styles/NavigationBar.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-        
-            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
 
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
                 <views:HomeView/>
             </DataTemplate>
-            
-        
-            
+
+            <DataTemplate DataType="{x:Type viewmodels:MyListViewModel}">
+                <views:MyList/>
+            </DataTemplate>
+
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
