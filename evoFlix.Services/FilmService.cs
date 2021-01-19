@@ -37,6 +37,69 @@ namespace evoFlix.Services
             return true;
         }
 
+        public List<int> listOfFilms()
+        {
+            List<int> ListOfFilms = new List<int>();
+
+            foreach (var film in unitOfWork.Films)
+            {
+                ListOfFilms.Add(film.Id);
+            }
+
+
+
+            return ListOfFilms;
+
+        }
+
+
+
+        public string getFilmTitle(int Number)
+        {
+            string filmTitle = unitOfWork.Films.FirstOrDefault(x => x.Id == Number).Title;
+            if (filmTitle == null)
+            {
+                return "Failed";
+            }
+
+            return filmTitle.ToString();
+        }
+
+
+
+        public string getPoster(string Title)
+        {
+            var filmPoster = unitOfWork.Films.FirstOrDefault(x => x.Title==Title).Poster;
+            if (filmPoster == null)
+            {
+                return "Failed";
+            }
+
+            return filmPoster.ToString();
+        }
+
+        public string getPlot(string Title)
+        {
+            var filmPlot = unitOfWork.Films.FirstOrDefault(x => x.Title == Title).Plot;
+            if (filmPlot == null)
+            {
+                return "Failed";
+            }
+
+            return filmPlot.ToString();
+        }
+
+
+
+        public Film getFilm(string Title)
+        {
+            Film film = unitOfWork.Films.FirstOrDefault(x => x.Title == Title);
+            return film;
+        }
+
+
+
+
 
     }
 }
