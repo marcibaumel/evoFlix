@@ -58,7 +58,12 @@
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\evoFlix.Services\evoFlix.Services.csproj">
+      <Project>{F4AF447F-1121-49CB-B318-3BF3E5797AE5}</Project>
+      <Name>evoFlix.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\wolfwalkers_2020.mp4" />
   </ItemGroup>

@@ -1,20 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
-using System.Threading.Tasks;
+using evoFlix.Services;
 using Newtonsoft.Json;
+
+
 
 namespace imdb_api_test
 {
-    
-    
 
-    class OmdbDemo
+
+
+    public partial class OmdbDemo
     {
+
+       
+        FilmService filmService = new FilmService();
+
         static void Main(string[] args)
         {
             string apiKey = "f51c1d39";
@@ -26,7 +29,7 @@ namespace imdb_api_test
             string name = "wolfwalkers";
             string type = "movie";
            
-           
+         
 
             var sb = new StringBuilder(baseUri);
 
@@ -34,7 +37,7 @@ namespace imdb_api_test
             sb.Append($"&y={year}");
             sb.Append($"&type={type}");
             
-
+           
             
             var request = WebRequest.Create(sb.ToString());
             request.Timeout = 1000;
@@ -68,6 +71,11 @@ namespace imdb_api_test
             //Console.WriteLine(result);
             
             FilmClass testConvert = JsonConvert.DeserializeObject<FilmClass>(result);
+
+            
+           
+
+            
 
             Console.WriteLine(testConvert.ToString());
             Console.WriteLine("Press any key...");
