@@ -58,7 +58,20 @@
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\evoFlix.DataAccess\evoFlix.DataAccess.csproj">
+      <Project>{75294a68-60b8-41b2-bd3a-0b3b7037b70a}</Project>
+      <Name>evoFlix.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\evoFlix.Models\evoFlix.Models.csproj">
+      <Project>{f6bcf56c-e1c3-4b14-9a01-62a63fccdb43}</Project>
+      <Name>evoFlix.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\evoFlix.Services\evoFlix.Services.csproj">
+      <Project>{F4AF447F-1121-49CB-B318-3BF3E5797AE5}</Project>
+      <Name>evoFlix.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\wolfwalkers_2020.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

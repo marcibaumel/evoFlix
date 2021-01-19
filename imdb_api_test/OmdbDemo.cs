@@ -1,22 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
-using System.Threading.Tasks;
+using evoFlix.Services;
+using evoFlix.Models;
 using Newtonsoft.Json;
+using evoFlix.Models.Content;
 
 namespace imdb_api_test
 {
-    
-    
 
-    class OmdbDemo
+
+
+    public partial class OmdbDemo
     {
+
+       
+        
+
         static void Main(string[] args)
         {
+            FilmService fS = new FilmService();
+
             string apiKey = "f51c1d39";
             //string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
@@ -27,6 +32,7 @@ namespace imdb_api_test
             string type = "movie";
            
            
+         
 
             var sb = new StringBuilder(baseUri);
 
@@ -34,7 +40,6 @@ namespace imdb_api_test
             sb.Append($"&y={year}");
             sb.Append($"&type={type}");
             
-
             
             var request = WebRequest.Create(sb.ToString());
             request.Timeout = 1000;
@@ -67,7 +72,20 @@ namespace imdb_api_test
             
             //Console.WriteLine(result);
             
-            FilmClass testConvert = JsonConvert.DeserializeObject<FilmClass>(result);
+            Film testConvert = JsonConvert.DeserializeObject<Film>(result);
+
+            fS.setSource("wolfwalkers", @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4");
+
+            if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
+            {
+                fS.AddFilm(testConvert);
+            }
+            else
+            {
+                Console.WriteLine("Hiba a DB-be");
+            }
+
+            
 
             Console.WriteLine(testConvert.ToString());
             Console.WriteLine("Press any key...");
