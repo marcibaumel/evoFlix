@@ -26,9 +26,14 @@ namespace evoFlix.WPF.DashboardViews
         FilmService fS = new FilmService();
         Random rd = new Random();
 
+        
+
+
+
         public HomeView()
         {
             InitializeComponent();
+           
             setFilmGrid(fn0, fk0);
             setFilmGrid(fn1, fk1);
             setFilmGrid(fn2, fk2);
@@ -45,13 +50,15 @@ namespace evoFlix.WPF.DashboardViews
 
         private void setFilmGrid(Label fn0, Image fk0)
         {
-            
            
+
             try
             {
+
                 fn0.Content = fS.getFilmTitle(rd.Next(1, fS.listOfFilms().Count()));
-                
-                //Console.WriteLine(fc);
+                //fn0.Content = fS.getFilmTitle(randomNumber);
+
+               
                 fk0.Source = new BitmapImage(new Uri(@fS.getPoster(fn0.Content.ToString())));
                
 
@@ -66,11 +73,22 @@ namespace evoFlix.WPF.DashboardViews
         /*
          * Ezzel a függvényel fogjuk kizárni azokat az id-kat amiket már használtunk
          */
-        private int randomFilm()
-        {
 
-            int randNum=0;
-            return randNum;
+        private List<int> randomFilm()
+        {
+            List<int> listNumbers = new List<int>();
+            int randomNumber;
+
+            for (int i = 0; i < 6; i++)
+            {
+                do
+                {
+                    randomNumber = rd.Next(fS.listOfFilms().Count());
+                } while (listNumbers.Contains(randomNumber));
+                listNumbers.Add(randomNumber);
+            }
+
+            return listNumbers;
         }
     }
 }
