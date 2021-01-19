@@ -3,9 +3,9 @@ using System.IO;
 using System.Net;
 using System.Text;
 using evoFlix.Services;
+using evoFlix.Models;
 using Newtonsoft.Json;
-
-
+using evoFlix.Models.Content;
 
 namespace imdb_api_test
 {
@@ -16,10 +16,12 @@ namespace imdb_api_test
     {
 
        
-        FilmService filmService = new FilmService();
+        
 
         static void Main(string[] args)
         {
+            FilmService fS = new FilmService();
+
             string apiKey = "f51c1d39";
             //string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
@@ -29,6 +31,7 @@ namespace imdb_api_test
             string name = "wolfwalkers";
             string type = "movie";
            
+           
          
 
             var sb = new StringBuilder(baseUri);
@@ -37,7 +40,6 @@ namespace imdb_api_test
             sb.Append($"&y={year}");
             sb.Append($"&type={type}");
             
-           
             
             var request = WebRequest.Create(sb.ToString());
             request.Timeout = 1000;
@@ -70,10 +72,18 @@ namespace imdb_api_test
             
             //Console.WriteLine(result);
             
-            FilmClass testConvert = JsonConvert.DeserializeObject<FilmClass>(result);
+            Film testConvert = JsonConvert.DeserializeObject<Film>(result);
 
-            
            
+
+            if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
+            {
+                fS.AddFilm(testConvert);
+            }
+            else
+            {
+                Console.WriteLine("Hiba a DB-be");
+            }
 
             
 
