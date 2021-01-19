@@ -26,6 +26,7 @@ namespace evoFlix.Models.Content
 
         public String Poster { get; set; }
 
+        public String Source { get; set; }
 
     }
 }

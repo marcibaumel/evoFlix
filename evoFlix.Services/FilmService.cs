@@ -17,11 +17,13 @@ namespace evoFlix.Services
     {
         private UnitOfWork unitOfWork;
         
+        
 
         public FilmService()
         {
             unitOfWork = new UnitOfWork();
         }
+
 
         public void AddFilm(Film film)
         {
@@ -46,10 +48,7 @@ namespace evoFlix.Services
                 ListOfFilms.Add(film.Id);
             }
 
-
-
             return ListOfFilms;
-
         }
 
 
@@ -65,7 +64,18 @@ namespace evoFlix.Services
             return filmTitle.ToString();
         }
 
+        public void setSource(string Title, string source)
+        {
+            var filmTitle = unitOfWork.Films.FirstOrDefault(x => x.Title == Title);
 
+            if (filmTitle != null)
+            {
+                filmTitle.Source = source;
+
+                unitOfWork.SaveChanges();
+            }
+                
+        }
 
         public string getPoster(string Title)
         {
