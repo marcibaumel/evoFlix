@@ -21,8 +21,7 @@ namespace evoFlix.WPF.DashboardViews
     /// </summary>
     public partial class HomeView : UserControl
     {
-        UserService userService = new UserService();
-        UserComponentsService ucs = new UserComponentsService();
+        
         FilmService fS = new FilmService();
         Random rd = new Random();
 
@@ -36,14 +35,11 @@ namespace evoFlix.WPF.DashboardViews
             
             InitializeComponent();         
             loadList(list);
+
+            makeFilmGrid();
             
 
-            setFilmGrid(fn0, fk0);
-            setFilmGrid(fn1, fk1);
-            setFilmGrid(fn2, fk2);
-            setFilmGrid(fn3, fk3);
-            setFilmGrid(fn4, fk4);
-            setFilmGrid(fn5, fk5);
+
 
 
             list.Clear();
@@ -56,6 +52,38 @@ namespace evoFlix.WPF.DashboardViews
 
         }
 
+        private void makeFilmGrid()
+        {
+            setFilmGrid(fn0, fk0);
+            setFilmGrid(fn1, fk1);
+            setFilmGrid(fn2, fk2);
+            setFilmGrid(fn3, fk3);
+            setFilmGrid(fn4, fk4);
+            setFilmGrid(fn5, fk5);
+            setFilmGrid(fn6, fk6);
+            
+            
+            setFilmGrid(fn7, fk7);
+            setFilmGrid(fn8, fk8);
+            setFilmGrid(fn9, fk9);
+            setFilmGrid(fn10, fk10);
+            setFilmGrid(fn11, fk11);
+            setFilmGrid(fn12, fk12);
+            
+            setFilmGrid(fn13, fk13);
+
+            //setFilmGrid(fn14, fk14);
+
+
+            //setFilmGrid(fn15, fk15);
+
+            //setFilmGrid(fn16, fk16);
+
+
+        }
+
+        
+
         private void setFilmGrid(Label fn0, Image fk0)
         {
            
@@ -64,8 +92,7 @@ namespace evoFlix.WPF.DashboardViews
             {
                 
 
-                fn0.Content = fS.getFilmTitle(randomFilm(list, UsedList));
-                //Console.WriteLine(String.Join("; ", list));
+                fn0.Content = fS.getFilmTitle(randomFilm(list, UsedList));  
                 fk0.Source = new BitmapImage(new Uri(@fS.getPoster(fn0.Content.ToString())));
                
 
@@ -73,13 +100,14 @@ namespace evoFlix.WPF.DashboardViews
             catch(ArgumentOutOfRangeException e)
             {
                 Console.WriteLine(e.Message);
+                //Console.WriteLine("Hiba");
+                //fn0.Content = fS.getFilmTitle(2);
+                //fk0.Source = new BitmapImage(new Uri(@fS.getPoster(fn0.Content.ToString())));
             }
 
         }
 
-        /*
-         * Ezzel a függvényel fogjuk kizárni azokat az id-kat amiket már használtunk
-         */
+        
 
         private int randomFilm(List<int> listNumbers, List<int> UsedNumbers)
         {
