@@ -52,7 +52,7 @@
                 -->
 
                 <Grid Grid.Column="0">
-                    <Image x:Name="fk0" Margin="10 0 10 30" Source="https://m.media-amazon.com/images/M/MV5BNTA4MWQ4NGUtOGQ0MS00M2QyLWE5MDItZWM2YzA0ZDgxZTA2XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg" />
+                    <Image x:Name="fk0" Margin="10 0 10 30" />
                     <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
@@ -71,7 +71,7 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"
-                               Content="Wolfwalkers"/>
+                               />
                     </Border>
                 </Grid>
                 

@@ -26,20 +26,28 @@ namespace evoFlix.WPF.DashboardViews
         FilmService fS = new FilmService();
         Random rd = new Random();
 
-        
+        List<int> list = new List<int>();
+        List<int> UsedList = new List<int>();
 
 
 
         public HomeView()
         {
-            InitializeComponent();
-           
+            
+            InitializeComponent();         
+            loadList(list);
+            
+
             setFilmGrid(fn0, fk0);
             setFilmGrid(fn1, fk1);
             setFilmGrid(fn2, fk2);
             setFilmGrid(fn3, fk3);
             setFilmGrid(fn4, fk4);
             setFilmGrid(fn5, fk5);
+
+
+            list.Clear();
+            UsedList.Clear();
         }
 
         private void Film_Click(object sender, RoutedEventArgs e)
@@ -54,11 +62,10 @@ namespace evoFlix.WPF.DashboardViews
 
             try
             {
+                
 
-                fn0.Content = fS.getFilmTitle(rd.Next(1, fS.listOfFilms().Count()));
-                //fn0.Content = fS.getFilmTitle(randomNumber);
-
-               
+                fn0.Content = fS.getFilmTitle(randomFilm(list, UsedList));
+                //Console.WriteLine(String.Join("; ", list));
                 fk0.Source = new BitmapImage(new Uri(@fS.getPoster(fn0.Content.ToString())));
                
 
@@ -74,21 +81,30 @@ namespace evoFlix.WPF.DashboardViews
          * Ezzel a függvényel fogjuk kizárni azokat az id-kat amiket már használtunk
          */
 
-        private List<int> randomFilm()
+        private int randomFilm(List<int> listNumbers, List<int> UsedNumbers)
         {
-            List<int> listNumbers = new List<int>();
-            int randomNumber;
+            int randomNumber= rd.Next(1, listNumbers.Count());
 
-            for (int i = 0; i < 6; i++)
+           
+
+            while (UsedNumbers.Contains(randomNumber))
             {
-                do
-                {
-                    randomNumber = rd.Next(fS.listOfFilms().Count());
-                } while (listNumbers.Contains(randomNumber));
-                listNumbers.Add(randomNumber);
+                randomNumber = rd.Next(1, listNumbers.Count());
             }
+            listNumbers.Remove(randomNumber);
+            UsedNumbers.Add(randomNumber);
 
-            return listNumbers;
+            return randomNumber;
+        }
+
+
+
+        private void loadList(List<int> list)
+        {
+            for(int i=1; i<= fS.listOfFilms().Count(); i++)
+            {        
+                list.Add(i);
+            }
         }
     }
 }
