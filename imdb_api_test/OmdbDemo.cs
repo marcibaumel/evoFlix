@@ -79,16 +79,16 @@ namespace imdb_api_test
 
             //fS.setSource("wolfwalkers", @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4");
 
-            //if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
-            //{
-            //    fS.AddFilm(testConvert);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Hiba a DB-be");
-            //}
+            if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
+            {
+                fS.AddFilm(testConvert);
+            }
+            else
+            {
+                Console.WriteLine("Hiba a DB-be");
+            }
 
-            wS.AddToMyList(1, 5);
+            //wS.AddToMyList(1, 5);
 
             Console.WriteLine(testConvert.ToString());
             Console.WriteLine("Press any key...");
