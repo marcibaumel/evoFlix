@@ -11,19 +11,20 @@ namespace evoFlix.Services
     public class MyListService
     {
         private UnitOfWork unitOfWork;
-        private WatchList wl;
+        //private WatchList wl;
         FilmService fS = new FilmService();
 
         public MyListService()
         {
             unitOfWork = new UnitOfWork();
         }
-
+        
         public void AddToMyList(int FilmName, int User)
         {
-            wl.FilmId = FilmName;
-            wl.Id = User;
-            unitOfWork.WatchLists.Add(wl);
+            MyList mL = new MyList();
+            mL.filmNumber = FilmName;
+            mL.userNumber = User;
+            unitOfWork.WatchLists.Add(mL);
             unitOfWork.SaveChanges();
         }
 
@@ -38,6 +39,6 @@ namespace evoFlix.Services
             return filmTitle.ToString();
         }
 
-
+        
     }
 }
