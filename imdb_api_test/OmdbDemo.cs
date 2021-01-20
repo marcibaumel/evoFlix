@@ -27,8 +27,8 @@ namespace imdb_api_test
 
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
-            string year = "2014";
-            string name = "Gone Girl";
+            string year = "2010";
+            string name = "Inception";
             
             
             string type = "movie";
