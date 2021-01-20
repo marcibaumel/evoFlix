@@ -118,10 +118,12 @@ namespace evoFlix.WPF.DashboardViews
             if (usedList.Contains(rN))
             {
                 rN = randomNumber();
+                list.Remove(rN);
             }
           
            usedList.Add(rN);
-           list.Remove(rN);
+           
+           
            return rN;
              
            
