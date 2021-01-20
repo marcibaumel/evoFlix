@@ -88,6 +88,7 @@ namespace imdb_api_test
                 Console.WriteLine("Hiba a DB-be");
             }
 
+
             //wS.AddToMyList(1, 5);
 
             Console.WriteLine(testConvert.ToString());
