@@ -39,15 +39,15 @@ namespace evoFlix.WPF
 
 
 
-            this.Content = log;
+            //this.Content = log;
             
 
 
-            /*
+            
             Page DashBoard = new DashboardPage();
             this.Content = DashBoard;
             DashBoard.DataContext = new DashboardViewModel();
-            */
+            
 
 
 
