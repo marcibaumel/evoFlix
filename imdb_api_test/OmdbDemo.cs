@@ -21,14 +21,17 @@ namespace imdb_api_test
         static void Main(string[] args)
         {
             FilmService fS = new FilmService();
+            MyListService wS = new MyListService();
 
             string apiKey = "f51c1d39";
             //string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
-            string year = "2020";
-            string name = "wolfwalkers";
+            string year = "2010";
+            string name = "Inception";
+            
+            
             string type = "movie";
            
            
@@ -74,7 +77,7 @@ namespace imdb_api_test
             
             Film testConvert = JsonConvert.DeserializeObject<Film>(result);
 
-            fS.setSource("wolfwalkers", @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4");
+            //fS.setSource("wolfwalkers", @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4");
 
             if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
             {
@@ -85,7 +88,8 @@ namespace imdb_api_test
                 Console.WriteLine("Hiba a DB-be");
             }
 
-            
+
+            //wS.AddToMyList(1, 5);
 
             Console.WriteLine(testConvert.ToString());
             Console.WriteLine("Press any key...");

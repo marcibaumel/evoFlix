@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace evoFlix.Models.Content
 {
-    public class WatchList: BaseModel
+    public class MyList: BaseModel
     {
-        public int FilmId { set; get; }
-        public int Id { get; set; }
+
+       
+
+        
+        public int filmNumber { set; get; }
+        public int userNumber { get; set; }
 
 
     }
