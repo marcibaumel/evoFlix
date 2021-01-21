@@ -26,7 +26,7 @@ namespace evoFlix.WPF.DashboardViews
         
         FilmService fS = new FilmService();
         Random rd = new Random();
-        
+        HomeViewModel hVM = new HomeViewModel();
 
         Window window;
 
@@ -38,7 +38,8 @@ namespace evoFlix.WPF.DashboardViews
         {
             
             InitializeComponent();
-
+            
+            this.window = hVM.mainWindow;
             loadList(filmList);
             
 
@@ -649,9 +650,12 @@ namespace evoFlix.WPF.DashboardViews
         // Film Window buttons
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            HomeViewModel hVM = new HomeViewModel();
-            Page player = new VideoPlayer(hVM.mainWindow);
-            this.Content = player;
+            //Ez müködik->
+            //Page DashBoard = new DashboardPage(window);
+            //DashBoard.DataContext = new DashboardViewModel();
+            //window.Content = DashBoard;
+
+
         }
 
 
