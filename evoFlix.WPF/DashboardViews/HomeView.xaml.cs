@@ -1,4 +1,6 @@
 ﻿using evoFlix.Services;
+using evoFlix.WPF.ViewModels;
+using evoFlix.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +26,9 @@ namespace evoFlix.WPF.DashboardViews
         
         FilmService fS = new FilmService();
         Random rd = new Random();
+        
 
-       
+        Window window;
 
         List<int> filmList = new List<int>();
 
@@ -37,7 +40,7 @@ namespace evoFlix.WPF.DashboardViews
             InitializeComponent();
 
             loadList(filmList);
-
+            
 
             makeFilmGrid();
 
@@ -646,8 +649,11 @@ namespace evoFlix.WPF.DashboardViews
         // Film Window buttons
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-
+            HomeViewModel hVM = new HomeViewModel();
+            Page player = new VideoPlayer(hVM.mainWindow);
+            this.Content = player;
         }
+
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {

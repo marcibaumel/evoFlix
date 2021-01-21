@@ -96,9 +96,10 @@ namespace evoFlix.WPF.Views
                     scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
                     Count = 0;
-                    Page DashBoard = new DashboardPage();
-                    window.Content = DashBoard;
+                    Page DashBoard = new DashboardPage(window);
                     DashBoard.DataContext = new DashboardViewModel();
+                    window.Content = DashBoard;
+                    
                     //return true;
 
                 }

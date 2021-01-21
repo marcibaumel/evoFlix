@@ -19,12 +19,20 @@ namespace evoFlix.WPF
     {
 
         //public string user { get; set; }
+        public Window window { get; set; }
 
-        public DashboardPage()
+        public DashboardPage(Window window)
         {
             InitializeComponent();
 
-            
+            this.window = window;
         }
+
+        public DashboardPage()
+        {
+
+        }
+
+        
     }
 }

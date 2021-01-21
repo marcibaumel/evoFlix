@@ -78,6 +78,10 @@ namespace evoFlix.WPF.Views
            
         }
 
+        public VideoPlayer(Window window)
+        {
+
+        }
         private void visibilityTimer_Tick(object sender, EventArgs e)
         {
             visibilityTimer.Stop();

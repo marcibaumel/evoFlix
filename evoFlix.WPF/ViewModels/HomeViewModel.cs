@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace evoFlix.WPF.ViewModels
 {
@@ -11,6 +12,7 @@ namespace evoFlix.WPF.ViewModels
     {
         public INavigator Navigator { get; set; } = new Navigator();
 
+        public Window mainWindow { get; set; } = Application.Current.MainWindow;
 
     }
 }
