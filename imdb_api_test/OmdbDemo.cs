@@ -28,8 +28,9 @@ namespace imdb_api_test
 
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
-            string year = "2008";
-            string name = "Mamma Mia!";
+
+            string year = "1972";
+            string name = "The Godfather";
             
             
             string type = "movie";
