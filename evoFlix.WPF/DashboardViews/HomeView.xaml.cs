@@ -101,7 +101,10 @@ namespace evoFlix.WPF.DashboardViews
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Hiba");
+                fn0.Content = "";
                 
+
+
             }
 
         }
@@ -117,14 +120,18 @@ namespace evoFlix.WPF.DashboardViews
 
             if (usedList.Contains(rN))
             {
-                rN = randomNumber();
+                randomFilm();
                 list.Remove(rN);
             }
-          
-           usedList.Add(rN);
-           
-           
-           return rN;
+            else
+            {
+                usedList.Add(rN);
+            }
+
+            usedList.ForEach(i => Console.Write("{0} ", i));
+            Console.WriteLine("\n");
+
+            return rN;
              
            
             
@@ -146,9 +153,12 @@ namespace evoFlix.WPF.DashboardViews
          */
         private void loadList(List<int> list)
         {
-            for(int i=0; i< fS.listOfFilms().Count(); i++)
-            {        
-                list.Add(i);
+            for(int i=1; i<= fS.listOfFilms().Count(); i++)
+            {    
+                
+               list.Add(i);
+                
+                
             }
         }
     }

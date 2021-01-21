@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evoFlix.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,12 @@ namespace evoFlix.WPF.DashboardViews
     /// </summary>
     public partial class MyList : UserControl
     {
+        FilmService fS = new FilmService();
+        MyListService mLS = new MyListService();
+
         public MyList()
         {
+            
             InitializeComponent();
         }
        

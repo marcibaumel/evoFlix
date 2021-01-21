@@ -46,9 +46,9 @@ namespace evoFlix.WPF
 
 
 
-            //Page DashBoard = new DashboardPage();
-            //this.Content = DashBoard;
-            //DashBoard.DataContext = new DashboardViewModel();
+            Page DashBoard = new DashboardPage();
+            this.Content = DashBoard;
+            DashBoard.DataContext = new DashboardViewModel();
 
 
 
@@ -57,8 +57,8 @@ namespace evoFlix.WPF
 
 
 
-            Page player = new VideoPlayer(log, this, 0);
-            this.Content = player;
+            //Page player = new VideoPlayer(log, this, 0);
+            //this.Content = player;
 
 
 
