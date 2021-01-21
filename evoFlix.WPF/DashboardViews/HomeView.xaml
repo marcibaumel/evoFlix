@@ -12,12 +12,7 @@
 
 
     <Grid>
-        
-        
-        
         <ScrollViewer>
-
-           
 
             <StackPanel Height="1300" Width="1280">
                 <Grid>
@@ -62,11 +57,12 @@
 
                         <Grid Grid.Column="0">
                             <Image x:Name="fk0" Margin="10 0 10 30" />
-                            <Button 
-                        Click="Film_Click"
-                        Margin="35 0 35 0"
-                        BorderThickness="2"
-                        BorderBrush="#799540" Background="{x:Null}"/>
+                            <Button
+                            x:Name="f0"
+                            Click="Film_Click"
+                            Margin="35 0 35 0"
+                            BorderThickness="2"
+                            BorderBrush="#799540" Background="{x:Null}"/>
                             <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
@@ -87,6 +83,7 @@
                         <Grid Grid.Column="1">
                             <Image x:Name="fk1" Margin="10 0 10 30" />
                             <Button 
+                                x:Name="f1"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -111,6 +108,7 @@
                         <Grid Grid.Column="2">
                             <Image x:Name="fk2" Margin="10 0 10 30"  />
                             <Button 
+                                 x:Name="f2"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -135,6 +133,7 @@
                         <Grid Grid.Column="3">
                             <Image x:Name="fk3" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f3"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -160,6 +159,7 @@
                         <Grid Grid.Column="4">
                             <Image x:Name="fk4" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f4"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -184,6 +184,7 @@
                         <Grid Grid.Column="5">
                             <Image x:Name="fk5" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f5"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -237,6 +238,7 @@
                         <Grid Grid.Column="0">
                             <Image x:Name="fk6" Margin="10 0 10 30" />
                             <Button 
+                                 x:Name="f6"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -260,7 +262,8 @@
 
                         <Grid Grid.Column="1">
                             <Image x:Name="fk7" Margin="10 0 10 30" />
-                            <Button 
+                            <Button
+                                 x:Name="f7"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -285,6 +288,7 @@
                         <Grid Grid.Column="2">
                             <Image x:Name="fk8" Margin="10 0 10 30"  />
                             <Button 
+                                 x:Name="f8"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -309,6 +313,7 @@
                         <Grid Grid.Column="3">
                             <Image x:Name="fk9" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f9"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -334,6 +339,7 @@
                         <Grid Grid.Column="4">
                             <Image x:Name="fk10" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f10"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -358,6 +364,7 @@
                         <Grid Grid.Column="5">
                             <Image x:Name="fk11" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f11"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -411,6 +418,7 @@
                         <Grid Grid.Column="0">
                             <Image x:Name="fk12" Margin="10 0 10 30" />
                             <Button 
+                                 x:Name="f12"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -434,7 +442,8 @@
 
                         <Grid Grid.Column="1">
                             <Image x:Name="fk13" Margin="10 0 10 30" />
-                            <Button 
+                            <Button
+                                 x:Name="f13"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -459,6 +468,7 @@
                         <Grid Grid.Column="2">
                             <Image x:Name="fk14" Margin="10 0 10 30"  />
                             <Button 
+                                 x:Name="f14"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -483,6 +493,7 @@
                         <Grid Grid.Column="3">
                             <Image x:Name="fk15" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f15"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -508,6 +519,7 @@
                         <Grid Grid.Column="4">
                             <Image x:Name="fk16" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f16"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -532,6 +544,7 @@
                         <Grid Grid.Column="5">
                             <Image x:Name="fk17" Margin="10 0 10 30"  />
                             <Button
+                                 x:Name="f17"
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
@@ -559,10 +572,12 @@
 
             </StackPanel>
         </ScrollViewer>
-
-        <StackPanel x:Name="FilmPanel">
-
-            <Grid Margin="5" Background="#FFC3C3C3">
+        
+        <!-- Film Window -->
+        <StackPanel x:Name="FilmPanel" Visibility="Hidden">
+            <Grid Height="630" Width="1120" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Height="630" Width="1120" BorderBrush="Black" BorderThickness="3"/>
+                <Grid Margin="5" Background="#BFC3C3C3">
                 <Border 
             Margin="25 60" 
             Height="325" 
@@ -570,7 +585,7 @@
             VerticalAlignment="Top"
             BorderBrush="Black"
             BorderThickness="3">
-                    <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="https://m.media-amazon.com/images/M/MV5BNTA4MWQ4NGUtOGQ0MS00M2QyLWE5MDItZWM2YzA0ZDgxZTA2XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg"/>
+                    <Image HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="fI"/>
                 </Border>
 
                 <Button
@@ -689,7 +704,7 @@
                             VerticalAlignment="Center"/>
                             </Border>
 
-                            <Border Grid.Row="1" Margin="0 0 5 5" Background="#799540" x:Name="agelbl">
+                            <Border Grid.Row="1" Margin="0 0 5 5" Background="#799540" x:Name="ratelbl">
                                 <Label
                             FontSize="20" 
                             FontWeight="Bold"
@@ -762,7 +777,7 @@
                 </Border>
 
             </Grid>
-
+            </Grid>
         </StackPanel>
 
     </Grid>
