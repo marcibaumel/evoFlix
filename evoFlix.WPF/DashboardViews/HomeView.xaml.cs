@@ -655,6 +655,8 @@ namespace evoFlix.WPF.DashboardViews
             //DashBoard.DataContext = new DashboardViewModel();
             //window.Content = DashBoard;
 
+            Page player = new VideoPlayer(log, window, 0);
+            this.Content = player;
 
         }
 
