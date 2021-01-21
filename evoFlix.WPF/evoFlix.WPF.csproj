@@ -73,6 +73,7 @@
     <Compile Include="DashboardViews\MyList.xaml.cs">
       <DependentUpon>MyList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Heap.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

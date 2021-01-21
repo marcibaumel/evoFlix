@@ -25,31 +25,31 @@ namespace evoFlix.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Page log = new LoginPage();
-        
+
+        private Page log;
         public MainWindow()
         {
             InitializeComponent();
-            FilmService fS = new FilmService();
-            /*
-            NavigationWindow navigationWdw = new NavigationWindow();
-            navigationWdw.Height = this.Height;
-            navigationWdw.Width = this.Width;
-            navigationWdw.Show();
-            navigationWdw.Navigate(new LoginPage());
-            */
+
+            ///*
+            //NavigationWindow navigationWdw = new NavigationWindow();
+            //navigationWdw.Height = this.Height;
+            //navigationWdw.Width = this.Width;
+            //navigationWdw.Show();
+            //navigationWdw.Navigate(new LoginPage());
+            //*/
 
 
 
-            //this.Content = log;
+            this.Content = log = new LoginPage(this);
+            
 
 
-
-
-            Page DashBoard = new DashboardPage();
-            this.Content = DashBoard;
-            DashBoard.DataContext = new DashboardViewModel();
-
+            
+            //Page DashBoard = new DashboardPage();
+            //this.Content = DashBoard;
+            //DashBoard.DataContext = new DashboardViewModel();
+            
 
 
 
