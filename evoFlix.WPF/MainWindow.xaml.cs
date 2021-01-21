@@ -29,13 +29,13 @@ namespace evoFlix.WPF
         {
             InitializeComponent();
 
-            /*
-            NavigationWindow navigationWdw = new NavigationWindow();
-            navigationWdw.Height = this.Height;
-            navigationWdw.Width = this.Width;
-            navigationWdw.Show();
-            navigationWdw.Navigate(new LoginPage());
-            */
+            ///*
+            //NavigationWindow navigationWdw = new NavigationWindow();
+            //navigationWdw.Height = this.Height;
+            //navigationWdw.Width = this.Width;
+            //navigationWdw.Show();
+            //navigationWdw.Navigate(new LoginPage());
+            //*/
 
 
 
@@ -43,11 +43,11 @@ namespace evoFlix.WPF
             
 
 
-            /*
-            Page DashBoard = new DashboardPage();
-            this.Content = DashBoard;
-            DashBoard.DataContext = new DashboardViewModel();
-            */
+            
+            //Page DashBoard = new DashboardPage();
+            //this.Content = DashBoard;
+            //DashBoard.DataContext = new DashboardViewModel();
+            
 
 
 

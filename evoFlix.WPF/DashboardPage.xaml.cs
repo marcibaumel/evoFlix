@@ -17,12 +17,12 @@ namespace evoFlix.WPF
     
     public partial class DashboardPage : Page
     {
-        public string user { get; set; }
-        public DashboardPage(string user)
+        //public string user { get; set; }
+        public DashboardPage()
         {
             InitializeComponent();
 
-            this.user = user;
+            
         }
     }
 }
