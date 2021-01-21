@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evoFlix.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,7 @@ namespace evoFlix.WPF.Views
         bool videoIsPaused = false;
         DispatcherTimer visibilityTimer;
         public string Source { get; set; }
+        FilmService fS = new FilmService();
 
         public VideoPlayer(Page page, Window window)
         {
@@ -42,7 +44,15 @@ namespace evoFlix.WPF.Views
             InitializeComponent();
 
             maingrid.DataContext = this;
-            Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4";
+
+            //Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4";
+
+
+            Uri uri = new Uri(fS.getSource("Wolfwalkers"));
+            Console.WriteLine(uri.ToString());
+            Source = uri.ToString();
+
+
 
             backPage = page;
             main = window;
@@ -65,6 +75,7 @@ namespace evoFlix.WPF.Views
             : this(page, window)
         {
             startTime = time;
+           
         }
 
         private void visibilityTimer_Tick(object sender, EventArgs e)

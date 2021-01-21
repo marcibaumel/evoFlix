@@ -28,8 +28,8 @@ namespace imdb_api_test
 
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
-            string year = "2010";
-            string name = "Inception";
+            string year = "2008";
+            string name = "Mamma Mia!";
             
             
             string type = "movie";
@@ -77,7 +77,7 @@ namespace imdb_api_test
             
             Film testConvert = JsonConvert.DeserializeObject<Film>(result);
 
-            //fS.setSource("wolfwalkers", @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4");
+            fS.setSource("wolfwalkers", @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4");
 
             if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
             {
