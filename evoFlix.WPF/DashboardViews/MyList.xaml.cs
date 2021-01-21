@@ -42,7 +42,7 @@ namespace evoFlix.WPF.DashboardViews
         
         private void makeFilmGrid()
         {
-            setFilmGrid(fn0, fk0);
+            //setFilmGrid(fn0, fk0);
         }
 
         private void setFilmGrid(Label fn0, Image fk0)
