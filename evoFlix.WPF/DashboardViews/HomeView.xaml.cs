@@ -106,6 +106,30 @@ namespace evoFlix.WPF.DashboardViews
 
         }
 
+        private void Play_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Check_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+
+
 
         /*
          * Random szám de még nem müködik rendesen

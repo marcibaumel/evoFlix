@@ -28,8 +28,8 @@ namespace imdb_api_test
 
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
-            string year = "2010";
-            string name = "Inception";
+            string year = "1976";
+            string name = "Taxi Driver";
             
             
             string type = "movie";
