@@ -93,6 +93,7 @@ namespace evoFlix.WPF.Views
                     scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
                     Count = 0;
+                    
                     //return true;
                     
                 }
