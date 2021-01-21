@@ -29,7 +29,7 @@ namespace evoFlix.DataAccess
 
         public DbSet <Film> Films { get; set; }
 
-        public DbSet <WatchList> WatchLists { get; set; }
+        public DbSet <MyList> WatchLists { get; set; }
 
         public DbSet <Watching> Watching { get; set; }
 
