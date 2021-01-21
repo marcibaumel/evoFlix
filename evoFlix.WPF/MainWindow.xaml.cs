@@ -24,7 +24,7 @@ namespace evoFlix.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Page log = new LoginPage();
+        private Page log;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace evoFlix.WPF
 
 
 
-            this.Content = log;
+            this.Content = log = new LoginPage(this);
             
 
 

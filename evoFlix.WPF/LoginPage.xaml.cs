@@ -23,15 +23,17 @@ namespace evoFlix.WPF
 
     public partial class LoginPage : Page
     {
-
+        Window window;
 
         UserService userService = new UserService();
         UserComponentsService ucs = new UserComponentsService();
         DeleteUserControl dlt = new DeleteUserControl();
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 
-        public LoginPage()
+        public LoginPage(Window window)
         {
+            this.window = window;
+
             InitializeComponent();
             test_button();
             dlt.profileControl(User1_Label, User2_Label, User3_Label, User4_Label, User1_Button, User2_Button, User3_Button, User4_Button);
@@ -69,7 +71,7 @@ namespace evoFlix.WPF
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             clear_data_context();
-            DataContext = new LoginView();  
+            DataContext = new LoginView(window);  
         }
 
         private void Delet_Click(object sender, RoutedEventArgs e)

@@ -27,6 +27,7 @@ namespace evoFlix.WPF.Views
         UserService userService = new UserService();
         DateTime? blocked;
         private int count;
+        Window window;
 
         private int Count
         {
@@ -45,10 +46,11 @@ namespace evoFlix.WPF.Views
             }
         }
 
-        public LoginView()
+        public LoginView(Window window)
         {
             InitializeComponent();
-            
+
+            this.window = window;
         }
 
         private void Button_Click_Login(object sender, RoutedEventArgs e)
@@ -93,7 +95,8 @@ namespace evoFlix.WPF.Views
                     scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
                     Count = 0;
-                    
+
+                    window.Content = new DashboardPage(myUsername.Text);
                     //return true;
                     
                 }
