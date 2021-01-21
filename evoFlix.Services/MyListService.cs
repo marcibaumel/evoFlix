@@ -39,6 +39,19 @@ namespace evoFlix.Services
             return filmTitle.ToString();
         }
 
-        
+        //public List<int> listOfFilms(int UserID)
+        //{
+        //    List<int> ListOfFilms = new List<int>();
+
+        //    if
+        //    foreach (var film in unitOfWork.Films)
+        //    {
+        //        ListOfFilms.Add(film.Id);
+        //    }
+
+        //    return ListOfFilms;
+        //}
+
+      
     }
 }

@@ -1,5 +1,6 @@
 
 
+using evoFlix.Services;
 using evoFlix.WPF.ViewModels;
 using evoFlix.WPF.Views;
 using System;
@@ -25,10 +26,11 @@ namespace evoFlix.WPF
     public partial class MainWindow : Window
     {
         private Page log = new LoginPage();
+        
         public MainWindow()
         {
             InitializeComponent();
-
+            FilmService fS = new FilmService();
             /*
             NavigationWindow navigationWdw = new NavigationWindow();
             navigationWdw.Height = this.Height;
@@ -40,27 +42,28 @@ namespace evoFlix.WPF
 
 
             //this.Content = log;
-            
 
 
-            
+
+
             Page DashBoard = new DashboardPage();
             this.Content = DashBoard;
             DashBoard.DataContext = new DashboardViewModel();
-            
 
 
 
 
 
-            /*
-            Page player = new VideoPlayer(log, this, 1230);
-            this.Content = player;
-            */
-            
 
 
-           
+
+            //Page player = new VideoPlayer(log, this, 0);
+            //this.Content = player;
+
+
+
+
+
 
         }
 

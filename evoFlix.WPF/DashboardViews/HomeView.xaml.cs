@@ -27,20 +27,22 @@ namespace evoFlix.WPF.DashboardViews
 
        
 
-        List<int> list = new List<int>();
+        List<int> filmList = new List<int>();
+
         List<int> usedList = new List<int>();
 
         public HomeView()
         {
             
             InitializeComponent();
-           
-          
 
-            loadList(list);
+            loadList(filmList);
+
+
             makeFilmGrid();
 
-            list.Clear();
+            filmList.Clear();
+            usedList.Clear();
             
         }
 
@@ -559,7 +561,10 @@ namespace evoFlix.WPF.DashboardViews
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Hiba");
+                fn0.Content = "";
                 
+
+
             }
 
         }
@@ -570,16 +575,37 @@ namespace evoFlix.WPF.DashboardViews
 
         private int randomFilm()
         {
-            int rN = randomNumber();
+            
+            int rN = rd.Next(1, filmList.Count());
 
             if (usedList.Contains(rN))
             {
-                rN = randomNumber();
-                list.Remove(rN);
-            }          
-           usedList.Add(rN);          
-           
-           return rN;      
+
+                randomFilm();
+                filmList.Remove(rN);
+            }
+            else
+            {
+                usedList.Add(rN);
+            }
+
+            //if (usedList.Contains(rN))
+            //{
+            //    randomFilm();
+            //    list.Remove(rN);
+            //}
+            //else
+            //{
+            //    usedList.Add(rN);
+            //}
+
+            //usedList.ForEach(i => Console.Write("{0} ", i));
+            //Console.WriteLine("\n");
+
+            return rN;
+             
+
+                
         }
 
         /*
@@ -588,8 +614,19 @@ namespace evoFlix.WPF.DashboardViews
 
         private int randomNumber()
         {
-            int randomNumber = rd.Next(1, list.Count());
-            return randomNumber;
+            int rN = rd.Next(1, this.filmList.Count());
+            
+            if (usedList.Contains(rN))
+            {
+                //randomNumber();
+                this.filmList.Remove(rN);
+            }
+            else
+            {
+                this.usedList.Add(rN);
+            }
+
+            return rN;
         }
 
         /*
@@ -598,9 +635,11 @@ namespace evoFlix.WPF.DashboardViews
          */
         private void loadList(List<int> list)
         {
+
             for(int i=0; i<= fS.listOfFilms().Count(); i++)
             {        
                 list.Add(i);
+
             }
         }
 
