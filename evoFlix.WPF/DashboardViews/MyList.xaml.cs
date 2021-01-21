@@ -23,17 +23,51 @@ namespace evoFlix.WPF.DashboardViews
     {
         FilmService fS = new FilmService();
         MyListService mLS = new MyListService();
+        private int UserId { get; set; }
 
         public MyList()
         {
             
             InitializeComponent();
+            UserId = 1;
+            makeFilmGrid();
         }
        
 
         private void Film_Click(object sender, RoutedEventArgs e)
         {
 
+
+        }
+        
+        private void makeFilmGrid()
+        {
+            setFilmGrid(fn0, fk0);
+        }
+
+        private void setFilmGrid(Label fn0, Image fk0)
+        {
+
+
+            try
+            {
+
+
+                fn0.Content = fS.getFilmTitle(UserId);
+                fk0.Source = new BitmapImage(new Uri(@fS.getPoster(fn0.Content.ToString())));
+
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Hiba");
+                fn0.Content = "";
+                fk0.Source = null;
+
+
+
+            }
 
         }
     }
