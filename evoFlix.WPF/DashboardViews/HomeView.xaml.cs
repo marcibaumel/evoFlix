@@ -659,7 +659,7 @@ namespace evoFlix.WPF.DashboardViews
             //Ez nem->
             HomeViewModel hVM = new HomeViewModel();
             Page player = new VideoPlayer(hVM.mainWindow);
-            this.Content = player;
+            hVM.mainWindow.Content = player;
 
            
 
