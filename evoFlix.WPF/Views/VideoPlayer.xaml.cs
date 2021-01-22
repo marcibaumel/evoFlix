@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evoFlix.WPF.DashboardViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,6 @@ namespace evoFlix.WPF.Views
     ///     - Fix button imgage error
     public partial class VideoPlayer : Page
     {
-        private Page backPage;
         private Window main;
         private int savedTime;
         int startTime;
@@ -36,7 +36,7 @@ namespace evoFlix.WPF.Views
         DispatcherTimer visibilityTimer;
         public string Source { get; set; }
 
-        public VideoPlayer(Page page, Window window)
+        public VideoPlayer(Window window)
         {
             
             InitializeComponent();
@@ -44,7 +44,6 @@ namespace evoFlix.WPF.Views
             maingrid.DataContext = this;
             Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4";
 
-            backPage = page;
             main = window;
 
             DispatcherTimer timer = new DispatcherTimer();
@@ -62,7 +61,7 @@ namespace evoFlix.WPF.Views
         }
 
         public VideoPlayer(Page page, Window window, int time)
-            : this(page, window)
+            : this(window)
         {
             startTime = time;
         }
@@ -110,7 +109,7 @@ namespace evoFlix.WPF.Views
         {
             savedTime = (int) mdaVideo.Position.TotalSeconds;
             MessageBox.Show(savedTime.ToString());
-            main.Content = backPage;
+            main.Content = new FilmView();
             main.WindowState = WindowState.Normal;
             main.WindowStyle = WindowStyle.SingleBorderWindow;
         }
