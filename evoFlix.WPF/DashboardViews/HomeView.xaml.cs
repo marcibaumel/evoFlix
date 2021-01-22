@@ -26,9 +26,9 @@ namespace evoFlix.WPF.DashboardViews
         
         FilmService fS = new FilmService();
         Random rd = new Random();
-        HomeViewModel hVM = new HomeViewModel();
+        
 
-        Window window;
+        MainWindow mW = new MainWindow();
 
         List<int> filmList = new List<int>();
 
@@ -39,7 +39,7 @@ namespace evoFlix.WPF.DashboardViews
             
             InitializeComponent();
             
-            this.window = hVM.mainWindow;
+           
             loadList(filmList);
             
 
@@ -657,8 +657,11 @@ namespace evoFlix.WPF.DashboardViews
 
 
             //Ez nem->
-            //Page player = new VideoPlayer(log, window, 0);
-            //this.Content = player;
+            HomeViewModel hVM = new HomeViewModel();
+            Page player = new VideoPlayer(hVM.mainWindow);
+            this.Content = player;
+
+           
 
         }
 

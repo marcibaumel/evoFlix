@@ -54,11 +54,11 @@ namespace evoFlix.WPF
 
 
 
+            //setFilmPage();
 
 
 
-            //Page player = new VideoPlayer(log, this, 0);
-            //this.Content = player;
+
 
 
 
@@ -70,6 +70,12 @@ namespace evoFlix.WPF
         private void main_MouseLeave(object sender, MouseEventArgs e)
         {
 
+        }
+
+        public void setFilmPage()
+        {
+            Page player = new VideoPlayer(this);
+            this.Content = player;
         }
     }
 }
