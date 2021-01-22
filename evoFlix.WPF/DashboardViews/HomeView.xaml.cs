@@ -650,15 +650,14 @@ namespace evoFlix.WPF.DashboardViews
         // Film Window buttons
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            //Ez müködik->
-            //Page DashBoard = new DashboardPage(window);
-            //DashBoard.DataContext = new DashboardViewModel();
-            //window.Content = DashBoard;
-
-
-            //Ez nem->
+           
             HomeViewModel hVM = new HomeViewModel();
-            Page player = new VideoPlayer(hVM.mainWindow);
+            Page DashBoard = new DashboardPage(hVM.mainWindow);
+            FilmPanel.Visibility = Visibility.Hidden;
+            DashBoard.DataContext = new DashboardViewModel();
+            
+
+            Page player = new VideoPlayer(DashBoard,hVM.mainWindow);
             hVM.mainWindow.Content = player;
 
            

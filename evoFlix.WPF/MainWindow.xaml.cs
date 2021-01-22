@@ -72,10 +72,10 @@ namespace evoFlix.WPF
 
         }
 
-        public void setFilmPage()
-        {
-            Page player = new VideoPlayer(this);
-            this.Content = player;
-        }
+        //public void setFilmPage()
+        //{
+        //    Page player = new VideoPlayer(this);
+        //    this.Content = player;
+        //}
     }
 }

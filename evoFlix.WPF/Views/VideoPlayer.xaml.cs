@@ -28,6 +28,7 @@ namespace evoFlix.WPF.Views
     {
         private Window main;
         private int savedTime;
+        private Page backPage;
         int startTime;
         bool IsDragged = false;
         int totalVisibilityTime = 3;
@@ -36,7 +37,7 @@ namespace evoFlix.WPF.Views
         DispatcherTimer visibilityTimer;
         public string Source { get; set; }
 
-        public VideoPlayer(Window window)
+        public VideoPlayer(Page page, Window window)
         {
             
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace evoFlix.WPF.Views
             Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4";
 
             main = window;
-
+            backPage = page;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
@@ -61,7 +62,7 @@ namespace evoFlix.WPF.Views
         }
 
         public VideoPlayer(Page page, Window window, int time)
-            : this(window)
+            : this(page, window)
         {
             startTime = time;
         }
@@ -109,7 +110,8 @@ namespace evoFlix.WPF.Views
         {
             savedTime = (int) mdaVideo.Position.TotalSeconds;
             MessageBox.Show(savedTime.ToString());
-            main.Content = new FilmView();
+            main.Content = backPage;
+            //main.Content = new DashboardPage();
             main.WindowState = WindowState.Normal;
             main.WindowStyle = WindowStyle.SingleBorderWindow;
         }
