@@ -21,14 +21,18 @@ namespace imdb_api_test
         static void Main(string[] args)
         {
             FilmService fS = new FilmService();
+            MyListService wS = new MyListService();
 
             string apiKey = "f51c1d39";
             //string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
-            string year = "2020";
-            string name = "wolfwalkers";
+
+            string year = "1972";
+            string name = "The Godfather";
+            
+            
             string type = "movie";
            
            
@@ -85,7 +89,8 @@ namespace imdb_api_test
                 Console.WriteLine("Hiba a DB-be");
             }
 
-            
+
+            //wS.AddToMyList(1, 5);
 
             Console.WriteLine(testConvert.ToString());
             Console.WriteLine("Press any key...");

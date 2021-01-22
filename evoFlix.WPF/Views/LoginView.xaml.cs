@@ -1,5 +1,6 @@
 ﻿using evoFlix.Models.Users;
 using evoFlix.Services;
+using evoFlix.WPF.ViewModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -95,10 +96,12 @@ namespace evoFlix.WPF.Views
                     scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
                     Count = 0;
-
-                    window.Content = new DashboardPage(myUsername.Text);
-                    //return true;
+                    Page DashBoard = new DashboardPage(window);
+                    DashBoard.DataContext = new DashboardViewModel();
+                    window.Content = DashBoard;
                     
+                    //return true;
+
                 }
             }else
             {

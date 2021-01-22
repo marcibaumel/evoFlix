@@ -166,7 +166,7 @@ namespace evoFlix.Services
             return filmRuntime.ToString();
         }
 
-        public string get(string Title)
+        public string getSource(string Title)
         {
             var filmSource = unitOfWork.Films.FirstOrDefault(x => x.Title == Title).Source;
             if (filmSource == null)

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FilmService.cs" />
+    <Compile Include="MyListService.cs" />
     <Compile Include="UserComponentsService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
