@@ -78,7 +78,9 @@ namespace imdb_api_test
             
             Film testConvert = JsonConvert.DeserializeObject<Film>(result);
 
-            fS.setSource("wolfwalkers", @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4");
+            Directory.GetFiles(@"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\");
+
+            fS.setSource("wolfwalkers", Directory.GetFiles(@"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content")[0]);
 
             if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
             {
