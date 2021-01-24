@@ -8,7 +8,12 @@ namespace evoFlix.WPF
 {
     public class Heap
     {
-        string ActualUser { get; set; }
+       
 
+        
     }
+
+    
+
+    
 }

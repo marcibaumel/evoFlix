@@ -18,7 +18,7 @@ namespace evoFlix.WPF
     public partial class DashboardPage : Page
     {
 
-        //public string user { get; set; }
+        public int UserId { get; set; }
         public Window window { get; set; }
 
         public DashboardPage(Window window)
@@ -28,9 +28,12 @@ namespace evoFlix.WPF
             this.window = window;
         }
 
-        public DashboardPage()
+        public DashboardPage(Window window, int UserId)
         {
+            InitializeComponent();
 
+            this.window = window;
+            this.UserId = UserId;
         }
 
         
