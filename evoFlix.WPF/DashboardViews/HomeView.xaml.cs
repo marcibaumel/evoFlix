@@ -33,6 +33,7 @@ namespace evoFlix.WPF.DashboardViews
         List<int> filmList = new List<int>();
 
         List<int> usedList = new List<int>();
+        HomeViewModel hVM = new HomeViewModel();
 
         public HomeView()
         {
@@ -47,6 +48,8 @@ namespace evoFlix.WPF.DashboardViews
 
             filmList.Clear();
             usedList.Clear();
+            
+            
             
         }
 
@@ -651,7 +654,7 @@ namespace evoFlix.WPF.DashboardViews
         private void Play_Click(object sender, RoutedEventArgs e)
         {
            
-            HomeViewModel hVM = new HomeViewModel();
+            
             Page DashBoard = new DashboardPage(hVM.mainWindow);
             FilmPanel.Visibility = Visibility.Hidden;
             DashBoard.DataContext = new DashboardViewModel();

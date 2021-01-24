@@ -26,6 +26,8 @@ namespace evoFlix.WPF.Views
     public partial class LoginView : UserControl
     {
         UserService userService = new UserService();
+        UserComponentsService userComponentsService = new UserComponentsService();
+        
         DateTime? blocked;
         private int count;
         Window window;
@@ -97,7 +99,8 @@ namespace evoFlix.WPF.Views
                     Console.WriteLine("Log in");
                     Count = 0;
                     
-                    Page DashBoard = new DashboardPage(window);
+                    Page DashBoard = new DashboardPage(window, userComponentsService.getUserId(myUsername.Text));
+                    
                     DashBoard.DataContext = new DashboardViewModel();
                     window.Content = DashBoard;
                     

@@ -14,5 +14,7 @@ namespace evoFlix.WPF.ViewModels
 
         public Window mainWindow { get; set; } = Application.Current.MainWindow;
 
+        public int ActualUserId { get; set; }
+
     }
 }
