@@ -92,7 +92,7 @@ namespace imdb_api_test
 
             for (int i = 0; i < files.Length; i++)
             {
-                Console.WriteLine(files[i].GetUntilOrEmpty());
+                Console.WriteLine(files[i]);
             }
 
             
