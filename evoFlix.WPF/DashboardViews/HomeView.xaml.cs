@@ -26,7 +26,7 @@ namespace evoFlix.WPF.DashboardViews
         
         FilmService fS = new FilmService();
         Random rd = new Random();
-        
+        Label titlelabel, directorlabel, actorslabel, minlabel, ratelabel, imdbrate, descrlabel;
 
         MainWindow mW = new MainWindow();
 
@@ -54,7 +54,7 @@ namespace evoFlix.WPF.DashboardViews
         private void Film_Click(object sender, RoutedEventArgs e)
         {
             string title;
-            Label titlelabel,directorlabel,actorslabel,minlabel,ratelabel,imdbrate,descrlabel;
+            
             FilmPanel.Visibility = Visibility.Visible;
             switch(((Button)sender).Name)
             {
@@ -657,7 +657,7 @@ namespace evoFlix.WPF.DashboardViews
             DashBoard.DataContext = new DashboardViewModel();
             
 
-            Page player = new VideoPlayer(DashBoard,hVM.mainWindow);
+            Page player = new VideoPlayer(DashBoard,hVM.mainWindow, (String)titlelabel.Content);
             hVM.mainWindow.Content = player;
 
            

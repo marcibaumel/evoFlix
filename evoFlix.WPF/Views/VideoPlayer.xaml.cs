@@ -1,4 +1,5 @@
-﻿using evoFlix.WPF.DashboardViews;
+﻿using evoFlix.Services;
+using evoFlix.WPF.DashboardViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,14 +37,27 @@ namespace evoFlix.WPF.Views
         bool videoIsPaused = false;
         DispatcherTimer visibilityTimer;
         public string Source { get; set; }
+        FilmService fS = new FilmService();
 
-        public VideoPlayer(Page page, Window window)
+        public VideoPlayer(Page page, Window window, String Title)
         {
             
             InitializeComponent();
 
             maingrid.DataContext = this;
-            Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content\wolfwalkers_2020.mp4";
+
+            String sourcePath = fS.getSource(Title);
+
+            if(sourcePath=="Failed")
+            {
+                Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\bin\Debug\Content\wolfwalkers_2020.mp4";
+            }
+            else
+            {
+                Source = @sourcePath;
+            }
+
+            
 
             main = window;
             backPage = page;
@@ -61,11 +75,17 @@ namespace evoFlix.WPF.Views
             main.KeyDown += new KeyEventHandler(Page_KeyDown);
         }
 
-        public VideoPlayer(Page page, Window window, int time)
-            : this(page, window)
-        {
-            startTime = time;
-        }
+        //public VideoPlayer(Page page, Window window, int time)
+        //    : this(page, window)
+        //{
+        //    startTime = time;
+        //}
+
+        //public VideoPlayer(Page page, Window window, string Title)
+        //   : this(page, window)
+        //{
+            
+        //}
 
         private void visibilityTimer_Tick(object sender, EventArgs e)
         {

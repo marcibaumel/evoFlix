@@ -90,10 +90,10 @@ namespace imdb_api_test
 
 
 
-            for (int i = 0; i < files.Length; i++)
-            {
-                Console.WriteLine(files[i]);
-            }
+            //for (int i = 0; i < files.Length; i++)
+            //{
+            //    Console.WriteLine(files[i]);
+            //}
 
             
             //for(int i=0; i<fS.listOfFilms().Count(); i++)
@@ -101,8 +101,8 @@ namespace imdb_api_test
 
             //}
 
-            //string title = "wolfwalkers";
-            //fS.setSource(title, Directory.GetFiles(@"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\Content")[5]);
+            string title = "coco";
+            fS.setSource(title, files[0]);
 
             //if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
             //{
