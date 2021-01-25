@@ -27,6 +27,7 @@ namespace evoFlix.WPF.DashboardViews
         MyListService mLS = new MyListService();
         Label titlelabel, directorlabel, actorslabel, minlabel, ratelabel, imdbrate, descrlabel;
         HomeViewModel hVM = new HomeViewModel();
+        List<int> UserWatchList = new List<int>();
         private int UserId { get; set; }
 
         public MyList()
@@ -34,12 +35,13 @@ namespace evoFlix.WPF.DashboardViews
             
             InitializeComponent();
             UserId = Heap.ActualUserId;
+            UserWatchList = mLS.ListOfUserWatching(UserId);
             makeFilmGrid();
-
-
-            var UserWatchList = mLS.ListOfUserWatching(UserId);
             
-           
+
+
+
+
 
         }
        
@@ -75,7 +77,7 @@ namespace evoFlix.WPF.DashboardViews
             {
 
 
-                fn0.Content = fS.getFilmTitle(UserId);
+                fn0.Content = mLS.getFilmTitle(giveMyList(UserWatchList));
                 fk0.Source = new BitmapImage(new Uri(@fS.getPoster(fn0.Content.ToString())));
 
 
@@ -95,8 +97,8 @@ namespace evoFlix.WPF.DashboardViews
 
         private int giveMyList(List<int> list)
         {
-            int num = 0;
-
+            int num = list[0];
+            list.Remove(num);
             return num;
         }
 
