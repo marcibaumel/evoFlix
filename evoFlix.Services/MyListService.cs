@@ -85,10 +85,10 @@ namespace evoFlix.Services
 
             foreach(var user in unitOfWork.WatchLists)
             {
-                //int num = getFilmNumber(UserID);
+                
                 if(UserID == user.userNumber )
                 {
-                    ListOfUserWatching.Add(getFilmNumber(user.userNumber));
+                    ListOfUserWatching.Add(user.filmNumber);
                 }
             }
             
