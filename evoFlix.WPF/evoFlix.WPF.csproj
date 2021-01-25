@@ -97,9 +97,6 @@
     <Compile Include="Views\DeleteUserController.xaml.cs">
       <DependentUpon>DeleteUserController.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DashboardViews\FilmView.xaml.cs">
-      <DependentUpon>FilmView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -151,10 +148,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DeleteUserController.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DashboardViews\FilmView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -83,26 +83,26 @@ namespace imdb_api_test
 
 
            
-            string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Content\";
-            string[] files = Directory.GetFiles(folder);
+            //string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Content\";
+            //string[] files = Directory.GetFiles(folder);
 
 
 
 
 
-            //for (int i = 0; i < files.Length; i++)
-            //{
-            //    Console.WriteLine(files[i]);
-            //}
+            ////for (int i = 0; i < files.Length; i++)
+            ////{
+            ////    Console.WriteLine(files[i]);
+            ////}
 
             
-            //for(int i=0; i<fS.listOfFilms().Count(); i++)
-            //{
+            ////for(int i=0; i<fS.listOfFilms().Count(); i++)
+            ////{
 
-            //}
+            ////}
 
-            string title = "coco";
-            fS.setSource(title, files[0]);
+            //string title = "coco";
+            //fS.setSource(title, files[0]);
 
             //if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
             //{
@@ -114,7 +114,7 @@ namespace imdb_api_test
             //}
 
 
-            //wS.AddToMyList(1, 5);
+            wS.AddToMyList(2, 5);
 
             //Console.WriteLine(testConvert.ToString());
 
