@@ -29,8 +29,11 @@ namespace evoFlix.WPF.DashboardViews
         Label titlelabel, directorlabel, actorslabel, minlabel, ratelabel, imdbrate, descrlabel;
 
         MainWindow mW = new MainWindow();
+        
 
         List<int> filmList = new List<int>();
+        
+        
 
         List<int> usedList = new List<int>();
         HomeViewModel hVM = new HomeViewModel();
@@ -582,7 +585,7 @@ namespace evoFlix.WPF.DashboardViews
 
         private int randomFilm()
         {
-            
+
             int rN = rd.Next(1, filmList.Count());
 
             if (usedList.Contains(rN))
@@ -596,18 +599,6 @@ namespace evoFlix.WPF.DashboardViews
                 usedList.Add(rN);
             }
 
-            //if (usedList.Contains(rN))
-            //{
-            //    randomFilm();
-            //    list.Remove(rN);
-            //}
-            //else
-            //{
-            //    usedList.Add(rN);
-            //}
-
-            //usedList.ForEach(i => Console.Write("{0} ", i));
-            //Console.WriteLine("\n");
 
             return rN;
              
@@ -615,27 +606,8 @@ namespace evoFlix.WPF.DashboardViews
                 
         }
 
-        /*
-         * Random szám generálás
-         */
 
-        private int randomNumber()
-        {
-            int rN = rd.Next(1, this.filmList.Count());
-            
-            if (usedList.Contains(rN))
-            {
-                //randomNumber();
-                this.filmList.Remove(rN);
-            }
-            else
-            {
-                this.usedList.Add(rN);
-            }
-
-            return rN;
-        }
-
+        
         /*
          * Az adatbázisban lévő elemek
          * 
