@@ -30,7 +30,7 @@ namespace evoFlix.WPF.State.Navigators
 
         public ICommand UpdateCurrentViewModelCommand => new UpdateCurrentViewModelCommands(this);
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        
 
         
     }

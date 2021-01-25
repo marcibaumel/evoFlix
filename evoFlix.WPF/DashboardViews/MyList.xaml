@@ -8,62 +8,62 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Background="#FFC3C3C3"
       >
-
-    <ScrollViewer>
-        <StackPanel Height="1300" Width="1280">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0" />
-                    <RowDefinition Height="300" />
-                    <RowDefinition Height="0" />
-                    <RowDefinition Height="300" />
-                    <RowDefinition Height="0" />
-                    <RowDefinition Height="300" />
-
-
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Height="1300" Width="1280">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0" />
+                        <RowDefinition Height="300" />
+                        <RowDefinition Height="0" />
+                        <RowDefinition Height="300" />
+                        <RowDefinition Height="0" />
+                        <RowDefinition Height="300" />
 
 
 
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Background="#799540">
-                    <Label 
+
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="#799540">
+                        <Label 
                     Margin="40 0"
                     FontSize="40"
                     Foreground="White">
-                        <Bold>My list</Bold>
-                    </Label>
-                </Grid>
+                            <Bold>My list</Bold>
+                        </Label>
+                    </Grid>
 
-                <!-- 1.Sor -->
-                <Grid Grid.Row="1" Height="220" Margin="30 0 30 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                    <!-- 1.Sor -->
+                    <Grid Grid.Row="1" Height="220" Margin="30 0 30 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <!--
+                        <!--
                 Név Konverzió
                 fk0-Az első cellában lévő film képe
                 fn0_Az első cellában lévő film neve
                 -->
 
-                    <Grid Grid.Column="0">
-                        <Image x:Name="fk0" Margin="10 0 10 30" />
-                        <Button 
+                        <Grid Grid.Column="0">
+                            <Image x:Name="fk0" Margin="10 0 10 30" />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn0"
+                                <Label x:Name="fn0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -72,22 +72,22 @@
                                FontWeight="Bold"
                                Foreground="Black"
                                />
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
-                    <Grid Grid.Column="1">
-                        <Image x:Name="fk1" Margin="10 0 10 30" />
-                        <Button 
+                        <Grid Grid.Column="1">
+                            <Image x:Name="fk1" Margin="10 0 10 30" />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn1"
+                                <Label x:Name="fn1"
                         VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -95,23 +95,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="2">
-                        <Image x:Name="fk2" Margin="10 0 10 30"  />
-                        <Button 
+                        <Grid Grid.Column="2">
+                            <Image x:Name="fk2" Margin="10 0 10 30"  />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn2"
+                                <Label x:Name="fn2"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -119,23 +119,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="3">
-                        <Image x:Name="fk3" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="3">
+                            <Image x:Name="fk3" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn3"
+                                <Label x:Name="fn3"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -143,24 +143,24 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
 
-                    <Grid Grid.Column="4">
-                        <Image x:Name="fk4" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="4">
+                            <Image x:Name="fk4" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn4"
+                                <Label x:Name="fn4"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -168,23 +168,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="5">
-                        <Image x:Name="fk5" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="5">
+                            <Image x:Name="fk5" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn5"
+                                <Label x:Name="fn5"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -192,52 +192,52 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
+                            </Border>
+                        </Grid>
                     </Grid>
-                </Grid>
 
 
-                <Grid Grid.Row="2" Background="#799540">
-                    <Label 
+                    <Grid Grid.Row="2" Background="#799540">
+                        <Label 
                     Margin="40 0"
                     FontSize="40"
                     Foreground="White">
-                        <Bold >Continue</Bold>
-                    </Label>
-                </Grid>
+                            <Bold >Continue</Bold>
+                        </Label>
+                    </Grid>
 
 
-                <!-- 2. Sor -->
+                    <!-- 2. Sor -->
 
-                <Grid Grid.Row="3" Height="220" Margin="30 0 30 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="3" Height="220" Margin="30 0 30 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <!--
+                        <!--
                 Név Konverzió
                 fk0-Az első cellában lévő film képe
                 fn0_Az első cellában lévő film neve
                 -->
 
-                    <Grid Grid.Column="0">
-                        <Image x:Name="fk6" Margin="10 0 10 30" />
-                        <Button 
+                        <Grid Grid.Column="0">
+                            <Image x:Name="fk6" Margin="10 0 10 30" />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn6"
+                                <Label x:Name="fn6"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -246,22 +246,22 @@
                                FontWeight="Bold"
                                Foreground="Black"
                                />
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
-                    <Grid Grid.Column="1">
-                        <Image x:Name="fk7" Margin="10 0 10 30" />
-                        <Button 
+                        <Grid Grid.Column="1">
+                            <Image x:Name="fk7" Margin="10 0 10 30" />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn7"
+                                <Label x:Name="fn7"
                         VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -269,23 +269,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="2">
-                        <Image x:Name="fk8" Margin="10 0 10 30"  />
-                        <Button 
+                        <Grid Grid.Column="2">
+                            <Image x:Name="fk8" Margin="10 0 10 30"  />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn8"
+                                <Label x:Name="fn8"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -293,23 +293,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="3">
-                        <Image x:Name="fk9" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="3">
+                            <Image x:Name="fk9" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn9"
+                                <Label x:Name="fn9"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -317,24 +317,24 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
 
-                    <Grid Grid.Column="4">
-                        <Image x:Name="fk10" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="4">
+                            <Image x:Name="fk10" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn10"
+                                <Label x:Name="fn10"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -342,23 +342,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="5">
-                        <Image x:Name="fk11" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="5">
+                            <Image x:Name="fk11" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn11"
+                                <Label x:Name="fn11"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -366,52 +366,52 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
+                            </Border>
+                        </Grid>
                     </Grid>
-                </Grid>
 
 
-                <Grid Grid.Row="4" Background="#799540">
-                    <Label 
+                    <Grid Grid.Row="4" Background="#799540">
+                        <Label 
                     Margin="40 0"
                     FontSize="40"
                     Foreground="White">
-                        <Bold >Teszt</Bold>
-                    </Label>
-                </Grid>
+                            <Bold >Teszt</Bold>
+                        </Label>
+                    </Grid>
 
 
-                <!-- 3. Sor -->
+                    <!-- 3. Sor -->
 
-                <Grid Grid.Row="5" Height="220" Margin="30 0 30 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="5" Height="220" Margin="30 0 30 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <!--
+                        <!--
                 Név Konverzió
                 fk0-Az első cellában lévő film képe
                 fn0_Az első cellában lévő film neve
                 -->
 
-                    <Grid Grid.Column="0">
-                        <Image x:Name="fk12" Margin="10 0 10 30" />
-                        <Button 
+                        <Grid Grid.Column="0">
+                            <Image x:Name="fk12" Margin="10 0 10 30" />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn12"
+                                <Label x:Name="fn12"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -420,22 +420,22 @@
                                FontWeight="Bold"
                                Foreground="Black"
                                />
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
-                    <Grid Grid.Column="1">
-                        <Image x:Name="fk13" Margin="10 0 10 30" />
-                        <Button 
+                        <Grid Grid.Column="1">
+                            <Image x:Name="fk13" Margin="10 0 10 30" />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn13"
+                                <Label x:Name="fn13"
                         VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -443,23 +443,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="2">
-                        <Image x:Name="fk14" Margin="10 0 10 30"  />
-                        <Button 
+                        <Grid Grid.Column="2">
+                            <Image x:Name="fk14" Margin="10 0 10 30"  />
+                            <Button 
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn14"
+                                <Label x:Name="fn14"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -467,23 +467,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="3">
-                        <Image x:Name="fk15" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="3">
+                            <Image x:Name="fk15" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn15"
+                                <Label x:Name="fn15"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -491,24 +491,24 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
 
-                    <Grid Grid.Column="4">
-                        <Image x:Name="fk16" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="4">
+                            <Image x:Name="fk16" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn16"
+                                <Label x:Name="fn16"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -516,23 +516,23 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
-                    </Grid>
+                            </Border>
+                        </Grid>
 
 
-                    <Grid Grid.Column="5">
-                        <Image x:Name="fk17" Margin="10 0 10 30"  />
-                        <Button
+                        <Grid Grid.Column="5">
+                            <Image x:Name="fk17" Margin="10 0 10 30"  />
+                            <Button
                         Click="Film_Click"
                         Margin="35 0 35 0"
                         BorderThickness="2"
                         BorderBrush="#799540" Background="{x:Null}"/>
-                        <Border 
+                            <Border 
                             VerticalAlignment="Bottom" 
                             HorizontalAlignment="Center" 
                             Width="130"
                             Height="30">
-                            <Label x:Name="fn17"
+                                <Label x:Name="fn17"
                             VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                HorizontalContentAlignment="Center"
@@ -540,15 +540,215 @@
                                FontSize="14" 
                                FontWeight="Bold"
                                Foreground="Black"/>
-                        </Border>
+                            </Border>
+                        </Grid>
                     </Grid>
+
+
                 </Grid>
 
 
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel x:Name="FilmPanel" Visibility="Hidden">
+            <Grid Height="630" Width="1120" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Height="630" Width="1120" BorderBrush="Black" BorderThickness="3"/>
+                <Grid Margin="5" Background="#BFC3C3C3">
+                    <Border 
+            Margin="25 60" 
+            Height="325" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            BorderBrush="Black"
+            BorderThickness="3">
+                        <Image HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="fI"/>
+                    </Border>
+
+                    <Button
+            x:Name="Exit_Button"
+            Click="Exit_Click"
+            Margin="1" 
+            Height="50" Width="50" 
+            Background="{x:Null}"  BorderBrush="{x:Null}"
+            HorizontalAlignment="Right" VerticalAlignment="Top">
+                        <Image Source="../Images/x.png"/>
+                    </Button>
+
+                    <Grid Margin="0 60 25 0" Height="325" Width ="760" HorizontalAlignment="Right" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Első sor -->
+                        <Grid Grid.Row="0" >
+                            <Grid Margin="0 0 0 5" Background="#799540">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0">
+                                    <Label 
+                        FontSize="40"
+                        VerticalAlignment="Center">
+                                        <Bold>Title:</Bold>
+                                    </Label>
+                                </Border>
+
+                                <Border  Grid.Column="1" x:Name="titlelbl">
+                                    <Label 
+                        FontSize="40"
+                        VerticalAlignment="Center"/>
+                                </Border>
+
+                            </Grid>
+                        </Grid>
+
+                        <!--Második sor -->
+                        <Grid Grid.Row="1">
+                            <Grid Margin="0 0 0 5" Background="#799540">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0">
+                                    <Label
+                        FontSize="40"
+                        VerticalAlignment="Center">
+                                        <Bold>Director:</Bold>
+                                    </Label>
+                                </Border>
+
+                                <Border  Grid.Column="1" x:Name="directorlbl">
+                                    <Label 
+                        FontSize="40"
+                        VerticalAlignment="Center"/>
+                                </Border>
+
+                            </Grid>
+                        </Grid>
+
+                        <!--Harmadik sor -->
+                        <Grid Grid.Row="2">
+                            <Grid Margin="0 0 0 5" Background="#799540">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0">
+                                    <Label 
+                        FontSize="40"
+                        VerticalAlignment="Center">
+                                        <Bold>Cast:</Bold>
+                                    </Label>
+                                </Border>
+
+                                <Border  Grid.Column="1" x:Name="castlbl">
+                                    <Label 
+                        FontSize="40"
+                        VerticalAlignment="Center"/>
+                                </Border>
+
+                            </Grid>
+
+                        </Grid>
+
+                        <!-- Negyedik sor -->
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Margin="0 0 5 5" Background="#799540" x:Name="minlbl">
+                                    <Label
+                            FontSize="20" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"/>
+                                </Border>
+
+                                <Border Grid.Row="1" Margin="0 0 5 5" Background="#799540" x:Name="ratelbl">
+                                    <Label
+                            FontSize="20" 
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Margin="30 0 30 0" Background="#799540">
+                                    <Image  Margin="0 2 0 0" Source="../Images/imdb.png"/>
+                                </Grid>
+                                <Border Grid.Row="1" 
+                            Margin="30 0 30 5" 
+                            Background="#799540" 
+                            x:Name="imbdlbl">
+                                    <Label FontSize="20"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+                                <Button 
+                        x:Name="Play_Button"
+                            Click="Play_Click"
+                        Width="81" 
+                        Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <Image Source="../Images/FilmPlay.png"/>
+                                </Button>
+                            </Grid>
+
+                            <Grid Grid.Column="3">
+                                <Button 
+                        x:Name="Add_Button"
+                        Click="Add_Click"
+                        Width="81" 
+                        Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <Image Source="../Images/FilmPlus.png"/>
+                                </Button>
+                            </Grid>
+
+                            
+                        </Grid>
+                    </Grid>
+
+                    <Border
+            x:Name="desclbl"
+            Margin="25 0 25 25" 
+            VerticalAlignment="Bottom" 
+            Height="200"
+            Background="#799540"
+            BorderBrush="Black"
+            BorderThickness="3">
+                        <Label 
+                FontSize="14"
+                Foreground="Black"/>
+                    </Border>
+
+                </Grid>
             </Grid>
-
-
         </StackPanel>
-    </ScrollViewer>
+
+    </Grid>
 
 </UserControl>

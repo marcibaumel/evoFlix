@@ -8,6 +8,8 @@ namespace evoFlix.WPF.ViewModels
 {
     public class MyListViewModel: ViewModelBase
     {
+       
 
+       
     }
 }

@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace evoFlix.WPF
 {
-    public class Heap
+    
+    public static class Heap
     {
-        string ActualUser { get; set; }
-
+        public static int ActualUserId { get; set; }
+        
     }
+
+
+
+
 }

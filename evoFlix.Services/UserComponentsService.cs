@@ -17,6 +17,7 @@ namespace evoFlix.Services
     public class UserComponentsService
     {        
         private UnitOfWork unitOfWork;
+        
 
         public UserComponentsService()
         {
@@ -51,6 +52,18 @@ namespace evoFlix.Services
             return userName.ToString();
         }
 
+        public int getUserId (string Username)
+        {
+            int UserId = unitOfWork.Users.FirstOrDefault(x => x.Username == Username).Id;
+            if (UserId == null)
+            {
+                return 1;
+            }
+
+            return UserId;
+
+        }
+
         public string getUserProfilPitcure(int Number)
         {
             var userProfilPitcure = unitOfWork.Users.FirstOrDefault(x => x.Id == Number).ProfilePicturePath;
@@ -58,7 +71,7 @@ namespace evoFlix.Services
             {
                 return "Failed";
             }
-
+            
             return userProfilPitcure.ToString();
         }
 

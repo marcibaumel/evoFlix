@@ -26,13 +26,18 @@ namespace evoFlix.WPF.DashboardViews
         
         FilmService fS = new FilmService();
         Random rd = new Random();
-        
+        MyListService mLS = new MyListService();
+        Label titlelabel, directorlabel, actorslabel, minlabel, ratelabel, imdbrate, descrlabel;
 
         MainWindow mW = new MainWindow();
+        
 
         List<int> filmList = new List<int>();
 
+        int UserId = Heap.ActualUserId;
+
         List<int> usedList = new List<int>();
+        HomeViewModel hVM = new HomeViewModel();
 
         public HomeView()
         {
@@ -48,13 +53,15 @@ namespace evoFlix.WPF.DashboardViews
             filmList.Clear();
             usedList.Clear();
             
+            
+            
         }
 
        
         private void Film_Click(object sender, RoutedEventArgs e)
         {
             string title;
-            Label titlelabel,directorlabel,actorslabel,minlabel,ratelabel,imdbrate,descrlabel;
+            
             FilmPanel.Visibility = Visibility.Visible;
             switch(((Button)sender).Name)
             {
@@ -579,7 +586,7 @@ namespace evoFlix.WPF.DashboardViews
 
         private int randomFilm()
         {
-            
+
             int rN = rd.Next(1, filmList.Count());
 
             if (usedList.Contains(rN))
@@ -593,18 +600,6 @@ namespace evoFlix.WPF.DashboardViews
                 usedList.Add(rN);
             }
 
-            //if (usedList.Contains(rN))
-            //{
-            //    randomFilm();
-            //    list.Remove(rN);
-            //}
-            //else
-            //{
-            //    usedList.Add(rN);
-            //}
-
-            //usedList.ForEach(i => Console.Write("{0} ", i));
-            //Console.WriteLine("\n");
 
             return rN;
              
@@ -612,27 +607,8 @@ namespace evoFlix.WPF.DashboardViews
                 
         }
 
-        /*
-         * Random szám generálás
-         */
 
-        private int randomNumber()
-        {
-            int rN = rd.Next(1, this.filmList.Count());
-            
-            if (usedList.Contains(rN))
-            {
-                //randomNumber();
-                this.filmList.Remove(rN);
-            }
-            else
-            {
-                this.usedList.Add(rN);
-            }
-
-            return rN;
-        }
-
+        
         /*
          * Az adatbázisban lévő elemek
          * 
@@ -651,13 +627,13 @@ namespace evoFlix.WPF.DashboardViews
         private void Play_Click(object sender, RoutedEventArgs e)
         {
            
-            HomeViewModel hVM = new HomeViewModel();
+            
             Page DashBoard = new DashboardPage(hVM.mainWindow);
             FilmPanel.Visibility = Visibility.Hidden;
             DashBoard.DataContext = new DashboardViewModel();
             
 
-            Page player = new VideoPlayer(DashBoard,hVM.mainWindow);
+            Page player = new VideoPlayer(DashBoard,hVM.mainWindow, (String)titlelabel.Content);
             hVM.mainWindow.Content = player;
 
            
@@ -677,7 +653,8 @@ namespace evoFlix.WPF.DashboardViews
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            string content = (String)titlelabel.Content;
+            mLS.AddToMyList(fS.getFilmID(content), UserId);
         }
     }
 }

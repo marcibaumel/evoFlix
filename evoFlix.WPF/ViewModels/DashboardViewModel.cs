@@ -13,6 +13,8 @@ namespace evoFlix.WPF.ViewModels
         public INavigator Navigator { get; set; } = new Navigator();
 
         public Command homeViewCommand;
+
+
         public DashboardViewModel()
         {
             homeViewCommand = new Command(ExecuteHomeView, CanExecuteHomeView);

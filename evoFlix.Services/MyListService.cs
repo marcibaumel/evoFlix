@@ -13,6 +13,7 @@ namespace evoFlix.Services
         private UnitOfWork unitOfWork;
         //private WatchList wl;
         FilmService fS = new FilmService();
+        
 
         public MyListService()
         {
@@ -22,10 +23,34 @@ namespace evoFlix.Services
         public void AddToMyList(int FilmName, int User)
         {
             MyList mL = new MyList();
-            mL.filmNumber = FilmName;
-            mL.userNumber = User;
-            unitOfWork.WatchLists.Add(mL);
-            unitOfWork.SaveChanges();
+
+            if (checkUserIdAndFilm(FilmName, User) == true)
+            {
+                mL.userNumber = User;
+                mL.filmNumber = FilmName;
+                unitOfWork.WatchLists.Add(mL);
+                unitOfWork.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("DB hiba");
+            }
+           
+        }
+
+        public bool checkUserIdAndFilm(int filmId , int userId)
+        {
+            
+            foreach (var user in unitOfWork.WatchLists)
+            {
+                if (user.userNumber == userId && user.filmNumber == filmId)
+                {
+                    return false;
+                }
+                
+                    
+            }
+            return true;
         }
 
         public string getFilmTitle(int Number)
@@ -39,19 +64,40 @@ namespace evoFlix.Services
             return filmTitle.ToString();
         }
 
-        //public List<int> listOfFilms(int UserID)
-        //{
-        //    List<int> ListOfFilms = new List<int>();
+        public int getFilmNumber(int Number)
+        {
+            int filmNumber = unitOfWork.WatchLists.FirstOrDefault(x => x.userNumber == Number).filmNumber;
+            
+            if (filmNumber == 0)
+            {
+                return 0;
+            }
 
-        //    if
-        //    foreach (var film in unitOfWork.Films)
-        //    {
-        //        ListOfFilms.Add(film.Id);
-        //    }
+            return filmNumber;
+        }
 
-        //    return ListOfFilms;
-        //}
 
-      
+        //Nem jó még
+        public List<int> ListOfUserWatching(int UserID)
+        {
+            List<int> ListOfUserWatching = new List<int>();
+
+
+            foreach(var user in unitOfWork.WatchLists)
+            {
+                
+                if(UserID == user.userNumber )
+                {
+                    ListOfUserWatching.Add(user.filmNumber);
+                }
+            }
+            
+           
+                
+
+            return ListOfUserWatching;
+        }
+
+
     }
 }
