@@ -98,7 +98,7 @@ namespace evoFlix.WPF.Views
                     scfLogin_text.Visibility = Visibility.Visible;
                     Console.WriteLine("Log in");
                     Count = 0;
-                    
+                    Heap.ActualUserId = userComponentsService.getUserId(myUsername.Text);
                     Page DashBoard = new DashboardPage(window, userComponentsService.getUserId(myUsername.Text));
                     
                     DashBoard.DataContext = new DashboardViewModel();

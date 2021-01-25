@@ -114,7 +114,7 @@ namespace imdb_api_test
             //}
 
 
-            wS.AddToMyList(2, 5);
+           
 
             //Console.WriteLine(testConvert.ToString());
 

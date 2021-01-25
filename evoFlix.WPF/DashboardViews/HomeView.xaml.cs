@@ -26,14 +26,15 @@ namespace evoFlix.WPF.DashboardViews
         
         FilmService fS = new FilmService();
         Random rd = new Random();
+        MyListService mLS = new MyListService();
         Label titlelabel, directorlabel, actorslabel, minlabel, ratelabel, imdbrate, descrlabel;
 
         MainWindow mW = new MainWindow();
         
 
         List<int> filmList = new List<int>();
-        
-        
+
+        int UserId = Heap.ActualUserId;
 
         List<int> usedList = new List<int>();
         HomeViewModel hVM = new HomeViewModel();
@@ -652,7 +653,8 @@ namespace evoFlix.WPF.DashboardViews
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            string content = (String)titlelabel.Content;
+            mLS.AddToMyList(fS.getFilmID(content), UserId);
         }
     }
 }

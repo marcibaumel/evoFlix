@@ -183,6 +183,11 @@ namespace evoFlix.Services
             return film;
         }
 
+        public int getFilmID(string Title)
+        {
+            int filmId = unitOfWork.Films.FirstOrDefault(x => x.Title == Title).Id;
+            return filmId;
+        }
 
 
 

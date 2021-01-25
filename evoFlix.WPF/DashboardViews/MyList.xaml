@@ -728,15 +728,7 @@
                                 </Button>
                             </Grid>
 
-                            <Grid Grid.Column="4">
-                                <Button 
-                        x:Name="Check_Button"
-                        Click="Check_Click"
-                        Width="81" 
-                        Background="{x:Null}" BorderBrush="{x:Null}">
-                                    <Image Source="../Images/FilmPipa.png"/>
-                                </Button>
-                            </Grid>
+                            
                         </Grid>
                     </Grid>
 

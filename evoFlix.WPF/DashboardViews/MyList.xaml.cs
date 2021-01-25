@@ -33,17 +33,13 @@ namespace evoFlix.WPF.DashboardViews
         {
             
             InitializeComponent();
-            UserId = 5;
+            UserId = Heap.ActualUserId;
             makeFilmGrid();
 
 
             var UserWatchList = mLS.ListOfUserWatching(UserId);
             
-            for(int i=0; i<UserWatchList.Count; i++)
-            {
-                Console.WriteLine(UserWatchList.ElementAt(i));
-            }
-
+           
 
         }
        
@@ -52,7 +48,56 @@ namespace evoFlix.WPF.DashboardViews
         
         private void makeFilmGrid()
         {
-            //setFilmGrid(fn0, fk0);
+            setFilmGrid(fn0, fk0);
+            setFilmGrid(fn1, fk1);
+            setFilmGrid(fn2, fk2);
+            setFilmGrid(fn3, fk3);
+            setFilmGrid(fn4, fk4);
+            setFilmGrid(fn5, fk5);
+            setFilmGrid(fn6, fk6);
+            setFilmGrid(fn7, fk7);
+            setFilmGrid(fn8, fk8);
+            setFilmGrid(fn9, fk9);
+            setFilmGrid(fn10, fk10);
+            setFilmGrid(fn11, fk11);
+            setFilmGrid(fn12, fk12);
+            setFilmGrid(fn13, fk13);
+            setFilmGrid(fn14, fk14);
+            setFilmGrid(fn15, fk15);
+            setFilmGrid(fn16, fk16);
+            setFilmGrid(fn17, fk17);
+        }
+
+        private void setFilmGrid(Label fn0, Image fk0)
+        {
+
+            try
+            {
+
+
+                fn0.Content = fS.getFilmTitle(UserId);
+                fk0.Source = new BitmapImage(new Uri(@fS.getPoster(fn0.Content.ToString())));
+
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Hiba");
+                fn0.Content = "";
+                fk0.Source = null;
+
+
+
+            }
+
+        }
+
+        private int giveMyList(List<int> list)
+        {
+            int num = 0;
+
+            return num;
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
@@ -84,7 +129,8 @@ namespace evoFlix.WPF.DashboardViews
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            string content = (String)titlelabel.Content;
+            mLS.AddToMyList(fS.getFilmID(content), UserId);
         }
 
         private void Film_Click(object sender, RoutedEventArgs e)
@@ -568,29 +614,6 @@ namespace evoFlix.WPF.DashboardViews
 
         
         
-        private void setFilmGrid(Label fn0, Image fk0)
-        {
-
-            try
-            {
-
-
-                fn0.Content = fS.getFilmTitle(UserId);
-                fk0.Source = new BitmapImage(new Uri(@fS.getPoster(fn0.Content.ToString())));
-
-
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine("Hiba");
-                fn0.Content = "";
-                fk0.Source = null;
-
-
-
-            }
-
-        }
+       
     }
 }
