@@ -31,6 +31,8 @@ namespace evoFlix.Services
             unitOfWork.SaveChanges();
         }
 
+
+
         public bool IsUniqueFilmTitle(string title)
         {
             foreach (Film film in unitOfWork.Films)
@@ -51,7 +53,17 @@ namespace evoFlix.Services
             return ListOfFilms;
         }
 
+        public int getFilmId(int Number)
+        {
+            List<int> ListOfFilms = new List<int>();
 
+            foreach (var film in unitOfWork.Films)
+            {
+                ListOfFilms.Add(film.Id);
+            }
+            return ListOfFilms[Number];
+
+        }
 
         public string getFilmTitle(int Number)
         {

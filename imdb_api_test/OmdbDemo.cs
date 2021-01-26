@@ -27,15 +27,13 @@ namespace imdb_api_test
             MyListService wS = new MyListService();
 
             string apiKey = "f51c1d39";
-            //string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
+           // string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
 
 
-            string year = "1972";
-            string name = "The Godfather";
-
-
+            string year = "2019";
+            string name = "Avengers: Endgame";
             string type = "movie";
 
 
@@ -77,12 +75,12 @@ namespace imdb_api_test
                 Console.WriteLine(e);
             }
 
-            //Console.WriteLine(result);
+            Console.WriteLine(result);
 
             Film testConvert = JsonConvert.DeserializeObject<Film>(result);
 
 
-           
+
             //string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Content\";
             //string[] files = Directory.GetFiles(folder);
 
@@ -95,7 +93,7 @@ namespace imdb_api_test
             ////    Console.WriteLine(files[i]);
             ////}
 
-            
+
             ////for(int i=0; i<fS.listOfFilms().Count(); i++)
             ////{
 
@@ -104,17 +102,17 @@ namespace imdb_api_test
             //string title = "coco";
             //fS.setSource(title, files[0]);
 
-            //if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
-            //{
-            //    fS.AddFilm(testConvert);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Hiba a DB-be");
-            //}
+            if (fS.IsUniqueFilmTitle(testConvert.Title) == true)
+            {
+                fS.AddFilm(testConvert);
+            }
+            else
+            {
+                Console.WriteLine("Hiba a DB-be");
+            }
 
 
-           
+
 
             //Console.WriteLine(testConvert.ToString());
 

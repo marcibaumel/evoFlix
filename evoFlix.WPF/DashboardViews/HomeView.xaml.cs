@@ -41,10 +41,7 @@ namespace evoFlix.WPF.DashboardViews
 
         public HomeView()
         {
-            
             InitializeComponent();
-            
-           
             loadList(filmList);
             
 
@@ -61,7 +58,14 @@ namespace evoFlix.WPF.DashboardViews
         private void Film_Click(object sender, RoutedEventArgs e)
         {
             string title;
-            
+            titlelabel = titlelbl.Child as Label;
+            directorlabel = directorlbl.Child as Label;
+            actorslabel = castlbl.Child as Label;
+            minlabel = minlbl.Child as Label;
+            ratelabel = ratelbl.Child as Label;
+            imdbrate = imbdlbl.Child as Label;
+            descrlabel = desclbl.Child as Label;
+
             FilmPanel.Visibility = Visibility.Visible;
             switch(((Button)sender).Name)
             {
@@ -69,25 +73,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn0.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content=title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -95,25 +86,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn1.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label; 
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -121,25 +99,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn2.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -147,25 +112,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn3.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -173,25 +125,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn4.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -199,25 +138,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn5.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -225,25 +151,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn6.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -251,25 +164,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn7.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -277,25 +177,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn8.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -303,25 +190,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn9.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -329,25 +203,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn10.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -355,25 +216,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn11.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -381,25 +229,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn12.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -407,25 +242,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn13.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -433,25 +255,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn14.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -459,25 +268,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn15.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -485,25 +281,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn16.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -511,25 +294,12 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn17.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel = titlelbl.Child as Label;
                     titlelabel.Content = title;
-
-                    directorlabel = directorlbl.Child as Label;
                     directorlabel.Content = fS.getDirector(title);
-
-                    actorslabel = castlbl.Child as Label;
                     actorslabel.Content = fS.getActors(title);
-
-                    minlabel = minlbl.Child as Label;
                     minlabel.Content = fS.getRuntime(title);
-
-                    ratelabel = ratelbl.Child as Label;
                     ratelabel.Content = fS.getRated(title);
-
-                    imdbrate = imbdlbl.Child as Label;
                     imdbrate.Content = fS.getRating(title);
-
-                    descrlabel = desclbl.Child as Label;
                     descrlabel.Content = fS.getPlot(title);
 
                     break;
@@ -572,10 +342,7 @@ namespace evoFlix.WPF.DashboardViews
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Hiba");
-                fn0.Content = "";
-                
-
-
+                fn0.Content = "";               
             }
 
         }
@@ -586,29 +353,29 @@ namespace evoFlix.WPF.DashboardViews
 
         private int randomFilm()
         {
-
-            int rN = rd.Next(1, filmList.Count());
-
-            if (usedList.Contains(rN))
+            int rN;
+            Boolean van;
+            if (usedList.Count() == filmList.Count())
             {
-
-                randomFilm();
-                filmList.Remove(rN);
+                return fS.getFilmId(0);
             }
-            else
+            do
             {
-                usedList.Add(rN);
-            }
-
-
-            return rN;
-             
-
-                
+                rN = rd.Next(0,filmList.Count());
+                if (usedList.Contains(rN))
+                {
+                    van = true;
+                }
+                else
+                {
+                    usedList.Add(rN);
+                    van = false;
+                }
+            } while (van);
+            int Number = fS.getFilmId(rN); 
+            return Number;                          
         }
-
-
-        
+ 
         /*
          * Az adatbázisban lévő elemek
          * 
@@ -616,10 +383,9 @@ namespace evoFlix.WPF.DashboardViews
         private void loadList(List<int> list)
         {
 
-            for(int i=0; i<= fS.listOfFilms().Count(); i++)
+            for(int i=0; i< fS.listOfFilms().Count(); i++)
             {        
                 list.Add(i);
-
             }
         }
 
@@ -635,9 +401,6 @@ namespace evoFlix.WPF.DashboardViews
 
             Page player = new VideoPlayer(DashBoard,hVM.mainWindow, (String)titlelabel.Content);
             hVM.mainWindow.Content = player;
-
-           
-
         }
 
 
@@ -648,7 +411,7 @@ namespace evoFlix.WPF.DashboardViews
 
         private void Check_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("This button has no funcion right now.", "My App");
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
