@@ -223,6 +223,9 @@
     <Resource Include="Images\FilmPlay.png" />
     <Resource Include="Images\FilmPlus.png" />
     <Resource Include="Images\FilmPipa.png" />
+    <Resource Include="EvoFlixIcon.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Images\Icons\Mute.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
