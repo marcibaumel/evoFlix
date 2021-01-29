@@ -61,6 +61,7 @@ namespace evoFlix.WPF.Views
             //}
 
             Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
+            //currently only works with .ass extension
             subtitle = new Subtitle(@"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).ass");
             main = window;
             backPage = page;
