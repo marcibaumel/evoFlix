@@ -41,9 +41,9 @@ namespace evoFlix.WPF
 
 
 
-            this.Content = log = new LoginPage(this);
+            //this.Content = log = new LoginPage(this);
 
-
+            this.Content = new VideoPlayer(new DashboardPage(this), this, "semmi");
 
 
             //Page DashBoard = new DashboardPage(this);

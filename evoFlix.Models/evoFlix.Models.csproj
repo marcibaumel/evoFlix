@@ -50,6 +50,8 @@
     <Compile Include="Content\Watching.cs" />
     <Compile Include="Content\MyList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Subtitle.cs" />
+    <Compile Include="SubtitleLine.cs" />
     <Compile Include="Users\UserDB.cs" />
     <Compile Include="Users\UserView.cs" />
   </ItemGroup>

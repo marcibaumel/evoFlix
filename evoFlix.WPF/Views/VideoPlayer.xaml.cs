@@ -1,4 +1,5 @@
-﻿using evoFlix.Services;
+﻿using evoFlix.Models;
+using evoFlix.Services;
 using evoFlix.WPF.DashboardViews;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace evoFlix.WPF.Views
     ///     - Fix button imgage error
     public partial class VideoPlayer : Page
     {
+
         private Window main;
         private int savedTime;
         private Page backPage;
@@ -37,6 +39,7 @@ namespace evoFlix.WPF.Views
         bool videoIsPaused = false;
         DispatcherTimer visibilityTimer;
         public string Source { get; set; }
+        Subtitle subtitle;
         FilmService fS = new FilmService();
 
         public VideoPlayer(Page page, Window window, String Title)
@@ -46,23 +49,23 @@ namespace evoFlix.WPF.Views
 
             maingrid.DataContext = this;
 
-            String sourcePath = fS.getSource(Title);
+            //String sourcePath = fS.getSource(Title);
 
-            if(sourcePath=="Failed")
-            {
-                Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\bin\Debug\Content\wolfwalkers_2020.mp4";
-            }
-            else
-            {
-                Source = @sourcePath;
-            }
+            //if(sourcePath=="Failed")
+            //{
+            //    Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
+            //}
+            //else
+            //{
+            //    Source = @sourcePath;
+            //}
 
-            
-
+            Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
+            subtitle = new Subtitle(@"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).ass");
             main = window;
             backPage = page;
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromSeconds(0.01);
             timer.Tick += timer_Tick;
             timer.Start();
 
@@ -104,6 +107,7 @@ namespace evoFlix.WPF.Views
                 string actual = mdaVideo.Position.ToString(@"hh\:mm\:ss");
                 string total = mdaVideo.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
                 lblProgress.Content = $"{actual} / {total}";
+                mainSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalSeconds);
             }
             
         }
