@@ -15,6 +15,7 @@ namespace imdb_api_test
 
         public String Plot { get; set; } 
 
+
         public String Director { get; set; } 
 
         public String imdbRating { get; set; } 
