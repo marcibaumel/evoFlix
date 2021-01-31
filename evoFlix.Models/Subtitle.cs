@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace evoFlix.Models
@@ -13,11 +10,11 @@ namespace evoFlix.Models
     /// TO-DO:
     /// - Implement Binary Search in GetTextIndex
     /// - Implement a faster sorting method
-    /// - Find the subtitle file in the directory of the video + get its extension
     /// - Solve character decoding problem
-    /// - Extend UI with custom subtitle options
+    /// - Extend UI with custom subtitle options (set foreground, fontsize, change to another subtitle)
+    /// - Need to find a way to outline text
     /// 
-    
+
     public class Subtitle
     {
         public string Source { get; set; }
@@ -31,18 +28,25 @@ namespace evoFlix.Models
         //------------------------------------------
         public Subtitle(string source) // The source here is the source of the video
         {
-            // Later: get the subtitle with the same name
-            Source = source;
-            // Later: Use regex to determine extension (.ass, .srt, ...)
-            //SubtitleLines = ReadDotASSFile();
-            SubtitleLines = ReadDotSRTFile();
-            Sort();
+            string videoFolderPath = Path.GetDirectoryName(source);
+            string videoName = Path.GetFileNameWithoutExtension(source);
+            string videoExtension = Path.GetExtension(source);
+            
+            string[] subtitlePaths = Directory.GetFiles(videoFolderPath, videoName + ".*");
+            Source = Path.GetExtension(subtitlePaths[0]) != videoExtension ? subtitlePaths[0] : subtitlePaths[1];
 
-            //test
-            //foreach (var item in SubtitleLines)
-            //{
-            //    Console.WriteLine($"{item.Begin}, {item.End}, {item.Text}");
-            //}
+
+            switch (Path.GetExtension(Source))
+            {
+                case ".ass":
+                    SubtitleLines = ReadDotASSFile();
+                    break;
+                case ".srt":
+                    SubtitleLines = ReadDotSRTFile();
+                    break;
+            }
+
+            Sort();
         }
 
         private void Sort()
@@ -66,9 +70,6 @@ namespace evoFlix.Models
 
             if (index < 0)
                 return "";
-            
-            //test
-            //Console.WriteLine($"{ConvertDateTimeToMilliSeconds(SubtitleLines[index].Begin)}, {ConvertDateTimeToMilliSeconds(SubtitleLines[index].End)}, {currentTime}");
 
             return SubtitleLines[index].Text;
         }
@@ -133,9 +134,6 @@ namespace evoFlix.Models
                     DateTime end = DateTime.Parse(Regex.Replace(timeMatch.Groups["end"].Value, ",", "."));
                     string text = "";
                     string line = reader.ReadLine();
-                    //byte[] bytes = Encoding.Default.GetBytes(line);
-                    //line = Encoding.UTF8.GetString(bytes);
-                    //line = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(line)));
 
                     while (line != "")
                     {

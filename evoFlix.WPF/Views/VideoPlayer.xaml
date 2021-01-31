@@ -24,7 +24,7 @@
                           Grid.RowSpan="2"
                           Source="{Binding Source}"
                           LoadedBehavior="Manual" Loaded="mdaVideo_Loaded" />
-            <!--Main Subtitle-->
+            <!--Subtitle-->
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="55*"/>
@@ -36,7 +36,7 @@
                     <ColumnDefinition Width="73*"/>
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="mainSubtitle"
+                <TextBlock x:Name="txtSubtitle"
                            Grid.Column="1"
                            Grid.Row="1"
                            Foreground="White"

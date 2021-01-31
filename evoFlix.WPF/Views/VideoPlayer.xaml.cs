@@ -1,6 +1,7 @@
 ﻿using evoFlix.Models;
 using evoFlix.Services;
 using evoFlix.WPF.DashboardViews;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,11 +45,6 @@ namespace evoFlix.WPF.Views
 
         public VideoPlayer(Page page, Window window, String Title)
         {
-            
-            InitializeComponent();
-
-            maingrid.DataContext = this;
-
             //String sourcePath = fS.getSource(Title);
 
             //if(sourcePath=="Failed")
@@ -60,13 +56,16 @@ namespace evoFlix.WPF.Views
             //    Source = @sourcePath;
             //}
 
-
-            //currently only works with .ass extension
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            Source = openFileDialog.FileName;
+            
             //Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
-            //subtitle = new Subtitle(@"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).ass");
+            //Source = @"C:\Users\Asus\Downloads\Inuyasha S06\Inuyasha - 139 - Nagy csata a Shouun vízesésnél.mkv";
+            subtitle = new Subtitle(Source); //Source: path of the video (not the subtitle)
 
-            Source = @"C:\Users\Asus\Downloads\Inuyasha S06\Inuyasha - 139 - Nagy csata a Shouun vízesésnél.mkv";
-            subtitle = new Subtitle(@"C:\Users\Asus\Downloads\Inuyasha S06\Inuyasha - 139 - Nagy csata a Shouun vízesésnél.srt");
+            InitializeComponent();
+            maingrid.DataContext = this;
 
             main = window;
             backPage = page;
@@ -113,7 +112,7 @@ namespace evoFlix.WPF.Views
                 string actual = mdaVideo.Position.ToString(@"hh\:mm\:ss");
                 string total = mdaVideo.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
                 lblProgress.Content = $"{actual} / {total}";
-                mainSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalMilliseconds);
+                txtSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalMilliseconds);
             }
             
         }
@@ -141,7 +140,6 @@ namespace evoFlix.WPF.Views
             savedTime = (int) mdaVideo.Position.TotalSeconds;
             MessageBox.Show(savedTime.ToString());
             main.Content = backPage;
-            //main.Content = new DashboardPage();
             main.WindowState = WindowState.Normal;
             main.WindowStyle = WindowStyle.SingleBorderWindow;
         }
@@ -180,14 +178,6 @@ namespace evoFlix.WPF.Views
             if (!IsDragged)
                 mdaVideo.Position = TimeSpan.FromSeconds(slrProgress.Value);
         }
-
-        //private void grdVideo_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    visibilityTimer.Stop();
-        //    grdButtons.Visibility = Visibility.Visible;
-        //    Cursor = Cursors.Arrow;
-        //    visibilityTimer.Start();
-        //}
 
         private void slrSoundBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
