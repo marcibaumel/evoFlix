@@ -60,9 +60,14 @@ namespace evoFlix.WPF.Views
             //    Source = @sourcePath;
             //}
 
-            Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
+
             //currently only works with .ass extension
-            subtitle = new Subtitle(@"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).ass");
+            //Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
+            //subtitle = new Subtitle(@"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).ass");
+
+            Source = @"C:\Users\Asus\Downloads\Inuyasha S06\Inuyasha - 139 - Nagy csata a Shouun vízesésnél.mkv";
+            subtitle = new Subtitle(@"C:\Users\Asus\Downloads\Inuyasha S06\Inuyasha - 139 - Nagy csata a Shouun vízesésnél.srt");
+
             main = window;
             backPage = page;
             DispatcherTimer timer = new DispatcherTimer();
@@ -108,7 +113,7 @@ namespace evoFlix.WPF.Views
                 string actual = mdaVideo.Position.ToString(@"hh\:mm\:ss");
                 string total = mdaVideo.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
                 lblProgress.Content = $"{actual} / {total}";
-                mainSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalSeconds);
+                mainSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalMilliseconds);
             }
             
         }

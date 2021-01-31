@@ -17,7 +17,9 @@ namespace evoFlix.Models
             Begin = begin;
             End = end;
             Text = ConvertText(text);
-            Console.WriteLine(Text);
+
+            //test
+            //Console.WriteLine(Text);
         }
 
         private string ConvertText(string text)
