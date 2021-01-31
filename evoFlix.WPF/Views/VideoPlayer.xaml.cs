@@ -35,7 +35,7 @@ namespace evoFlix.WPF.Views
         private Page backPage;
         int startTime;
         bool IsDragged = false;
-        int totalVisibilityTime = 3;
+        int totalVisibilityTime = 2;
         bool maximized = false;
         bool videoIsPaused = false;
         DispatcherTimer visibilityTimer;
@@ -56,6 +56,7 @@ namespace evoFlix.WPF.Views
             //    Source = @sourcePath;
             //}
 
+            //Only works with .srt and .ass
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.ShowDialog();
             Source = openFileDialog.FileName;
@@ -68,6 +69,7 @@ namespace evoFlix.WPF.Views
             maingrid.DataContext = this;
 
             main = window;
+            main.Title = System.IO.Path.GetFileNameWithoutExtension(Source);
             backPage = page;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(0.01);
@@ -142,6 +144,7 @@ namespace evoFlix.WPF.Views
             main.Content = backPage;
             main.WindowState = WindowState.Normal;
             main.WindowStyle = WindowStyle.SingleBorderWindow;
+            main.Title = "EvoFlix";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
