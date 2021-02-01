@@ -49,7 +49,7 @@
 
         </Grid>
         <!--Controls-->
-        <Grid x:Name="grdButtons" MouseEnter="grdButtons_MouseEnter" MouseLeave="grdButtons_MouseLeave" Visibility="Hidden">
+        <Grid x:Name="grdButtons" MouseEnter="grdButtons_MouseEnter" MouseLeave="grdButtons_MouseLeave">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="10*"/>
@@ -132,32 +132,35 @@
                             </Button.Background>
 
                         </Button>
-                        <Button x:Name="btnPause"
+                        <Button x:Name="btnCaption"
                                 Margin="7"
                                 Grid.Column="1"
-                                Click="btnPause_Click">
+                                Click="btnCaption_Click"
+                                IsEnabled="False">
                             <Button.Background>
-                                <ImageBrush ImageSource="\Images\Icons\Pause.jpg"/>
+                                <ImageBrush ImageSource="\Images\Icons\CaptionOFF.png"/>
                             </Button.Background>
                         </Button>
-                        <Button Grid.Column="2"
+                        <Button x:Name="btnRewind" 
+                                Grid.Column="2"
                                 Margin="7"
-                                Click="Button_Click_1">
+                                Click="btnRewind_Click">
                             <Button.Background>
                                 <ImageBrush ImageSource="Rewind.png"/>
                             </Button.Background>
                         </Button>
-                        <Button Grid.Column="3" 
+                        <Button x:Name="btnForward"
+                                Grid.Column="3" 
                                 Margin="7"
-                                Click="Button_Click">
+                                Click="btnForward_Click">
                             <Button.Background>
                                 <ImageBrush ImageSource="Forward.png"/>
                             </Button.Background>
                         </Button>
-                        <Button x:Name="btnSound"
+                        <Button x:Name="btnMute"
                                 Margin="7"
                                 Grid.Column="4"
-                                Click="btnSound_Click">
+                                Click="btnMute_Click">
                             <Button.Background>
                                 <ImageBrush ImageSource="\Images\Icons\Unmute.png"/>
                             </Button.Background>

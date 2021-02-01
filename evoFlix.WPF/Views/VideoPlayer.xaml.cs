@@ -38,6 +38,7 @@ namespace evoFlix.WPF.Views
         int totalVisibilityTime = 2;
         bool maximized = false;
         bool videoIsPaused = false;
+        bool showSubtitles = true;
         DispatcherTimer visibilityTimer;
         public string Source { get; set; }
         Subtitle subtitle;
@@ -67,6 +68,13 @@ namespace evoFlix.WPF.Views
 
             InitializeComponent();
             maingrid.DataContext = this;
+            if (subtitle != null)
+            {
+                btnCaption.IsEnabled = true;
+                btnCaption.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\CaptionON.png", UriKind.Relative)) };
+                showSubtitles = true;
+            }
+
 
             main = window;
             main.Title = System.IO.Path.GetFileNameWithoutExtension(Source);
@@ -121,14 +129,32 @@ namespace evoFlix.WPF.Views
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            mdaVideo.Play();
-            videoIsPaused = false;
+            if (videoIsPaused)
+            {
+                mdaVideo.Play();
+                videoIsPaused = false;
+            }
+            else
+            {
+                mdaVideo.Pause();
+                videoIsPaused = true;
+            }
+            ChangePlayButton();
         }
 
-        private void btnPause_Click(object sender, RoutedEventArgs e)
+        private void btnCaption_Click(object sender, RoutedEventArgs e)
         {
-            mdaVideo.Pause();
-            videoIsPaused = true;
+            if (showSubtitles)
+            {
+                showSubtitles = false;
+                txtSubtitle.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                showSubtitles = true;
+                txtSubtitle.Visibility = Visibility.Visible;
+            }
+            ChangeCaptionButton();
         }
 
         private void mdaVideo_Loaded(object sender, RoutedEventArgs e)
@@ -147,17 +173,17 @@ namespace evoFlix.WPF.Views
             main.Title = "EvoFlix";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnForward_Click(object sender, RoutedEventArgs e)
         {
             mdaVideo.Position += TimeSpan.FromSeconds(30);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnRewind_Click(object sender, RoutedEventArgs e)
         {
             mdaVideo.Position -= TimeSpan.FromSeconds(30);
         }
 
-        private void btnSound_Click(object sender, RoutedEventArgs e)
+        private void btnMute_Click(object sender, RoutedEventArgs e)
         {
             if (mdaVideo.Volume == 0)
                 slrSoundBar.Value = 10;
@@ -185,7 +211,7 @@ namespace evoFlix.WPF.Views
         private void slrSoundBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             mdaVideo.Volume = slrSoundBar.Value / 100;
-            ChangeSoundButton();
+            ChangeMuteButton();
 
         }
 
@@ -219,13 +245,29 @@ namespace evoFlix.WPF.Views
                 }
         }
 
-        private void ChangeSoundButton()
+        private void ChangeMuteButton()
         {
             if (mdaVideo.Volume == 0) 
-                btnSound.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Mute.png", UriKind.Relative)) };
+                btnMute.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Mute.png", UriKind.Relative)) };
             else
-                btnSound.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Unmute.png", UriKind.Relative)) };
+                btnMute.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Unmute.png", UriKind.Relative)) };
 
+        }
+
+        private void ChangePlayButton()
+        {
+            if (videoIsPaused)
+                btnPlay.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Pause.jpg", UriKind.Relative)) };
+            else
+                btnPlay.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Play.png", UriKind.Relative)) };
+        }
+
+        private void ChangeCaptionButton()
+        {
+            if (showSubtitles)
+                btnCaption.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\CaptionON.png", UriKind.Relative)) };
+            else
+                btnCaption.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\CaptionOFF.png", UriKind.Relative)) };
         }
 
         private void Page_KeyDown(object sender, KeyEventArgs e)

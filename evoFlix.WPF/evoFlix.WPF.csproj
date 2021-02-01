@@ -226,6 +226,12 @@
     <Resource Include="EvoFlixIcon.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Images\Icons\CaptionOFF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\CaptionON.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Icons\Mute.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
