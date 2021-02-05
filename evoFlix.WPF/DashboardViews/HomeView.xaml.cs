@@ -23,7 +23,6 @@ namespace evoFlix.WPF.DashboardViews
     /// </summary>
     public partial class HomeView : UserControl
     {
-        
         FilmService fS = new FilmService();
         Random rd = new Random();
         MyListService mLS = new MyListService();
@@ -42,29 +41,19 @@ namespace evoFlix.WPF.DashboardViews
         public HomeView()
         {
             InitializeComponent();
-            loadList(filmList);
-            
+            loadList(filmList);           
 
             makeFilmGrid();
 
             filmList.Clear();
             usedList.Clear();
-            
-            
-            
+       
         }
 
        
         private void Film_Click(object sender, RoutedEventArgs e)
         {
             string title;
-            titlelabel = titlelbl.Child as Label;
-            directorlabel = directorlbl.Child as Label;
-            actorslabel = castlbl.Child as Label;
-            minlabel = minlbl.Child as Label;
-            ratelabel = ratelbl.Child as Label;
-            imdbrate = imbdlbl.Child as Label;
-            descrlabel = desclbl.Child as Label;
 
             FilmPanel.Visibility = Visibility.Visible;
             switch(((Button)sender).Name)
@@ -73,234 +62,234 @@ namespace evoFlix.WPF.DashboardViews
                     title = (string)fn0.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content=title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f1":
                     title = (string)fn1.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f2":
                     title = (string)fn2.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f3":
                     title = (string)fn3.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f4":
                     title = (string)fn4.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f5":
                     title = (string)fn5.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f6":
                     title = (string)fn6.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f7":
                     title = (string)fn7.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f8":
                     title = (string)fn8.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f9":
                     title = (string)fn9.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f10":
                     title = (string)fn10.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f11":
                     title = (string)fn11.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f12":
                     title = (string)fn12.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f13":
                     title = (string)fn13.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f14":
                     title = (string)fn14.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f15":
                     title = (string)fn15.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f16":
                     title = (string)fn16.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
                 case "f17":
                     title = (string)fn17.Content;
                     fI.Source = new BitmapImage(new Uri(@fS.getPoster(title.ToString())));
 
-                    titlelabel.Content = title;
-                    directorlabel.Content = fS.getDirector(title);
-                    actorslabel.Content = fS.getActors(title);
-                    minlabel.Content = fS.getRuntime(title);
-                    ratelabel.Content = fS.getRated(title);
-                    imdbrate.Content = fS.getRating(title);
-                    descrlabel.Content = fS.getPlot(title);
+                    titlelbl.Text = title;
+                    directorlbl.Text = fS.getDirector(title);
+                    castlbl.Text = fS.getActors(title);
+                    minlbl.Text = fS.getRuntime(title);
+                    ratelbl.Text = fS.getRated(title);
+                    imbdlbl.Text = fS.getRating(title);
+                    desclbl.Text = fS.getPlot(title);
 
                     break;
             }
