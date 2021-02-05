@@ -26,7 +26,6 @@ namespace evoFlix.WPF.DashboardViews
         FilmService fS = new FilmService();
         Random rd = new Random();
         MyListService mLS = new MyListService();
-        Label titlelabel, directorlabel, actorslabel, minlabel, ratelabel, imdbrate, descrlabel;
 
         MainWindow mW = new MainWindow();
         
@@ -388,7 +387,7 @@ namespace evoFlix.WPF.DashboardViews
             DashBoard.DataContext = new DashboardViewModel();
             
 
-            Page player = new VideoPlayer(DashBoard,hVM.mainWindow, (String)titlelabel.Content);
+            Page player = new VideoPlayer(DashBoard,hVM.mainWindow, (String)titlelbl.Text);
             hVM.mainWindow.Content = player;
         }
 
@@ -405,7 +404,7 @@ namespace evoFlix.WPF.DashboardViews
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            string content = (String)titlelabel.Content;
+            string content = (String)titlelbl.Text;
             mLS.AddToMyList(fS.getFilmID(content), UserId);
         }
     }
