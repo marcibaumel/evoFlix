@@ -614,19 +614,19 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <Border Grid.Column="0">
                                 <Label 
-                        FontSize="40"
-                        VerticalAlignment="Center">
+                                    Grid.Column="0"
+                                    FontSize="40"
+                                    VerticalAlignment="Center">
                                     <Bold>Title:</Bold>
                                 </Label>
-                            </Border>
 
-                            <Border  Grid.Column="1" x:Name="titlelbl">
-                                <Label 
-                        FontSize="40"
-                        VerticalAlignment="Center"/>
-                            </Border>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    x:Name="titlelbl"
+                                    TextWrapping="WrapWithOverflow"
+                                    FontSize="30"
+                                    VerticalAlignment="Center"/>
 
                         </Grid>
                     </Grid>
@@ -639,48 +639,47 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <Border Grid.Column="0">
                                 <Label
-                        FontSize="40"
-                        VerticalAlignment="Center">
+                                    Grid.Column="0"
+                                    FontSize="40"
+                                    VerticalAlignment="Center">
                                     <Bold>Director:</Bold>
                                 </Label>
-                            </Border>
 
-                            <Border  Grid.Column="1" x:Name="directorlbl">
-                                <Label 
-                        FontSize="40"
-                        VerticalAlignment="Center"/>
-                            </Border>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    x:Name="directorlbl"
+                                    TextWrapping="WrapWithOverflow"
+                                    FontSize="30"
+                                    VerticalAlignment="Center"/>
 
-                        </Grid>
+                            </Grid>
                     </Grid>
 
                     <!--Harmadik sor -->
                     <Grid Grid.Row="2">
-                        <Grid Margin="0 0 0 5" Background="#799540">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                            <Grid Margin="0 0 0 5" Background="#799540">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
 
-                            <Border Grid.Column="0">
                                 <Label 
-                        FontSize="40"
-                        VerticalAlignment="Center">
+                                    Grid.Column="0"
+                                    FontSize="40"
+                                    VerticalAlignment="Center">
                                     <Bold>Cast:</Bold>
                                 </Label>
-                            </Border>
 
-                            <Border  Grid.Column="1" x:Name="castlbl">
-                                <Label 
-                        FontSize="40"
-                        VerticalAlignment="Center"/>
-                            </Border>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    x:Name="castlbl"
+                                    TextWrapping="WrapWithOverflow"
+                                    FontSize="30"
+                                    VerticalAlignment="Center"/>
 
+                            </Grid>
                         </Grid>
-
-                    </Grid>
 
                     <!-- Negyedik sor -->
                     <Grid Grid.Row="3">
@@ -696,20 +695,22 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Border Grid.Row="0" Margin="0 0 5 5" Background="#799540" x:Name="minlbl">
-                                <Label
-                            FontSize="20" 
-                            FontWeight="Bold"
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center"/>
+                            <Border Grid.Row="0" Margin="0 0 5 5" Background="#799540">
+                                <TextBlock
+                                    x:Name="minlbl"
+                                    FontSize="20" 
+                                    FontWeight="Bold"
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center"/>
                             </Border>
 
-                            <Border Grid.Row="1" Margin="0 0 5 5" Background="#799540" x:Name="ratelbl">
-                                <Label
-                            FontSize="20" 
-                            FontWeight="Bold"
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center"/>
+                            <Border Grid.Row="1" Margin="0 0 5 5" Background="#799540">
+                                <TextBlock
+                                    x:Name="ratelbl"
+                                    FontSize="20" 
+                                    FontWeight="Bold"
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center"/>
                             </Border>
                         </Grid>
 
@@ -722,21 +723,22 @@
                                 <Image  Margin="0 2 0 0" Source="../Images/imdb.png"/>
                             </Grid>
                             <Border Grid.Row="1" 
-                            Margin="30 0 30 5" 
-                            Background="#799540" 
-                            x:Name="imbdlbl">
-                                <Label FontSize="20"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"/>
+                                Margin="30 0 30 5" 
+                                Background="#799540">
+                                <TextBlock 
+                                   x:Name="imbdlbl"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
                             </Border>
                         </Grid>
 
                         <Grid Grid.Column="2">
                             <Button 
-                        x:Name="Play_Button"
+                             x:Name="Play_Button"
                             Click="Play_Click"
-                        Width="81" 
-                        Background="{x:Null}" BorderBrush="{x:Null}">
+                            Width="81" 
+                            Background="{x:Null}" BorderBrush="{x:Null}">
                                 <Image Source="../Images/FilmPlay.png"/>
                             </Button>
                         </Grid>
@@ -756,19 +758,20 @@
                 </Grid>
 
                 <Border
-            x:Name="desclbl"
-            Margin="25 0 25 25" 
-            VerticalAlignment="Bottom" 
-            Height="200"
-            Background="#799540"
-            BorderBrush="Black"
-            BorderThickness="3">
-                    <Label 
-                FontSize="14"
-                Foreground="Black"/>
+                    Margin="25 0 25 25" 
+                    VerticalAlignment="Bottom" 
+                    Height="200"
+                    Background="#799540"
+                    BorderBrush="Black"
+                    BorderThickness="3">
+                    <TextBlock 
+                    x:Name="desclbl"
+                    TextWrapping="WrapWithOverflow"
+                    FontSize="21"
+                    Foreground="Black"/>
                 </Border>
 
-            </Grid>
+                </Grid>
             </Grid>
         </StackPanel>
 

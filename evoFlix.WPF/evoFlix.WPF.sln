@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evoFlix.DataAccess", "..\ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evoFlix.Models", "..\evoFlix.Models\evoFlix.Models.csproj", "{F6BCF56C-E1C3-4B14-9A01-62A63FCCDB43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "imdb_api_test", "..\imdb_api_test\imdb_api_test.csproj", "{E81997E6-A093-4E75-8235-734715359DE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evoFlix.omdb_api", "..\imdb_api_test\evoFlix.omdb_api.csproj", "{E81997E6-A093-4E75-8235-734715359DE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
