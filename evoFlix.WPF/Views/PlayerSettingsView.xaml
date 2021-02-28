@@ -6,24 +6,16 @@
              xmlns:local="clr-namespace:evoFlix.WPF.Views"
              mc:Ignorable="d"
              Background="LightGray"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Button FontSize="20"
-                    FontWeight="Bold"
-                    Width="40"
-                    DockPanel.Dock="Right"
-                Grid.Column="1"
-                HorizontalAlignment="Right"
-                Margin="5" Click="Button_Click">X</Button>
-            <Frame x:Name="SettingsItemFrame" Grid.Column="1" Grid.Row="1" Margin="20 0 20 40"/>
+        <Frame x:Name="SettingsItemFrame" 
+               Grid.Column="1"
+               Margin="20 0 20 40"/>
         <Border BorderThickness="0 0 2 0"
                 BorderBrush="Black"
                 Grid.RowSpan="2">
@@ -34,7 +26,8 @@
                     Background="LightGray"
                     Margin="0 10"
                     FontWeight="Bold"
-                    FontSize="20" Click="btnSubtitles_Click"/>
+                    FontSize="20" 
+                    Click="btnSubtitles_Click"/>
                 <Button Content="Others" 
                     BorderThickness="0"
                     Background="LightGray"

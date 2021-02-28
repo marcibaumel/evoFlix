@@ -81,11 +81,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ObservableObject.cs" />
-    <Compile Include="Views\VideoSettingsWindow.xaml.cs">
-      <DependentUpon>VideoSettingsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="State\Navigators\INavigator.cs" />
     <Compile Include="State\Navigators\Navigator.cs" />
+    <Compile Include="VideoSettingsWindow.xaml.cs">
+      <DependentUpon>VideoSettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
@@ -151,15 +151,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VideoSettingsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Styles\Common.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\NavigationBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VideoSettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,6 +237,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Views\512x512.png" />
     <Resource Include="Images\x.png" />
     <Resource Include="Images\f13.jpg" />
     <Resource Include="Images\2067.JPG" />
@@ -247,6 +248,7 @@
     <Resource Include="EvoFlixIcon.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Icons\Settings.png" />
     <Content Include="Images\Icons\CaptionOFF.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -51,12 +51,10 @@ namespace evoFlix.WPF
             //DashBoard.DataContext = new DashboardViewModel();
 
 
-
+            
 
 
             //setFilmPage();
-
-
 
 
 

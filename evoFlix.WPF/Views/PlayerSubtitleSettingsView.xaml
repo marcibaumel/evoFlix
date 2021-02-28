@@ -47,7 +47,11 @@
                                FontSize="20"
                                Margin="5 20"/>
                     <Button x:Name="btnSelectLocal"
-                            Content="Select local file" Click="btnSelectLocal_Click"/>
+                            Content="Select local file" 
+                            Click="btnSelectLocal_Click"
+                            HorizontalAlignment="Left"
+                            Width="150"
+                            Margin="5 0"/>
                     <TextBlock Text="Download subtitle:"
                                FontSize="20"
                                Margin="5 20"/>

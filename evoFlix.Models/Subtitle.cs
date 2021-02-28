@@ -25,11 +25,6 @@ namespace evoFlix.Models
         //------------------------------------------
         public Subtitle(string source) // The source here is the source of the video
         {
-            SetActualSubtitle(source);
-        }
-
-        public void SetActualSubtitle(string source)
-        {
             string videoFolderPath = Path.GetDirectoryName(source);
             string videoName = Path.GetFileNameWithoutExtension(source);
             string videoExtension = Path.GetExtension(source);
@@ -48,6 +43,17 @@ namespace evoFlix.Models
             }
 
 
+            ReadSubtitle();
+        }
+
+        public void SetActualSubtitle(string source)
+        {
+            Source = source;
+            ReadSubtitle();
+        }
+
+        private void ReadSubtitle()
+        {
             switch (Path.GetExtension(Source))
             {
                 case ".ass":
@@ -57,7 +63,6 @@ namespace evoFlix.Models
                     SubtitleLines = ReadDotSRTFile();
                     break;
             }
-
             Sort();
         }
 

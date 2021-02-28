@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,18 +24,33 @@ namespace evoFlix.WPF.Views
     /// </summary>
     public partial class PlayerSubtitleSettingsView : UserControl
     {
-        public List<string> AvailableSubtitles { get; set; }
+        public List<ListBoxItem> AvailableSubtitles { get; set; }
+        private const int MaxListBoxItemLength = 30;
         public PlayerSubtitleSettingsView()
         {
             InitializeComponent();
-            AvailableSubtitles = Heap.ActualSubtitle.AvailableSubtitlePaths;
+            AvailableSubtitles = new List<ListBoxItem>();
+            foreach (var subtitle in Heap.ActualSubtitle.AvailableSubtitlePaths)
+                AddItemToAvailableSubtitles(subtitle);
             lsbSubtitles.ItemsSource = AvailableSubtitles;
+            
+        }
+
+        private void AddItemToAvailableSubtitles(string subtitle)
+        {
+            ListBoxItem item = new ListBoxItem();
+            item.ToolTip = subtitle;
+            if (subtitle.Length <= MaxListBoxItemLength)
+                item.Content = subtitle;
+            else
+                item.Content = Regex.Replace(subtitle, @"^(?<begin>.{30}).*(?<ext>\" + System.IO.Path.GetExtension(subtitle) + ")$", @"${begin} ... ${ext}");
+
+            AvailableSubtitles.Add(item);
         }
 
         private void btnChoose_Click(object sender, RoutedEventArgs e)
         {
             Heap.ActualSubtitle.SetActualSubtitle(lsbSubtitles.SelectedItem.ToString());
-            MessageBox.Show(lsbSubtitles.SelectedItem.ToString());
         }
 
         private void btnSelectLocal_Click(object sender, RoutedEventArgs e)
@@ -46,7 +62,7 @@ namespace evoFlix.WPF.Views
             };
             if (openFileDialog.ShowDialog() == true)
             {
-                AvailableSubtitles.Add(openFileDialog.FileName);
+                AddItemToAvailableSubtitles(openFileDialog.FileName);
                 lsbSubtitles.ItemsSource = null;
                 lsbSubtitles.ItemsSource = AvailableSubtitles;
             }

@@ -90,8 +90,7 @@
             </Grid>
             <!--Lower Toolbar-->
             <Grid Grid.Row="2"
-                  Background="White"
-                  Margin="20 0">
+                  Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="10*"/>
@@ -118,6 +117,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="10*"/>
+                        <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Column="1"
                           Grid.Row="1">
@@ -132,9 +132,10 @@
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btnPlay"
                                 Margin="7"
-                                Click="btnPlay_Click">
+                                Click="btnPlay_Click"
+                                BorderThickness="0">
                             <Button.Background>
-                                <ImageBrush ImageSource="\Images\Icons\Play.png"/>
+                                <ImageBrush ImageSource="\Images\Icons\Pause.jpg"/>
                             </Button.Background>
 
                         </Button>
@@ -142,7 +143,8 @@
                                 Margin="7"
                                 Grid.Column="1"
                                 Click="btnCaption_Click"
-                                IsEnabled="False">
+                                IsEnabled="False"
+                                BorderThickness="0">
                             <Button.Background>
                                 <ImageBrush ImageSource="\Images\Icons\CaptionOFF.png"/>
                             </Button.Background>
@@ -150,7 +152,8 @@
                         <Button x:Name="btnRewind" 
                                 Grid.Column="2"
                                 Margin="7"
-                                Click="btnRewind_Click">
+                                Click="btnRewind_Click"
+                                BorderThickness="0">
                             <Button.Background>
                                 <ImageBrush ImageSource="Rewind.png"/>
                             </Button.Background>
@@ -158,7 +161,8 @@
                         <Button x:Name="btnForward"
                                 Grid.Column="3" 
                                 Margin="7"
-                                Click="btnForward_Click">
+                                Click="btnForward_Click"
+                                BorderThickness="0">
                             <Button.Background>
                                 <ImageBrush ImageSource="Forward.png"/>
                             </Button.Background>
@@ -166,7 +170,8 @@
                         <Button x:Name="btnMute"
                                 Margin="7"
                                 Grid.Column="4"
-                                Click="btnMute_Click">
+                                Click="btnMute_Click"
+                                BorderThickness="0">
                             <Button.Background>
                                 <ImageBrush ImageSource="\Images\Icons\Unmute.png"/>
                             </Button.Background>
@@ -177,11 +182,27 @@
                                 Maximum="100"
                                 VerticalAlignment="Center"
                                 ValueChanged="slrSoundBar_ValueChanged"/>
-                        <DockPanel Grid.Column="6">
+                        <Grid Grid.Column="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="12*"/>
+                                <ColumnDefinition/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <Button x:Name="btnSettings"
-                                    DockPanel.Dock="Right"
-                                    Content="Settings" Click="btnSettings_Click"/>
-                        </DockPanel>
+                                    BorderThickness="0"
+                                    Click="btnSettings_Click"
+                                    Grid.Row="1"
+                                    Grid.Column="1">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="\Images\Icons\Settings.png"/>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
                     </Grid>
 
                 </Grid>

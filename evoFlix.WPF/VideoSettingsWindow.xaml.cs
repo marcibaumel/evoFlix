@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evoFlix.WPF.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,13 +16,14 @@ using System.Windows.Shapes;
 namespace evoFlix.WPF
 {
     /// <summary>
-    /// Interaction logic for SettingsWindow.xaml
+    /// Interaction logic for VideoSettingsWindow.xaml
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class VideoSettingsWindow : Window
     {
-        public SettingsWindow()
+        public VideoSettingsWindow()
         {
             InitializeComponent();
+            SettingsFrame.Content = new PlayerSettingsView();
         }
     }
 }

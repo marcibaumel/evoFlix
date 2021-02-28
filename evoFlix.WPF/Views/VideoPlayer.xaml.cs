@@ -43,6 +43,7 @@ namespace evoFlix.WPF.Views
         public string Source { get; set; }
         private Subtitle subtitle;
         private FilmService fS = new FilmService();
+        private VideoSettingsWindow settings;
 
         public VideoPlayer(Page page, Window window, String Title)
         {
@@ -66,6 +67,7 @@ namespace evoFlix.WPF.Views
             //Source = @"C:\Users\Asus\Downloads\Inuyasha S06\Inuyasha - 139 - Nagy csata a Shouun vízesésnél.mkv";
             subtitle = new Subtitle(Source); //Source: path of the video (not the subtitle)
             Heap.ActualSubtitle = subtitle;
+            settings = new VideoSettingsWindow();
 
             InitializeComponent();
             maingrid.DataContext = this;
@@ -258,9 +260,10 @@ namespace evoFlix.WPF.Views
         private void ChangePlayButton()
         {
             if (videoIsPaused)
-                btnPlay.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Pause.jpg", UriKind.Relative)) };
-            else
                 btnPlay.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Play.png", UriKind.Relative)) };
+            else
+                btnPlay.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Pause.jpg", UriKind.Relative)) };
+
         }
 
         private void ChangeCaptionButton()
@@ -314,7 +317,8 @@ namespace evoFlix.WPF.Views
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new PlayerSettingsView();
+            
+            settings.Show();
         }
     }
 }
