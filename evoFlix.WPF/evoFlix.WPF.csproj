@@ -81,6 +81,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ObservableObject.cs" />
+    <Compile Include="Views\VideoSettingsWindow.xaml.cs">
+      <DependentUpon>VideoSettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="State\Navigators\INavigator.cs" />
     <Compile Include="State\Navigators\Navigator.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
@@ -107,6 +110,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Views\PlayerSettingsView.xaml.cs">
+      <DependentUpon>PlayerSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayerSubtitleSettingsView.xaml.cs">
+      <DependentUpon>PlayerSubtitleSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\VideoPlayer.xaml.cs">
       <DependentUpon>VideoPlayer.xaml</DependentUpon>
     </Compile>
@@ -142,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\VideoSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Common.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +172,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayerSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayerSubtitleSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

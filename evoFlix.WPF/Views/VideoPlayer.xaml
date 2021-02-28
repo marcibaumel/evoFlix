@@ -177,6 +177,11 @@
                                 Maximum="100"
                                 VerticalAlignment="Center"
                                 ValueChanged="slrSoundBar_ValueChanged"/>
+                        <DockPanel Grid.Column="6">
+                            <Button x:Name="btnSettings"
+                                    DockPanel.Dock="Right"
+                                    Content="Settings" Click="btnSettings_Click"/>
+                        </DockPanel>
                     </Grid>
 
                 </Grid>

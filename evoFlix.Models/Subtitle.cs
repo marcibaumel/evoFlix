@@ -10,30 +10,42 @@ namespace evoFlix.Models
     /// TO-DO:
     /// - Implement Binary Search in GetTextIndex
     /// - Implement a faster sorting method
-    /// - Solve character decoding problem
-    /// - Extend UI with custom subtitle options (set foreground, fontsize, change to another subtitle)
-    /// - Need to find a way to outline text
     /// 
 
     public class Subtitle
     {
         public string Source { get; set; }
         public List<SubtitleLine> SubtitleLines { get; set; }
+        public List<string> AvailableSubtitlePaths { get; set; }
 
         //------------------------------------------
-        // These properties should be set with the toolbar, wich will be added later
         public int FontSize { get; set; }
         public Brushes Foreground { get; set; }
         public Brushes Background { get; set; }
         //------------------------------------------
         public Subtitle(string source) // The source here is the source of the video
         {
+            SetActualSubtitle(source);
+        }
+
+        public void SetActualSubtitle(string source)
+        {
             string videoFolderPath = Path.GetDirectoryName(source);
             string videoName = Path.GetFileNameWithoutExtension(source);
             string videoExtension = Path.GetExtension(source);
-            
+
             string[] subtitlePaths = Directory.GetFiles(videoFolderPath, videoName + ".*");
             Source = Path.GetExtension(subtitlePaths[0]) != videoExtension ? subtitlePaths[0] : subtitlePaths[1];
+
+            AvailableSubtitlePaths = new List<string>();
+            AvailableSubtitlePaths.AddRange(subtitlePaths);
+            for (int i = 0; i < subtitlePaths.Length; i++)
+            {
+                string ass = videoFolderPath + "\\" + videoName + ".ass";
+                string srt = videoFolderPath + "\\" + videoName + ".srt";
+                if (subtitlePaths[i] != ass && subtitlePaths[i] != srt)
+                    AvailableSubtitlePaths.Remove(subtitlePaths[i]);
+            }
 
 
             switch (Path.GetExtension(Source))
@@ -64,6 +76,7 @@ namespace evoFlix.Models
                 }
             }
         }
+
         public string GetActualText(double currentTime)
         {
             int index = GetTextIndex(currentTime);

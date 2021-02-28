@@ -33,16 +33,16 @@ namespace evoFlix.WPF.Views
         private Window main;
         private int savedTime;
         private Page backPage;
-        int startTime;
-        bool IsDragged = false;
-        int totalVisibilityTime = 2;
-        bool maximized = false;
-        bool videoIsPaused = false;
-        bool showSubtitles = true;
-        DispatcherTimer visibilityTimer;
+        private int startTime;
+        private bool IsDragged = false;
+        private int totalVisibilityTime = 2;
+        private bool maximized = false;
+        private bool videoIsPaused = false;
+        private bool showSubtitles = true;
+        private DispatcherTimer visibilityTimer;
         public string Source { get; set; }
-        Subtitle subtitle;
-        FilmService fS = new FilmService();
+        private Subtitle subtitle;
+        private FilmService fS = new FilmService();
 
         public VideoPlayer(Page page, Window window, String Title)
         {
@@ -65,6 +65,7 @@ namespace evoFlix.WPF.Views
             //Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
             //Source = @"C:\Users\Asus\Downloads\Inuyasha S06\Inuyasha - 139 - Nagy csata a Shouun vízesésnél.mkv";
             subtitle = new Subtitle(Source); //Source: path of the video (not the subtitle)
+            Heap.ActualSubtitle = subtitle;
 
             InitializeComponent();
             maingrid.DataContext = this;
@@ -309,6 +310,11 @@ namespace evoFlix.WPF.Views
         private void grdButtons_MouseLeave(object sender, MouseEventArgs e)
         {
             visibilityTimer.Start();
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new PlayerSettingsView();
         }
     }
 }
