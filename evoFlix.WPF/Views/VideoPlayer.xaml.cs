@@ -236,6 +236,7 @@ namespace evoFlix.WPF.Views
                     mdaVideo.Play();
                 }
             else if (e.ClickCount == 1)
+            {
                 if (videoIsPaused)
                 {
                     mdaVideo.Play();
@@ -246,6 +247,9 @@ namespace evoFlix.WPF.Views
                     mdaVideo.Pause();
                     videoIsPaused = true;
                 }
+                ChangePlayButton();
+            }
+                
         }
 
         private void ChangeMuteButton()
@@ -293,6 +297,7 @@ namespace evoFlix.WPF.Views
                     mdaVideo.Pause();
                     videoIsPaused = true;
                 }
+                ChangePlayButton();
             }
         }
 
