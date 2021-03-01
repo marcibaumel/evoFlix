@@ -9,6 +9,7 @@
              Background="LightGray"
              d:DesignHeight="450" d:DesignWidth="800">
     <TabControl FontSize="15">
+<!--General Tab-->
         <TabItem Header="General">
             <GroupBox Header="Source" 
                       FontSize="15" 
@@ -37,11 +38,11 @@
                                 <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
                             <Button x:Name="btnChoose"
-                                Content="Choose"
-                                Padding="10"
-                                Height="auto"
-                                Grid.Row="1"
-                                Grid.Column="1" Click="btnChoose_Click"/>
+                                    Content="Choose"
+                                    Padding="10"
+                                    Height="auto"
+                                    Grid.Row="1"
+                                    Grid.Column="1" Click="btnChoose_Click"/>
                         </Grid>
                     </WrapPanel>
                     <TextBlock Text="Add local subtitle:"
@@ -60,7 +61,8 @@
 
             </GroupBox>
         </TabItem>
-        <TabItem Header="Appearence">
+<!--Appearance Tab-->
+        <TabItem Header="Appearance">
             <GroupBox Header="Design" 
                       FontSize="15" 
                       FontWeight="Bold"
@@ -69,75 +71,81 @@
                       BorderThickness="2">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
-                    <Border BorderThickness="0 0 0 0"
-                            BorderBrush="Black">
-                        <StackPanel>
-                            <WrapPanel>
-                                <TextBlock Text="Size:"
-                               FontSize="20"
-                               Margin="5 10"/>
-                                <xctk:IntegerUpDown x:Name="inputSize"
-                                                    Margin="20 10"
-                                                    Width="70"
-                                                    Maximum="100"
-                                                    Minimum="1"
-                                                    Value="15"/>
-                            </WrapPanel>
-
-                            <WrapPanel>
-                                <TextBlock Text="Style:"
-                                           FontSize="20"
-                                           Margin="5 20"/>
-                                <ComboBox x:Name="lsbFonts"
-                                          FontWeight="Normal"
-                                          Margin="20 10"
-                                          Width="200"
-                                          Height="30"
-                                          ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}" 
-                                          MaxDropDownHeight="125"/>
-                            </WrapPanel>
-
-                            <StackPanel Grid.Column="1"/>
-
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Font Size:"
+                                       FontSize="20"
+                                       Margin="5 10"/>
+                            <xctk:IntegerUpDown x:Name="inputSize"
+                                                Margin="20 10"
+                                                Width="70"
+                                                Maximum="100"
+                                                Minimum="1"
+                                                Value="15"/>
                         </StackPanel>
-                    </Border>
-                    <StackPanel Grid.Row="1"
-                                VerticalAlignment="Center"
-                                Grid.ColumnSpan="2"
-                                HorizontalAlignment="Left">
-                        <TextBlock Text="Preview:"
+
+                        <TextBlock Text="Font Family:"
                                    FontSize="20"
-                                   Margin="5 20"/>
-                        <TextBlock x:Name="txtPreview"
+                                   Margin="5 10"/>
+                        <ComboBox x:Name="cmbFonts"
+                                  FontWeight="Normal"
+                                  Margin="20 10"
+                                  Width="200"
+                                  Height="30"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}" 
+                                  MaxDropDownHeight="125"/>
+                        <Button x:Name="btnDefault"
+                                Content="Default"
+                                Width="100"
+                                Margin="0 20 0 0" Click="btnDefault_Click"/>
+                    </StackPanel>
+                    <Border Grid.Row="1"
+                            BorderThickness="4"
+                            BorderBrush="Brown"
+                            Background="LightYellow"
+                            Padding="5">
+                        <StackPanel >
+                            <TextBlock Text="Preview:"
+                                   FontSize="20"
+                                   Margin="5 20"
+                                   TextAlignment="Center"/>
+                            <TextBlock x:Name="txtPreview"
                                    TextAlignment="Center"
-                                   FontFamily="{Binding ElementName=lsbFonts, Path=SelectedItem}"
-                                   FontSize="{Binding ElementName=inputSize, Path=Value}"
-                                   Foreground="{Binding ElementName=textColorPicker, Path=HexadecimalString}"
+                                   FontFamily="{Binding ElementName=cmbFonts, Path=SelectedItem}"
+                                   FontSize="{Binding ElementName=inputSize, Path=Value, Mode=TwoWay}"
+                                   Foreground="{Binding ElementName=textColorPicker, Path=HexadecimalString, Mode=TwoWay}"
                                    Text="abcdefghijklmnopqrs0123456789"
                                    TextWrapping="Wrap"/>
-                    </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    
                     <StackPanel Grid.Column="1"
                                 Grid.RowSpan="2">
                         <TextBlock Text="Color:"
                                    FontSize="20"/>
                         <xctk:ColorCanvas x:Name="textColorPicker"
-                                          Background="White"/>
+                                          Background="White"
+                                          Margin="10 10 10 0"/>
                     </StackPanel>
-                    
+
                 </Grid>
-
-
             </GroupBox>
         </TabItem>
+        
+<!--Position Tab-->
         <TabItem Header="Position">
 
         </TabItem>
+        
+        
     </TabControl>
 </UserControl>

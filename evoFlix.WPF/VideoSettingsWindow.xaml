@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:evoFlix.WPF"
         mc:Ignorable="d" 
         Height="600" 
-        Width="750"
+        Width="850"
         WindowStartupLocation="CenterScreen"
         WindowStyle="ToolWindow"
         Title="Settings">

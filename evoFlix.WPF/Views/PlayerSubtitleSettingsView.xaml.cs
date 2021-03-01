@@ -26,6 +26,7 @@ namespace evoFlix.WPF.Views
     {
         public List<ListBoxItem> AvailableSubtitles { get; set; }
         private const int MaxListBoxItemLength = 30;
+        private FontFamily defaultFontFamily;
         public PlayerSubtitleSettingsView()
         {
             InitializeComponent();
@@ -34,7 +35,11 @@ namespace evoFlix.WPF.Views
             foreach (var subtitle in Heap.ActualSubtitle.AvailableSubtitlePaths)
                 AddItemToAvailableSubtitles(subtitle);
             lsbSubtitles.ItemsSource = AvailableSubtitles;
-            
+
+            cmbFonts.SelectedItem = txtPreview.FontFamily;
+            defaultFontFamily = txtPreview.FontFamily;
+
+            SetDefaultAppearance();
         }
 
         private void AddItemToAvailableSubtitles(string subtitle)
@@ -67,6 +72,18 @@ namespace evoFlix.WPF.Views
                 lsbSubtitles.ItemsSource = null;
                 lsbSubtitles.ItemsSource = AvailableSubtitles;
             }
+        }
+
+        private void btnDefault_Click(object sender, RoutedEventArgs e)
+        {
+            SetDefaultAppearance();
+        }
+
+        private void SetDefaultAppearance()
+        {
+            txtPreview.Foreground = Brushes.Black;
+            txtPreview.FontSize = 30;
+            cmbFonts.SelectedItem = defaultFontFamily;
         }
     }
 }
