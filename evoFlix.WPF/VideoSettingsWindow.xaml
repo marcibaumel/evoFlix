@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:evoFlix.WPF"
         mc:Ignorable="d" 
-        Height="500" 
-        Width="650"
+        Height="600" 
+        Width="750"
         WindowStartupLocation="CenterScreen"
         WindowStyle="ToolWindow"
         Title="Settings">

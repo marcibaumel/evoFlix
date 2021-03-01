@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:evoFlix.WPF.Views"
              mc:Ignorable="d"
              Background="LightGray"
@@ -56,11 +57,87 @@
                                FontSize="20"
                                Margin="5 20"/>
                 </StackPanel>
-                
+
             </GroupBox>
         </TabItem>
-        <TabItem Header="Design">
-            
+        <TabItem Header="Appearence">
+            <GroupBox Header="Design" 
+                      FontSize="15" 
+                      FontWeight="Bold"
+                      BorderBrush="Black" 
+                      Margin="10" 
+                      BorderThickness="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border BorderThickness="0 0 0 0"
+                            BorderBrush="Black">
+                        <StackPanel>
+                            <WrapPanel>
+                                <TextBlock Text="Size:"
+                               FontSize="20"
+                               Margin="5 10"/>
+                                <xctk:IntegerUpDown x:Name="inputSize"
+                                                    Margin="20 10"
+                                                    Width="70"
+                                                    Maximum="100"
+                                                    Minimum="1"
+                                                    Value="15"/>
+                            </WrapPanel>
+
+                            <WrapPanel>
+                                <TextBlock Text="Style:"
+                                           FontSize="20"
+                                           Margin="5 20"/>
+                                <ComboBox x:Name="lsbFonts"
+                                          FontWeight="Normal"
+                                          Margin="20 10"
+                                          Width="200"
+                                          Height="30"
+                                          ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}" 
+                                          MaxDropDownHeight="125"/>
+                            </WrapPanel>
+
+                            <StackPanel Grid.Column="1"/>
+
+                        </StackPanel>
+                    </Border>
+                    <StackPanel Grid.Row="1"
+                                VerticalAlignment="Center"
+                                Grid.ColumnSpan="2"
+                                HorizontalAlignment="Left">
+                        <TextBlock Text="Preview:"
+                                   FontSize="20"
+                                   Margin="5 20"/>
+                        <TextBlock x:Name="txtPreview"
+                                   TextAlignment="Center"
+                                   FontFamily="{Binding ElementName=lsbFonts, Path=SelectedItem}"
+                                   FontSize="{Binding ElementName=inputSize, Path=Value}"
+                                   Foreground="{Binding ElementName=textColorPicker, Path=HexadecimalString}"
+                                   Text="abcdefghijklmnopqrs0123456789"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                Grid.RowSpan="2">
+                        <TextBlock Text="Color:"
+                                   FontSize="20"/>
+                        <xctk:ColorCanvas x:Name="textColorPicker"
+                                          Background="White"/>
+                    </StackPanel>
+                    
+                </Grid>
+
+
+            </GroupBox>
+        </TabItem>
+        <TabItem Header="Position">
+
         </TabItem>
     </TabControl>
 </UserControl>

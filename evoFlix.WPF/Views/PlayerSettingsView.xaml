@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
         <Frame x:Name="SettingsItemFrame" 
                Grid.Column="1"
-               Margin="20 0 20 40"/>
+               Margin="20 20 20 40"/>
         <Border BorderThickness="0 0 2 0"
                 BorderBrush="Black"
                 Grid.RowSpan="2">

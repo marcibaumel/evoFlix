@@ -29,6 +29,7 @@ namespace evoFlix.WPF.Views
         public PlayerSubtitleSettingsView()
         {
             InitializeComponent();
+            
             AvailableSubtitles = new List<ListBoxItem>();
             foreach (var subtitle in Heap.ActualSubtitle.AvailableSubtitlePaths)
                 AddItemToAvailableSubtitles(subtitle);
@@ -50,7 +51,7 @@ namespace evoFlix.WPF.Views
 
         private void btnChoose_Click(object sender, RoutedEventArgs e)
         {
-            Heap.ActualSubtitle.SetActualSubtitle(lsbSubtitles.SelectedItem.ToString());
+            Heap.ActualSubtitle.SetActualSubtitle((lsbSubtitles.SelectedItem as ListBoxItem).ToolTip.ToString());
         }
 
         private void btnSelectLocal_Click(object sender, RoutedEventArgs e)

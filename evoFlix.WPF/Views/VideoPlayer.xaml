@@ -44,7 +44,8 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontWeight="Bold"
-                           TextAlignment="Center">
+                           TextAlignment="Center"
+                           TextWrapping="Wrap">
                     <TextBlock.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="5" Opacity="1" Direction="180"/>
                     </TextBlock.Effect>
