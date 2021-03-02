@@ -103,10 +103,15 @@
                                   HorizontalAlignment="Left"
                                   ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}" 
                                   MaxDropDownHeight="125"/>
-                        <Button x:Name="btnDefault"
-                                Content="Default"
-                                Width="100"
-                                Margin="0 20 0 0" Click="btnDefault_Click"/>
+                        <CheckBox x:Name="ShadowCheckBox"
+                                  Content="  Turn off shadow effect" 
+                                  FlowDirection="RightToLeft"
+                                  HorizontalAlignment="Left"
+                                  VerticalContentAlignment="Center"
+                                  Margin="5 10 0 0"
+                                  FontSize="20"
+                                  Checked="ShadowCheckBox_Checked"
+                                  Unchecked="ShadowCheckBox_Unchecked"/>
                     </StackPanel>
                     <Border Grid.Row="1"
                             BorderThickness="4"
@@ -115,16 +120,20 @@
                             Padding="5">
                         <StackPanel >
                             <TextBlock Text="Preview:"
-                                   FontSize="20"
-                                   Margin="5 20"
-                                   TextAlignment="Center"/>
+                                       FontSize="20"
+                                       Margin="5 20"
+                                       TextAlignment="Center"/>
                             <TextBlock x:Name="txtPreview"
-                                   TextAlignment="Center"
-                                   FontFamily="{Binding ElementName=cmbFonts, Path=SelectedItem}"
-                                   FontSize="{Binding ElementName=inputSize, Path=Value, Mode=TwoWay}"
-                                   Foreground="{Binding ElementName=textColorPicker, Path=HexadecimalString, Mode=TwoWay}"
-                                   Text="abcdefghijklmnopqrs0123456789"
-                                   TextWrapping="Wrap"/>
+                                       TextAlignment="Center"
+                                       FontFamily="{Binding ElementName=cmbFonts, Path=SelectedItem}"
+                                       FontSize="{Binding ElementName=inputSize, Path=Value, Mode=TwoWay}"
+                                       Foreground="{Binding ElementName=textColorPicker, Path=HexadecimalString, Mode=TwoWay}"
+                                       Text="abcdefghijklmnopqrs0123456789"
+                                       TextWrapping="Wrap">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect ShadowDepth="1" BlurRadius="5" Opacity="1" Direction="180"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
                         </StackPanel>
                     </Border>
                     
@@ -135,6 +144,21 @@
                         <xctk:ColorCanvas x:Name="textColorPicker"
                                           Background="White"
                                           Margin="10 10 10 0"/>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0 20 0 0" >
+                            <Button x:Name="btnDefault"
+                                    Content="Default"
+                                    Width="100"
+                                    Height="30"
+                                    Margin="50 0"
+                                    Click="btnDefault_Click"/>
+                            <Button x:Name="btnApply"
+                                    Width="100"
+                                    Margin="50 0"
+                                    Content="Apply" 
+                                    IsDefault="True" Click="btnApply_Click"/>
+                        </StackPanel>
+                        
                     </StackPanel>
 
                 </Grid>

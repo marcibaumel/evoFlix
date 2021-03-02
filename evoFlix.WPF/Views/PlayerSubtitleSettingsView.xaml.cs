@@ -24,9 +24,14 @@ namespace evoFlix.WPF.Views
     /// </summary>
     public partial class PlayerSubtitleSettingsView : UserControl
     {
+        #region Properties
         public List<ListBoxItem> AvailableSubtitles { get; set; }
         private const int MaxListBoxItemLength = 30;
         private FontFamily defaultFontFamily;
+
+        #endregion
+
+        #region Constructor
         public PlayerSubtitleSettingsView()
         {
             InitializeComponent();
@@ -39,8 +44,13 @@ namespace evoFlix.WPF.Views
             cmbFonts.SelectedItem = txtPreview.FontFamily;
             defaultFontFamily = txtPreview.FontFamily;
 
+            textColorPicker.SelectedColor = (Color)(SubtitleTextPropertiesProvider.Instance.Foreground).GetValue(SolidColorBrush.ColorProperty);
             SetDefaultAppearance();
         }
+
+        #endregion
+
+        #region General Tab Functions
 
         private void AddItemToAvailableSubtitles(string subtitle)
         {
@@ -74,16 +84,42 @@ namespace evoFlix.WPF.Views
             }
         }
 
+        #endregion
+
+        #region Apperance Tab Functions
+
         private void btnDefault_Click(object sender, RoutedEventArgs e)
         {
+            SubtitleTextPropertiesProvider.Instance.SetDefault();
             SetDefaultAppearance();
         }
-
         private void SetDefaultAppearance()
         {
-            txtPreview.Foreground = Brushes.Black;
-            txtPreview.FontSize = 30;
-            cmbFonts.SelectedItem = defaultFontFamily;
+            txtPreview.Foreground = SubtitleTextPropertiesProvider.Instance.Foreground;
+            txtPreview.FontSize = SubtitleTextPropertiesProvider.Instance.FontSize;
+            //cmbFonts.SelectedItem = defaultFontFamily;
+            cmbFonts.SelectedItem = SubtitleTextPropertiesProvider.Instance.TextFontFamily;
+            ShadowCheckBox.IsChecked = SubtitleTextPropertiesProvider.Instance.TextShadow == null ? false : true;
         }
+        private void ShadowCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            SubtitleTextPropertiesProvider.Instance.SetTextShadow();
+            txtPreview.Effect = SubtitleTextPropertiesProvider.Instance.TextShadow;
+        }
+        private void ShadowCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SubtitleTextPropertiesProvider.Instance.ClearTextShadow();
+            txtPreview.Effect = SubtitleTextPropertiesProvider.Instance.TextShadow;
+        }
+        private void btnApply_Click(object sender, RoutedEventArgs e)
+        {
+            SubtitleTextPropertiesProvider.Instance.FontSize = (int)inputSize.Value;
+            SubtitleTextPropertiesProvider.Instance.TextFontFamily = (FontFamily)cmbFonts.SelectedItem;
+            //MessageBox.Show(((FontFamily)cmbFonts.SelectedItem).ToString());
+            
+            SubtitleTextPropertiesProvider.Instance.Foreground = new SolidColorBrush((Color)textColorPicker.SelectedColor);
+            MessageBox.Show(SubtitleTextPropertiesProvider.Instance.Foreground.ToString());
+        }
+        #endregion
     }
 }

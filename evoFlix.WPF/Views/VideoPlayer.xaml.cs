@@ -78,7 +78,6 @@ namespace evoFlix.WPF.Views
                 showSubtitles = true;
             }
 
-
             main = window;
             main.Title = System.IO.Path.GetFileNameWithoutExtension(Source);
             backPage = page;
