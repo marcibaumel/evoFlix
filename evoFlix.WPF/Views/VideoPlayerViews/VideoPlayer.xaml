@@ -160,7 +160,7 @@
                                 Click="btnRewind_Click"
                                 BorderThickness="0">
                             <Button.Background>
-                                <ImageBrush ImageSource="Rewind.png"/>
+                                <ImageBrush ImageSource="\Images\Icons\Rewind.png"/>
                             </Button.Background>
                         </Button>
                         <Button x:Name="btnForward"
@@ -169,7 +169,7 @@
                                 Click="btnForward_Click"
                                 BorderThickness="0">
                             <Button.Background>
-                                <ImageBrush ImageSource="Forward.png"/>
+                                <ImageBrush ImageSource="\Images\Icons\Forward.png"/>
                             </Button.Background>
                         </Button>
                         <Button x:Name="btnMute"

@@ -83,7 +83,7 @@
     <Compile Include="Models\ObservableObject.cs" />
     <Compile Include="State\Navigators\INavigator.cs" />
     <Compile Include="State\Navigators\Navigator.cs" />
-    <Compile Include="VideoSettingsWindow.xaml.cs">
+    <Compile Include="Views\VideoPlayerViews\SettingsViews\VideoSettingsWindow.xaml.cs">
       <DependentUpon>VideoSettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountViewModel.cs" />
@@ -110,13 +110,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Views\PlayerSettingsView.xaml.cs">
+    <Compile Include="Views\VideoPlayerViews\SettingsViews\PlayerSettingsView.xaml.cs">
       <DependentUpon>PlayerSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PlayerSubtitleSettingsView.xaml.cs">
+    <Compile Include="Views\VideoPlayerViews\SettingsViews\PlayerSubtitleSettingsView.xaml.cs">
       <DependentUpon>PlayerSubtitleSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\VideoPlayer.xaml.cs">
+    <Compile Include="Views\VideoPlayerViews\VideoPlayer.xaml.cs">
       <DependentUpon>VideoPlayer.xaml</DependentUpon>
     </Compile>
     <Page Include="DashboardPage.xaml">
@@ -159,7 +159,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VideoSettingsWindow.xaml">
+    <Page Include="Views\VideoPlayerViews\SettingsViews\VideoSettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,15 +175,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PlayerSettingsView.xaml">
+    <Page Include="Views\VideoPlayerViews\SettingsViews\PlayerSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PlayerSubtitleSettingsView.xaml">
+    <Page Include="Views\VideoPlayerViews\SettingsViews\PlayerSubtitleSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VideoPlayer.xaml">
+    <Page Include="Views\VideoPlayerViews\VideoPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -240,7 +240,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\512x512.png" />
     <Resource Include="Images\x.png" />
     <Resource Include="Images\f13.jpg" />
     <Resource Include="Images\2067.JPG" />
@@ -291,10 +290,9 @@
     <Content Include="Images\Icons\Back.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Views\Forward.png" />
-    <Resource Include="Views\Rewind.png" />
     <Resource Include="Images\whoos.png" />
     <Resource Include="Images\whos.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
