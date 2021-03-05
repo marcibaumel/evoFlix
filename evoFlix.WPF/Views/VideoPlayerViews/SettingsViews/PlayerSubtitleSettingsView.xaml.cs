@@ -35,7 +35,7 @@ namespace evoFlix.WPF.Views
         public PlayerSubtitleSettingsView()
         {
             InitializeComponent();
-            
+
             AvailableSubtitles = new List<ListBoxItem>();
             foreach (var subtitle in Heap.ActualSubtitle.AvailableSubtitlePaths)
                 AddItemToAvailableSubtitles(subtitle);
@@ -71,10 +71,10 @@ namespace evoFlix.WPF.Views
 
         private void btnSelectLocal_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog() 
-            { 
-                Filter = ".srt files (*.srt)|*.srt|.ass files (*.ass)|*.ass", 
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) 
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Filter = ".srt files (*.srt)|*.srt|.ass files (*.ass)|*.ass",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
             };
             if (openFileDialog.ShowDialog() == true)
             {
@@ -116,10 +116,41 @@ namespace evoFlix.WPF.Views
             SubtitleTextPropertiesProvider.Instance.FontSize = (int)inputSize.Value;
             SubtitleTextPropertiesProvider.Instance.TextFontFamily = (FontFamily)cmbFonts.SelectedItem;
             //MessageBox.Show(((FontFamily)cmbFonts.SelectedItem).ToString());
-            
+
             SubtitleTextPropertiesProvider.Instance.Foreground = new SolidColorBrush((Color)textColorPicker.SelectedColor);
             MessageBox.Show(SubtitleTextPropertiesProvider.Instance.Foreground.ToString());
         }
+        #endregion
+
+        #region Position Tab Functions
+        private void positionSampleText_MouseMove(object sender, MouseEventArgs e)
+        {
+            TextBlock movingText = (TextBlock)sender;
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Point p = e.GetPosition(Canvas);
+                double currentLocation = p.Y - movingText.ActualHeight / 2;
+                if (currentLocation < 0)
+                    Canvas.SetTop(movingText, 0);
+                else if (currentLocation + movingText.ActualHeight > Canvas.ActualHeight)
+                    Canvas.SetTop(movingText, Canvas.ActualHeight - movingText.ActualHeight);
+                else
+                    Canvas.SetTop(movingText, currentLocation);
+                movingText.CaptureMouse();
+            }
+            else
+            {
+                movingText.ReleaseMouseCapture();
+            }
+        }
+
+        
+        private void btnApplyPosition_Click(object sender, RoutedEventArgs e)
+        {
+            SubtitleTextPropertiesProvider.Instance.SampleCanvasActualHeight = Canvas.ActualHeight;
+            SubtitleTextPropertiesProvider.Instance.Position = Canvas.GetTop(positionSampleText);
+        }
+
         #endregion
     }
 }

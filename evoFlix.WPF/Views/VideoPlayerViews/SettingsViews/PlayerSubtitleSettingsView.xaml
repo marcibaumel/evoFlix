@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:models="clr-namespace:evoFlix.Models;assembly=evoFlix.Models"
              xmlns:local="clr-namespace:evoFlix.WPF.Views"
              mc:Ignorable="d"
              Background="LightGray"
@@ -167,7 +168,28 @@
         
 <!--Position Tab-->
         <TabItem Header="Position">
-
+            <Grid x:Name="PreviewGrid">
+                <Canvas Background="LightGreen"
+                        x:Name="Canvas">
+                    <TextBlock x:Name="positionSampleText"
+                           Foreground="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=Foreground}"
+                           FontSize="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=FontSize}"
+                           FontFamily="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=TextFontFamily}"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           Width="{Binding ElementName=Canvas, Path=ActualWidth}"
+                           Height="auto"
+                           Text="Sample Text"
+                           Background="LightBlue" Canvas.Top="191"
+                           MouseMove="positionSampleText_MouseMove"
+                           IsHitTestVisible="True"/>
+                    <Button x:Name="btnApplyPosition"
+                            Content="Apply" 
+                            Canvas.Left="753" 
+                            Canvas.Top="395" Click="btnApplyPosition_Click"/>
+                </Canvas>
+                
+            </Grid>
         </TabItem>
         
         
