@@ -20,16 +20,33 @@ namespace evoFlix.Models
 
         public class SubtitleTextProperties : INotifyPropertyChanged
         {
+            public double Ratio { get; set; }
+            public double WindowHeight { get; set; }
+
+            private double position;
+            public double Position 
+            {
+                get { return position; } 
+                set
+                {
+                    if (position != value)
+                    {
+                        position = value;
+                        NotifyPropertyChanged("Position");
+                    }
+                } 
+            }
+
             private int fontSize;
             public int FontSize 
             {
-                get { return this.fontSize; }
+                get { return fontSize; }
                 set
                 {
-                    if (this.fontSize != value)
+                    if (fontSize != value)
                     {
-                        this.fontSize = value;
-                        this.NotifyPropertyChanged("FontSize");
+                        fontSize = value;
+                        NotifyPropertyChanged("FontSize");
                     }
                 } 
             }
@@ -37,13 +54,13 @@ namespace evoFlix.Models
             private Brush foreground;
             public Brush Foreground
             {
-                get { return this.foreground; }
+                get { return foreground; }
                 set
                 {
-                    if (this.foreground != value)
+                    if (foreground != value)
                     {
-                        this.foreground = value;
-                        this.NotifyPropertyChanged("ForeGround");
+                        foreground = value;
+                        NotifyPropertyChanged("ForeGround");
                     }
                 }
             }
@@ -51,13 +68,13 @@ namespace evoFlix.Models
             private FontFamily textFontFamily;
             public FontFamily TextFontFamily
             {
-                get { return this.textFontFamily; }
+                get { return textFontFamily; }
                 set
                 {
-                    if (this.textFontFamily != value)
+                    if (textFontFamily != value)
                     {
-                        this.textFontFamily = value;
-                        this.NotifyPropertyChanged("TextFontFamily");
+                        textFontFamily = value;
+                        NotifyPropertyChanged("TextFontFamily");
                     }
                 }
             }
@@ -65,14 +82,16 @@ namespace evoFlix.Models
             public SubtitleTextProperties()
             {
                 SetDefault();
+                SetRatio(4, 5);
+                SetPosition();
             }
 
             public event PropertyChangedEventHandler PropertyChanged;
 
             public void NotifyPropertyChanged(string propName)
             {
-                if (this.PropertyChanged != null)
-                    this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
 
             public void SetDefault()
@@ -95,6 +114,15 @@ namespace evoFlix.Models
             public void ClearTextShadow()
             {
                 TextShadow = null;
+            }
+
+            public void SetRatio(double samplePosition, double sampleCanvasActualHeight)
+            {
+                Ratio = samplePosition / sampleCanvasActualHeight;
+            }
+            public void SetPosition()
+            {
+                Position = WindowHeight * Ratio;
             }
         }
 

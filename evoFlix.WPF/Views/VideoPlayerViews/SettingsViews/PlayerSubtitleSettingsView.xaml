@@ -9,8 +9,10 @@
              mc:Ignorable="d"
              Background="LightGray"
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <TabControl FontSize="15">
-<!--General Tab-->
+        
+        <!--General Tab-->
         <TabItem Header="General">
             <GroupBox Header="Source" 
                       FontSize="15" 
@@ -62,7 +64,8 @@
 
             </GroupBox>
         </TabItem>
-<!--Appearance Tab-->
+        
+        <!--Appearance Tab-->
         <TabItem Header="Appearance">
             <GroupBox Header="Design" 
                       FontSize="15" 
@@ -91,7 +94,6 @@
                                                 Minimum="1"
                                                 Value="15"/>
                         </StackPanel>
-
                         <TextBlock Text="Font Family:"
                                    FontSize="20"
                                    Margin="5 10"/>
@@ -137,7 +139,6 @@
                             </TextBlock>
                         </StackPanel>
                     </Border>
-                    
                     <StackPanel Grid.Column="1"
                                 Grid.RowSpan="2">
                         <TextBlock Text="Color:"
@@ -159,39 +160,78 @@
                                     Content="Apply" 
                                     IsDefault="True" Click="btnApply_Click"/>
                         </StackPanel>
-                        
                     </StackPanel>
-
                 </Grid>
             </GroupBox>
         </TabItem>
-        
-<!--Position Tab-->
-        <TabItem Header="Position">
-            <Grid x:Name="PreviewGrid">
-                <Canvas Background="LightGreen"
-                        x:Name="Canvas">
-                    <TextBlock x:Name="positionSampleText"
-                           Foreground="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=Foreground}"
-                           FontSize="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=FontSize}"
-                           FontFamily="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=TextFontFamily}"
-                           TextAlignment="Center"
-                           VerticalAlignment="Center"
-                           Width="{Binding ElementName=Canvas, Path=ActualWidth}"
-                           Height="auto"
-                           Text="Sample Text"
-                           Background="LightBlue" Canvas.Top="191"
-                           MouseMove="positionSampleText_MouseMove"
-                           IsHitTestVisible="True"/>
+
+        <!--Layout Tab-->
+        <TabItem Header="Layout">
+            <GroupBox Header="Position" 
+                      FontSize="15" 
+                      FontWeight="Bold"
+                      BorderBrush="Black" 
+                      Margin="10" 
+                      BorderThickness="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="5"
+                               Grid.ColumnSpan="2"
+                               FontSize="20">
+                        Set the position of the Subtitle
+                        <Span FontSize="15" FontStyle="Italic">(Drag the text!)</Span>
+                    </TextBlock>
+                    <Grid x:Name="PreviewGrid"
+                          Grid.Column="0"
+                          Grid.Row="1">
+                        <Border BorderBrush="Brown"
+                                BorderThickness="4"
+                                Margin="10">
+                            <Canvas x:Name="Canvas">
+                                <Canvas.Background>
+                                    <ImageBrush ImageSource="samplePicture.jpeg"/>
+                                </Canvas.Background>
+                                <Border x:Name="positionSampleTextBorder"
+                                        MouseMove="positionSampleText_MouseMove"
+                                        MouseEnter="positionSampleText_MouseEnter"
+                                        Cursor="Hand" 
+                                        MouseLeave="positionSampleTextBorder_MouseLeave" >
+                                    <Border.Background>
+                                        <SolidColorBrush Color="OrangeRed" Opacity="0"/>
+                                    </Border.Background>
+                                    <TextBlock x:Name="positionSampleText"
+                                               Opacity="1"
+                                               Foreground="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=Foreground}"
+                                               FontSize="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=FontSize}"
+                                               FontFamily="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=TextFontFamily}"
+                                               TextAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Width="{Binding ElementName=Canvas, Path=ActualWidth}"
+                                               Height="auto"
+                                               Text="Sample Text"/>
+                                </Border>
+                            </Canvas>
+                        </Border>
+                    </Grid>
                     <Button x:Name="btnApplyPosition"
                             Content="Apply" 
-                            Canvas.Left="753" 
-                            Canvas.Top="395" Click="btnApplyPosition_Click"/>
-                </Canvas>
-                
-            </Grid>
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Margin="40 10"
+                            Click="btnApplyPosition_Click"/>
+                </Grid>
+
+            </GroupBox>
+
         </TabItem>
-        
-        
+
     </TabControl>
 </UserControl>

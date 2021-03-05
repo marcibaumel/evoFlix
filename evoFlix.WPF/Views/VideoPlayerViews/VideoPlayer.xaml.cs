@@ -4,6 +4,7 @@ using evoFlix.WPF.DashboardViews;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,11 @@ namespace evoFlix.WPF.Views
             settings = new VideoSettingsWindow();
 
             InitializeComponent();
+
+            SubtitleTextPropertiesProvider.Instance.WindowHeight = Application.Current.MainWindow.Height;
+            SubtitleTextPropertiesProvider.Instance.SetPosition();
+            
+
             maingrid.DataContext = this;
             if (subtitle != null)
             {
@@ -323,6 +329,12 @@ namespace evoFlix.WPF.Views
         {
             
             settings.Show();
+        }
+
+        private void player_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            SubtitleTextPropertiesProvider.Instance.WindowHeight = Application.Current.MainWindow.Height;
+            SubtitleTextPropertiesProvider.Instance.SetPosition();
         }
     }
 }

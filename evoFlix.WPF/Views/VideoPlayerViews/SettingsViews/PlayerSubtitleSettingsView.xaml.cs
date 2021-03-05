@@ -19,9 +19,16 @@ using System.Windows.Shapes;
 
 namespace evoFlix.WPF.Views
 {
-    /// <summary>
-    /// Interaction logic for PlayerSubtitleSettingsView.xaml
-    /// </summary>
+    /// TO-DO:
+    /// -Set the owner of the window (to be able reopen it)
+    /// -Set the initial position of the sample text in the layout tab
+    /// -Solve Subtitle Text Shadow problem (in the settings and in the binding)
+    /// -Rearrange the Apperance Tab
+    /// -Save the settings
+    /// -Implement the "Download Subtitle" section (LATER)
+    /// -Set MinWidth and MaxWidth properties (OPTIONAL)
+    /// -Implement commands (OPTIONAL)
+    /// -Add up and down arrows to the position tab (OPTIONAL)
     public partial class PlayerSubtitleSettingsView : UserControl
     {
         #region Properties
@@ -44,6 +51,7 @@ namespace evoFlix.WPF.Views
             cmbFonts.SelectedItem = txtPreview.FontFamily;
             defaultFontFamily = txtPreview.FontFamily;
 
+            Canvas.SetTop(positionSampleText, SubtitleTextPropertiesProvider.Instance.Ratio * Canvas.ActualHeight);
             textColorPicker.SelectedColor = (Color)(SubtitleTextPropertiesProvider.Instance.Foreground).GetValue(SolidColorBrush.ColorProperty);
             SetDefaultAppearance();
         }
@@ -125,7 +133,7 @@ namespace evoFlix.WPF.Views
         #region Position Tab Functions
         private void positionSampleText_MouseMove(object sender, MouseEventArgs e)
         {
-            TextBlock movingText = (TextBlock)sender;
+            Border movingText = (Border)sender;
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 Point p = e.GetPosition(Canvas);
@@ -147,8 +155,18 @@ namespace evoFlix.WPF.Views
         
         private void btnApplyPosition_Click(object sender, RoutedEventArgs e)
         {
-            SubtitleTextPropertiesProvider.Instance.SampleCanvasActualHeight = Canvas.ActualHeight;
-            SubtitleTextPropertiesProvider.Instance.Position = Canvas.GetTop(positionSampleText);
+            SubtitleTextPropertiesProvider.Instance.SetRatio(Canvas.GetTop(positionSampleTextBorder), Canvas.ActualHeight);
+            SubtitleTextPropertiesProvider.Instance.SetPosition();
+        }
+
+        private void positionSampleText_MouseEnter(object sender, MouseEventArgs e)
+        {
+            positionSampleTextBorder.Background.Opacity = 0.3;
+        }
+
+        private void positionSampleTextBorder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            positionSampleTextBorder.Background.Opacity = 0;
         }
 
         #endregion
