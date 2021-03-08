@@ -24,6 +24,7 @@ namespace evoFlix.DataAccess
             Database.SetInitializer(new UserDBInitializer());
         }
         */
+        public DbSet<MainUserDB> MainUsers { get; set; }
 
         public DbSet <UserDB> Users { get; set; }
 

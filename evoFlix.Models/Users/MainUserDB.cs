@@ -9,17 +9,15 @@ using System.Windows.Media;
 
 namespace evoFlix.Models.Users
 {
-    public class UserDB : BaseModel
+    public class MainUserDB : BaseModel
     {
 
-       
+
 
         //[Key]
         public int Id { get; set; }
-        public int MainId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string ProfilePicturePath { get; set; }
+        public string Email { get; set; }
     }
 }
