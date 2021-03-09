@@ -86,8 +86,8 @@ namespace evoFlix.WPF
         }
         private void Button_Click_Login(object sender, RoutedEventArgs e)
         {
-            mainLogin.Visibility = hidden;
-            sideAccounts.Visibility = visible;
+            mainLogin.Visibility = Visibility.Hidden;
+            sideAccounts.Visibility = Visibility.Visible;
         }
     }
 }
