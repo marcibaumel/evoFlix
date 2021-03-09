@@ -1,5 +1,6 @@
 
 
+using evoFlix.Models;
 using evoFlix.Services;
 using evoFlix.WPF.ViewModels;
 using evoFlix.WPF.Views;
@@ -25,7 +26,6 @@ namespace evoFlix.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private Page log;
         public MainWindow()
         {
@@ -41,22 +41,20 @@ namespace evoFlix.WPF
 
 
 
-            this.Content = log = new LoginPage(this);
+            //this.Content = log = new LoginPage(this);
 
-
-
+            this.Content = new VideoPlayer(new DashboardPage(this), this, "semmi");
+            //this.Content = new PlayerSettingsView();
 
             //Page DashBoard = new DashboardPage(this);
             //this.Content = DashBoard;
             //DashBoard.DataContext = new DashboardViewModel();
 
 
-
+            
 
 
             //setFilmPage();
-
-
 
 
 

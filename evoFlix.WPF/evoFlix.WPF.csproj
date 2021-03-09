@@ -83,6 +83,9 @@
     <Compile Include="Models\ObservableObject.cs" />
     <Compile Include="State\Navigators\INavigator.cs" />
     <Compile Include="State\Navigators\Navigator.cs" />
+    <Compile Include="Views\VideoPlayerViews\SettingsViews\VideoSettingsWindow.xaml.cs">
+      <DependentUpon>VideoSettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
@@ -107,7 +110,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Views\VideoPlayer.xaml.cs">
+    <Compile Include="Views\VideoPlayerViews\SettingsViews\PlayerSettingsView.xaml.cs">
+      <DependentUpon>PlayerSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VideoPlayerViews\SettingsViews\PlayerSubtitleSettingsView.xaml.cs">
+      <DependentUpon>PlayerSubtitleSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VideoPlayerViews\VideoPlayer.xaml.cs">
       <DependentUpon>VideoPlayer.xaml</DependentUpon>
     </Compile>
     <Page Include="DashboardPage.xaml">
@@ -150,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\VideoPlayerViews\SettingsViews\VideoSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreateUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,7 +175,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VideoPlayer.xaml">
+    <Page Include="Views\VideoPlayerViews\SettingsViews\PlayerSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VideoPlayerViews\SettingsViews\PlayerSubtitleSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VideoPlayerViews\VideoPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,11 +232,17 @@
     <PackageReference Include="EntityFramework">
       <Version>6.4.4</Version>
     </PackageReference>
+    <PackageReference Include="Extended.Wpf.Toolkit">
+      <Version>4.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\VideoPlayerViews\SettingsViews\samplePicture.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\x.png" />
     <Resource Include="Images\f13.jpg" />
     <Resource Include="Images\2067.JPG" />
@@ -226,6 +253,13 @@
     <Resource Include="EvoFlixIcon.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Icons\Settings.png" />
+    <Content Include="Images\Icons\CaptionOFF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Icons\CaptionON.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Icons\Mute.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -259,10 +293,9 @@
     <Content Include="Images\Icons\Back.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Views\Forward.png" />
-    <Resource Include="Views\Rewind.png" />
     <Resource Include="Images\whoos.png" />
     <Resource Include="Images\whos.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,38 +1,70 @@
 ﻿<Page x:Class="evoFlix.WPF.Views.VideoPlayer"
+      x:Name="player"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:wpf="clr-namespace:evoFlix.WPF"
+      xmlns:converter="using:Play"
+      xmlns:models="clr-namespace:evoFlix.Models;assembly=evoFlix.Models"
       mc:Ignorable="d" 
       d:DesignHeight="450" 
       d:DesignWidth="800"
       Title="VideoPlayer"
       Background="Black"
-      KeyDown="Page_KeyDown">
-
+      KeyDown="Page_KeyDown" 
+      SizeChanged="player_SizeChanged">
     <Grid x:Name="maingrid" >
-<!--Video-->
+        <!--Video-->
         <Grid x:Name="grdVideo"
               MouseDown="grdVideo_MouseDown"
               MouseMove="Page_MouseMove">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <MediaElement x:Name="mdaVideo"
+                          Grid.Row="0"
+                          Grid.RowSpan="2"
                           Source="{Binding Source}"
                           LoadedBehavior="Manual" Loaded="mdaVideo_Loaded" />
+            <!--Subtitle-->
+            <Canvas x:Name="subtitleCanvas">
+                <TextBlock x:Name="txtSubtitle"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           Foreground="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=Foreground}"
+                           FontSize="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=FontSize}"
+                           FontFamily="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=TextFontFamily}"
+                           VerticalAlignment="Center"
+                           Width="{Binding ElementName=subtitleCanvas, Path=ActualWidth}"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           TextAlignment="Center"
+                           Height="auto"
+                           TextWrapping="Wrap"
+                           Canvas.Top="{Binding Source={x:Static models:SubtitleTextPropertiesProvider.Instance}, Path=Position}">
+                    <TextBlock.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="5" Opacity="1" Direction="180"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Canvas>
+
         </Grid>
-<!--Controls-->
-        <Grid x:Name="grdButtons" MouseEnter="grdButtons_MouseEnter" MouseLeave="grdButtons_MouseLeave" >
+        <!--Controls-->
+        <Grid x:Name="grdButtons" MouseEnter="grdButtons_MouseEnter" MouseLeave="grdButtons_MouseLeave">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-<!--Upper Toolbar-->
+            <!--Upper Toolbar-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="10*"/>
                 </Grid.ColumnDefinitions>
-<!--Back Button-->
+                <!--Back Button-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -53,16 +85,15 @@
                     </Button>
                 </Grid>
             </Grid>
-<!--Lower Toolbar-->
+            <!--Lower Toolbar-->
             <Grid Grid.Row="2"
-                  Background="White"
-                  Margin="20 0">
+                  Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="10*"/>
                     <RowDefinition Height="4*"/>
                 </Grid.RowDefinitions>
-<!--Slider-->
+                <!--Slider-->
                 <Slider x:Name="slrProgress"
                         Grid.Column="5"
                         VerticalAlignment="Center"
@@ -73,7 +104,7 @@
                         IsMoveToPointEnabled="True" 
                         ValueChanged="slrProgress_ValueChanged">
                 </Slider>
-<!--Buttons-->
+                <!--Buttons-->
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -83,6 +114,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="10*"/>
+                        <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Column="1"
                           Grid.Row="1">
@@ -97,38 +129,46 @@
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btnPlay"
                                 Margin="7"
-                                Click="btnPlay_Click">
-                            <Button.Background>
-                                <ImageBrush ImageSource="\Images\Icons\Play.png"/>
-                            </Button.Background>
-
-                        </Button>
-                        <Button x:Name="btnPause"
-                                Margin="7"
-                                Grid.Column="1"
-                                Click="btnPause_Click">
+                                Click="btnPlay_Click"
+                                BorderThickness="0">
                             <Button.Background>
                                 <ImageBrush ImageSource="\Images\Icons\Pause.jpg"/>
                             </Button.Background>
+
                         </Button>
-                        <Button Grid.Column="2"
+                        <Button x:Name="btnCaption"
                                 Margin="7"
-                                Click="Button_Click_1">
+                                Grid.Column="1"
+                                Click="btnCaption_Click"
+                                IsEnabled="False"
+                                BorderThickness="0">
                             <Button.Background>
-                                <ImageBrush ImageSource="Rewind.png"/>
+                                <ImageBrush ImageSource="\Images\Icons\CaptionOFF.png"/>
                             </Button.Background>
                         </Button>
-                        <Button Grid.Column="3" 
+                        <Button x:Name="btnRewind" 
+                                Grid.Column="2"
                                 Margin="7"
-                                Click="Button_Click">
+                                Click="btnRewind_Click"
+                                BorderThickness="0">
                             <Button.Background>
-                                <ImageBrush ImageSource="Forward.png"/>
+                                <ImageBrush ImageSource="\Images\Icons\Rewind.png"/>
                             </Button.Background>
                         </Button>
-                        <Button x:Name="btnSound"
+                        <Button x:Name="btnForward"
+                                Grid.Column="3" 
+                                Margin="7"
+                                Click="btnForward_Click"
+                                BorderThickness="0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="\Images\Icons\Forward.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button x:Name="btnMute"
                                 Margin="7"
                                 Grid.Column="4"
-                                Click="btnSound_Click">
+                                Click="btnMute_Click"
+                                BorderThickness="0">
                             <Button.Background>
                                 <ImageBrush ImageSource="\Images\Icons\Unmute.png"/>
                             </Button.Background>
@@ -139,10 +179,31 @@
                                 Maximum="100"
                                 VerticalAlignment="Center"
                                 ValueChanged="slrSoundBar_ValueChanged"/>
+                        <Grid Grid.Column="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="12*"/>
+                                <ColumnDefinition/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnSettings"
+                                    BorderThickness="0"
+                                    Click="btnSettings_Click"
+                                    Grid.Row="1"
+                                    Grid.Column="1">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="\Images\Icons\Settings.png"/>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
                     </Grid>
 
                 </Grid>
-<!--Progression label-->
+                <!--Progression label-->
                 <Grid Grid.Row="2"
                       Background="Black">
                     <Label x:Name="lblProgress"
@@ -154,7 +215,7 @@
                         00:00:00/01:13:12
                     </Label>
                 </Grid>
-                
+
             </Grid>
         </Grid>
     </Grid>
