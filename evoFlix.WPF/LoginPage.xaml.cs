@@ -28,6 +28,7 @@ namespace evoFlix.WPF
         UserService userService = new UserService();
         UserComponentsService ucs = new UserComponentsService();
         DeleteUserControl dlt = new DeleteUserControl();
+        CreateUser cu = new CreateUser();
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 
         public LoginPage(Window window)
@@ -78,6 +79,15 @@ namespace evoFlix.WPF
         {
             clear_data_context();
             DataContext = new DeleteUserController();
+        }
+        private void Button_Click_Register(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Button_Click_Login(object sender, RoutedEventArgs e)
+        {
+            mainLogin.Visibility = Visibility.Hidden;
+            sideAccounts.Visibility = Visibility.Visible;
         }
     }
 }

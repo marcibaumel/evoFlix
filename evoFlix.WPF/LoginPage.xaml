@@ -8,12 +8,154 @@
         Background="#FFC3C3C3"
         Title="LoginWindow" Height="720" Width="1280">
     <Grid>
-        <Grid Width="600" Height="110" Margin="0,10" VerticalAlignment="Top">
-            <Image x:Name="logo_png" Source="../Images/whoos.png" />
-        </Grid>
-        <Grid  Height="360" Margin="0,130,0,0" VerticalAlignment="Top" Width="1280">
-            <Grid HorizontalAlignment="Left" Height="360" Margin="50,0,0,0" VerticalAlignment="Top" Width="280">
-                <Button 
+        <StackPanel x:Name="mainLogin" Height="500" Width="500">
+            <Grid>
+                <Border BorderBrush="#333333" BorderThickness="3" CornerRadius="30" Height="500" Width="500" Background="#799540"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="20">
+                        <Image x:Name="logoo_png" Source="../Images/whos.png" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Label 
+                             Foreground="White"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             FontSize="35">
+                            <Bold>Sign in to EvoFlix</Bold>
+                        </Label>
+                    </Grid>
+                    <Grid Grid.Row="2" Height="110" Width="300">
+                        <Grid VerticalAlignment="Top">
+                            <Label 
+                        Foreground="White"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="22">
+                                <Bold>Username:</Bold>
+                            </Label>
+                            <TextBox 
+                        x:Name="myUsername"
+                        HorizontalAlignment="Right" 
+                        Width="150" FontSize="22" 
+                        FontWeight="Bold"
+                        Foreground="#799540"
+                        Background="White"/>
+                        </Grid>
+
+                        <!-- Password-->
+                        <Grid VerticalAlignment="Bottom">
+                            <Label 
+                         Foreground="White"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         FontSize="22">
+                                <Bold>Password:</Bold>
+                            </Label>
+                            <PasswordBox x:Name="myPassword"
+                            HorizontalAlignment="Right" 
+                            Width="150" 
+                            FontSize="22" 
+                            FontWeight="Bold"
+                            Foreground="#799540"
+                            Background="White"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="3" Height="150" VerticalAlignment="Bottom" Margin="0 0 0 10">
+                        <Border Name="error_text"
+                            Height="80" 
+                            Width="400" 
+                            VerticalAlignment="Top"
+                            Background="#FFE4EA4A"
+                            CornerRadius="20"
+                            Visibility="Hidden">
+                            <Label FontSize="16"
+                               Foreground="Black"
+                               VerticalContentAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontStyle="Italic"
+                               AllowDrop="True"
+                               HorizontalContentAlignment="Center"/>
+                        </Border>
+                        <!-- Succesfull login log-->
+                        <Border Name="scfLogin_text"
+                            Height="80" 
+                            Width="300" 
+                            VerticalAlignment="Top"
+                            Background="#FF23FF00"
+                            CornerRadius="20"
+                            Visibility="Hidden">
+                            <Label FontSize="16"
+                               Foreground="Black"
+                               VerticalContentAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontStyle="Italic"
+                               AllowDrop="True"
+                               HorizontalContentAlignment="Center"/>
+                        </Border>
+                        <!-- Buttons-->
+                        <Grid Height="50" 
+                               VerticalAlignment="Bottom"
+                               Width="400">
+                            <Button x:Name="Register_Button"
+                                Click="Button_Click_Register"
+                                HorizontalAlignment="Left" 
+                                Height="50"
+                                VerticalAlignment="Top" 
+                                Width="150" 
+                                FontSize="26"
+                                Foreground="#799540">
+                                <Bold>Register</Bold>
+                            </Button>
+                            <Button x:Name="Login_Button" 
+                                Click="Button_Click_Login"
+                                HorizontalAlignment="Right" 
+                                Height="50"
+                                VerticalAlignment="Top" 
+                                Width="150" 
+                                FontSize="26"
+                                Foreground="#799540">
+                                <Bold>Login</Bold>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </StackPanel>
+
+        <StackPanel x:Name="mainRegister" Visibility="hidden">
+
+        </StackPanel>
+
+        <Grid x:Name="sideAccounts" Visibility="hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="10">
+                    <Image x:Name="logo_png" Source="../Images/whoos.png" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid HorizontalAlignment="center" Height="360" VerticalAlignment="center" Width="280">
+                            <Button 
                      x:Name="User1_Button"
                     Content="user_1_btn"  
                     VerticalAlignment="Top"
@@ -21,7 +163,7 @@
                     Click="Login_Click" 
                     BorderBrush="#799540"
                     BorderThickness="2"/>
-                <Label 
+                            <Label 
                     x:Name="User1_Label"
                     Content="user1" 
                     VerticalAlignment="Bottom" 
@@ -29,10 +171,12 @@
                     FontSize="24"
                     HorizontalAlignment="Center"
                     Foreground="#799540"/>
-            </Grid>
+                        </Grid>
+                    </Grid>
 
-            <Grid HorizontalAlignment="Left" Height="360" Margin="350,0,0,0" VerticalAlignment="Top" Width="280">
-                <Button 
+                    <Grid Grid.Column="1">
+                        <Grid HorizontalAlignment="center" Height="360" Margin="0,0,0,0" VerticalAlignment="center" Width="280">
+                            <Button 
                     x:Name="User2_Button"
                     Content="user_2_btn"  
                     VerticalAlignment="Top"
@@ -40,7 +184,7 @@
                     Click="Login_Click"
                     BorderBrush="#799540"
                     BorderThickness="2"/>
-                <Label 
+                            <Label 
                     x:Name="User2_Label"
                     Content="user2" 
                     VerticalAlignment="Bottom" 
@@ -48,10 +192,12 @@
                     FontSize="24"
                     HorizontalAlignment="Center"
                     Foreground="#799540"/>
-            </Grid>
+                        </Grid>
+                    </Grid>
 
-            <Grid HorizontalAlignment="Right" Height="360" Margin="0,0,350,0" VerticalAlignment="Top" Width="280">
-            <Button 
+                    <Grid Grid.Column="2">
+                        <Grid HorizontalAlignment="center" Height="360" Margin="0,0,0,0" VerticalAlignment="center" Width="280">
+                            <Button 
                     x:Name="User3_Button"
                     Content="user_3_btn"  
                     VerticalAlignment="Top"
@@ -59,7 +205,7 @@
                     Click="Login_Click"
                     BorderBrush="#799540"
                     BorderThickness="2"/>
-            <Label 
+                            <Label 
                     x:Name="User3_Label"
                     Content="user3" 
                     VerticalAlignment="Bottom" 
@@ -67,10 +213,12 @@
                     FontSize="24"
                     HorizontalAlignment="Center"
                     Foreground="#799540"/>
-             </Grid>
+                        </Grid>
+                    </Grid>
 
-            <Grid HorizontalAlignment="Right" Height="360" Margin="0,0,50,0" VerticalAlignment="Top" Width="280">
-                <Button 
+                    <Grid Grid.Column="3">
+                        <Grid HorizontalAlignment="center" Height="360" Margin="0,0,0,0" VerticalAlignment="center" Width="280">
+                            <Button 
                         x:Name="User4_Button"
                         Content="user_4_btn"  
                         VerticalAlignment="Top"
@@ -78,7 +226,7 @@
                         Click="Login_Click"
                         BorderBrush="#799540"
                         BorderThickness="2"/>
-                <Label 
+                            <Label 
                         x:Name="User4_Label"
                         Content="user4" 
                         VerticalAlignment="Bottom" 
@@ -86,44 +234,42 @@
                         FontSize="24"
                         HorizontalAlignment="Center"
                         Foreground="#799540"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid Margin="50">
+                        <Button 
+                    x:Name="Create"
+                    HorizontalAlignment="right"  
+                    Width="200" 
+                    Click="Create_Click"
+                    FontSize="26"
+                    Background="#799540"
+                    Foreground="White" >
+                            <Bold>Sign Up</Bold>
+                        </Button>
+                        <Button  
+                    HorizontalAlignment="Left"  
+                    Width="200" 
+                    Click="Delet_Click"
+                    FontSize="26"
+                    Background="#799540"
+                    Foreground="White">
+                            <Bold>Delete User</Bold>
+                        </Button>
+                    </Grid>
+                </Grid>
             </Grid>
+
+            <Grid>
+                <ContentControl Content="{Binding}"/>
+            </Grid>
+
+
+
+        </Grid>
     </Grid>
 
-
-
-        <Grid>
-            <ContentControl Content="{Binding}"/>
-        </Grid>
-        
-
-           
-        <Grid Height="108" Width="1150" VerticalAlignment="Bottom" Margin="0,0,0,100">
-            <Button 
-                x:Name="Create"
-                HorizontalAlignment="right"  
-                Width="200" 
-                Click="Create_Click"
-                FontSize="26"
-                Background="#799540"
-                Foreground="White" >
-                <Bold>Sign Up</Bold>
-            </Button>
-            <Button  
-                HorizontalAlignment="Left"  
-                Width="200" 
-                Click="Delet_Click"
-                FontSize="26"
-                Background="#799540"
-                Foreground="White">
-                <Bold>Delete User</Bold>
-           </Button>
-        </Grid>
-            <!--
-        <StackPanel Name="createUserPanel" Orientation="Vertical"/>
-        <Button Content="Register Test" HorizontalAlignment="Left" Margin="36,507,0,0" VerticalAlignment="Top" Width="220" Height="96" Click="CreateUser_Click"/>
-
-        <StackPanel Name="loginUserPanel" Orientation="Vertical"/>
-        -->
-
-    </Grid>
 </Page>
