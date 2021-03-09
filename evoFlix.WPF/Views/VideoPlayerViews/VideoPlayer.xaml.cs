@@ -1,7 +1,10 @@
-﻿using evoFlix.Services;
+﻿using evoFlix.Models;
+using evoFlix.Services;
 using evoFlix.WPF.DashboardViews;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,42 +30,65 @@ namespace evoFlix.WPF.Views
     ///     - Fix button imgage error
     public partial class VideoPlayer : Page
     {
+
         private Window main;
         private int savedTime;
         private Page backPage;
-        int startTime;
-        bool IsDragged = false;
-        int totalVisibilityTime = 3;
-        bool maximized = false;
-        bool videoIsPaused = false;
-        DispatcherTimer visibilityTimer;
+        private int startTime;
+        private bool IsDragged = false;
+        private int totalVisibilityTime = 2;
+        private bool maximized = false;
+        private bool videoIsPaused = false;
+        private bool showSubtitles = true;
+        private DispatcherTimer visibilityTimer;
         public string Source { get; set; }
-        FilmService fS = new FilmService();
+        private Subtitle subtitle;
+        private FilmService fS = new FilmService();
+        private VideoSettingsWindow settings;
 
         public VideoPlayer(Page page, Window window, String Title)
         {
+            //String sourcePath = fS.getSource(Title);
+
+            //if(sourcePath=="Failed")
+            //{
+            //    Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
+            //}
+            //else
+            //{
+            //    Source = @sourcePath;
+            //}
+
+            //Only works with .srt and .ass
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            Source = openFileDialog.FileName;
             
+            //Source = @"D:\Letöltések\Shingeki no Kyojin S01-S03 (BD_1920x1080)\[ReinForce] Shingeki no Kyojin - 01 (BDRip 1920x1080 x264 FLAC).mkv";
+            //Source = @"C:\Users\Asus\Downloads\Inuyasha S06\Inuyasha - 139 - Nagy csata a Shouun vízesésnél.mkv";
+            subtitle = new Subtitle(Source); //Source: path of the video (not the subtitle)
+            Heap.ActualSubtitle = subtitle;
+            settings = new VideoSettingsWindow();
+
             InitializeComponent();
 
-            maingrid.DataContext = this;
-
-            String sourcePath = fS.getSource(Title);
-
-            if(sourcePath=="Failed")
-            {
-                Source = @"D:\WORK\EGYETEM\3 FÉLÉV\EvoCampus\imdb_api_test\bin\Debug\Content\wolfwalkers_2020.mp4";
-            }
-            else
-            {
-                Source = @sourcePath;
-            }
-
+            SubtitleTextPropertiesProvider.Instance.WindowHeight = Application.Current.MainWindow.Height;
+            SubtitleTextPropertiesProvider.Instance.SetPosition();
             
 
+            maingrid.DataContext = this;
+            if (subtitle != null)
+            {
+                btnCaption.IsEnabled = true;
+                btnCaption.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\CaptionON.png", UriKind.Relative)) };
+                showSubtitles = true;
+            }
+
             main = window;
+            main.Title = System.IO.Path.GetFileNameWithoutExtension(Source);
             backPage = page;
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromSeconds(0.01);
             timer.Tick += timer_Tick;
             timer.Start();
 
@@ -104,20 +130,39 @@ namespace evoFlix.WPF.Views
                 string actual = mdaVideo.Position.ToString(@"hh\:mm\:ss");
                 string total = mdaVideo.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
                 lblProgress.Content = $"{actual} / {total}";
+                txtSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalMilliseconds);
             }
             
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            mdaVideo.Play();
-            videoIsPaused = false;
+            if (videoIsPaused)
+            {
+                mdaVideo.Play();
+                videoIsPaused = false;
+            }
+            else
+            {
+                mdaVideo.Pause();
+                videoIsPaused = true;
+            }
+            ChangePlayButton();
         }
 
-        private void btnPause_Click(object sender, RoutedEventArgs e)
+        private void btnCaption_Click(object sender, RoutedEventArgs e)
         {
-            mdaVideo.Pause();
-            videoIsPaused = true;
+            if (showSubtitles)
+            {
+                showSubtitles = false;
+                txtSubtitle.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                showSubtitles = true;
+                txtSubtitle.Visibility = Visibility.Visible;
+            }
+            ChangeCaptionButton();
         }
 
         private void mdaVideo_Loaded(object sender, RoutedEventArgs e)
@@ -131,22 +176,22 @@ namespace evoFlix.WPF.Views
             savedTime = (int) mdaVideo.Position.TotalSeconds;
             MessageBox.Show(savedTime.ToString());
             main.Content = backPage;
-            //main.Content = new DashboardPage();
             main.WindowState = WindowState.Normal;
             main.WindowStyle = WindowStyle.SingleBorderWindow;
+            main.Title = "EvoFlix";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnForward_Click(object sender, RoutedEventArgs e)
         {
             mdaVideo.Position += TimeSpan.FromSeconds(30);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnRewind_Click(object sender, RoutedEventArgs e)
         {
             mdaVideo.Position -= TimeSpan.FromSeconds(30);
         }
 
-        private void btnSound_Click(object sender, RoutedEventArgs e)
+        private void btnMute_Click(object sender, RoutedEventArgs e)
         {
             if (mdaVideo.Volume == 0)
                 slrSoundBar.Value = 10;
@@ -171,18 +216,10 @@ namespace evoFlix.WPF.Views
                 mdaVideo.Position = TimeSpan.FromSeconds(slrProgress.Value);
         }
 
-        //private void grdVideo_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    visibilityTimer.Stop();
-        //    grdButtons.Visibility = Visibility.Visible;
-        //    Cursor = Cursors.Arrow;
-        //    visibilityTimer.Start();
-        //}
-
         private void slrSoundBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             mdaVideo.Volume = slrSoundBar.Value / 100;
-            ChangeSoundButton();
+            ChangeMuteButton();
 
         }
 
@@ -204,6 +241,7 @@ namespace evoFlix.WPF.Views
                     mdaVideo.Play();
                 }
             else if (e.ClickCount == 1)
+            {
                 if (videoIsPaused)
                 {
                     mdaVideo.Play();
@@ -214,15 +252,35 @@ namespace evoFlix.WPF.Views
                     mdaVideo.Pause();
                     videoIsPaused = true;
                 }
+                ChangePlayButton();
+            }
+                
         }
 
-        private void ChangeSoundButton()
+        private void ChangeMuteButton()
         {
             if (mdaVideo.Volume == 0) 
-                btnSound.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Mute.png", UriKind.Relative)) };
+                btnMute.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Mute.png", UriKind.Relative)) };
             else
-                btnSound.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Unmute.png", UriKind.Relative)) };
+                btnMute.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Unmute.png", UriKind.Relative)) };
 
+        }
+
+        private void ChangePlayButton()
+        {
+            if (videoIsPaused)
+                btnPlay.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Play.png", UriKind.Relative)) };
+            else
+                btnPlay.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\Pause.jpg", UriKind.Relative)) };
+
+        }
+
+        private void ChangeCaptionButton()
+        {
+            if (showSubtitles)
+                btnCaption.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\CaptionON.png", UriKind.Relative)) };
+            else
+                btnCaption.Background = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"Images\Icons\CaptionOFF.png", UriKind.Relative)) };
         }
 
         private void Page_KeyDown(object sender, KeyEventArgs e)
@@ -244,6 +302,7 @@ namespace evoFlix.WPF.Views
                     mdaVideo.Pause();
                     videoIsPaused = true;
                 }
+                ChangePlayButton();
             }
         }
 
@@ -264,6 +323,18 @@ namespace evoFlix.WPF.Views
         private void grdButtons_MouseLeave(object sender, MouseEventArgs e)
         {
             visibilityTimer.Start();
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            
+            settings.Show();
+        }
+
+        private void player_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            SubtitleTextPropertiesProvider.Instance.WindowHeight = Application.Current.MainWindow.Height;
+            SubtitleTextPropertiesProvider.Instance.SetPosition();
         }
     }
 }
