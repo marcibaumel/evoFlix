@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 
-namespace evoFlix.Models
+namespace evoFlix.WPF.Models
 {
-    public static class SubtitleTextPropertiesProvider
+    public class SubtitleTextPropertiesProvider
     {
         public static SubtitleTextProperties Instance;
         static SubtitleTextPropertiesProvider()
         {
-            Instance = new SubtitleTextProperties(); 
+            Instance = new SubtitleTextProperties();
         }
 
 
@@ -24,9 +24,9 @@ namespace evoFlix.Models
             public double WindowHeight { get; set; }
 
             private double position;
-            public double Position 
+            public double Position
             {
-                get { return position; } 
+                get { return position; }
                 set
                 {
                     if (position != value)
@@ -34,11 +34,11 @@ namespace evoFlix.Models
                         position = value;
                         NotifyPropertyChanged("Position");
                     }
-                } 
+                }
             }
 
             private int fontSize;
-            public int FontSize 
+            public int FontSize
             {
                 get { return fontSize; }
                 set
@@ -48,7 +48,7 @@ namespace evoFlix.Models
                         fontSize = value;
                         NotifyPropertyChanged("FontSize");
                     }
-                } 
+                }
             }
 
             private Brush foreground;
@@ -125,9 +125,5 @@ namespace evoFlix.Models
                 Position = WindowHeight * Ratio;
             }
         }
-
-        
-
-       
     }
 }

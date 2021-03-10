@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace evoFlix.Models
+namespace evoFlix.WPF.Models
 {
-
-    /// TO-DO:
-    /// - Implement Binary Search in GetTextIndex
-    /// - Implement a faster sorting method
-    /// 
-
     public class Subtitle
     {
         public string Source { get; set; }
@@ -30,20 +27,24 @@ namespace evoFlix.Models
             string videoExtension = Path.GetExtension(source);
 
             string[] subtitlePaths = Directory.GetFiles(videoFolderPath, videoName + ".*");
-            Source = Path.GetExtension(subtitlePaths[0]) != videoExtension ? subtitlePaths[0] : subtitlePaths[1];
 
-            AvailableSubtitlePaths = new List<string>();
-            AvailableSubtitlePaths.AddRange(subtitlePaths);
-            for (int i = 0; i < subtitlePaths.Length; i++)
+            if (subtitlePaths.Length > 1)
             {
-                string ass = videoFolderPath + "\\" + videoName + ".ass";
-                string srt = videoFolderPath + "\\" + videoName + ".srt";
-                if (subtitlePaths[i] != ass && subtitlePaths[i] != srt)
-                    AvailableSubtitlePaths.Remove(subtitlePaths[i]);
+                Source = Path.GetExtension(subtitlePaths[0]) != videoExtension ? subtitlePaths[0] : subtitlePaths[1];
+
+                AvailableSubtitlePaths = new List<string>();
+                AvailableSubtitlePaths.AddRange(subtitlePaths);
+                for (int i = 0; i < subtitlePaths.Length; i++)
+                {
+                    string ass = videoFolderPath + "\\" + videoName + ".ass";
+                    string srt = videoFolderPath + "\\" + videoName + ".srt";
+                    if (subtitlePaths[i] != ass && subtitlePaths[i] != srt)
+                        AvailableSubtitlePaths.Remove(subtitlePaths[i]);
+                }
+
+
+                ReadSubtitle();
             }
-
-
-            ReadSubtitle();
         }
 
         public void SetActualSubtitle(string source)
@@ -126,7 +127,7 @@ namespace evoFlix.Models
                         string text = match.Groups["text"].Value;
                         subtitleLines.Add(new SubtitleLine(begin, end, text));
                     }
-                        
+
                 }
             }
 
@@ -141,7 +142,7 @@ namespace evoFlix.Models
 
             using (StreamReader reader = new StreamReader(Source))
             {
-                
+
                 while (!reader.EndOfStream)
                 {
                     Match indexMatch = indexRegex.Match(reader.ReadLine());

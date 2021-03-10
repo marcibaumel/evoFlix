@@ -1,21 +1,12 @@
-﻿using evoFlix.Models;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using evoFlix.WPF.Models;
 
 namespace evoFlix.WPF.Views
 {
@@ -43,13 +34,16 @@ namespace evoFlix.WPF.Views
         {
             InitializeComponent();
 
-            AvailableSubtitles = new List<ListBoxItem>();
-            foreach (var subtitle in Heap.ActualSubtitle.AvailableSubtitlePaths)
-                AddItemToAvailableSubtitles(subtitle);
-            lsbSubtitles.ItemsSource = AvailableSubtitles;
+            if (Heap.ActualSubtitle.Source != null)
+            {
+                AvailableSubtitles = new List<ListBoxItem>();
+                foreach (var subtitle in Heap.ActualSubtitle.AvailableSubtitlePaths)
+                    AddItemToAvailableSubtitles(subtitle);
+                lsbSubtitles.ItemsSource = AvailableSubtitles;
 
-            cmbFonts.SelectedItem = txtPreview.FontFamily;
-            defaultFontFamily = txtPreview.FontFamily;
+                cmbFonts.SelectedItem = txtPreview.FontFamily;
+                defaultFontFamily = txtPreview.FontFamily;
+            }
 
             Canvas.SetTop(positionSampleText, SubtitleTextPropertiesProvider.Instance.Ratio * Canvas.ActualHeight);
             textColorPicker.SelectedColor = (Color)(SubtitleTextPropertiesProvider.Instance.Foreground).GetValue(SolidColorBrush.ColorProperty);

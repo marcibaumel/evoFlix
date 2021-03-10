@@ -1,23 +1,13 @@
-﻿using evoFlix.Models;
-using evoFlix.Services;
-using evoFlix.WPF.DashboardViews;
+﻿using evoFlix.Services;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+using evoFlix.WPF.Models;
 
 namespace evoFlix.WPF.Views
 {
@@ -130,7 +120,8 @@ namespace evoFlix.WPF.Views
                 string actual = mdaVideo.Position.ToString(@"hh\:mm\:ss");
                 string total = mdaVideo.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
                 lblProgress.Content = $"{actual} / {total}";
-                txtSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalMilliseconds);
+                if (Heap.ActualSubtitle.Source != null)
+                    txtSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalMilliseconds);
             }
             
         }
