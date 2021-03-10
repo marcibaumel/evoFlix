@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace evoFlix.Models
+namespace evoFlix.WPF.Models
 {
-
-    /// TO-DO:
-    /// - Implement Binary Search in GetTextIndex
-    /// - Implement a faster sorting method
-    /// 
-
     public class Subtitle
     {
         public string Source { get; set; }
@@ -130,7 +127,7 @@ namespace evoFlix.Models
                         string text = match.Groups["text"].Value;
                         subtitleLines.Add(new SubtitleLine(begin, end, text));
                     }
-                        
+
                 }
             }
 
@@ -145,7 +142,7 @@ namespace evoFlix.Models
 
             using (StreamReader reader = new StreamReader(Source))
             {
-                
+
                 while (!reader.EndOfStream)
                 {
                     Match indexMatch = indexRegex.Match(reader.ReadLine());

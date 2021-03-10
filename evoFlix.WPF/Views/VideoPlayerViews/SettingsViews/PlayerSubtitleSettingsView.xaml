@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:models="clr-namespace:evoFlix.Models;assembly=evoFlix.Models"
+             xmlns:models="clr-namespace:evoFlix.WPF.Models;assembly=evoFlix.WPF"
              xmlns:local="clr-namespace:evoFlix.WPF.Views"
              mc:Ignorable="d"
              Background="LightGray"

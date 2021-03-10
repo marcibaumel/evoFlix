@@ -81,6 +81,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ObservableObject.cs" />
+    <Compile Include="Models\Subtitle.cs" />
+    <Compile Include="Models\SubtitleLine.cs" />
+    <Compile Include="Models\SubtitleTextPropertiesProvider.cs" />
     <Compile Include="State\Navigators\INavigator.cs" />
     <Compile Include="State\Navigators\Navigator.cs" />
     <Compile Include="Views\VideoPlayerViews\SettingsViews\VideoSettingsWindow.xaml.cs">
