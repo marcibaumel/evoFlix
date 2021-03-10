@@ -43,13 +43,16 @@ namespace evoFlix.WPF.Views
         {
             InitializeComponent();
 
-            AvailableSubtitles = new List<ListBoxItem>();
-            foreach (var subtitle in Heap.ActualSubtitle.AvailableSubtitlePaths)
-                AddItemToAvailableSubtitles(subtitle);
-            lsbSubtitles.ItemsSource = AvailableSubtitles;
+            if (Heap.ActualSubtitle.Source != null)
+            {
+                AvailableSubtitles = new List<ListBoxItem>();
+                foreach (var subtitle in Heap.ActualSubtitle.AvailableSubtitlePaths)
+                    AddItemToAvailableSubtitles(subtitle);
+                lsbSubtitles.ItemsSource = AvailableSubtitles;
 
-            cmbFonts.SelectedItem = txtPreview.FontFamily;
-            defaultFontFamily = txtPreview.FontFamily;
+                cmbFonts.SelectedItem = txtPreview.FontFamily;
+                defaultFontFamily = txtPreview.FontFamily;
+            }
 
             Canvas.SetTop(positionSampleText, SubtitleTextPropertiesProvider.Instance.Ratio * Canvas.ActualHeight);
             textColorPicker.SelectedColor = (Color)(SubtitleTextPropertiesProvider.Instance.Foreground).GetValue(SolidColorBrush.ColorProperty);

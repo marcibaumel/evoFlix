@@ -30,20 +30,24 @@ namespace evoFlix.Models
             string videoExtension = Path.GetExtension(source);
 
             string[] subtitlePaths = Directory.GetFiles(videoFolderPath, videoName + ".*");
-            Source = Path.GetExtension(subtitlePaths[0]) != videoExtension ? subtitlePaths[0] : subtitlePaths[1];
 
-            AvailableSubtitlePaths = new List<string>();
-            AvailableSubtitlePaths.AddRange(subtitlePaths);
-            for (int i = 0; i < subtitlePaths.Length; i++)
+            if (subtitlePaths.Length > 1)
             {
-                string ass = videoFolderPath + "\\" + videoName + ".ass";
-                string srt = videoFolderPath + "\\" + videoName + ".srt";
-                if (subtitlePaths[i] != ass && subtitlePaths[i] != srt)
-                    AvailableSubtitlePaths.Remove(subtitlePaths[i]);
+                Source = Path.GetExtension(subtitlePaths[0]) != videoExtension ? subtitlePaths[0] : subtitlePaths[1];
+
+                AvailableSubtitlePaths = new List<string>();
+                AvailableSubtitlePaths.AddRange(subtitlePaths);
+                for (int i = 0; i < subtitlePaths.Length; i++)
+                {
+                    string ass = videoFolderPath + "\\" + videoName + ".ass";
+                    string srt = videoFolderPath + "\\" + videoName + ".srt";
+                    if (subtitlePaths[i] != ass && subtitlePaths[i] != srt)
+                        AvailableSubtitlePaths.Remove(subtitlePaths[i]);
+                }
+
+
+                ReadSubtitle();
             }
-
-
-            ReadSubtitle();
         }
 
         public void SetActualSubtitle(string source)

@@ -130,7 +130,8 @@ namespace evoFlix.WPF.Views
                 string actual = mdaVideo.Position.ToString(@"hh\:mm\:ss");
                 string total = mdaVideo.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
                 lblProgress.Content = $"{actual} / {total}";
-                txtSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalMilliseconds);
+                if (Heap.ActualSubtitle.Source != null)
+                    txtSubtitle.Text = subtitle.GetActualText(mdaVideo.Position.TotalMilliseconds);
             }
             
         }
