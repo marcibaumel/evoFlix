@@ -77,7 +77,7 @@ namespace imdb_api_test
 
             Console.WriteLine(result);
 
-            Film testConvert = JsonConvert.DeserializeObject<Film>(result);
+            FilmTableModel testConvert = JsonConvert.DeserializeObject<FilmTableModel>(result);
 
 
 

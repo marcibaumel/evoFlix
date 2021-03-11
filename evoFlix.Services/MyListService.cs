@@ -22,7 +22,7 @@ namespace evoFlix.Services
         
         public void AddToMyList(int FilmName, int User)
         {
-            MyList mL = new MyList();
+            WatchListTableModel mL = new WatchListTableModel();
 
             if (checkUserIdAndFilm(FilmName, User) == true)
             {

@@ -24,15 +24,16 @@ namespace evoFlix.DataAccess
             Database.SetInitializer(new UserDBInitializer());
         }
         */
-        public DbSet<MainUserDB> MainUsers { get; set; }
+        public DbSet<MainUserTableModel> MainUsers { get; set; }
 
-        public DbSet <UserDB> Users { get; set; }
+        public DbSet <UserTableModel> Users { get; set; }
 
-        public DbSet <Film> Films { get; set; }
+        public DbSet <FilmTableModel> Films { get; set; }
 
-        public DbSet <MyList> WatchLists { get; set; }
+        public DbSet <WatchListTableModel> WatchLists { get; set; }
 
-        public DbSet <Watching> Watching { get; set; }
+        public DbSet <ContinuationTableModel> Watching { get; set; }
+        public DbSet<FilmSourceTableModel> FilmSourceTable { get; set; }
 
         public UnitOfWork() : base("EvoFlixDBConnectionString") { }
 

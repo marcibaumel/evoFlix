@@ -25,7 +25,7 @@ namespace evoFlix.Services
         }
 
 
-        public void AddFilm(Film film)
+        public void AddFilm(FilmTableModel film)
         {
             unitOfWork.Films.Add(film);
             unitOfWork.SaveChanges();
@@ -35,7 +35,7 @@ namespace evoFlix.Services
 
         public bool IsUniqueFilmTitle(string title)
         {
-            foreach (Film film in unitOfWork.Films)
+            foreach (FilmTableModel film in unitOfWork.Films)
                 if (film.Title == title)
                     return false;
             return true;
@@ -189,9 +189,9 @@ namespace evoFlix.Services
             return filmSource.ToString();
         }
 
-        public Film getFilm(string Title)
+        public FilmTableModel getFilm(string Title)
         {
-            Film film = unitOfWork.Films.FirstOrDefault(x => x.Title == Title);
+            FilmTableModel film = unitOfWork.Films.FirstOrDefault(x => x.Title == Title);
             return film;
         }
 

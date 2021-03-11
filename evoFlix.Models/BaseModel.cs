@@ -10,7 +10,7 @@ namespace evoFlix.Models
 {
     public class BaseModel 
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
 
     }
