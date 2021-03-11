@@ -23,7 +23,7 @@ namespace evoFlix.Services
             unitOfWork = new UnitOfWork();
         }
 
-        public void CreateUser(MainUserDB mainuser)
+        public void CreateUser(MainUserTableModel mainuser)
         {
             unitOfWork.MainUsers.Add(mainuser);
             unitOfWork.SaveChanges();
@@ -31,7 +31,7 @@ namespace evoFlix.Services
 
         public bool IsUniqueUsername(string username)
         {
-            foreach (MainUserDB mainuser in unitOfWork.MainUsers)
+            foreach (MainUserTableModel mainuser in unitOfWork.MainUsers)
                 if (mainuser.Username == username)
                     return false;
             return true;
@@ -39,7 +39,7 @@ namespace evoFlix.Services
 
         public bool IsExistingPassword(string username, string password)
         {
-            foreach (MainUserDB mainuser in unitOfWork.MainUsers)
+            foreach (MainUserTableModel mainuser in unitOfWork.MainUsers)
             {
                 if (mainuser.Username == username)
                     if (mainuser.Password == password)

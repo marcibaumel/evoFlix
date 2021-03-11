@@ -97,7 +97,7 @@ namespace evoFlix.WPF.Views
                 string username = txbUsername.Text;
                 string password = txbPassword.Password;
                 string profilePicturePath = System.IO.Path.GetFullPath(selectedImagePath);
-                userService.CreateUser(new UserDB { Username = username, Password = password, BirthDate = birthDate, ProfilePicturePath = profilePicturePath});
+                userService.CreateUser(new UserTableModel { Username = username, Password = password, BirthDate = birthDate, ProfilePicturePath = profilePicturePath});
                 Console.WriteLine("asd");
                 Visibility = Visibility.Hidden;
             }
