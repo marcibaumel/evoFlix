@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:evoFlix.WPF.Styles">
+
+    <!--Colors-->
+
+
+    <!-- Green Theme -->
+    <Color x:Key="ColorPrimary1">#419d5d</Color>
+    <Color x:Key="ColorPrimary2">#1b4332</Color>
+    <Color x:Key="ColorPrimary3">#081c15</Color>
+    <Color x:Key="ColorPrimary4">#e6e6e6</Color>
+
+    <!-- Error Color -->
+    <Color x:Key="ErrorColor">DarkRed</Color>
+
+    <!--Brushes -->
+    <SolidColorBrush x:Key="BrushPrimary1" Color="{StaticResource ColorPrimary1}"/>
+    <SolidColorBrush x:Key="BrushPrimary2" Color= "{StaticResource ColorPrimary2}"/>
+    <SolidColorBrush x:Key="BrushPrimary3" Color= "{StaticResource ColorPrimary3}"/>
+    <SolidColorBrush x:Key="BrushPrimary4" Color= "{StaticResource ColorPrimary4}"/>
+    <SolidColorBrush x:Key="ErrorMessage" Color="{StaticResource ErrorColor}"/>
+
+</ResourceDictionary>

@@ -1,0 +1,40 @@
+﻿<Window x:Class="evoFlix.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
+        xmlns:local="clr-namespace:evoFlix.WPF"
+        xmlns:viewmodel="clr-namespace:evoFlix.WPF.ViewModels"
+        xmlns:view="clr-namespace:evoFlix.WPF.Views"
+        Icon="/evoFlix.WPF;component/Resources/Images/evoflix.png"
+        mc:Ignorable="d"
+       
+        xmlns:controls="clr-namespace:evoFlix.WPF.Controls"
+        
+        Title="evoFlix" Height="900" Width="1600" >
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsLoggedIn}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+
+            <controls:NavigationBar/>
+        </Grid>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </ScrollViewer>
+
+    </Grid>
+</Window>
