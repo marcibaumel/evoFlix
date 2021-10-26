@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "ID": "1",
+      "Email": "asd@asd.com",
+      "Username": "sanyi",
+      "Password": "123qwe",
+      "Birthday": "2000.12.12",
+      "ProfilePicture": "http://asd",
+      "ValidAccount": "true",
+      "CreatedDate": "2020.12.12"
+    },
+    {
+      "ID": "1",
+      "Email": "asd@asd.com",
+      "Username": "sanyi",
+      "Password": "123qwe",
+      "Birthday": "2000.12.12",
+      "ProfilePicture": "http://asd",
+      "ValidAccount": "true",
+      "CreatedDate": "2020.12.12"
+    }
+  ]
+}
