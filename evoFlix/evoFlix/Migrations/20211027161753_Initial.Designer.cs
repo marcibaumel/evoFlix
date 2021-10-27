@@ -10,8 +10,8 @@ using evoFlix.Models;
 namespace evoFlix.Migrations
 {
     [DbContext(typeof(UnitOfWork))]
-    [Migration("20211026150137_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211027161753_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
