@@ -10,14 +10,21 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      working-directory: ./evoFlix
+    
     steps:
     - uses: actions/checkout@v2
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
+    
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: ${{env.working-directory}}
+      
     - name: Build
       run: dotnet build --no-restore
+      working-directory: ${{env.working-directory}}
