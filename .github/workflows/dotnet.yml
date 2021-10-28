@@ -31,7 +31,7 @@ jobs:
       
     - name: Jira Integration
       if: ${{ always() }}
-      uses: rohit-gohri/jira-ci-cd-integration@v0
+      uses: evoFlix/jira-ci-cd-integration@v0
       with:
         state: ${{ job.status }}
         jira_instance: companyname # Subdomain for Jira Cloud
