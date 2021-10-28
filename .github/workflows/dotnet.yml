@@ -5,6 +5,8 @@ on:
     branches: [ main, dev]
   pull_request:
     branches: [ main, dev]
+  schedule:
+  - cron: "0 2 * * 1-5"
 
 jobs:
   build:
@@ -29,11 +31,3 @@ jobs:
       run: dotnet build --no-restore
       working-directory: ${{env.working-directory}}
       
-    - name: Jira Integration
-      if: ${{ always() }}
-      uses: actions/jira-ci-cd-integration@v0
-      with:
-        state: ${{ job.status }}
-        jira_instance: companyname # Subdomain for Jira Cloud
-        client_id: ${{ secrets.JIRA_CLIENT_ID }}
-        client_secret: ${{ secrets.JIRA_CLIENT_SECRET }}
