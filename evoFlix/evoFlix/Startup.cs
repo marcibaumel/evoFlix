@@ -38,7 +38,7 @@ namespace evoFlix
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+              app.UseDeveloperExceptionPage();
             }
             else
             {
