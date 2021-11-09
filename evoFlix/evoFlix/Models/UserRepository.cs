@@ -18,5 +18,16 @@ namespace evoFlix.Models
         {
             return _unitOfWork.Users;
         }
+
+        public UserModel GetUser(string username)
+        {
+            return _unitOfWork.Users.Where(user => user.Username == username).FirstOrDefault();
+        }
+
+        public void CreateUser(UserModel user)
+        {
+            _unitOfWork.Users.Add(user);
+            _unitOfWork.SaveChanges();
+        }
     }
 }

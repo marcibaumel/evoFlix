@@ -8,5 +8,9 @@ namespace evoFlix.Models
     public interface IUserRepository
     {
         IEnumerable<UserModel> GetAllUser();
+
+        UserModel GetUser(string username);
+
+        void CreateUser(UserModel user);
     }
 }
