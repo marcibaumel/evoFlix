@@ -1,4 +1,4 @@
-name: EFLIX-22
+name: EFLIX
 
 on:
   push:
@@ -36,6 +36,6 @@ jobs:
       uses: rohit-gohri/jira-ci-cd-integration@v0
       with:
         state: ${{ job.status }}
-        jira_instance: marthon.atlassian.net/jira/software/projects/EFLIX # Subdomain for Jira Cloud
+        jira_instance: marthon # Subdomain for Jira Cloud
         client_id: ${{ secrets.JIRA_CLIENT_ID }}
         client_secret: ${{ secrets.JIRA_CLIENT_SECRET }}
