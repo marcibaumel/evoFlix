@@ -9,7 +9,9 @@ namespace evoFlix.Models
     {
         IEnumerable<UserModel> GetAllUser();
 
-        UserModel GetUser(string username);
+        UserModel GetUserByUsername(string username);
+
+        UserModel GetUserById(string id);
 
         void CreateUser(UserModel user);
     }

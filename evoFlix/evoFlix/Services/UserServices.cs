@@ -19,7 +19,7 @@ namespace evoFlix.Services
 
         public bool UsernameIsValid(string username)
         {
-            if (_userRepository.GetUser(username) != null)
+            if (_userRepository.GetUserByUsername(username) != null)
                 return false;
             return true;
         }

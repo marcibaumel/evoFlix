@@ -19,7 +19,7 @@ namespace evoFlix.Models
             return _unitOfWork.Users;
         }
 
-        public UserModel GetUser(string username)
+        public UserModel GetUserByUsername(string username)
         {
             return _unitOfWork.Users.Where(user => user.Username == username).FirstOrDefault();
         }
@@ -28,6 +28,11 @@ namespace evoFlix.Models
         {
             _unitOfWork.Users.Add(user);
             _unitOfWork.SaveChanges();
+        }
+
+        public UserModel GetUserById(string id)
+        {
+            return _unitOfWork.Users.Where(user => user.UserId.ToString() == id).FirstOrDefault();
         }
     }
 }

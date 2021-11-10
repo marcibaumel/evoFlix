@@ -20,9 +20,11 @@ namespace evoFlix
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddDbContext<UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<IJwtService, JwtService>();
             services.AddControllersWithViews();
 
             services.AddSpaStaticFiles(configuration =>
@@ -48,6 +50,12 @@ namespace evoFlix
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors(options => options
+                .WithOrigins("http://localhost:3000")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials());
 
             app.UseEndpoints(endpoints =>
             {
