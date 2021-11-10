@@ -1,11 +1,18 @@
 import React from "react";
-import FetchData from "./components/FetchData";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
+
 
 const App = () => {
   return (
-    <div>
-      <FetchData/>
-    </div>
+    <>
+    <Router>
+       <Navbar/>
+       <Switch>
+         <Route path='/'/>
+       </Switch>
+    </Router>
+    </>
   );
 };
 
