@@ -1,10 +1,12 @@
-name: .NET Core Build & Deployment
+name: EFLIX
 
 on:
   push:
     branches: [ main, dev]
   pull_request:
     branches: [ main, dev]
+  schedule:
+  - cron: "0 2 * * 1-5"
 
 jobs:
   build:
@@ -28,3 +30,20 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       working-directory: ${{env.working-directory}}
+      
+    #- name: Jira Integration
+     # if: ${{ always() }}
+      #uses: rohit-gohri/jira-ci-cd-integration@v0
+      #with:
+       # state: ${{ job.status }}
+        #jira_instance: marthon # Subdomain for Jira Cloud
+        #client_id: ${{ secrets.JIRA_CLIENT_ID }}
+        #lient_secret: ${{ secrets.JIRA_CLIENT_SECRET }}
+        
+    - name: Create deployment
+      uses: stanvanrooy/jira-deployment@main
+      with:
+          client-id: '${{ secrets.JIRA_CLIENT_ID }}'
+          client-secret: '${{ secrets.JIRA_CLIENT_SECRET }}'
+          base-url: 'https://marthon.atlassian.net/'
+          issue-keys: 'EFLIX-22'
