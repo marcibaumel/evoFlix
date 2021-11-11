@@ -46,4 +46,4 @@ jobs:
           client-id: '${{ secrets.JIRA_CLIENT_ID }}'
           client-secret: '${{ secrets.JIRA_CLIENT_SECRET }}'
           base-url: 'https://marthon.atlassian.net/'
-          issue-keys: 'EFLIX-22'
+          issue-keys: 'EFLIX'
