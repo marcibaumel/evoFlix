@@ -30,15 +30,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       working-directory: ${{env.working-directory}}
-      
-    #- name: Jira Integration
-     # if: ${{ always() }}
-      #uses: rohit-gohri/jira-ci-cd-integration@v0
-      #with:
-       # state: ${{ job.status }}
-        #jira_instance: marthon # Subdomain for Jira Cloud
-        #client_id: ${{ secrets.JIRA_CLIENT_ID }}
-        #lient_secret: ${{ secrets.JIRA_CLIENT_SECRET }}
         
     - name: Create deployment
       uses: stanvanrooy/jira-deployment@main
@@ -46,4 +37,6 @@ jobs:
           client-id: '${{ secrets.JIRA_CLIENT_ID }}'
           client-secret: '${{ secrets.JIRA_CLIENT_SECRET }}'
           base-url: 'https://marthon.atlassian.net/'
-          issue-keys: 'EFLIX'
+          issue-keys: 'EFLIX-28'
+          display-name: 'DEVELOPMENT'
+          pipeline-display-name: 'DEVELOPMENT'
