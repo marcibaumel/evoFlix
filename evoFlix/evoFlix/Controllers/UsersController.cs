@@ -65,7 +65,7 @@ namespace evoFlix.Controllers
             if (user == null)
                 return BadRequest("User not found");
 
-            if (BCrypt.Net.BCrypt.Verify(loginData.Password, user.Password))
+            if (!BCrypt.Net.BCrypt.Verify(loginData.Password, user.Password))
                 return BadRequest("Wrong password");
 
             var token = _jwtService.Generate(user.UserId);
