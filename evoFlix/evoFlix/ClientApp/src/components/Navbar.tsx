@@ -17,13 +17,11 @@ function Navbar() {
   return (
       <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className={sidebar ? 'wrapper-navbar-nav-menu-active' : 'wrapper'}>
         <div className={sidebar ? 'navbar-nav-menu-active' : 'navbar'}>
         <img src={logo} alt="Logo" className="logo-img"/>
           <Link to='#' className='menu-bars'>
             <FiIcons.FiLogIn onClick={showSidebar} />
           </Link>
-        </div>
         </div>
         <IconContext.Provider value={{ color: '#419D5D' }}>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -34,13 +32,12 @@ function Navbar() {
               </Link>
             </li>
             <div>
-                Hello 
+                
             </div>
           </ul>
         </nav>
         </IconContext.Provider>
       </IconContext.Provider>
-      <div className={sidebar ? "additional-content-active-navbar" : "additional-content"}></div>
     </>
   );
 }
