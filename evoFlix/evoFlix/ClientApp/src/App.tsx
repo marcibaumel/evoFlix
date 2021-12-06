@@ -1,14 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import MainPage from "./components/MainPage";
+import Navbar from './components/MainSite/MainSite';
 
 
 const App = () => {
   return (
     <>
-    <Router> 
-      <MainPage/>
+    <Router>
+       <Navbar/>
        <Switch>
          <Route path='/'/>
        </Switch>
@@ -16,5 +15,6 @@ const App = () => {
     </>
   );
 };
+
 
 export default App;
