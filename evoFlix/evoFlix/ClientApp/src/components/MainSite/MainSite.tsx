@@ -3,13 +3,14 @@ import * as FaIcons from "react-icons/fa"
 import * as FiIcons from "react-icons/fi"
 import * as AiIcons from "react-icons/ai"
 import { Link } from 'react-router-dom'
-import './Navbar.css';
+import './MainSite.css';
 import { IconContext } from 'react-icons';
 import logo from "./imgs/evoflix.png"
+import Login from './Login/Login'
 
 
 
-function Navbar() {
+function MainSite() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -34,7 +35,7 @@ function Navbar() {
               </Link>
             </li>
             <div>
-                Hello 
+                <Login/> 
             </div>
           </ul>
         </nav>
@@ -45,4 +46,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default MainSite;
