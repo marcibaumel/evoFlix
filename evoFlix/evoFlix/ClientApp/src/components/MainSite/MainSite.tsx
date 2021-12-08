@@ -10,6 +10,7 @@ import Login from './Login/Login'
 
 
 
+
 function MainSite() {
   const [sidebar, setSidebar] = useState(false);
 
@@ -25,13 +26,19 @@ function MainSite() {
             <FiIcons.FiLogIn onClick={showSidebar} />
           </Link>
         </div>
+
+        <div>
+          <h1 className="welcomeText">---------Welcome in the frontpage---------</h1>
+        </div>
+
         </div>
         <IconContext.Provider value={{ color: '#419D5D' }}>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
+          <ul className='nav-menu-items' >
             <li className='navbar-toggle'>
               <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose/>
+                
+                <AiIcons.AiOutlineClose onClick={showSidebar}/>
               </Link>
             </li>
             <div>
@@ -41,7 +48,7 @@ function MainSite() {
         </nav>
         </IconContext.Provider>
       </IconContext.Provider>
-      <div className={sidebar ? "additional-content-active-navbar" : "additional-content"}></div>
+      {/*<div className={sidebar ? "additional-content-active-navbar" : "additional-content"}></div>*/}
     </>
   );
 }

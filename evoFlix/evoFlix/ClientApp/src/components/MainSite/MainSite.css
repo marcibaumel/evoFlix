@@ -109,6 +109,13 @@ body{
     width: 100%;
   }
   
+
+.welcomeText{
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 3rem;
+}
+
   .navbar-toggle {
     background-color: #DAFFE0;
     width: 100%;
