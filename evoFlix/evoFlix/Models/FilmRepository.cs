@@ -27,7 +27,7 @@ namespace evoFlix.Models
         public bool filmIsInDatabase(FilmModel film)
         {
             FilmModel isInDb = _unitOfWork.Films.Where(filmModel => filmModel.Title == film.Title && filmModel.ReleaseYear == film.ReleaseYear).FirstOrDefault();
-            if (isInDb.Equals(null))
+            if (isInDb == null)
             {
                 return false;
             }
