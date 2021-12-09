@@ -1,11 +1,13 @@
 using evoFlix.Models;
 using evoFlix.Services;
+using evoFlix.Services.FilmService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace evoFlix
 {
@@ -25,7 +27,14 @@ namespace evoFlix
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<IJwtService, JwtService>();
+
+            services.AddScoped<IFilmRepository, FilmRepository>();
+            services.AddScoped<IFilmServices, FilmServices>();
+
+
             services.AddControllersWithViews();
+
+           
 
             services.AddSpaStaticFiles(configuration =>
             {
