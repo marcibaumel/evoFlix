@@ -7,9 +7,9 @@ namespace evoFlix.Services.FilmService
     public interface IFilmServices
     {
         IEnumerable<FilmModel> GetAllFilm();
-        void addFilm(FilmModel film);
-        void updateFilm(FilmModel film);
-        void deletFilmById(Guid id);
-        void addFilmByNameAndYear(string title, DateTime time);
+        void AddFilm(FilmModel film);
+        void UpdateFilm(FilmModel film);
+        void DeletFilmById(Guid id);
+        void AddFilmByNameAndYear(string title, DateTime time);
     }
 }

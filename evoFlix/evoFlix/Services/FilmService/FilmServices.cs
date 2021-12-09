@@ -13,7 +13,7 @@ namespace evoFlix.Services.FilmService
             _filmRepository = filmRepository;
         }
 
-        public void addFilm(FilmModel film)
+        public void AddFilm(FilmModel film)
         {
             if (!_filmRepository.filmIsInDatabase(film)){
                 _filmRepository.AddFilm(film);
@@ -21,12 +21,12 @@ namespace evoFlix.Services.FilmService
             
         }
 
-        public void addFilmByNameAndYear(string title, DateTime time)
+        public void AddFilmByNameAndYear(string title, DateTime time)
         {
             throw new NotImplementedException();
         }
 
-        public void deletFilmById(Guid id)
+        public void DeletFilmById(Guid id)
         {
             throw new NotImplementedException();
         }
@@ -36,7 +36,7 @@ namespace evoFlix.Services.FilmService
             return _filmRepository.GetAllFilm();
         }
 
-        public void updateFilm(FilmModel film)
+        public void UpdateFilm(FilmModel film)
         {
             throw new NotImplementedException();
         }
