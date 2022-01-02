@@ -36,12 +36,12 @@ function App() {
 
   const playerRef = useRef(null);
 
-  const handlePlayePause = () =>{
+  const handlePlayePause = () => {
     setState({...state, playing: !state.playing});
   }
 
-  const handleMute = () =>{
-    setState({...state, muted:!state.muted})
+  const handleMute = () => {
+    setState({...state, muted:!state.muted});
   }
 
   return (

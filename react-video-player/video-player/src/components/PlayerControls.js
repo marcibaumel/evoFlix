@@ -14,6 +14,7 @@ import VolumeUpIcon from "@material-ui/icons/VolumeUp"
 import FullScreenIcon from "@material-ui/icons/Fullscreen"
 import Popover  from "@material-ui/core/Popover";
 import PauseIcon from "@material-ui/icons/Pause"
+import VolumeOffIcon  from "@material-ui/icons/VolumeOff";
 
 const useStyles = makeStyles({
  
@@ -92,7 +93,7 @@ const useStyles = makeStyles({
   
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({onPlayPause, playing, onRewind, onFastForward}) => {
+export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute}) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -169,8 +170,13 @@ export default ({onPlayPause, playing, onRewind, onFastForward}) => {
                 <PlayerArrowIcon fontSize="large"/>
             )}
         </IconButton>
-        <IconButton className={classes.bottomIcons}>
-          <VolumeUpIcon fontSize="large"/>
+
+
+        <IconButton onClick={onMute} className={classes.bottomIcons}>
+          {muted?
+            (<VolumeOffIcon fontSize="large"/>
+            ):(
+            <VolumeUpIcon fontSize="large"/>)}
         </IconButton>
         
         <Slider
