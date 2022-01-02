@@ -58,8 +58,9 @@ function App() {
       ref={playerRef}
       width={"100%"}
       height="100%"
-        url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+        //url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         //url="https://www.youtube.com/watch?v=y0eLg5-hXI0&ab_channel=Cinemassacre"
+        url='videos/test.mp4'
         muted={muted}
         playing={playing}
       />
