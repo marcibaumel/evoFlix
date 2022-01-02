@@ -92,7 +92,7 @@ const useStyles = makeStyles({
   
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({onPlayPause, playing}) => {
+export default ({onPlayPause, playing, onRewind, onFastForward}) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -130,7 +130,7 @@ export default ({onPlayPause, playing}) => {
       justify="center"
       >
 
-      <IconButton className = {classes.controlIcons} aria-label="reqind"  >
+      <IconButton onClick={onRewind} className = {classes.controlIcons} aria-label="reqind"  >
         <FastRewindIcon fontSize="inherit"/>
       </IconButton>
 
@@ -142,7 +142,7 @@ export default ({onPlayPause, playing}) => {
         )}
       </IconButton>
 
-      <IconButton className = {classes.controlIcons} aria-label="reqind"  >
+      <IconButton onClick={onFastForward} className = {classes.controlIcons} aria-label="reqind"  >
         <FastForward fontSize="inherit"/>
       </IconButton>
     </Grid>

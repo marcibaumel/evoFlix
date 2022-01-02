@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography  from "@material-ui/core/Typography";
@@ -15,17 +15,33 @@ const useStyles = makeStyles({
   },
 })
 
+
+
 function App() {
   const classes = useStyles();
   const [state, setState] = useState({
     playing:true,
-
+    muted:true,
   })
 
-  const {playing} = state;
+  const {playing, muted} = state;
+
+  const handleRewind = () => {
+    playerRef.current.seekTo(playerRef.current.getCurrentTime() - 10)
+  }
+
+  const handleFastForward = () => {
+    playerRef.current.seekTo(playerRef.current.getCurrentTime() + 10)
+  }
+
+  const playerRef = useRef(null);
 
   const handlePlayePause = () =>{
     setState({...state, playing: !state.playing});
+  }
+
+  const handleMute = () =>{
+    setState({...state, muted:!state.muted})
   }
 
   return (
@@ -39,10 +55,12 @@ function App() {
    <Container maxWidth="md">
      <div className={classes.playerWrapper}>
       <ReactPlayer
+      ref={playerRef}
       width={"100%"}
       height="100%"
         url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-        muted={true}
+        //url="https://www.youtube.com/watch?v=y0eLg5-hXI0&ab_channel=Cinemassacre"
+        muted={muted}
         playing={playing}
       />
 
@@ -50,6 +68,10 @@ function App() {
       <PlayerControls
         onPlayPause = {handlePlayePause}
         playing={playing}
+        onRewind = {handleRewind}
+        onFastForward = {handleFastForward}
+        muted={muted}
+        onMute={handleMute}
       />
     </div>
       
