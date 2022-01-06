@@ -22,9 +22,10 @@ function App() {
   const [state, setState] = useState({
     playing:true,
     muted:true,
+    volume: 0.5,
   })
 
-  const {playing, muted} = state;
+  const {playing, muted, volume} = state;
 
   const handleRewind = () => {
     playerRef.current.seekTo(playerRef.current.getCurrentTime() - 10)
@@ -43,6 +44,21 @@ function App() {
   const handleMute = () => {
     setState({...state, muted:!state.muted});
   }
+
+  const handleVolumeChange = (e, newValue) => {
+    setState({...state, 
+            volume: parseFloat(newValue / 100),
+            muted: newValue === 0 ? true : false,
+    })
+  }
+
+  const handleVolumeSeekDown = (e, newValue) => {
+    setState({...state, 
+      volume: parseFloat(newValue / 100),
+      muted: newValue === 0 ? true : false,
+})
+  }
+
 
   return (
    <>
@@ -63,6 +79,7 @@ function App() {
         url='videos/test.mp4'
         muted={muted}
         playing={playing}
+        volume={volume}
       />
 
 
@@ -73,6 +90,9 @@ function App() {
         onFastForward = {handleFastForward}
         muted={muted}
         onMute={handleMute}
+        onVolumeChange={handleVolumeChange}
+        onVolumeSeekDown={handleVolumeSeekDown}
+        volume={volume}
       />
     </div>
       

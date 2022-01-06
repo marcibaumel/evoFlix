@@ -93,7 +93,8 @@ const useStyles = makeStyles({
   
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute}) => {
+export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
+  onVolumeChange, onVolumeSeekDown, volume}) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -182,8 +183,10 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute}) 
         <Slider
           min={0}
           max={100}
-          defaultValue={25}
+          value={volume * 100}
           className={classes.volumeSlider}
+          onChange={onVolumeChange}
+          onChangeComitted={onVolumeSeekDown}
         />
 
         <Button variant="text" style={{color:"#fff", marginLeft:16}}>
