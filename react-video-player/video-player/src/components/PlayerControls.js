@@ -94,7 +94,7 @@ const useStyles = makeStyles({
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
-  onVolumeChange, onVolumeSeekDown, volume}) => {
+  onVolumeChange, onVolumeSeekDown, volume, playbackRate, onPlayBackRateChange }) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -199,7 +199,7 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
 
     <Grid item>
           <Button onClick={handlePopover} variant="text" className={classes.bottomIcons}>
-            <Typography>1x</Typography>
+            <Typography>{playbackRate}x</Typography>
           </Button>
 
           <Popover
@@ -217,8 +217,9 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
             }}
           >
             <Grid container direction="column-reverse">
-            {[0.5, 1, 1.5, 2].map(rate=>(<Button variant="text">
-              <Typography color="secondary">{rate}</Typography>
+            {[0.5, 1, 1.5, 2].map(rate=>
+              (<Button onClick={()=>onPlayBackRateChange(rate)} variant="text">
+              <Typography color={rate === playbackRate?"secondary":"default"}>{rate}</Typography>
             </Button>))}
             </Grid>
           </Popover>

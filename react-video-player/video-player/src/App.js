@@ -23,9 +23,10 @@ function App() {
     playing:true,
     muted:true,
     volume: 0.5,
+    playbackRate: 1.0,
   })
 
-  const {playing, muted, volume} = state;
+  const {playing, muted, volume, playbackRate} = state;
 
   const handleRewind = () => {
     playerRef.current.seekTo(playerRef.current.getCurrentTime() - 10)
@@ -56,19 +57,25 @@ function App() {
     setState({...state, 
       volume: parseFloat(newValue / 100),
       muted: newValue === 0 ? true : false,
-})
+    })
+  }
+
+  const handlePlaybackRateChange = (rate) =>{
+    setState({...state, playbackRate: rate})
   }
 
 
   return (
    <>
+   {/*
    <AppBar position="fixed">
      <Toolbar>
         <Typography variant="h6">React Video Player</Typography>
      </Toolbar>
    </AppBar>
+   */}
    <Toolbar/>
-   <Container maxWidth="md">
+   <Container maxWidth="lg">
      <div className={classes.playerWrapper}>
       <ReactPlayer
       ref={playerRef}
@@ -80,6 +87,7 @@ function App() {
         muted={muted}
         playing={playing}
         volume={volume}
+        playbackRate={playbackRate}
       />
 
 
@@ -93,6 +101,8 @@ function App() {
         onVolumeChange={handleVolumeChange}
         onVolumeSeekDown={handleVolumeSeekDown}
         volume={volume}
+        playbackRate = {playbackRate}
+        onPlayBackRateChange = {handlePlaybackRateChange}
       />
     </div>
       
