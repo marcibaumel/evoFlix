@@ -94,7 +94,8 @@ const useStyles = makeStyles({
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
-  onVolumeChange, onVolumeSeekDown, volume, playbackRate, onPlayBackRateChange }) => {
+  onVolumeChange, onVolumeSeekDown, volume, playbackRate, onPlayBackRateChange,
+  onToggleFullScreen }) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -225,7 +226,7 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
           </Popover>
 
 
-          <IconButton className={classes.bottomIcons}>
+          <IconButton onClick={onToggleFullScreen} className={classes.bottomIcons}>
             <FullScreenIcon fontSize="large"/>
           </IconButton>
     </Grid>

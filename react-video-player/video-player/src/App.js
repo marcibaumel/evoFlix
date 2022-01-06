@@ -6,7 +6,7 @@ import Container  from "@material-ui/core/Container";
 import ReactPlayer from 'react-player'
 import { makeStyles } from '@material-ui/core/styles'
 import PlayerControls from "./components/PlayerControls";
-
+import screenfull from "screenfull";
 
 const useStyles = makeStyles({
   playerWrapper:{
@@ -64,6 +64,11 @@ function App() {
     setState({...state, playbackRate: rate})
   }
 
+  const toggleFullScreen = () =>(
+    screenfull.toggle(playerContainerRef.current)
+  )
+
+  const playerContainerRef = useRef(null)
 
   return (
    <>
@@ -76,7 +81,7 @@ function App() {
    */}
    <Toolbar/>
    <Container maxWidth="lg">
-     <div className={classes.playerWrapper}>
+     <div ref={playerContainerRef} className={classes.playerWrapper}>
       <ReactPlayer
       ref={playerRef}
       width={"100%"}
@@ -103,6 +108,7 @@ function App() {
         volume={volume}
         playbackRate = {playbackRate}
         onPlayBackRateChange = {handlePlaybackRateChange}
+        onToggleFullScreen = {toggleFullScreen}
       />
     </div>
       
