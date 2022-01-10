@@ -165,7 +165,7 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
           min={0} 
           max={100} 
           defaultValue={played*100} 
-          ValueLabelComponent={ValueLabelComponent}
+          ValueLabelComponent={(props) => <ValueLabelComponent {...props} value={elapsedTime}/>}
           onChange={onSeek}
           onMouseDown={onSeekMouseDown}
           onChangeCommitted={onSeekMouseUp}
