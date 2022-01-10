@@ -94,8 +94,8 @@ const useStyles = makeStyles({
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
-  onVolumeChange, onVolumeSeekDown, volume, playbackRate, onPlayBackRateChange,
-  onToggleFullScreen }) => {
+  onVolumeChange, onVolumeSeekUp, volume, playbackRate, onPlayBackRateChange,
+  onToggleFullScreen, played, onSeek, onSeekMouseDown, onSeekMouseUp }) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -160,7 +160,15 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
       style={{ padding: 16 }}
     >
       <Grid item xs={12}>
-        <PrettoSlider min={0} max={100} defaultValue={20} ValueLabelComponent={ValueLabelComponent}/>
+        <PrettoSlider 
+          min={0} 
+          max={100} 
+          defaultValue={played*100} 
+          ValueLabelComponent={ValueLabelComponent}
+          onChange={onSeek}
+          onMouseDown={onSeekMouseDown}
+          onChangeCommitted={onSeekMouseUp}
+          />
       </Grid>
 
     <Grid item>
@@ -187,7 +195,7 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
           value={volume * 100}
           className={classes.volumeSlider}
           onChange={onVolumeChange}
-          onChangeComitted={onVolumeSeekDown}
+          onChangeComitted={onVolumeSeekUp}
         />
 
         <Button variant="text" style={{color:"#fff", marginLeft:16}}>

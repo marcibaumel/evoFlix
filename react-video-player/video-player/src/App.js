@@ -24,9 +24,12 @@ function App() {
     muted:true,
     volume: 0.5,
     playbackRate: 1.0,
+    played:0,
+    seeking:false,
+
   })
 
-  const {playing, muted, volume, playbackRate} = state;
+  const {playing, muted, volume, playbackRate, played, seeking} = state;
 
   const handleRewind = () => {
     playerRef.current.seekTo(playerRef.current.getCurrentTime() - 10)
@@ -53,7 +56,15 @@ function App() {
     })
   }
 
-  const handleVolumeSeekDown = (e, newValue) => {
+  const handleProgress = (changeState) => {
+    console.log(changeState)
+
+    if(!state.seeking){
+      setState({...state, ...changeState});
+    }
+  }
+
+  const handleVolumeSeekUp = (e, newValue) => {
     setState({...state, 
       volume: parseFloat(newValue / 100),
       muted: newValue === 0 ? true : false,
@@ -67,6 +78,20 @@ function App() {
   const toggleFullScreen = () =>(
     screenfull.toggle(playerContainerRef.current)
   )
+
+
+  const handleSeekChange = (e, newValue) => {
+    setState({...state, played:parseFloat(newValue / 100)});
+  }
+
+  const handleSeekMouseDown = (e) => {
+    setState({...state, seeking:true})
+  }
+
+  const handleSeekMouseUp = (e, newValue) => {
+    setState({...state, seeking:false});
+    playerRef.current.seekTo(newValue / 100);
+  }
 
   const playerContainerRef = useRef(null)
 
@@ -93,6 +118,7 @@ function App() {
         playing={playing}
         volume={volume}
         playbackRate={playbackRate}
+        onProgress={handleProgress}
       />
 
 
@@ -104,11 +130,15 @@ function App() {
         muted={muted}
         onMute={handleMute}
         onVolumeChange={handleVolumeChange}
-        onVolumeSeekDown={handleVolumeSeekDown}
+        onVolumeSeekUp={handleVolumeSeekUp}
         volume={volume}
         playbackRate = {playbackRate}
         onPlayBackRateChange = {handlePlaybackRateChange}
         onToggleFullScreen = {toggleFullScreen}
+        played={played}
+        onSeek={handleSeekChange}
+        onSeekMouseDown={handleSeekMouseDown}
+        onSeekMouseUp={handleSeekMouseUp}
       />
     </div>
       
