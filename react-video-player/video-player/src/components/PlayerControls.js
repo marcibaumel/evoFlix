@@ -96,7 +96,7 @@ const useStyles = makeStyles({
 export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
   onVolumeChange, onVolumeSeekUp, volume, playbackRate, onPlayBackRateChange,
   onToggleFullScreen, played, onSeek, onSeekMouseDown, onSeekMouseUp,
-  elapsedTime, totalDuration}) => {
+  elapsedTime, totalDuration, onChangeDisplayFormat}) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -164,7 +164,7 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
         <PrettoSlider 
           min={0} 
           max={100} 
-          defaultValue={played*100} 
+          value={played*100} 
           ValueLabelComponent={(props) => <ValueLabelComponent {...props} value={elapsedTime}/>}
           onChange={onSeek}
           onMouseDown={onSeekMouseDown}
@@ -199,7 +199,7 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
           onChangeComitted={onVolumeSeekUp}
         />
 
-        <Button variant="text" style={{color:"#fff", marginLeft:16}}>
+        <Button onClick={onChangeDisplayFormat} variant="text" style={{color:"#fff", marginLeft:16}}>
           <Typography>{elapsedTime}/{totalDuration}</Typography>
         </Button>
 

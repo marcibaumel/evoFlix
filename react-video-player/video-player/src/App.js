@@ -41,7 +41,10 @@ function App() {
 
   })
 
+  const [timeDisplayFormat, setTimeDisplayFormat] = useState("normal")
+
   const {playing, muted, volume, playbackRate, played, seeking} = state;
+
 
   const handleRewind = () => {
     playerRef.current.seekTo(playerRef.current.getCurrentTime() - 10)
@@ -107,8 +110,13 @@ function App() {
 
   const currentTime = playerRef.current ? playerRef.current.getCurrentTime() : '00:00'
   const duration = playerRef.current? playerRef.current.getDuration() : "00:00";
-  const elapsedTime = format(currentTime);
+  const elapsedTime = timeDisplayFormat ==='normal' ? format(currentTime) 
+      : `${format(duration-currentTime)}`;
   const totalDuration = format(duration);
+
+  const handleChangeDisplayFormat = () =>{
+    setTimeDisplayFormat(timeDisplayFormat ==='normal'?'remmaining':'normal')
+  }
 
   const playerContainerRef = useRef(null)
 
@@ -128,9 +136,9 @@ function App() {
       ref={playerRef}
       width={"100%"}
       height="100%"
-        url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+        //url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         //url="https://www.youtube.com/watch?v=y0eLg5-hXI0&ab_channel=Cinemassacre"
-        //url='videos/test.mp4'
+        url='videos/test.mp4'
         muted={muted}
         playing={playing}
         volume={volume}
@@ -158,6 +166,7 @@ function App() {
         onSeekMouseUp={handleSeekMouseUp}
         elapsedTime={elapsedTime}
         totalDuration={totalDuration}
+        onChangeDisplayFormat = {handleChangeDisplayFormat}
       />
     </div>
       
