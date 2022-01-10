@@ -15,7 +15,16 @@ const useStyles = makeStyles({
   },
 })
 
+const format = (seconds) => {
+  if(isNaN(seconds)){
+    return '00:00'
+  }
+  const date = new Date(seconds * 1000);
 
+  const hh = date.getUTCHours();
+  const mm = date.getUTCMinutes();
+  const ss = date.getUTCSeconds();
+}
 
 function App() {
   const classes = useStyles();
@@ -92,6 +101,11 @@ function App() {
     setState({...state, seeking:false});
     playerRef.current.seekTo(newValue / 100);
   }
+
+  const currentTime = playerRef.curretn ? playerRef.current.getCurrentTime() : '00:00'
+  const duration = playerRef.current? playerRef.current.getDuration() : "00:00";
+  const elapsedTime = format(currentTime);
+  const totalduration = format(duration);
 
   const playerContainerRef = useRef(null)
 
