@@ -16,15 +16,18 @@ const useStyles = makeStyles({
 })
 
 const format = (seconds) => {
-  if(isNaN(seconds)){
-    return '00:00'
+  if (isNaN(seconds)) {
+    return `00:00`;
   }
   const date = new Date(seconds * 1000);
-
   const hh = date.getUTCHours();
   const mm = date.getUTCMinutes();
-  const ss = date.getUTCSeconds();
-}
+  const ss = date.getUTCSeconds().toString().padStart(2, "0");
+  if (hh) {
+    return `${hh}:${mm.toString().padStart(2, "0")}:${ss}`;
+  }
+  return `${mm}:${ss}`;
+};
 
 function App() {
   const classes = useStyles();
@@ -102,10 +105,10 @@ function App() {
     playerRef.current.seekTo(newValue / 100);
   }
 
-  const currentTime = playerRef.curretn ? playerRef.current.getCurrentTime() : '00:00'
+  const currentTime = playerRef.current ? playerRef.current.getCurrentTime() : '00:00'
   const duration = playerRef.current? playerRef.current.getDuration() : "00:00";
   const elapsedTime = format(currentTime);
-  const totalduration = format(duration);
+  const totalDuration = format(duration);
 
   const playerContainerRef = useRef(null)
 
@@ -125,9 +128,9 @@ function App() {
       ref={playerRef}
       width={"100%"}
       height="100%"
-        //url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+        url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         //url="https://www.youtube.com/watch?v=y0eLg5-hXI0&ab_channel=Cinemassacre"
-        url='videos/test.mp4'
+        //url='videos/test.mp4'
         muted={muted}
         playing={playing}
         volume={volume}
@@ -153,6 +156,8 @@ function App() {
         onSeek={handleSeekChange}
         onSeekMouseDown={handleSeekMouseDown}
         onSeekMouseUp={handleSeekMouseUp}
+        elapsedTime={elapsedTime}
+        totalDuration={totalDuration}
       />
     </div>
       

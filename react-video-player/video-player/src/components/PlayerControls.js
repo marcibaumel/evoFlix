@@ -95,7 +95,8 @@ const useStyles = makeStyles({
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
   onVolumeChange, onVolumeSeekUp, volume, playbackRate, onPlayBackRateChange,
-  onToggleFullScreen, played, onSeek, onSeekMouseDown, onSeekMouseUp }) => {
+  onToggleFullScreen, played, onSeek, onSeekMouseDown, onSeekMouseUp,
+  elapsedTime, totalDuration}) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -199,7 +200,7 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
         />
 
         <Button variant="text" style={{color:"#fff", marginLeft:16}}>
-          <Typography>05:05</Typography>
+          <Typography>{elapsedTime}/{totalDuration}</Typography>
         </Button>
 
        
