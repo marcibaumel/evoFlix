@@ -1,4 +1,4 @@
-import React from "react";
+import React, {forwardRef} from "react";
 import Typography  from "@material-ui/core/Typography";
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import  Grid  from "@material-ui/core/Grid";
@@ -93,10 +93,10 @@ const useStyles = makeStyles({
   
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
+export default forwardRef(({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
   onVolumeChange, onVolumeSeekUp, volume, playbackRate, onPlayBackRateChange,
   onToggleFullScreen, played, onSeek, onSeekMouseDown, onSeekMouseUp,
-  elapsedTime, totalDuration, onChangeDisplayFormat}) => {
+  elapsedTime, totalDuration, onChangeDisplayFormat},ref) => {
     
         const classes = useStyles();
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -114,7 +114,7 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
     
     
     return(
-    <div className={classes.controlsWrapper}>
+    <div className={classes.controlsWrapper} ref={ref}>
     {/*Top controls */}
     <Grid container direction="row" alignItems="center" justify="space-between" style={{padding:16}}>
       <Grid item>
@@ -243,4 +243,6 @@ export default ({onPlayPause, playing, onRewind, onFastForward, muted, onMute,
 
   </Grid>
   </div>
-)}
+    );
+  }
+);

@@ -47,7 +47,7 @@ function App() {
   const [timeDisplayFormat, setTimeDisplayFormat] = useState("normal")
 
   const {playing, muted, volume, playbackRate, played, seeking} = state;
-  const [bookmark, setBookmarks] = useState([]);
+  //const [bookmark, setBookmarks] = useState([]);
 
 
   const addBookmark = () => {
@@ -65,9 +65,10 @@ function App() {
   const handleFastForward = () => {
     playerRef.current.seekTo(playerRef.current.getCurrentTime() + 10)
   }
-
+  var count = 0;
   const playerRef = useRef(null);
   const canvasRef = useRef(null);
+  const controlsRef = useRef(null);
 
   const handlePlayePause = () => {
     setState({...state, playing: !state.playing});
@@ -86,6 +87,15 @@ function App() {
 
   const handleProgress = (changeState) => {
     console.log(changeState)
+
+    if(count>3){
+      controlsRef.current.style.visibility = "hidden";
+      count = 0
+    }
+
+    if(controlsRef.current.style.visibility == 'visible'){
+      count += 1;
+    }
 
     if(!state.seeking){
       setState({...state, ...changeState});
@@ -131,6 +141,11 @@ function App() {
     setTimeDisplayFormat(timeDisplayFormat ==='normal'?'remmaining':'normal')
   }
 
+  const handleMouseMove = () =>{
+    controlsRef.current.style.visibility = "visible";
+    count = 0;
+
+  }
 
 
   const playerContainerRef = useRef(null)
@@ -146,7 +161,7 @@ function App() {
    */}
    <Toolbar/>
    <Container maxWidth="lg">
-     <div ref={playerContainerRef} className={classes.playerWrapper}>
+     <div ref={playerContainerRef} onMouseMove={handleMouseMove} className={classes.playerWrapper}>
       <ReactPlayer
       ref={playerRef}
       width={"100%"}
@@ -163,6 +178,7 @@ function App() {
 
 
       <PlayerControls
+        ref={controlsRef}
         onPlayPause = {handlePlayePause}
         playing={playing}
         onRewind = {handleRewind}
