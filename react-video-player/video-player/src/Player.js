@@ -36,7 +36,7 @@ function App() {
   const classes = useStyles();
   const [state, setState] = useState({
     playing:true,
-    muted:true,
+    muted:false,
     volume: 0.5,
     playbackRate: 1.0,
     played:0,
@@ -198,7 +198,7 @@ function App() {
         elapsedTime={elapsedTime}
         totalDuration={totalDuration}
         onChangeDisplayFormat = {handleChangeDisplayFormat}
-        onBookmark = {addBookmark}
+        //onBookmark = {addBookmark}
       />
     </div>
     {/* 
