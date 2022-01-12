@@ -54,8 +54,6 @@ function App() {
     const canvas = canvasRef.current
     canvas.width = 160
     canvas.height = 90
-
-
   }
 
   const handleRewind = () => {
@@ -86,21 +84,17 @@ function App() {
   }
 
   const handleProgress = (changeState) => {
-    console.log(changeState)
-
-    if(count>3){
+    if (count > 3) {
       controlsRef.current.style.visibility = "hidden";
-      count = 0
+      count = 0;
     }
-
-    if(controlsRef.current.style.visibility == 'visible'){
+    if (controlsRef.current.style.visibility == "visible") {
       count += 1;
     }
-
-    if(!state.seeking){
-      setState({...state, ...changeState});
+    if (!state.seeking) {
+      setState({ ...state, ...changeState });
     }
-  }
+  };
 
   const handleVolumeSeekUp = (e, newValue) => {
     setState({...state, 
@@ -142,26 +136,29 @@ function App() {
   }
 
   const handleMouseMove = () =>{
+    console.log("mousemove");
     controlsRef.current.style.visibility = "visible";
     count = 0;
-
   }
+
+  const hanldeMouseLeave = () => {
+    controlsRef.current.style.visibility = "hidden";
+    count = 0;
+  };
 
 
   const playerContainerRef = useRef(null)
 
   return (
    <>
-   {/*
-   <AppBar position="fixed">
-     <Toolbar>
-        <Typography variant="h6">React Video Player</Typography>
-     </Toolbar>
-   </AppBar>
-   */}
    <Toolbar/>
    <Container maxWidth="lg">
-     <div ref={playerContainerRef} onMouseMove={handleMouseMove} className={classes.playerWrapper}>
+   <div
+          onMouseMove={handleMouseMove}
+          onMouseLeave={hanldeMouseLeave}
+          ref={playerContainerRef}
+          className={classes.playerWrapper}
+        >
       <ReactPlayer
       ref={playerRef}
       width={"100%"}
