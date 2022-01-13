@@ -42,7 +42,7 @@ function MainSite() {
           <h2 className="welcomeText"> Watch anywhere. Cancel anytime</h2>
           <h2 className="welcomeText">Ready to watch? Press the button in the<a onClick={showSidebar}><span className="to-the-button-text">right corner.</span></a></h2>
           <div className="imgCarousel-div">
-          <Carousel className="imgCarousel">
+          <Carousel className="imgCarousel" showStatus={false}>
                 <div>
                     <img src="https://variety.com/wp-content/uploads/2021/03/Shrek-Eddie-Murphy-1.jpg" alt="m1"/>
                     <p className="legend">Shrek</p>
@@ -66,7 +66,6 @@ function MainSite() {
           <ul className='nav-menu-items' >
             <li className='navbar-toggle'>
               <Link to='#' className='menu-bars'>
-                
                 <AiIcons.AiOutlineClose onClick={showSidebar}/>
               </Link>
             </li>
