@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Link} from 'react-router-dom';
  
 const Registration = () => {
  
@@ -25,8 +26,9 @@ const Registration = () => {
  
     return (
         
- 
+        
         <div className="DivCard centerCard">
+            <Link to="/">Go back to login</Link>
             <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Registration</h1>
             <form id="registrationForm">
                 {/* register your input into the hook by invoking the "register" function */}

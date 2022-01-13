@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import * as FaIcons from "react-icons/fa"
 import * as FiIcons from "react-icons/fi"
 import * as AiIcons from "react-icons/ai"
@@ -9,6 +10,8 @@ import { IconContext } from 'react-icons';
 import logo from "./imgs/evoflix.png"
 import Login from './Login/Login'
 import { Carousel } from 'react-responsive-carousel'
+import Registration from './Registration/Registration';
+import NewAccount from './RouterComponents/NewAccount'
 
 
 
@@ -22,10 +25,8 @@ function MainSite() {
   const test = () => console.log("Gomb");
 
   return (
-      <>
-
-      
-      
+      <>  
+      <Router>
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className={sidebar ? 'wrapper-navbar-nav-menu-active' : 'wrapper'}>
         <div className={sidebar ? 'navbar-nav-menu-active' : 'navbar'}>
@@ -72,14 +73,25 @@ function MainSite() {
                 <AiIcons.AiOutlineClose onClick={showSidebar}/>
               </Link>
             </li>
-            <div>
-                <Login/> 
-            </div>
+            
+          
+            <Route path='/' exact render={(props)=>(
+              <>
+                <div>
+                  <Login/> 
+                </div>
+                <NewAccount/>
+              </>
+            )}/>
+            <Route path='/registration' component={Registration}/>
+           
+            
           </ul>
         </nav>
         </IconContext.Provider>
       </IconContext.Provider>
       {/*<div className={sidebar ? "additional-content-active-navbar" : "additional-content"}></div>*/}
+      </Router>
     </>
   );
 }
