@@ -42,7 +42,10 @@ function MainSite() {
           <h2 className="welcomeText"> Watch anywhere. Cancel anytime</h2>
           <h2 className="welcomeText">Ready to watch? Press the button in the<a onClick={showSidebar}><span className="to-the-button-text">right corner.</span></a></h2>
           <div className="imgCarousel-div">
-          <Carousel className="imgCarousel" showStatus={false}>
+          <Carousel className="imgCarousel" 
+              showStatus={false} 
+              infiniteLoop={true} 
+              autoPlay={true}>
                 <div>
                     <img src="https://variety.com/wp-content/uploads/2021/03/Shrek-Eddie-Murphy-1.jpg" alt="m1"/>
                     <p className="legend">Shrek</p>
