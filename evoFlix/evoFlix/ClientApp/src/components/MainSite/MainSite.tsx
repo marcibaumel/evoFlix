@@ -11,9 +11,6 @@ import Login from './Login/Login'
 import { Carousel } from 'react-responsive-carousel'
 
 
-
-
-
 function MainSite() {
   const [sidebar, setSidebar] = useState(false);
 
@@ -22,10 +19,7 @@ function MainSite() {
   const test = () => console.log("Gomb");
 
   return (
-      <>
-
-      
-      
+      <>   
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className={sidebar ? 'wrapper-navbar-nav-menu-active' : 'wrapper'}>
         <div className={sidebar ? 'navbar-nav-menu-active' : 'navbar'}>
