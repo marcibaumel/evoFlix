@@ -14,9 +14,6 @@ import Registration from './Registration/Registration';
 import NewAccount from './RouterComponents/NewAccount'
 
 
-
-
-
 function MainSite() {
   const [sidebar, setSidebar] = useState(false);
 
@@ -25,6 +22,7 @@ function MainSite() {
   const test = () => console.log("Gomb");
 
   return (
+
       <>  
       <Router>
       <IconContext.Provider value={{ color: '#fff' }}>
