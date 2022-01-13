@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 const Registration = () => {
  
     const [user, setUser] = useState({
-        firstname: '',
-        lastname: '',
+        username: '',
+        birth: '',
         email: '',
         password: '',
         password2: ''
@@ -25,38 +25,48 @@ const Registration = () => {
     }
  
     return (
-        
-        
-        <div className="DivCard centerCard">
-            <Link to="/">Go back to login</Link>
-            <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Registration</h1>
-            <form id="registrationForm">
-                {/* register your input into the hook by invoking the "register" function */}
-                Firstname:
-                <input type="text" name="firstname" value={user.firstname} placeholder="Joseph" onChange={handleChange} />
- 
-                {/*errors.firstname && <p class="ErrorParagraph">{errors.firstname}</p>*/}
-                Lastname:
-                <input type="text" name="lastname" value={user.lastname} placeholder="Smith" onChange={handleChange} />
-                {/*errors.lastname && <p class="ErrorParagraph">{errors.lastname}</p>*/}
- 
-                Email:
-                <input type="text" name="email" value={user.email} placeholder="example@mail.com" onChange={handleChange} />
-                {/*errors.email && <p class="ErrorParagraph">{errors.email}</p>*/}
-                {/*emailExists && <p class="ErrorParagraph">Email already exist</p>*/}
- 
-                Password:
-                <input type="password" name="password" value={user.password} placeholder="••••••••" onChange={handleChange} />
-                {/*errors.password && <p class="ErrorParagraph">{errors.password}</p>*/}
- 
-                Confirm password:
-                <input type="password" name="password2" value={user.password2} placeholder="••••••••" onChange={handleChange} />
-                {/*errors.password2 && <p class="ErrorParagraph">{errors.password2}</p>*/}
- 
+        <>
+        <Link to="/">Go back to Login</Link>
+        <div className="centerCard">
+        <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Registration</h1>
+        <form id="registrationForm">
+
+            <div className="input-box"> 
+            <input className="form-block" type="text" name="username" value={user.username} placeholder="Username" onChange={handleChange} />
+            {/*errors.email && <p class="ErrorParagraph">{errors.email}</p>*/}
+            {/*emailExists && <p class="ErrorParagraph">Email already exist</p>*/}
+            </div>
+
+            <div className="input-box"> 
+            <input className="form-block" type="date" name="birth" value={user.birth} placeholder="Birth" onChange={handleChange} />
+            {/*errors.email && <p class="ErrorParagraph">{errors.email}</p>*/}
+            {/*emailExists && <p class="ErrorParagraph">Email already exist</p>*/}
+            </div>
+
+            <div className="input-box"> 
+            <input className="form-block" type="email" name="email" value={user.email} placeholder="Email address" onChange={handleChange} />
+            {/*errors.email && <p class="ErrorParagraph">{errors.email}</p>*/}
+            {/*emailExists && <p class="ErrorParagraph">Email already exist</p>*/}
+            </div>
+
+            <div className="input-box">
+            <input className="form-block" type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} />
+            {/*errors.password && <p class="ErrorParagraph">{errors.password}</p>*/}
+            </div>
+
+            <div className="input-box">
+            <input className="form-block" type="password" name="password2" value={user.password} placeholder="Password again" onChange={handleChange} />
+            {/*errors.password && <p class="ErrorParagraph">{errors.password}</p>*/}
+            </div>
+
+            <div className="input-box">
                 <input type="submit" />
-            </form>
-            {/*success && <p class="SuccessParagraph">Student {user.firstname} successfully added.</p>*/}
-        </div>
+            </div>
+            
+        </form>
+        {/*success && <p class="SuccessParagraph">Student {user.firstname} successfully added.</p>*/}
+    </div>
+    </>
     );
 }
  
