@@ -44,7 +44,7 @@ const Login = () => {
         
  
         <div className="centerCard">
-            <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Registration</h1>
+            <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Login</h1>
             <form id="registrationForm">
                 <div className="input-box">
                 <input className="form-block" type="text" name="email" value={user.email} placeholder="Email address" onChange={handleChange} />
