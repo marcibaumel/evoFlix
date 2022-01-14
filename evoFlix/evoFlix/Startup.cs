@@ -1,11 +1,14 @@
 using evoFlix.Models;
 using evoFlix.Services;
+using evoFlix.Services.FilmService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+
 
 namespace evoFlix
 {
@@ -21,12 +24,24 @@ namespace evoFlix
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+
             services.AddDbContext<UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<IJwtService, JwtService>();
-            services.AddControllersWithViews();
 
+            services.AddScoped<IFilmRepository, FilmRepository>();
+            services.AddScoped<IFilmServices, FilmServices>();
+
+
+            services.AddControllers();
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "evoFlixAPI", Version = "v1" });
+            });
+
+            
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
@@ -37,7 +52,9 @@ namespace evoFlix
         {
             if (env.IsDevelopment())
             {
-              app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "evoFlixAPI v1"));
             }
             else
             {
@@ -59,10 +76,11 @@ namespace evoFlix
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapControllers();
+
             });
+
+          
 
             app.UseSpa(spa =>
             {
