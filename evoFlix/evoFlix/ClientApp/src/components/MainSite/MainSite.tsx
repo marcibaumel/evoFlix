@@ -25,20 +25,21 @@ function MainSite() {
   const showSidebar = () => setSidebar(!sidebar);
 
   const test = () => console.log("Gomb");
-
+  //prettier
   return (
 
       <>  
+      
       <Router>
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className={sidebar ? 'wrapper-navbar-nav-menu-active' : 'wrapper'}>
-        <div className={sidebar ? 'navbar-nav-menu-active' : 'navbar'}>
-        <button onClick={test} className="navbar-button">Home</button>
-        <button onClick={test} className="navbar-button">Watch something</button>
-        <img src={logo} alt="Logo" className="logo-img"/>
-          <Link to='#' className='menu-bars'>
-            <FiIcons.FiLogIn onClick={showSidebar} />
-          </Link>
+          <div className={sidebar ? 'navbar-nav-menu-active' : 'navbar'}>
+            <button onClick={test} className="navbar-button">Home</button>
+            <button onClick={test} className="navbar-button">Watch something</button>
+            <img src={logo} alt="Logo" className="logo-img"/>
+            <Link to='#' className='menu-bars'>
+              <FiIcons.FiLogIn onClick={showSidebar}/>
+            </Link>
         </div>
 
         <div>
