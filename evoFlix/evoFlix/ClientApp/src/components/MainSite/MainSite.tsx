@@ -16,6 +16,11 @@ import NewAccount from './RouterComponents/NewAccount'
 
 function MainSite() {
   const [sidebar, setSidebar] = useState(false);
+  const [state, setState] = useState('login')
+
+  const AddTripButton = (props:any) => {
+    return <button onClick={props.addTrip}>{props.msg}</button>
+  }
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -71,24 +76,25 @@ function MainSite() {
                 <AiIcons.AiOutlineClose onClick={showSidebar}/>
               </Link>
             </li>
-            
-          
-            <Route path='/' exact render={(props)=>(
-              <>
-                <div>
-                  <Login/> 
-                </div>
-                <NewAccount/>
-              </>
-            )}/>
-            <Route path='/registration' component={Registration}/>
-           
+        <div>
+          {state === 'login' && (
+            <>
+            <AddTripButton addTrip={() => setState('registration') } msg="Registration" />
+            <Login/>
+            </>
+          )}
+          {state === 'registration' && (
+          <>
+            <AddTripButton addTrip={() => setState('login') } msg="Login" />
+            <Registration />
+          </>
+          )}
+        </div>
             
           </ul>
         </nav>
         </IconContext.Provider>
       </IconContext.Provider>
-      {/*<div className={sidebar ? "additional-content-active-navbar" : "additional-content"}></div>*/}
       </Router>
     </>
   );
