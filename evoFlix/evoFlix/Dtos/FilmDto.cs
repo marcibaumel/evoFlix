@@ -7,13 +7,13 @@ namespace evoFlix.Services.OmdbServices
         
         public string Title { get; set; }
 
-        public string ReleaseYear { get; set; }
+        public string Released { get; set; }
 
         public string Rated { get; set; }
 
         public string RunTime { get; set; }
 
-        public string DirectorName { get; set; }
+        public string Director { get; set; }
 
         public string Genre { get; set; }
 
