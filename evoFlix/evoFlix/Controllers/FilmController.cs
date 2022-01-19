@@ -22,6 +22,12 @@ namespace evoFlix.Controllers
             return Ok(_filmServices.GetAllFilm());
         }
 
+        [HttpGet("getFilm")]
+        public string getOmdbData(string title, string year)
+        {
+            return _filmServices.getDataFromOmdb(title, year);
+        }
+
         [HttpPost("addFilm")]
         public IActionResult AddFilm([FromBody] FilmModel filmModel)
         {

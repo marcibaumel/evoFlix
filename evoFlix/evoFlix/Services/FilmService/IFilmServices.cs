@@ -11,5 +11,6 @@ namespace evoFlix.Services.FilmService
         void UpdateFilm(FilmModel film);
         void DeletFilmById(Guid id);
         void AddFilmByNameAndYear(string title, DateTime time);
+        string getDataFromOmdb(string title, string year);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using evoFlix.Models;
+using evoFlix.Services.OmdbServices;
 using System;
 using System.Collections.Generic;
 
@@ -7,10 +8,17 @@ namespace evoFlix.Services.FilmService
     public class FilmServices : IFilmServices
     {
         private readonly IFilmRepository _filmRepository;
+        private readonly IOmdbProcessor _omdbProcessor;
 
-        public FilmServices(IFilmRepository filmRepository)
+        public FilmServices(IFilmRepository filmRepository, IOmdbProcessor omdbProcessor)
         {
             _filmRepository = filmRepository;
+            _omdbProcessor = omdbProcessor;
+        }
+
+        public string getDataFromOmdb(string title, string year)
+        {
+            return _omdbProcessor.GetFilmByOmdbApi(title, year).Result.Actors;
         }
 
         public void AddFilm(FilmModel film)

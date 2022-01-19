@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using evoFlix.Models;
+using System.Threading.Tasks;
 
 namespace evoFlix.Services.OmdbServices
 {
