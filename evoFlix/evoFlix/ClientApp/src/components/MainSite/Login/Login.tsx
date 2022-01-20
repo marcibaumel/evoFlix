@@ -4,7 +4,7 @@ import './Login.css';
 const Login = () => {
  
     const [user, setUser] = useState({
-        email: '',
+        username: '',
         password: '',
     });
  
@@ -21,17 +21,17 @@ const Login = () => {
 /*
     useEffect(() => {
         fetch("http://localhost:8000/users")
-        .then(res  => {
-          return res.json();
-        })
-        .then(data => {
-          setUser(data);
-        });
+            .then(res  => {
+                return res.json();
+            })
+            .then(data => {
+                setUser(data);
+            });
     }, []);
 */
     const handleLogin = () =>{
-        console.log(user.email, user.password);
-        alert(user.email);
+        console.log(user.username, user.password);
+        alert(user.username);
     }
 
     return (
@@ -41,7 +41,7 @@ const Login = () => {
             <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Login</h1>
             <form id="registrationForm">
                 <div className="input-box">
-                    <input className="form-block" type="text" name="email" value={user.email} placeholder="Email address" onChange={handleChange} />
+                    <input className="form-block" type="text" name="email" value={user.username} placeholder="Username" onChange={handleChange} />
                 </div>
 
                 <div className="input-box">

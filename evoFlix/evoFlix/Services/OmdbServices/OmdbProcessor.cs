@@ -54,36 +54,7 @@ namespace evoFlix.Services.OmdbServices
             return newFilm;
         }
 
-        public string setFilmSource(string FilmName, string FilmYear)
-        {
-            string path = @"Resource/Films";
-            string fullPath = Path.GetFullPath(path);
-
-            string[] stringSeperators = new string[] { "bin" };
-            string[] folderName = fullPath.Split(stringSeperators, StringSplitOptions.None);
-            string convertFolder = folderName[0] + "\\Films";
-            fullPath = convertFolder;
-
-            string[] files = Directory.GetFiles(fullPath);
-
-            if (FilmName.Length < 15)
-            {
-                FilmName = FilmName.Replace(" ", "_");
-            }
-            else
-            {
-                FilmName = FilmName.Replace(" ", "_").Substring(0, 15);
-            }
-
-            for (int i = 0; i < files.Length; i++)
-            {
-                if (files[i].Contains(FilmName))
-                {
-                    return files[i];
-                }
-            }
-            return "";
-        }
+        
 
         public Ratings giveBackTheRatings(string Type)
         {
