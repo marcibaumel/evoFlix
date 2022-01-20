@@ -46,10 +46,10 @@ namespace evoFlix.Services.OmdbServices
 
 
             double ImdbRating = double.Parse(filmDto.ImdbRating, System.Globalization.CultureInfo.InvariantCulture);
-            string Source = setFilmSource(filmDto.Title, DateTime.Parse(filmDto.Released, cultureInfo).Year.ToString());
+            //string Source = setFilmSource(filmDto.Title, DateTime.Parse(filmDto.Released, cultureInfo).Year.ToString());
 
-            FilmModel newFilm = new FilmModel(filmDto.Title, DateTime.Parse(filmDto.Released, cultureInfo), filmDto.Director, filmDto.Plot, ImdbRating,
-                                         TimeSpan.FromMinutes(Int32.Parse(timeSpanHelper[0])), filmDto.Actors, filmDto.Poster, giveBackTheRatings(filmDto.Rated), Source);
+            FilmModel newFilm = new FilmModel(new Guid(), filmDto.Title, DateTime.Parse(filmDto.Released, cultureInfo), giveBackTheRatings(filmDto.Rated), TimeSpan.FromMinutes(Int32.Parse(timeSpanHelper[0])),
+                                            filmDto.Director, filmDto.Genre, filmDto.Actors, filmDto.Plot, filmDto.Poster, ImdbRating);
 
             return newFilm;
         }
