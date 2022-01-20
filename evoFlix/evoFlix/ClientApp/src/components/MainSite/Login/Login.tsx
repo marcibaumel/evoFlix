@@ -1,24 +1,5 @@
-/*
-import React from "react";
-
-function Login(){
-    return(
-        <>
-        <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quasi. Accusantium maxime illo, harum dicta ipsa officiis, aspernatur deleniti quibusdam, asperiores totam a odit architecto eius. Sunt, ipsam. Nostrum, qui!
-        </div>
-        </>
-    )
-}
-
-export default Login;
-*/
-
 import React, { useEffect, useState } from "react";
 import './Login.css';
-//import { useForm } from 'react-hook-form';
-//import '../Forms.css';
-//import validate from "../RegisterPage/RegisterValidate";
  
 const Login = () => {
  
@@ -27,11 +8,8 @@ const Login = () => {
         password: '',
     });
  
-    const [errors, setErrors] = useState({});
- 
     const [success, setSuccess] = useState(false);
  
-    const [emailExists, setEmailExists] = useState();
  
     const handleChange = (e: { target: { name: any; value: any; }; }) => {
         setUser({
@@ -40,6 +18,22 @@ const Login = () => {
         });
     }
  
+/*
+    useEffect(() => {
+        fetch("http://localhost:8000/users")
+        .then(res  => {
+          return res.json();
+        })
+        .then(data => {
+          setUser(data);
+        });
+    }, []);
+*/
+    const handleLogin = () =>{
+        console.log(user.email, user.password);
+        alert(user.email);
+    }
+
     return (
         
  
@@ -47,22 +41,18 @@ const Login = () => {
             <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Login</h1>
             <form id="registrationForm">
                 <div className="input-box">
-                <input className="form-block" type="text" name="email" value={user.email} placeholder="Email address" onChange={handleChange} />
-                {/*errors.email && <p class="ErrorParagraph">{errors.email}</p>*/}
-                {/*emailExists && <p class="ErrorParagraph">Email already exist</p>*/}
+                    <input className="form-block" type="text" name="email" value={user.email} placeholder="Email address" onChange={handleChange} />
                 </div>
 
                 <div className="input-box">
-                <input className="form-block" type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} />
-                {/*errors.password && <p class="ErrorParagraph">{errors.password}</p>*/}
+                    <input className="form-block" type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} />
                 </div>
 
                 <div className="input-box">
-                    <input type="submit" />
+                    <input type="submit" onClick={handleLogin}/>
                 </div>
                 
             </form>
-            {/*success && <p class="SuccessParagraph">Student {user.firstname} successfully added.</p>*/}
         </div>
     );
 }

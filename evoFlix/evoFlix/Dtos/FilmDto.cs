@@ -1,17 +1,20 @@
-﻿using System;
+﻿using evoFlix.Models;
+using System;
+using System.Globalization;
+using System.IO;
 
 namespace evoFlix.Services.OmdbServices
 {
     public class FilmDto
     {
-        
+
         public string Title { get; set; }
 
         public string Released { get; set; }
 
         public string Rated { get; set; }
 
-        public string RunTime { get; set; }
+        public string Runtime { get; set; }
 
         public string Director { get; set; }
 
@@ -25,6 +28,6 @@ namespace evoFlix.Services.OmdbServices
 
         public string ImdbRating { get; set; }
     }
-
+    
 }
 

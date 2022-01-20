@@ -1,5 +1,6 @@
 ﻿using evoFlix.Models;
 using evoFlix.Services.FilmService;
+using evoFlix.Services.OmdbServices;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -10,6 +11,7 @@ namespace evoFlix.Controllers
     public class FilmController : Controller
     {
         private readonly IFilmServices _filmServices;
+        
 
         public FilmController(IFilmServices filmServices)
         {
@@ -22,10 +24,19 @@ namespace evoFlix.Controllers
             return Ok(_filmServices.GetAllFilm());
         }
 
-        [HttpGet("getFilm")]
-        public string getOmdbData(string title, string year)
+        [HttpGet("getFilmActors")]
+        public string getOmdbDataActors(string title, string year)
         {
-            return _filmServices.getDataFromOmdb(title, year);
+            return _filmServices.getDataFromOmdb(title, year).Actors;
+        }
+
+        [HttpPost("saveFilm")]
+        public IActionResult saveFilm(string title, string year)
+        {
+            FilmDto filmDto = _filmServices.getDataFromOmdb(title, year);
+            FilmModel filmModel = _filmServices.getFilmModelFromFilmDto(filmDto);
+            _filmServices.AddFilm(filmModel);
+            return Created("", filmModel);
         }
 
         [HttpPost("addFilm")]

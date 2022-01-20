@@ -34,6 +34,7 @@ namespace evoFlix
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddScoped<IFilmServices, FilmServices>();
             services.AddScoped<IOmdbProcessor, OmdbProcessor>();
+            
 
 
             services.AddControllers();

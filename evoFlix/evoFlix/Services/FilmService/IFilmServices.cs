@@ -1,4 +1,5 @@
 ﻿using evoFlix.Models;
+using evoFlix.Services.OmdbServices;
 using System;
 using System.Collections.Generic;
 
@@ -11,6 +12,7 @@ namespace evoFlix.Services.FilmService
         void UpdateFilm(FilmModel film);
         void DeletFilmById(Guid id);
         void AddFilmByNameAndYear(string title, DateTime time);
-        string getDataFromOmdb(string title, string year);
+        FilmDto getDataFromOmdb(string title, string year);
+        FilmModel getFilmModelFromFilmDto(FilmDto filmDto);
     }
 }

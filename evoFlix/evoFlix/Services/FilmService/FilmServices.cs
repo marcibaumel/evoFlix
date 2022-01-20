@@ -16,9 +16,16 @@ namespace evoFlix.Services.FilmService
             _omdbProcessor = omdbProcessor;
         }
 
-        public string getDataFromOmdb(string title, string year)
+
+
+        public FilmDto getDataFromOmdb(string title, string year)
         {
-            return _omdbProcessor.GetFilmByOmdbApi(title, year).Result.Actors;
+            return _omdbProcessor.GetFilmByOmdbApi(title, year).Result;
+        }
+
+        public FilmModel getFilmModelFromFilmDto(FilmDto filmDto)
+        {
+            return _omdbProcessor.ConvetToModel(filmDto);
         }
 
         public void AddFilm(FilmModel film)
