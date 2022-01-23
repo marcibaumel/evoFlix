@@ -1,0 +1,24 @@
+.body{
+    margin:10;
+    padding: 0;
+}
+.menu {
+    width: 250px;
+    height: 100%;
+    color:blue;
+    position:fixed;
+    background-color: #419d5d;
+    
+}
+
+.film-container{
+    margin-left:250px;
+    margin-top:10px;
+}
+
+.film-item{
+    text-align: center;
+    font-size: 18px;
+    padding: 25px;
+}
+
