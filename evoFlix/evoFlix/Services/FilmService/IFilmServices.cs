@@ -9,10 +9,11 @@ namespace evoFlix.Services.FilmService
     {
         IEnumerable<FilmModel> GetAllFilm();
         void AddFilm(FilmModel film);
-        void UpdateFilm(FilmModel film);
-        void DeletFilmById(Guid id);
-        void AddFilmByNameAndYear(string title, DateTime time);
         FilmDto getDataFromOmdb(string title, string year);
         FilmModel getFilmModelFromFilmDto(FilmDto filmDto);
+
+        //void UpdateFilm(FilmModel film);
+        //void DeletFilmById(Guid id);
+        //void AddFilmByNameAndYear(string title, DateTime time);
     }
 }

@@ -16,8 +16,6 @@ namespace evoFlix.Services.FilmService
             _omdbProcessor = omdbProcessor;
         }
 
-
-
         public FilmDto getDataFromOmdb(string title, string year)
         {
             return _omdbProcessor.GetFilmByOmdbApi(title, year).Result;
@@ -36,6 +34,12 @@ namespace evoFlix.Services.FilmService
             
         }
 
+        public IEnumerable<FilmModel> GetAllFilm()
+        {
+            return _filmRepository.GetAllFilm();
+        }
+
+        /*
         public void AddFilmByNameAndYear(string title, DateTime time)
         {
             throw new NotImplementedException();
@@ -46,14 +50,12 @@ namespace evoFlix.Services.FilmService
             throw new NotImplementedException();
         }
 
-        public IEnumerable<FilmModel> GetAllFilm()
-        {
-            return _filmRepository.GetAllFilm();
-        }
-
         public void UpdateFilm(FilmModel film)
         {
             throw new NotImplementedException();
         }
+        */
+
+
     }
 }
