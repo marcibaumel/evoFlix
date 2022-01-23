@@ -10,6 +10,9 @@ namespace evoFlix.Models
     [Table("FilmTable")]
     public class FilmModel
     {
+        //TODO
+        //-Source
+
         [Key]
         public Guid Id { get; set; }
 
@@ -39,7 +42,27 @@ namespace evoFlix.Models
         public String Poster { get; set; }
 
         public double ImdbRating { get; set; }
+
+
+        public FilmModel(Guid id, string title, DateTime releaseYear, Ratings rated, TimeSpan runTime, string directorName, string genre, string actors, string plot, string poster, double imdbRating)
+        {
+            Id = id;
+            Title = title;
+            ReleaseYear = releaseYear;
+            Rated = rated;
+            RunTime = runTime;
+            DirectorName = directorName;
+            Genre = genre;
+            Actors = actors;
+            Plot = plot;
+            Poster = poster;
+            ImdbRating = imdbRating;
+        }
+
     }
+
+    
+
 
     public enum Ratings
     {
@@ -47,6 +70,7 @@ namespace evoFlix.Models
         PG,
         PG13,
         R,
-        NC17
+        NC17,
+        NA
     }
 }

@@ -26,7 +26,6 @@ const Registration = () => {
  
     return (
         <>
-        <Link to="/">Go back to Login</Link>
         <div className="centerCard">
         <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Registration</h1>
         <form id="registrationForm">

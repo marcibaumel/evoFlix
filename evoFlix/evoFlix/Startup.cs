@@ -1,6 +1,7 @@
 using evoFlix.Models;
 using evoFlix.Services;
 using evoFlix.Services.FilmService;
+using evoFlix.Services.OmdbServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -32,6 +33,8 @@ namespace evoFlix
 
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddScoped<IFilmServices, FilmServices>();
+            services.AddScoped<IOmdbProcessor, OmdbProcessor>();
+            
 
 
             services.AddControllers();
