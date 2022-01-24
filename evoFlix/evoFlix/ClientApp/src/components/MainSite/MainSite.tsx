@@ -7,7 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from 'react-router-dom'
 import './MainSite.css';
 import { IconContext } from 'react-icons';
-import logo from "./Resources/imgs/evoflix1.png"
+import logo from "./Resources/imgs/evoflix2.png"
 import Login from './Login/Login'
 import { Carousel } from 'react-responsive-carousel'
 import Registration from './Registration/Registration';
@@ -24,7 +24,6 @@ function MainSite() {
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  const test = () => console.log("Gomb");
   //prettier
   return (
 
@@ -34,8 +33,8 @@ function MainSite() {
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className={sidebar ? 'wrapper-navbar-nav-menu-active' : 'wrapper'}>
           <div className={sidebar ? 'navbar-nav-menu-active' : 'navbar'}>
-            <button onClick={test} className="navbar-button"><Link className="navbar-link" to='/'>Home</Link></button>
-            <button onClick={test} className="navbar-button"><Link className="navbar-link" to='/watchsomething'>Watch Something</Link></button>
+            <button className="navbar-button"><Link className="navbar-link" to='/'>Home</Link></button>
+            <button className="navbar-button"><Link className="navbar-link" to='/watchsomething'>Watch Something</Link></button>
             <img src={logo} alt="Logo" className="logo-img"/>
             <Link to='#' className='menu-bars'>
               <FiIcons.FiLogIn onClick={showSidebar}/>

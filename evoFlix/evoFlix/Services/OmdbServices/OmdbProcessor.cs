@@ -62,20 +62,15 @@ namespace evoFlix.Services.OmdbServices
             {
                 case "PG-13":
                     return Ratings.PG13;
-                    break;
                 case "N/A":
                     return Ratings.NA;
-                    break;
                 case "R":
                     return Ratings.R;
-                    break;
                 case "PG":
                     return Ratings.PG;
-                    break;
 
                 default:
                     return Ratings.NA;
-                    break;
             }
         }
         
