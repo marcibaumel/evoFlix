@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 })
 
-const format = (seconds:any) => {
+const format = (seconds) => {
   if (isNaN(seconds)) {
     return `00:00`;
   }
@@ -68,28 +68,22 @@ function App() {
   const canvasRef = useRef(null);
   const controlsRef = useRef(null);
 
-  /*
-  const handlePlayePause : void = () => {
+  const handlePlayePause = () => {
     setState({...state, playing: !state.playing});
-  }
-  */
-
-  function handlePlayePause() : void{
-
   }
 
   const handleMute = () => {
     setState({...state, muted:!state.muted});
   }
 
-  const handleVolumeChange = (e:any, newValue:any) => {
+  const handleVolumeChange = (e, newValue) => {
     setState({...state, 
-            volume: parseFloat((newValue / 100).toString()),
+            volume: parseFloat(newValue / 100),
             muted: newValue === 0 ? true : false,
     })
   }
 
-  const handleProgress = (changeState:any) => {
+  const handleProgress = (changeState) => {
     if (count > 3) {
       controlsRef.current.style.visibility = "hidden";
       count = 0;
@@ -102,14 +96,14 @@ function App() {
     }
   };
 
-  const handleVolumeSeekUp = (e:any, newValue:any) => {
+  const handleVolumeSeekUp = (e, newValue) => {
     setState({...state, 
-      volume: parseFloat((newValue / 100).toString()),
+      volume: parseFloat(newValue / 100),
       muted: newValue === 0 ? true : false,
     })
   }
 
-  const handlePlaybackRateChange = (rate:any) =>{
+  const handlePlaybackRateChange = (rate) =>{
     setState({...state, playbackRate: rate})
   }
 
@@ -118,15 +112,15 @@ function App() {
   )
 
 
-  const handleSeekChange = (e:any, newValue:any) => {
-    setState({...state, played:parseFloat((newValue / 100).toString())});
+  const handleSeekChange = (e, newValue) => {
+    setState({...state, played:parseFloat(newValue / 100)});
   }
 
-  const handleSeekMouseDown = (e:any) => {
+  const handleSeekMouseDown = (e) => {
     setState({...state, seeking:true})
   }
 
-  const handleSeekMouseUp = (e:any, newValue:any) => {
+  const handleSeekMouseUp = (e, newValue) => {
     setState({...state, seeking:false});
     playerRef.current.seekTo(newValue / 100);
   }
@@ -169,9 +163,9 @@ return (
       ref={playerRef}
       width={"100%"}
       height="100%"
-        //url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+        url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         //url="https://www.youtube.com/watch?v=y0eLg5-hXI0&ab_channel=Cinemassacre"
-        url='videos/test.mp4'
+        //url='videos/test.mp4'
         muted={muted}
         playing={playing}
         volume={volume}
