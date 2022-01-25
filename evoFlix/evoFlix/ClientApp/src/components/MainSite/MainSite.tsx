@@ -64,9 +64,9 @@ function MainSite() {
                     <img src="https://ntvb.tmsimg.com/assets/p20115224_v_h8_aa.jpg?w=1280&h=720" alt="m3"/>
                     <p className="legend">Kate</p>
                 </div>
-                <Player/>
             </Carousel>
             </div>
+            {/*<Player/>*/}
         </div>
 
 
