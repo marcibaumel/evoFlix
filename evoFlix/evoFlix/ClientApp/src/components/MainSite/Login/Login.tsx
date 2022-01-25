@@ -45,7 +45,7 @@ const Login = () => {
     const handleLogin = () =>{
         console.log(user.username, user.password);
         
-        fetch('http://localhost:8000/Users/login', {
+        fetch('./Users/login', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({username: user.username, password: user.password })
