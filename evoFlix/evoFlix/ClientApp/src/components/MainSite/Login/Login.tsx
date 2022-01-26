@@ -53,23 +53,24 @@ const Login = () => {
             if(response.status == 200 || response.status == 201){
                 alert(user.username)
                 setSuccess(true);
+                user.username=""
+                user.password=""
             }
             else{
+                user.username=""
+                user.password=""
                 setSuccess(false);
                 alert("Something not seems to be okay with your login data")
             }
         })
+
+        user.username=""
+        user.password=""
         
     }
 
     return (
-        <>
-        {success ? (
-        <>
-            <img src="https://i.pinimg.com/originals/58/22/46/58224674a4868f695d1f0e4ff61bf959.gif" alt="Banner" />
-        </>
-        ):(
-        <>
+     
         
         <div className="centerCard">
             <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Login</h1>
@@ -89,8 +90,8 @@ const Login = () => {
             </form>
         </div>
         
-        </>)}
-        </>
+       
+    
     );
 }
  
