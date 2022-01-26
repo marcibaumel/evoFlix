@@ -11,10 +11,8 @@ import logo from "./Resources/imgs/evoflix2.png"
 import Login from './Login/Login'
 import { Carousel } from 'react-responsive-carousel'
 import Registration from './Registration/Registration';
-import NewAccount from './RouterComponents/NewAccount'
-import Player from '../Videoplayer/Player'
 import WatchSomething from './WatchSomething/WatchSomething'
-
+import Player from '../Videoplayer/Player'
 
 
 function MainSite() {
@@ -69,20 +67,11 @@ function MainSite() {
                         </div>
                     </Carousel>
                   </div>
+                  
                 </div>
-
-                <div>
-                    <img src="https://ntvb.tmsimg.com/assets/p20115224_v_h8_aa.jpg?w=1280&h=720" alt="m3"/>
-                    <p className="legend">Kate</p>
-                </div>
-            </Carousel>
-            </div>
-            {/*<Player/>*/}
-        </div>
-       </>
-      )}/>
-      <Route path='/watchsomething' component={WatchSomething}/>
-
+              </>
+            )}/>
+            <Route path='/watchsomething' component={WatchSomething}/>
 
 
         </div>
