@@ -27,8 +27,19 @@ const format = (seconds) => {
   return `${mm}:${ss}`;
 };
 
-function Player() {
+
+
+function Player(filmSource) {
   
+
+  
+  var filmdata = {
+    source:filmSource
+  }
+  //console.log(filmdata['source'])
+  const data = filmdata['source']
+  console.log(data.filmSource)
+
 
   const classes = useStyles();
   const [state, setState] = useState({
@@ -46,13 +57,6 @@ function Player() {
   const {playing, muted, volume, playbackRate, played} = state;
 
 
-
-  const addBookmark = () => {
-    const canvas = canvasRef.current
-    canvas.width = 160
-    canvas.height = 90
-  }
-
   const handleRewind = () => {
     playerRef.current.seekTo(playerRef.current.getCurrentTime() - 10)
   }
@@ -62,7 +66,6 @@ function Player() {
   }
   var count = 0;
   const playerRef = useRef(null);
-  const canvasRef = useRef(null);
   const controlsRef = useRef(null);
 
   const handlePlayePause = () => {
@@ -132,6 +135,7 @@ function Player() {
     setTimeDisplayFormat(timeDisplayFormat ==='normal'?'remmaining':'normal')
   }
 
+
   const handleMouseMove = () =>{
     console.log("mousemove");
     controlsRef.current.style.visibility = "visible";
@@ -160,10 +164,10 @@ return (
       ref={playerRef}
       width={"100%"}
       height="100%"
-        url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+        //url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         //url="https://www.youtube.com/watch?v=y0eLg5-hXI0&ab_channel=Cinemassacre"
         //url='videos/test.mp4'
-        //url={this.filmSourcUrl}
+        url={data.filmSource}
         
         muted={muted}
         playing={playing}
