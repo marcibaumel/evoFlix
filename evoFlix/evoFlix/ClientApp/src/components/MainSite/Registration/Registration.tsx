@@ -43,6 +43,7 @@ const Registration = () => {
   const handleBirthday = (e:any) => {
     setBirthday(e.target.value);
     setSubmitted(false);
+    console.log(birthday);
   };
  
   // Handling the form submission
@@ -50,11 +51,20 @@ const Registration = () => {
     e.preventDefault();
     if (username === '' ||checkEmailFormat(email) === false ||email.length === 0 || password === '') {
       setError(true);
+      console.log("No data")
     } else {
       setSubmitted(true);
       setError(false);
+      console.log("Yeah good data")
     }
   };
+
+  function checkBirthday(birthday:string):boolean{
+    if(!birthday){
+      return false;
+    }
+    return true;
+  }
 
   function checkEmailFormat(email:string): boolean{
     const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -90,6 +100,11 @@ const Registration = () => {
     return true
   }
   
+
+  function checkSubmitRequirement():boolean{
+    if(checkUsername(username) && checkPasswordFormat(password) && checkPassword2(password2) && checkEmailFormat(email) && checkBirthday(birthday))
+      return true
+  }
  
   return (
     <>
@@ -114,10 +129,10 @@ const Registration = () => {
           </div>
 
           <div className="input-box">
-            <input className="form-block" onChange={handleBirthday} value={birthday} type="date" placeholder="Birthday"/>
+            <input className={checkBirthday(birthday) ? "form-block" : "form-block-wrong"} onChange={handleBirthday} value={birthday} type="Date" placeholder="Birthday"/>
           </div>
 
-          <button onClick={handleSubmit} className="btn" type="submit"> Submit </button>
+          <button disabled={checkSubmitRequirement()} onClick={handleSubmit} className={checkSubmitRequirement() ? "btn" : "btn-disable"} type="submit"> Submit </button>
         </form>
       </div>
     </div>

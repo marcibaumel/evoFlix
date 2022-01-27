@@ -10,6 +10,17 @@
     opacity: 0.9;
   }
 
+  .btn-disable{
+    background-color: #000000;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+
   .btn:hover {
     opacity:1;
   }
@@ -35,25 +46,6 @@
   }
 
 
-  .messages{
-    display: flex;
-    justify-content: center;
-  }
+  
    
-  .error{
-    display: block;
-    background-color: red;
-    color: white;
-    width: fit-content;
-    height: 50px;
-    padding: 5px;
-  }
-   
-  .success{
-    display: block;
-    background-color: lightblue;
-    color: black;
-    width: fit-content;
-    height: 50px;
-    padding: 5px;
-  }
+  
