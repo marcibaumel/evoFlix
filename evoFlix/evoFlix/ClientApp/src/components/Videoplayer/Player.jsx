@@ -1,15 +1,10 @@
 import React, {useState, useRef} from "react";
-import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography  from "@material-ui/core/Typography";
 import Container  from "@material-ui/core/Container";
 import ReactPlayer from 'react-player'
 import { makeStyles } from '@material-ui/core/styles'
 import PlayerControls from "./Controls/PlayerControls";
 import screenfull from "screenfull";
-import { Bookmarks } from "@material-ui/icons";
-import  Grid  from "@material-ui/core/Grid";
-import Paper  from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
   playerWrapper:{
@@ -38,7 +33,7 @@ function Player() {
   const classes = useStyles();
   const [state, setState] = useState({
     playing:true,
-    muted:false,
+    muted:true,
     volume: 0.5,
     playbackRate: 1.0,
     played:0,
@@ -48,8 +43,8 @@ function Player() {
 
   const [timeDisplayFormat, setTimeDisplayFormat] = useState("normal")
 
-  const {playing, muted, volume, playbackRate, played, seeking} = state;
-  //const [bookmark, setBookmarks] = useState([]);
+  const {playing, muted, volume, playbackRate, played} = state;
+
 
 
   const addBookmark = () => {
@@ -199,23 +194,9 @@ return (
         elapsedTime={elapsedTime}
         totalDuration={totalDuration}
         onChangeDisplayFormat = {handleChangeDisplayFormat}
-        //onBookmark = {addBookmark}
       />
     </div>
-    {/* 
-   <Grid container style={{marginTop:20}} spacing={3}>
-    {Bookmarks.map((bookmark, index) => (
-      <Grid item key={index}>
-        <Paper>
-          <img crossOrigin="anonymous" src="" />
-          <Typography>Bookmark at 00:00</Typography>
-        </Paper>
-      </Grid>
-    ))}
-   </Grid>
-
-    <canvas ref={canvasRef}/>
-    */}
+    
    </Container>
    </>
   );
