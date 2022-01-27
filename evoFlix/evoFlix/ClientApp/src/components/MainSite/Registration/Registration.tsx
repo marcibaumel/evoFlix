@@ -5,17 +5,18 @@ import './Registration.css'
 const Registration = () => {
  
     // States for registration
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
- 
+  const [password2, setPassword2] = useState('');
+  const [birthday, setBirthday] = useState('');
   
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
  
  
   const handleName = (e:any) => {
-    setName(e.target.value);
+    setUsername(e.target.value);
     setSubmitted(false);
   };
  
@@ -33,11 +34,21 @@ const Registration = () => {
     setPassword(e.target.value);
     setSubmitted(false);
   };
+
+  const handlePassword2 = (e:any) => {
+    setPassword2(e.target.value);
+    setSubmitted(false);
+  };
+
+  const handleBirthday = (e:any) => {
+    setBirthday(e.target.value);
+    setSubmitted(false);
+  };
  
   // Handling the form submission
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    if (name === '' ||checkEmailFormat(email) === false || password === '') {
+    if (username === '' ||checkEmailFormat(email) === false ||email.length === 0 || password === '') {
       setError(true);
     } else {
       setSubmitted(true);
@@ -47,55 +58,70 @@ const Registration = () => {
 
   function checkEmailFormat(email:string): boolean{
     const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(email.length === 0)
+      return true;
     return regex.test(email);
   }
- 
-  // Showing success message
-  const successMessage = () => {
-    return (
-      <div
-        className="success"
-        style={{
-          display: submitted ? '' : 'none',
-        }}>
-        <h1>User {name} successfully registered!!</h1>
-      </div>
-    );
-  };
- 
-  // Showing error message if error is true
-  const errorMessage = () => {
-    return (
-      <div
-        className="error"
-        style={{
-          display: error ? '' : 'none',
-        }}>
-        <h1>Please enter all the fields</h1>
-      </div>
-    );
-  };
+
+  function checkPasswordFormat(password:string):boolean{
+    //at least a symbol, upper and lower case letters and a number + min 6 letter
+    const regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if(password.length>0){
+      if(regex.test(password)){
+        return true
+      }
+      return false
+    }
+    return true
+  }
+
+  function checkPassword2(password2:string):boolean{
+    if(password2.length>0){
+      if(password2.localeCompare(password)===0){
+        return true
+      }
+    }
+  }
+
+  function checkUsername(username:string):boolean{
+    if(username.length == 0){
+      return false
+    }
+    return true
+  }
+  
  
   return (
-    <div className="form">
-      <div>
-        <h1>User Registration</h1>
+    <>
+    <div className="container">
+      <div className="centerCard">
+        <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Registration</h1>
+        <form>
+          <div className="input-box">
+            <input className={checkUsername(username) ? "form-block" : "form-block-wrong"} onChange={handleName}  value={username} type="text" placeholder="Username"/>
+          </div>
+        
+          <div className="input-box">
+            <input className={checkEmailFormat(email) ? "form-block" : "form-block-wrong"} onChange={handleEmail} value={email} type="email" placeholder="Email"/>
+          </div>
+
+          <div className="input-box">
+            <input className={checkPasswordFormat(password) ? "form-block" : "form-block-wrong"} onChange={handlePassword} value={password} type="password" placeholder="Password"/>
+          </div>
+
+          <div className="input-box">
+            <input className={checkPassword2(password2) ? "form-block" : "form-block-wrong"} onChange={handlePassword2} value={password2} type="password" placeholder="Re-Password"/>
+          </div>
+
+          <div className="input-box">
+            <input className="form-block" onChange={handleBirthday} value={birthday} type="date" placeholder="Birthday"/>
+          </div>
+
+          <button onClick={handleSubmit} className="btn" type="submit"> Submit </button>
+        </form>
       </div>
- 
-      {/* Calling to the methods */}
-      <div className="messages">
-        {errorMessage()}
-        {successMessage()}
-      </div>
- 
-      <form>
-        <input onChange={handleName} className="input" value={name} type="text" />
-        <input onChange={handleEmail} className="input" value={email} type="email" />
-        <input onChange={handlePassword} className="input" value={password} type="password" />
- 
-        <button onClick={handleSubmit} className="btn" type="submit"> Submit </button>
-      </form>
     </div>
+    </>
   );
 }
  

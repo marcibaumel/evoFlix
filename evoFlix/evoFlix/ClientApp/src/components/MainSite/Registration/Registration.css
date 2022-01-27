@@ -1,31 +1,40 @@
-.App {
-    text-align: center;
-    background-color:green;
-  }
-   
-  .label{
-    display: block;
-    font-size: larger;
-    color: white;
-    padding: 5px;
-  }
-   
-  .input{
-    font-size: larger;
-    padding: 5px;
-    margin: 2px;
-    
-  }
+
   .btn{
+    background-color: #04AA6D;
     color: white;
-    background-color: red;
-    border-radius: 5px;
-    font-size: larger;
-    display: block;
-    padding: 5px;
-    margin: 10px auto;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+
+  .btn:hover {
+    opacity:1;
   }
    
+  .form-block{
+    border: 3px solid;
+    border-radius: 5px;
+    padding-left: 100px;
+    padding-bottom: 25px;   
+  }
+
+  .form-block-wrong{
+    border: 3px solid;
+    border-radius: 5px;
+    padding-left: 100px;
+    padding-bottom: 25px; 
+    border-color: rgb(255, 68, 0)  
+  }
+
+  .input-box{
+    text-align: center;
+    margin: 2rem;
+  }
+
+
   .messages{
     display: flex;
     justify-content: center;
