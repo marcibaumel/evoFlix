@@ -15,21 +15,21 @@ import WatchSomething from './WatchSomething/WatchSomething'
 import Player from '../Videoplayer/Player'
 
 
+
 function MainSite() {
+
+
+
   const [sidebar, setSidebar] = useState(false);
   const [state, setState] = useState('login')
-
   const AddTripButton = (props:any) => {
     return <button onClick={props.addTrip}>{props.msg}</button>
   }
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  //prettier
   return (
-
       <>  
-      
       <Router>
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className={sidebar ? 'wrapper-navbar-nav-menu-active' : 'wrapper'}>
@@ -67,7 +67,7 @@ function MainSite() {
                         </div>
                     </Carousel>
                   </div>
-                  
+                  <Player/>
                 </div>
               </>
             )}/>

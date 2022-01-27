@@ -18,29 +18,6 @@ const Login = () => {
         });
     }
  
-/*
-    useEffect(() => {
-        fetch("http://localhost:8000/users")
-            .then(res  => {
-                return res.json();
-            })
-            .then(data => {
-                setUser(data);
-            });
-    }, []);
-
-
-    async function loginFunction(username:string, password:string) {
-        fetch('http://localhost:8000/Users/login', {
-            method: 'post',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({username: "Béla", password: "Bél@12" })
-        }).then(function(response){
-            if(response.status == 200 ||)
-        })
-        
-    }
-*/
 
     const handleLogin = () =>{
         console.log(user.username, user.password);
@@ -53,21 +30,28 @@ const Login = () => {
             if(response.status == 200 || response.status == 201){
                 alert(user.username)
                 setSuccess(true);
-                user.username=""
-                user.password=""
             }
             else{
-                user.username=""
-                user.password=""
                 setSuccess(false);
                 alert("Something not seems to be okay with your login data")
             }
         })
 
         user.username=""
-        user.password=""
-        
+        user.password="" 
     }
+
+    function checkPasswordFormat(password:string):boolean{
+        //at least a symbol, upper and lower case letters and a number + min 6 letter
+        const regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if(password.length>0){
+          if(regex.test(password)){
+            return true
+          }
+          return false
+        }
+        return true
+      }
 
     return (
      
@@ -80,7 +64,7 @@ const Login = () => {
                 </div>
 
                 <div className="input-box">
-                    <input className="form-block" type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} />
+                    <input className={checkPasswordFormat(user.password) ? "form-block" : "form-block-wrong"} type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} />
                 </div>
 
                 <div className="input-box">
