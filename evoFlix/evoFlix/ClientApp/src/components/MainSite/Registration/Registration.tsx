@@ -29,6 +29,31 @@ const Registration = () => {
     setSubmitted(false);
   };
  
+  const handleRegistrationFunction = () =>{
+    console.log(username, email, password, password2, birthday);
+    if(checkSubmitRequirement() == true){
+    fetch('./Users/register', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+          birthday: birthday
+      })
+    }).then(function(response){
+        if(response.status == 200 || response.status == 201){
+            alert(username)
+            setSubmitted(true);
+        }
+        else{
+            setError(true);
+            alert("Something not seems to be okay with your registration data")
+        }
+    })}
+
+    
+}
 
   const handlePassword = (e:any) => {
     setPassword(e.target.value);
@@ -46,18 +71,6 @@ const Registration = () => {
     console.log(birthday);
   };
  
-  // Handling the form submission
-  const handleSubmit = (e:any) => {
-    e.preventDefault();
-    if (username === '' ||checkEmailFormat(email) === false ||email.length === 0 || password === '') {
-      setError(true);
-      console.log("No data")
-    } else {
-      setSubmitted(true);
-      setError(false);
-      console.log("Yeah good data")
-    }
-  };
 
   function checkBirthday(birthday:string):boolean{
     if(!birthday){
@@ -132,7 +145,7 @@ const Registration = () => {
             <input className={checkBirthday(birthday) ? "form-block" : "form-block-wrong"} onChange={handleBirthday} value={birthday} type="Date" placeholder="Birthday"/>
           </div>
 
-          <button disabled={checkSubmitRequirement()} onClick={handleSubmit} className={checkSubmitRequirement() ? "btn" : "btn-disable"} type="submit"> Submit </button>
+          <button disabled={checkSubmitRequirement()==false} onClick={handleRegistrationFunction} className={checkSubmitRequirement() ? "btn" : "btn-disable"} type="button"> Registration </button>
         </form>
       </div>
     </div>
