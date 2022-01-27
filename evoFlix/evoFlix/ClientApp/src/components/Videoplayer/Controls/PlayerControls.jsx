@@ -120,13 +120,6 @@ export default forwardRef(({onPlayPause, playing, onRewind, onFastForward, muted
       <Grid item>
         <Typography variant="h5" style={{color:"white"}}>Video Title</Typography>
       </Grid>
-        
-      {/* 
-      <Grid item>
-        <Button variant="contained" color="primary" startIcon={<BookmarkIcon/>}>Bookmark</Button>
-      </Grid>
-      */}
-      
     </Grid>
 
     {/*Middel controls */}

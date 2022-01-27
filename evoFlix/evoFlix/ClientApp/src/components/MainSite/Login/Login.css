@@ -9,3 +9,11 @@
     text-align: center;
     margin: 2rem;
 }
+
+.form-block-wrong{
+    border: 3px solid;
+    border-radius: 5px;
+    padding-left: 100px;
+    padding-bottom: 25px; 
+    border-color: rgb(255, 68, 0)  
+  }
