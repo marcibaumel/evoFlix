@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './Login.css';
- 
-const Login = () => {
+
+interface Props {
+    loginFunction: (value: boolean) => void;
+}
+
+
+const Login = ({loginFunction}: Props) => {
  
     const [user, setUser] = useState({
         username: '',
@@ -29,6 +34,7 @@ const Login = () => {
         }).then(function(response){
             if(response.status == 200 || response.status == 201){
                 alert(user.username)
+                loginFunction(true);
                 setSuccess(true);
             }
             else{
