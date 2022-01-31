@@ -16,7 +16,7 @@ function WatchSomething() {
         $('#filmBody').show();
     };
 
-    const handleClick = (event: React.MouseEvent<HTMLElement>, text: JSON) => {
+    const handleClick = (event: React.MouseEvent<HTMLElement>, text: any) => {
         console.log(text);
         //hibát jelez de nem hibás
         $('#poster').attr("src",text['poster']);

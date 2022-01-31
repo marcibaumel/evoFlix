@@ -52,6 +52,9 @@ namespace evoFlix.Migrations
                     b.Property<TimeSpan>("RunTime")
                         .HasColumnType("time");
 
+                    b.Property<string>("Source")
+                        .HasColumnType("nvarchar(1000)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(200)");
 

@@ -39,7 +39,10 @@ namespace evoFlix.Models
         public string Plot { get; set; }
 
         [Column(TypeName = "nvarchar(1000)")]
-        public String Poster { get; set; }
+        public string Poster { get; set; }
+
+        [Column(TypeName = "nvarchar(1000)")]
+        public string Source { get; set; }
 
         public double ImdbRating { get; set; }
 
@@ -56,6 +59,7 @@ namespace evoFlix.Models
             Actors = actors;
             Plot = plot;
             Poster = poster;
+            Source = "";
             ImdbRating = imdbRating;
         }
 
