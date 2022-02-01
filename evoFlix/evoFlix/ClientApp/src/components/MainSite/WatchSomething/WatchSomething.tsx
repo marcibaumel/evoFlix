@@ -3,8 +3,11 @@ import { Grid, Button } from '@material-ui/core';
 import { FaArrowLeft , FaPlay} from "react-icons/fa"
 import './WatchSomething.css';
 import $ from 'jquery';
+import { useHistory } from 'react-router-dom';
 
 function WatchSomething() {
+
+    let history = useHistory();
 
     $(document).ready(function(){
         $('#filmBody').show();
@@ -39,6 +42,18 @@ function WatchSomething() {
         .then(res  => res.json())
         .then(data =>  setFilms(data));
     }, []);
+
+    useEffect(() => {
+        fetch("./users/user")
+        .then(function(response){
+            if(response.status == 401){
+                alert("You have to login first!");
+                history.push("/");
+            }
+            else{
+                return response.json();
+            }})
+    });
 
     return (
         <>

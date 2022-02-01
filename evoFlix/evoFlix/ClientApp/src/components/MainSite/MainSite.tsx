@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import * as FaIcons from "react-icons/fa"
 import * as FiIcons from "react-icons/fi"
@@ -12,21 +12,43 @@ import Login from './Login/Login'
 import { Carousel } from 'react-responsive-carousel'
 import Registration from './Registration/Registration';
 import WatchSomething from './WatchSomething/WatchSomething'
+import ProfileSettings from './ProfileSettings/ProfileSettings'
 import Player from '../Videoplayer/Player'
 
 
 
 function MainSite() {
 
-
-
   const [sidebar, setSidebar] = useState(false);
-  const [state, setState] = useState('login')
+  const [user, setUser] = useState({});
+    const [state, setState] = useState('login');
+    const [loggedIn, setLoggedIn] = useState(false);
   const AddTripButton = (props:any) => {
     return <button onClick={props.addTrip}>{props.msg}</button>
   }
 
   const showSidebar = () => setSidebar(!sidebar);
+
+    const handleLogin = function (value: boolean) {
+        setLoggedIn(value);
+    }
+
+    useEffect(() => {
+        fetch("./users/user")
+            .then(res => res.json())
+            .catch((reason) => {
+                console.log(reason);
+            })
+            .then(data => setUser(data))
+            .finally(() => {
+                if (user !== null && user !== undefined) {
+                    setLoggedIn(true);
+                }
+                else {
+                    setLoggedIn(false);
+                }
+            });
+    });
 
   return (
       <>  
@@ -37,9 +59,21 @@ function MainSite() {
             <button className="navbar-button"><Link className="navbar-link" to='/'>Home</Link></button>
             <button className="navbar-button"><Link className="navbar-link" to='/watchsomething'>Watch Something</Link></button>
             <img src={logo} alt="Logo" className="logo-img"/>
-            <Link to='#' className='menu-bars'>
-              <FiIcons.FiLogIn onClick={showSidebar}/>
-            </Link>
+            {(() => {
+                if (loggedIn === false)
+                    return (
+                        <Link to='#' className='menu-bars'>
+                            <FiIcons.FiLogIn onClick={showSidebar} />
+                        </Link>
+                    );
+                else {
+                    return (
+                        <button className="navbar-button">
+                            <Link className="navbar-link" to='/profilesettings'>Profile</Link>
+                        </button>
+                    );
+                }
+            })()}
         </div>
 
         <Route path='/' exact render={(props)=>(
@@ -72,36 +106,37 @@ function MainSite() {
               </>
             )}/>
             <Route path='/watchsomething' component={WatchSomething}/>
+            <Route path='/profilesettings' component={ProfileSettings} />
 
+                  </div>
+                  <IconContext.Provider value={{ color: '#419D5D' }}>
+                      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                          <ul className='nav-menu-items' >
+                              <li className='navbar-toggle'>
+                                  <Link to='#' className='menu-bars'>
+                                      <AiIcons.AiOutlineClose onClick={showSidebar} />
+                                  </Link>
+                              </li>
+                              <div>
+                                  {state === 'login' && (
+                                      <>
+                                          <AddTripButton addTrip={() => setState('registration')} msg="Registration" />
+                                          <Login loginFunction={handleLogin} />
+                                      </>
+                                  )}
+                                  {state === 'registration' && (
+                                      <>
+                                          <AddTripButton addTrip={() => setState('login')} msg="Login" />
+                                          <Registration />
+                                      </>
+                                  )}
+                              </div>
 
-        </div>
-        <IconContext.Provider value={{ color: '#419D5D' }}>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' >
-            <li className='navbar-toggle'>
-              <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose onClick={showSidebar}/>
-              </Link>
-            </li>
-        <div>
-          {state === 'login' && (
-            <>
-            <AddTripButton addTrip={() => setState('registration') } msg="Registration" />
-            <Login/>
-            </>
-          )}
-          {state === 'registration' && (
-          <>
-            <AddTripButton addTrip={() => setState('login') } msg="Login" />
-            <Registration />
-          </>
-          )}
-        </div>
+                          </ul>
+                      </nav>
+                  </IconContext.Provider>
             
-          </ul>
-        </nav>
-        </IconContext.Provider>
-      </IconContext.Provider>
+          </IconContext.Provider>
       </Router>
     </>
   );

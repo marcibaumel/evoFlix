@@ -1,0 +1,18 @@
+﻿#profile-commands {
+    float: left;
+    width: 30%;
+}
+
+#profile-information {
+    float: right;
+    width: 70%;
+    text-align: center;
+}
+
+#profile-information > img {
+    border:double;
+    padding: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    align-self: center;
+}

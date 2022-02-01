@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import './Login.css';
+
+interface Props {
+    loginFunction: (value: boolean) => void;
+}
+
+
+const Login = ({loginFunction}: Props) => {
  
-const Login = () => {
- 
+    let history = useHistory();
+
     const [user, setUser] = useState({
         username: '',
         password: '',
@@ -29,7 +37,9 @@ const Login = () => {
         }).then(function(response){
             if(response.status == 200 || response.status == 201){
                 alert(user.username)
+                loginFunction(true);
                 setSuccess(true);
+                history.push("/watchsomething");
             }
             else{
                 setSuccess(false);
