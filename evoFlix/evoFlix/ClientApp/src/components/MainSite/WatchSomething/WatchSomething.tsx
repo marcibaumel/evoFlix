@@ -1,24 +1,28 @@
 import React, {useState, useEffect, MouseEvent} from 'react';
 import { Grid, Button } from '@material-ui/core';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import { FaArrowLeft , FaPlay} from "react-icons/fa"
 import './WatchSomething.css';
 import $ from 'jquery';
 import { useHistory } from 'react-router-dom';
+import Player from '../../Videoplayer/Player';
+import { text } from 'stream/consumers';
 
 function WatchSomething() {
-
-    let history = useHistory();
 
     $(document).ready(function(){
         $('#filmBody').show();
         $('#detailsBody').hide();
+        $('#playerBody').hide();
     });
 
     const backClick = () => {
         $('#detailsBody').hide();
+        $('#playerBody').hide();
         $('#filmBody').show();
     };
 
+    var source = ""
     const handleClick = (event: React.MouseEvent<HTMLElement>, text: any) => {
         console.log(text);
         //hibát jelez de nem hibás
@@ -28,35 +32,45 @@ function WatchSomething() {
         $('#directors').text(text['directorName']);
         $('#actors').text(text['actors']);
         $('#genre').text(text['genre']);
-        $('#rated').text(text['rated']);
+        $('#source').text(text['source']);
+        //$('#rated').text(text['rated']);
         $('#imdbRating').text(text['imdbRating']);
         $('#plot').text(text['plot']);
         $('#filmBody').hide();
         $('#detailsBody').show();
+        
     };
 
     const [films, setFilms] = useState([]);
+
+    function openPlayer():any{
+        console.log("PLAYER")
+        $('#playerBody').show();
+        $('#detailsBody').hide(); 
+    }
 
     useEffect(() => {
         fetch("./Film/getAllFilm")
         .then(res  => res.json())
         .then(data =>  setFilms(data));
     }, []);
-
-    useEffect(() => {
-        fetch("./users/user")
-        .then(function(response){
-            if(response.status == 401){
-                alert("You have to login first!");
-                history.push("/");
-            }
-            else{
-                return response.json();
-            }})
-    });
+    
+    //TODO:
+    //router megoldásra átültetni mert más hogy nem 
 
     return (
         <>
+        
+        <div id="playerBody">
+            <div id="backButton">
+                <FaArrowLeft color="black" size="50px" onClick={backClick}/>
+            </div> 
+                <Player filmSource="./video/test.mp4"/>
+            <div>     
+        </div>
+        </div>
+
+
         <div id="filmBody">
             <div className="menu">
                 <div className="sticky-search">
@@ -77,6 +91,9 @@ function WatchSomething() {
                 </Grid>
             </div>
         </div>
+
+        
+
         <div id="detailsBody">
             <div id="backButton">
                 <FaArrowLeft color="black" size="50px" onClick={backClick}/>
@@ -89,19 +106,19 @@ function WatchSomething() {
                         <p><b>Director(s): </b><span id="directors"></span></p>
                         <p><b>Actors: </b><span id="actors"></span></p>
                         <p><b>Genre: </b><span id="genre"></span></p>
-                        <p><b>Rated: </b><span id="rated"></span></p>
+                        {/*<p><b>Rated: </b><span id="rated"></span></p>*/}
                         <p><b>IMDB rating: </b><span id="imdbRating"></span></p>
                         <p><b>Plot: </b><span id="plot"></span></p>
+                        <p><b>Source: </b><span id="source"></span></p>
                     </div>
                 </div>
                 <div id="filmButtons">
                     <Button color="primary" variant="contained">Add to MyList</Button>
-                    <Button color="primary" variant="contained" startIcon={<FaPlay />}>Watch this film</Button>
+                    <Button color="primary" onClick={openPlayer} variant="contained" startIcon={<FaPlay />}>Watch this film</Button>
                 </div>
             </div>
-            
         </div>
-        
+
         </>
     );
 }

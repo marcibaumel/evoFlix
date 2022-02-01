@@ -20,9 +20,10 @@ import Player from '../Videoplayer/Player'
 function MainSite() {
 
   const [sidebar, setSidebar] = useState(false);
-  const [user, setUser] = useState({});
-    const [state, setState] = useState('login');
-    const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState();
+  const [state, setState] = useState('login');
+  const [loggedIn, setLoggedIn] = useState(false);
+
   const AddTripButton = (props:any) => {
     return <button onClick={props.addTrip}>{props.msg}</button>
   }
@@ -33,11 +34,12 @@ function MainSite() {
         setLoggedIn(value);
     }
 
+    
     useEffect(() => {
         fetch("./users/user")
             .then(res => res.json())
             .catch((reason) => {
-                console.log(reason);
+               console.log(reason);
             })
             .then(data => setUser(data))
             .finally(() => {
@@ -48,7 +50,8 @@ function MainSite() {
                     setLoggedIn(false);
                 }
             });
-    });
+    }); 
+   
 
   return (
       <>  
@@ -101,7 +104,7 @@ function MainSite() {
                         </div>
                     </Carousel>
                   </div>
-                  <Player filmSource="./video/test.mp4"/>
+                  {/*<Player filmSource="./video/test.mp4"/>*/}
                 </div>
               </>
             )}/>
