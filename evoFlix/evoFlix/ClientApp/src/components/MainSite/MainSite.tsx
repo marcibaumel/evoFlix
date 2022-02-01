@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import * as FaIcons from "react-icons/fa"
 import * as FiIcons from "react-icons/fi"
@@ -20,6 +20,7 @@ import Player from '../Videoplayer/Player'
 function MainSite() {
 
   const [sidebar, setSidebar] = useState(false);
+  const [user, setUser] = useState({});
     const [state, setState] = useState('login');
     const [loggedIn, setLoggedIn] = useState(false);
   const AddTripButton = (props:any) => {
@@ -31,6 +32,23 @@ function MainSite() {
     const handleLogin = function (value: boolean) {
         setLoggedIn(value);
     }
+
+    useEffect(() => {
+        fetch("./users/user")
+            .then(res => res.json())
+            .catch((reason) => {
+                console.log(reason);
+            })
+            .then(data => setUser(data))
+            .finally(() => {
+                if (user !== null && user !== undefined) {
+                    setLoggedIn(true);
+                }
+                else {
+                    setLoggedIn(false);
+                }
+            });
+    });
 
   return (
       <>  
