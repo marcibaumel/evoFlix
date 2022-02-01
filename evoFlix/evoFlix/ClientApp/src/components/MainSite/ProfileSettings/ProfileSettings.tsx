@@ -8,7 +8,13 @@ const ProfileSettings = () => {
 
     useEffect(() => {
         fetch("./users/user")
-            .then(res => res.json())
+        .then(function(response){
+            if(response.status == 401){
+                history.push("/");
+            }
+            else{
+                return response.json();
+            }})
             .then(data => setUser(data));
     });
 

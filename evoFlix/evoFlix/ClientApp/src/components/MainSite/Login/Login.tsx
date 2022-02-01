@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import './Login.css';
 
 interface Props {
@@ -8,6 +9,8 @@ interface Props {
 
 const Login = ({loginFunction}: Props) => {
  
+    let history = useHistory();
+
     const [user, setUser] = useState({
         username: '',
         password: '',
@@ -36,6 +39,7 @@ const Login = ({loginFunction}: Props) => {
                 alert(user.username)
                 loginFunction(true);
                 setSuccess(true);
+                history.push("/watchsomething");
             }
             else{
                 setSuccess(false);
