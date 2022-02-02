@@ -38,12 +38,12 @@ function Player(filmSource) {
   }
   //console.log(filmdata['source'])
   const data = filmdata['source']
-  console.log(data.filmSource)
+  //console.log(data.filmSource)
 
 
   const classes = useStyles();
   const [state, setState] = useState({
-    playing:true,
+    playing:false,
     muted:true,
     volume: 0.5,
     playbackRate: 1.0,

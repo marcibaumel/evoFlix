@@ -1,34 +1,49 @@
 import React, {useState, useEffect, MouseEvent} from 'react';
 import { Grid, Button } from '@material-ui/core';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import { FaArrowLeft , FaPlay} from "react-icons/fa"
 import './WatchSomething.css';
 import $ from 'jquery';
 import { useHistory } from 'react-router-dom';
+import Player from '../../Videoplayer/Player';
+import { text } from 'stream/consumers';
+import NewWindow from 'react-new-window'
 
 function WatchSomething() {
 
-    let history = useHistory();
+
+    const [playing, setPlaying] = useState('false')
+    const [source, setSource] = useState('')
+
 
     $(document).ready(function(){
         $('#filmBody').show();
         $('#detailsBody').hide();
+        $('#playerBody').hide();
     });
 
     const backClick = () => {
         $('#detailsBody').hide();
+        $('#playerBody').hide();
+        setPlaying('false')
         $('#filmBody').show();
     };
 
+    
+
     const handleClick = (event: React.MouseEvent<HTMLElement>, text: any) => {
         console.log(text);
-        //hibát jelez de nem hibás
         $('#poster').attr("src",text['poster']);
         $('#title').text(text['title']);
         $('#releaseYear').text(text['releaseYear'].split('-')[0]);
         $('#directors').text(text['directorName']);
         $('#actors').text(text['actors']);
         $('#genre').text(text['genre']);
-        $('#rated').text(text['rated']);
+        $('#source').text(text['source']);
+        //$('#rated').text(text['rated']);
+        console.log(text['source'])
+        setSource(text['source'])
+        console.log(source)
         $('#imdbRating').text(text['imdbRating']);
         $('#plot').text(text['plot']);
         $('#filmBody').hide();
@@ -37,23 +52,21 @@ function WatchSomething() {
 
     const [films, setFilms] = useState([]);
 
+    function openPlayer():any{
+        console.log("PLAYER")
+        setPlaying('true')
+    }
+
+    const AddTripButton = (props:any) => {
+        return <button onClick={props.addTrip}>{props.msg}</button>
+      }
+
     useEffect(() => {
         fetch("./Film/getAllFilm")
         .then(res  => res.json())
         .then(data =>  setFilms(data));
     }, []);
-
-    useEffect(() => {
-        fetch("./users/user")
-        .then(function(response){
-            if(response.status == 401){
-                alert("You have to login first!");
-                history.push("/");
-            }
-            else{
-                return response.json();
-            }})
-    });
+    
 
     return (
         <>
@@ -77,6 +90,9 @@ function WatchSomething() {
                 </Grid>
             </div>
         </div>
+
+        
+
         <div id="detailsBody">
             <div id="backButton">
                 <FaArrowLeft color="black" size="50px" onClick={backClick}/>
@@ -89,19 +105,22 @@ function WatchSomething() {
                         <p><b>Director(s): </b><span id="directors"></span></p>
                         <p><b>Actors: </b><span id="actors"></span></p>
                         <p><b>Genre: </b><span id="genre"></span></p>
-                        <p><b>Rated: </b><span id="rated"></span></p>
+                        {/*<p><b>Rated: </b><span id="rated"></span></p>*/}
                         <p><b>IMDB rating: </b><span id="imdbRating"></span></p>
                         <p><b>Plot: </b><span id="plot"></span></p>
+                        <p><b>Source: </b><span id="source"></span></p>
                     </div>
                 </div>
                 <div id="filmButtons">
-                    <Button color="primary" variant="contained">Add to MyList</Button>
-                    <Button color="primary" variant="contained" startIcon={<FaPlay />}>Watch this film</Button>
+                    {/*<Button color="primary" variant="contained">Add to MyList</Button>*/}
+                    {/*<AddTripButton addTrip={() => setPlaying('true')} msg="Play" />*/}
+                    <div>
+                        <Player filmSource={source}/>
+                    </div>
                 </div>
             </div>
-            
         </div>
-        
+
         </>
     );
 }

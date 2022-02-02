@@ -118,7 +118,7 @@ export default forwardRef(({onPlayPause, playing, onRewind, onFastForward, muted
     {/*Top controls */}
     <Grid container direction="row" alignItems="center" justify="space-between" style={{padding:16}}>
       <Grid item>
-        <Typography variant="h5" style={{color:"white"}}>Video Title</Typography>
+        <Typography variant="h5" style={{color:"white"}}></Typography>
       </Grid>
     </Grid>
 
