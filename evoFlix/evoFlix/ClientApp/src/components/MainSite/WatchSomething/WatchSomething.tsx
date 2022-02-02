@@ -7,8 +7,14 @@ import $ from 'jquery';
 import { useHistory } from 'react-router-dom';
 import Player from '../../Videoplayer/Player';
 import { text } from 'stream/consumers';
+import NewWindow from 'react-new-window'
 
 function WatchSomething() {
+
+
+    const [playing, setPlaying] = useState('false')
+    const [source, setSource] = useState('')
+
 
     $(document).ready(function(){
         $('#filmBody').show();
@@ -19,13 +25,14 @@ function WatchSomething() {
     const backClick = () => {
         $('#detailsBody').hide();
         $('#playerBody').hide();
+        setPlaying('false')
         $('#filmBody').show();
     };
 
-    var source = ""
+    
+
     const handleClick = (event: React.MouseEvent<HTMLElement>, text: any) => {
         console.log(text);
-        //hibát jelez de nem hibás
         $('#poster').attr("src",text['poster']);
         $('#title').text(text['title']);
         $('#releaseYear').text(text['releaseYear'].split('-')[0]);
@@ -34,20 +41,25 @@ function WatchSomething() {
         $('#genre').text(text['genre']);
         $('#source').text(text['source']);
         //$('#rated').text(text['rated']);
+        console.log(text['source'])
+        setSource(text['source'])
+        console.log(source)
         $('#imdbRating').text(text['imdbRating']);
         $('#plot').text(text['plot']);
         $('#filmBody').hide();
         $('#detailsBody').show();
-        
     };
 
     const [films, setFilms] = useState([]);
 
     function openPlayer():any{
         console.log("PLAYER")
-        $('#playerBody').show();
-        $('#detailsBody').hide(); 
+        setPlaying('true')
     }
+
+    const AddTripButton = (props:any) => {
+        return <button onClick={props.addTrip}>{props.msg}</button>
+      }
 
     useEffect(() => {
         fetch("./Film/getAllFilm")
@@ -55,22 +67,9 @@ function WatchSomething() {
         .then(data =>  setFilms(data));
     }, []);
     
-    //TODO:
-    //router megoldásra átültetni mert más hogy nem 
 
     return (
         <>
-        
-        <div id="playerBody">
-            <div id="backButton">
-                <FaArrowLeft color="black" size="50px" onClick={backClick}/>
-            </div> 
-                <Player filmSource="./video/test.mp4"/>
-            <div>     
-        </div>
-        </div>
-
-
         <div id="filmBody">
             <div className="menu">
                 <div className="sticky-search">
@@ -113,8 +112,11 @@ function WatchSomething() {
                     </div>
                 </div>
                 <div id="filmButtons">
-                    <Button color="primary" variant="contained">Add to MyList</Button>
-                    <Button color="primary" onClick={openPlayer} variant="contained" startIcon={<FaPlay />}>Watch this film</Button>
+                    {/*<Button color="primary" variant="contained">Add to MyList</Button>*/}
+                    {/*<AddTripButton addTrip={() => setPlaying('true')} msg="Play" />*/}
+                    <div>
+                        <Player filmSource={source}/>
+                    </div>
                 </div>
             </div>
         </div>
