@@ -33,5 +33,14 @@ namespace evoFlix.Models
             }
             return true;
         }
+
+        public IEnumerable<FilmModel> GetFilteredFilm(string? genre)
+        {
+            if (genre == null || genre.Equals(""))
+            {
+                return _unitOfWork.Films;
+            }
+            return _unitOfWork.Films.Where(f => f.Genre.Contains(genre));
+        }
     }
 }

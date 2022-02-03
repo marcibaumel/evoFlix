@@ -55,7 +55,10 @@ namespace evoFlix.Services.FilmService
             throw new NotImplementedException();
         }
         */
-
+        public IEnumerable<FilmModel> GetFilteredFilms(string? genre)
+        {
+            return _filmRepository.GetFilteredFilm(genre);
+        }
 
     }
 }

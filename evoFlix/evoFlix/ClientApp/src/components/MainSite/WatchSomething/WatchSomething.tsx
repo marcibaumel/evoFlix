@@ -1,20 +1,14 @@
 import React, {useState, useEffect, MouseEvent} from 'react';
-import { Grid, Button } from '@material-ui/core';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import { FaArrowLeft , FaPlay} from "react-icons/fa"
+import { Grid } from '@material-ui/core';
+import { FaArrowLeft} from "react-icons/fa"
 import './WatchSomething.css';
 import $ from 'jquery';
-import { useHistory } from 'react-router-dom';
 import Player from '../../Videoplayer/Player';
-import { text } from 'stream/consumers';
-import NewWindow from 'react-new-window'
 
 function WatchSomething() {
 
-
     const [playing, setPlaying] = useState('false')
     const [source, setSource] = useState('')
-
 
     $(document).ready(function(){
         $('#filmBody').show();
@@ -28,8 +22,6 @@ function WatchSomething() {
         setPlaying('false')
         $('#filmBody').show();
     };
-
-    
 
     const handleClick = (event: React.MouseEvent<HTMLElement>, text: any) => {
         console.log(text);
@@ -52,21 +44,21 @@ function WatchSomething() {
 
     const [films, setFilms] = useState([]);
 
-    function openPlayer():any{
-        console.log("PLAYER")
-        setPlaying('true')
-    }
+    const [query, setQuery] = useState<string>('')
 
-    const AddTripButton = (props:any) => {
-        return <button onClick={props.addTrip}>{props.msg}</button>
-      }
 
     useEffect(() => {
-        fetch("./Film/getAllFilm")
+        var filmQuery = "./Film/getFilms?genre=" + query;
+        console.log(filmQuery)
+        fetch(filmQuery)
         .then(res  => res.json())
         .then(data =>  setFilms(data));
-    }, []);
+    }, [query]);
     
+    const handleFilter = (event: any) =>  {
+        var query = $('#selectedGenre').val().toString();
+        setQuery(query);
+    }
 
     return (
         <>
@@ -74,7 +66,22 @@ function WatchSomething() {
             <div className="menu">
                 <div className="sticky-search">
                     <h2>Filter</h2>
-                    <input type='text' value='Filter by text'/>
+                    <form onChange={(e) => handleFilter(e)}>
+                        <select id="selectedGenre">
+                            <option selected value="">Select a genre</option>
+                            <option value="Action">Action</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Animation">Animation</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Sci-Fi">Sci-Fi</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Crime">Crime</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="War">War</option>
+                        </select>
+                    </form>
                 </div>
             </div>
             <div className="film-container">
@@ -90,8 +97,6 @@ function WatchSomething() {
                 </Grid>
             </div>
         </div>
-
-        
 
         <div id="detailsBody">
             <div id="backButton">
@@ -112,8 +117,6 @@ function WatchSomething() {
                     </div>
                 </div>
                 <div id="filmButtons">
-                    {/*<Button color="primary" variant="contained">Add to MyList</Button>*/}
-                    {/*<AddTripButton addTrip={() => setPlaying('true')} msg="Play" />*/}
                     <div>
                         <Player filmSource={source}/>
                     </div>
