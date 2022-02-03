@@ -39,16 +39,8 @@ function MainSite() {
             .catch((reason) => {
                console.log(reason);
             })
-            .then(data => setUser(data))
-            .finally(() => {
-                if (user !== null && user !== undefined) {
-                    setLoggedIn(true);
-                }
-                else {
-                    setLoggedIn(false);
-                }
-            });
-    }); 
+            .then(data => setUser(data));
+    },[loggedIn]); 
    
 
   return (
@@ -61,7 +53,7 @@ function MainSite() {
             <button className="navbar-button"><Link className="navbar-link" to='/watchsomething'>Watch Something</Link></button>
             <img src={logo} alt="Logo" className="logo-img"/>
             {(() => {
-                if (loggedIn === false)
+                if (user === null || user === undefined)
                     return (
                         <Link to='#' className='menu-bars'>
                             <FiIcons.FiLogIn onClick={showSidebar} />
@@ -82,7 +74,7 @@ function MainSite() {
                 <div>
                   <h1 className="welcomeText">Unlimited movies, TV shows, and more.</h1>
                   <h2 className="welcomeText"> Watch anywhere. Cancel anytime</h2>
-                  <h2 className="welcomeText">Ready to watch? Press the button in the<a onClick={showSidebar}><span className="to-the-button-text">right corner.</span></a></h2>
+                  <h2 className="welcomeText">Ready to watch? Press the button in the<a><span className="to-the-button-text">right corner.</span></a></h2>
                   <div className="imgCarousel-div">
                     <Carousel className="imgCarousel" 
                       showStatus={false} 

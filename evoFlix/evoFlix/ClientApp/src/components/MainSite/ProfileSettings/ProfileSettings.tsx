@@ -22,8 +22,12 @@ const ProfileSettings = () => {
         fetch("./users/logout", {method: 'POST'})
         .finally(() => {
             setUser({ username: "", email: ""});
-            history.push("/");
-        });
+            window.location.reload();
+            setTimeout(() => {
+                history.push("/");
+              }, 2000);
+            });
+        
     }
 
     return (
