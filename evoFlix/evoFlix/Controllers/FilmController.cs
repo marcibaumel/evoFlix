@@ -30,6 +30,12 @@ namespace evoFlix.Controllers
             return _filmServices.getDataFromOmdb(title, year).Actors;
         }
 
+        [HttpGet("getFilms")]
+        public IActionResult getFilms(string? genre)
+        {
+            return Ok(_filmServices.GetFilteredFilms(genre));
+        }
+
         [HttpPost("saveFilm")]
         public IActionResult saveFilm(string title, string year)
         {
