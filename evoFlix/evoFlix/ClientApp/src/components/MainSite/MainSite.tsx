@@ -32,6 +32,20 @@ function MainSite() {
         setLoggedIn(value);
     }
 
+    function renderPageWatchSomethingButton() {
+      if (loggedIn == true) {
+        return (
+          <>
+            <button className="navbar-button">
+              <Link className="navbar-link" to="/watchsomething">
+                Watch Something
+              </Link>
+            </button>
+          </>
+        );
+      }
+      return <></>;
+    }
     
     useEffect(() => {
         fetch("./users/user")
@@ -50,7 +64,7 @@ function MainSite() {
         <div className={sidebar ? 'wrapper-navbar-nav-menu-active' : 'wrapper'}>
           <div className={sidebar ? 'navbar-nav-menu-active' : 'navbar'}>
             <button className="navbar-button"><Link className="navbar-link" to='/'>Home</Link></button>
-            <button className="navbar-button"><Link className="navbar-link" to='/watchsomething'>Watch Something</Link></button>
+            {renderPageWatchSomethingButton()}
             <img src={logo} alt="Logo" className="logo-img"/>
             {(() => {
                 if (user === null || user === undefined)
