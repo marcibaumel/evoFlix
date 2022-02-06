@@ -126,22 +126,28 @@ const Registration = () => {
         <h1 style={{ textAlign: "center", paddingBottom: "15px" }}>Registration</h1>
         <form>
           <div className="input-box">
+            <label>Enter your username:</label>
             <input className={checkUsername(username) ? "form-block" : "form-block-wrong"} onChange={handleName}  value={username} type="text" placeholder="Username"/>
           </div>
         
           <div className="input-box">
+            <label>Enter your email address:</label>
             <input className={checkEmailFormat(email) ? "form-block" : "form-block-wrong"} onChange={handleEmail} value={email} type="email" placeholder="Email"/>
           </div>
 
           <div className="input-box">
+            <label>Enter your password:</label>
             <input className={checkPasswordFormat(password) ? "form-block" : "form-block-wrong"} onChange={handlePassword} value={password} type="password" placeholder="Password"/>
+            <label>(Minimum requirements: 1 uppercase character, 1 special character, 1 number)</label>
           </div>
 
           <div className="input-box">
+            <label>Enter your password again:</label>
             <input className={checkPassword2(password2) ? "form-block" : "form-block-wrong"} onChange={handlePassword2} value={password2} type="password" placeholder="Re-Password"/>
           </div>
 
           <div className="input-box">
+            <label>Give your birthday:</label>
             <input className={checkBirthday(birthday) ? "form-block" : "form-block-wrong"} onChange={handleBirthday} value={birthday} type="Date" placeholder="Birthday"/>
           </div>
 
