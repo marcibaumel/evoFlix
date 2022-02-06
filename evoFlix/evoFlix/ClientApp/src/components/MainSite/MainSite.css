@@ -45,7 +45,7 @@ h2 {
   background-color: #419D5D;
   margin-top: 2rem;
   width: 100%;
-  height: 50px;
+  height: 125px;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -58,13 +58,17 @@ h2 {
   background-color: #419D5D;
   margin-top: 2rem;
   width: 100%;
-  height: 50px;
+  height: 80px;
   display: flex;
   justify-content: end;
   align-items: center;
   transition: 1500ms;
   filter: brightness(75%);
   border-bottom: 2px solid black;
+}
+
+.inputComponents{
+  margin-top: 3rem;
 }
 
 .menu-bars {
@@ -110,6 +114,7 @@ h2 {
 
 .navbar-link {
   text-decoration: none;
+  border: none;
 }
 
 .navbar-link:visited {
@@ -146,6 +151,10 @@ h2 {
   margin-bottom: 0;
 }
 
+.content{
+  margin-top: 5rem;
+}
+
 .logo-img {
   margin-top: 0rem;
   display: block;
@@ -153,7 +162,7 @@ h2 {
   margin-right: auto;
   width: 150px;
   text-align: center;
-  padding-right: 100px;
+  padding-right: 0px;
 }
 
 .nav-text {
@@ -182,13 +191,14 @@ h2 {
   width: 100%;
 }
 
-
-
+.nav-menu-items-close {
+  width: 0%;
+}
 
 .navbar-toggle {
   background-color: #DAFFE0;
   width: 100%;
-  height: 80px;
+  height: 100px;
   display: flex;
   justify-content: end;
   align-items: center;
