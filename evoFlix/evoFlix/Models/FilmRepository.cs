@@ -34,7 +34,7 @@ namespace evoFlix.Models
             return true;
         }
 
-        public IEnumerable<FilmModel> GetFilteredFilm(string? genre)
+        public IEnumerable<FilmModel> GetFilteredFilm(string genre)
         {
             if (genre == null || genre.Equals(""))
             {

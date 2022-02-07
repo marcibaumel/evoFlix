@@ -31,7 +31,7 @@ namespace evoFlix.Controllers
         }
 
         [HttpGet("getFilms")]
-        public IActionResult getFilms(string? genre)
+        public IActionResult getFilms(string genre)
         {
             return Ok(_filmServices.GetFilteredFilms(genre));
         }

@@ -11,7 +11,7 @@ namespace evoFlix.Services.FilmService
         void AddFilm(FilmModel film);
         FilmDto getDataFromOmdb(string title, string year);
         FilmModel getFilmModelFromFilmDto(FilmDto filmDto);
-        IEnumerable<FilmModel> GetFilteredFilms(string? genre);
+        IEnumerable<FilmModel> GetFilteredFilms(string genre);
 
 
         //void UpdateFilm(FilmModel film);
