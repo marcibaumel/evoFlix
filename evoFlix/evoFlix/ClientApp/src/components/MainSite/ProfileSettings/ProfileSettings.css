@@ -1,18 +1,13 @@
-﻿#profile-commands {
-    float: left;
-    width: 30%;
-}
-
-#profile-information {
-    float: right;
-    width: 70%;
+﻿#profileBody {
+    margin:5%;
     text-align: center;
 }
 
-#profile-information > img {
-    border:double;
-    padding: 100px;
-    min-width: 100px;
-    min-height: 100px;
+#profileBody > img {
+    background-color: white;
+    border:2px solid green;
+    border-radius: 50%;
+    height: 400px;
+    width: 400px;
     align-self: center;
 }
