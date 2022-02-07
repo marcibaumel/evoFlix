@@ -34,7 +34,7 @@ function MainSite() {
   };
 
   function renderPageWatchSomethingButton() {
-    if (loggedIn === true) {
+    if (user !== null && user !== undefined){
       return (
         <>
           <button className="navbar-button">

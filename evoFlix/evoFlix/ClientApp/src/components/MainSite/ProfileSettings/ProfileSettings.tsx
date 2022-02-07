@@ -32,14 +32,10 @@ const ProfileSettings = () => {
 
     return (
         <>
-            <div id="profile-information">
-                <img alt="An image supposed to be here..." />
+            <div id="profileBody">
+                <img src={ require('./profile.png') } />
                 <h2>{user.username}</h2>
                 <h2>{user.email}</h2>
-            </div>
-            <div id="profile-commands">
-                <h1>Change Password</h1>
-                <h1>Delete profile</h1>
                 <button onClick={logout}>logout</button>
             </div>
         </>     

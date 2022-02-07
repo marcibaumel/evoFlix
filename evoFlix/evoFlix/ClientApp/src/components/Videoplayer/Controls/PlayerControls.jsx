@@ -116,128 +116,128 @@ export default forwardRef(({onPlayPause, playing, onRewind, onFastForward, muted
     return(
     <div className={classes.controlsWrapper} ref={ref}>
     {/*Top controls */}
-    <Grid container direction="row" alignItems="center" justify="space-between" style={{padding:16}}>
-      <Grid item>
-        <Typography variant="h5" style={{color:"white"}}></Typography>
+      <Grid container direction="row" alignItems="center" justify="space-between" style={{padding:16}}>
+        <Grid item>
+          <Typography variant="h5" style={{color:"white"}}></Typography>
+        </Grid>
       </Grid>
-    </Grid>
 
-    {/*Middel controls */}
-    <Grid 
-      container 
-      direaction="row" 
-      alignItems="center" 
-      justify="center"
+      {/*Middel controls */}
+      <Grid 
+        container 
+        direaction="row" 
+        alignItems="center" 
+        justify="center"
+        >
+
+        <IconButton onClick={onRewind} className = {classes.controlIcons} aria-label="reqind"  >
+          <FastRewindIcon fontSize="inherit"/>
+        </IconButton>
+
+        <IconButton onClick={onPlayPause} className = {classes.controlIcons} aria-label="reqind"  >
+          {playing ? (
+              <PauseIcon fontSize="inherit"/>
+          ) : (
+              <PlayerArrowIcon fontSize="inherit"/>
+          )}
+        </IconButton>
+
+        <IconButton onClick={onFastForward} className = {classes.controlIcons} aria-label="reqind"  >
+          <FastForward fontSize="inherit"/>
+        </IconButton>
+      </Grid>
+
+
+      {/*bottom controls */}
+      <Grid 
+        container
+        direction="row"
+        justify="space-between"
+        alignItems="center"
+        style={{ padding: 16 }}
       >
+        <Grid item xs={12}>
+          <PrettoSlider 
+            min={0} 
+            max={100} 
+            value={played*100} 
+            ValueLabelComponent={(props) => <ValueLabelComponent {...props} value={elapsedTime}/>}
+            onChange={onSeek}
+            onMouseDown={onSeekMouseDown}
+            onChangeCommitted={onSeekMouseUp}
+            />
+        </Grid>
 
-      <IconButton onClick={onRewind} className = {classes.controlIcons} aria-label="reqind"  >
-        <FastRewindIcon fontSize="inherit"/>
-      </IconButton>
-
-      <IconButton onClick={onPlayPause} className = {classes.controlIcons} aria-label="reqind"  >
-        {playing ? (
-            <PauseIcon fontSize="inherit"/>
-        ) : (
-            <PlayerArrowIcon fontSize="inherit"/>
-        )}
-      </IconButton>
-
-      <IconButton onClick={onFastForward} className = {classes.controlIcons} aria-label="reqind"  >
-        <FastForward fontSize="inherit"/>
-      </IconButton>
-    </Grid>
+      <Grid item>
+        <Grid container alignItems="center" direction="row">
+          <IconButton onClick={onPlayPause} className={classes.bottomIcons}>
+            {playing ? 
+                  (<PauseIcon fontSize="large"/>
+                      ) : (
+                  <PlayerArrowIcon fontSize="large"/>
+              )}
+          </IconButton>
 
 
-    {/*bottom controls */}
-    <Grid 
-      container
-      direction="row"
-      justify="space-between"
-      alignItems="center"
-      style={{ padding: 16 }}
-    >
-      <Grid item xs={12}>
-        <PrettoSlider 
-          min={0} 
-          max={100} 
-          value={played*100} 
-          ValueLabelComponent={(props) => <ValueLabelComponent {...props} value={elapsedTime}/>}
-          onChange={onSeek}
-          onMouseDown={onSeekMouseDown}
-          onChangeCommitted={onSeekMouseUp}
+          <IconButton onClick={onMute} className={classes.bottomIcons}>
+            {muted?
+              (<VolumeOffIcon fontSize="large"/>
+              ):(
+              <VolumeUpIcon fontSize="large"/>)}
+          </IconButton>
+          
+          <Slider
+            min={0}
+            max={100}
+            value={volume * 100}
+            className={classes.volumeSlider}
+            onChange={onVolumeChange}
+            onChangeComitted={onVolumeSeekUp}
           />
-      </Grid>
 
-    <Grid item>
-      <Grid container alignItems="center" direction="row">
-        <IconButton onClick={onPlayPause} className={classes.bottomIcons}>
-          {playing ? 
-                (<PauseIcon fontSize="large"/>
-                    ) : (
-                <PlayerArrowIcon fontSize="large"/>
-            )}
-        </IconButton>
-
-
-        <IconButton onClick={onMute} className={classes.bottomIcons}>
-          {muted?
-            (<VolumeOffIcon fontSize="large"/>
-            ):(
-            <VolumeUpIcon fontSize="large"/>)}
-        </IconButton>
-        
-        <Slider
-          min={0}
-          max={100}
-          value={volume * 100}
-          className={classes.volumeSlider}
-          onChange={onVolumeChange}
-          onChangeComitted={onVolumeSeekUp}
-        />
-
-        <Button onClick={onChangeDisplayFormat} variant="text" style={{color:"#fff", marginLeft:16}}>
-          <Typography>{elapsedTime}/{totalDuration}</Typography>
-        </Button>
-
-       
-      </Grid>
-    </Grid>
-
-    <Grid item>
-          <Button onClick={handlePopover} variant="text" className={classes.bottomIcons}>
-            <Typography>{playbackRate}x</Typography>
+          <Button onClick={onChangeDisplayFormat} variant="text" style={{color:"#fff", marginLeft:16}}>
+            <Typography>{elapsedTime}/{totalDuration}</Typography>
           </Button>
 
-          <Popover
-            open={open}
-            id={id}
-            onClose={handleClose}
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}
-            transformOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
-          >
-            <Grid container direction="column-reverse">
-            {[0.5, 1, 1.5, 2].map(rate=>
-              (<Button onClick={()=>onPlayBackRateChange(rate)} variant="text">
-              <Typography color={rate === playbackRate?"secondary":"default"}>{rate}</Typography>
-            </Button>))}
-            </Grid>
-          </Popover>
+        
+        </Grid>
+      </Grid>
+
+      <Grid item>
+            <Button onClick={handlePopover} variant="text" className={classes.bottomIcons}>
+              <Typography>{playbackRate}x</Typography>
+            </Button>
+
+            <Popover
+              open={open}
+              id={id}
+              onClose={handleClose}
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+            >
+              <Grid container direction="column-reverse">
+              {[0.5, 1, 1.5, 2].map(rate=>
+                (<Button onClick={()=>onPlayBackRateChange(rate)} variant="text">
+                <Typography color={rate === playbackRate?"secondary":"default"}>{rate}</Typography>
+              </Button>))}
+              </Grid>
+            </Popover>
 
 
-          <IconButton onClick={onToggleFullScreen} className={classes.bottomIcons}>
-            <FullScreenIcon fontSize="large"/>
-          </IconButton>
+            <IconButton onClick={onToggleFullScreen} className={classes.bottomIcons}>
+              <FullScreenIcon fontSize="large"/>
+            </IconButton>
+      </Grid>
+    
+
     </Grid>
-   
-
-  </Grid>
   </div>
     );
   }

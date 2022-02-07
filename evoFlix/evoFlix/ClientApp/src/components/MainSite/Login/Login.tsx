@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
-import "C:/REPOS/evoFlix/evoFlix/evoFlix/ClientApp/node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 interface Props {
   loginFunction: (value: boolean) => void;
 }
@@ -36,7 +36,6 @@ const Login = ({ loginFunction }: Props) => {
       }),
     }).then(function (response) {
       if (response.status == 200 || response.status == 201) {
-        alert(user.username);
         loginFunction(true);
         setSuccess(true);
         history.push("/watchsomething");
